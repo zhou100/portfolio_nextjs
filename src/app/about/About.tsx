@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { about } from '@/lib/portfolio';
+import { getAbout } from '@/lib/portfolio';
 import './About.css';
 
 // Dynamically import MUI icons
@@ -10,7 +10,7 @@ const LinkedInIcon = dynamic(() => import('@mui/icons-material/LinkedIn'), { ssr
 const SchoolIcon = dynamic(() => import('@mui/icons-material/School'), { ssr: false });
 
 const About = () => {
-  const { name, role, description, resume, social } = about;
+  const { name, role, description, resume, social } = getAbout();
 
   return (
     <div className='about center'>

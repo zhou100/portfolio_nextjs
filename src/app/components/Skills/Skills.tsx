@@ -1,9 +1,11 @@
 'use client';
 
-import { skills } from '@/lib/portfolio';
+import { getSkills } from '@/lib/portfolio';
 import './Skills.css';
 
 const Skills = () => {
+  const skills = getSkills();
+  
   if (!skills.length) return null;
 
   return (

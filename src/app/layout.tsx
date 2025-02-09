@@ -1,7 +1,7 @@
+'use client';
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { header } from "@/lib/portfolio";
-import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: header.title || "Yujun Zhou",
+  title: "Yujun Zhou",
   description: "Personal portfolio website",
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={poppins.className}>
       <head>
         <link 
           rel="stylesheet" 
@@ -31,7 +31,7 @@ export default function RootLayout({
           referrerPolicy="no-referrer" 
         />
       </head>
-      <body className={poppins.className}>
+      <body>
         <main>
           {children}
         </main>

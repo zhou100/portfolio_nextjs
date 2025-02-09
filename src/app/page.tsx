@@ -1,3 +1,5 @@
+'use client';
+
 import About from './about/About'
 import Projects from './projects/Projects'
 import Skills from './components/Skills/Skills'
@@ -17,5 +19,5 @@ export default function Home() {
       <Skills />
       <Contact />
     </>
-  )
+  );
 }

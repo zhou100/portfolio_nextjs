@@ -1,15 +1,17 @@
 'use client';
 
-import { contact } from '@/lib/portfolio';
+import { getContact } from '@/lib/portfolio';
 import './Contact.css';
 
 const Contact = () => {
-  if (!contact.email) return null;
+  const { email } = getContact();
+  
+  if (!email) return null;
 
   return (
     <section className="section contact center" id="contact">
       <h2 className="section__title">Contact</h2>
-      <a href={`mailto:${contact.email}`}>
+      <a href={`mailto:${email}`}>
         <span className="btn btn--outline">
           Email me
         </span>

@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { header } from '@/lib/portfolio';
+import { getHeader } from '@/lib/portfolio';
 import './Navbar.css';
 
 const Navbar = () => {
   const [showNavList, setShowNavList] = useState(false);
+  const header = getHeader();
 
   const toggleNavList = () => setShowNavList(!showNavList);
 

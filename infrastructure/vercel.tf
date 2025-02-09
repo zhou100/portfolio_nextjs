@@ -6,7 +6,7 @@ resource "vercel_project" "main" {
   environment = [
     {
       key    = "NEXT_PUBLIC_API_URL"
-      value  = "https://api.example.com/v2"
+      value  = "https://my-placeholder-api.com/v2"
       target = ["production"]
     }
   ]

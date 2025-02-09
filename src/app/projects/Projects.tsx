@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { projects } from '@/lib/portfolio';
+import { getProjects } from '@/lib/portfolio';
 import './Projects.css';
 
 // Dynamically import MUI icons
@@ -9,6 +9,8 @@ const GitHubIcon = dynamic(() => import('@mui/icons-material/GitHub'), { ssr: fa
 const ArticleIcon = dynamic(() => import('@mui/icons-material/Article'), { ssr: false });
 
 const Projects = () => {
+  const projects = getProjects();
+  
   if (!projects.length) return null;
 
   return (
