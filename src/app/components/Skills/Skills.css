@@ -1,0 +1,23 @@
+.skills__list {
+  max-width: 800px;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skills__list-item {
+  margin: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .skills__list {
+    gap: 0.5rem;
+  }
+  
+  .skills__list-item {
+    margin: 0.3em;
+  }
+}

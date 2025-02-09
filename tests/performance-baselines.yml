@@ -1,0 +1,11 @@
+# tests/performance-baselines.yml
+metrics:
+  - name: LCP
+    threshold: 1200ms
+    weight: 0.6
+  - name: INP 
+    threshold: 200ms
+    weight: 0.4
+
+# Run validation
+# npm run test:perf -- --baseline=prod-baseline.json
