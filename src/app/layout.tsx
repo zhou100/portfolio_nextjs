@@ -10,11 +10,6 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "Yujun Zhou",
-  description: "Personal portfolio website",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
