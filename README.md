@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Welcome to HolyHub
+
+HolyHub is a curated showcase of generative AI applications, where cutting-edge tools meet creative problem-solving. Built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/), this site highlights innovative projects, technical skills, and provides a platform for exploring the latest in generative AI.
+
+## Features
+
+- **About**: Introduction and mission statement
+- **Projects**: Curated generative AI applications, each with descriptions, tech stack, source code, and live demos or publication links
+- **Skills**: Key technical proficiencies in AI, machine learning, and software development
+- **Contact**: Email contact for collaboration or inquiries
+- **Responsive Design**: Mobile-friendly and accessible UI
+- **Static Export**: Configured for static site export and deployment (e.g., Vercel)
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Build for production:**
+   ```bash
+   npm run build
+   npm run start
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+- `src/app/` – Main app, pages, and layout
+- `src/app/about/` – About section
+- `src/app/projects/` – Projects showcase
+- `src/app/components/` – Navbar, Skills, Contact components
+- `src/lib/portfolio.ts` – Data for about, projects, skills, and contact
+- `public/` – Static assets
+- `infrastructure/` – Deployment and monitoring configs (Vercel, New Relic)
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is ready for static export and can be deployed to [Vercel](https://vercel.com/) or any static hosting provider.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is for personal and demonstration purposes.

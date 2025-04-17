@@ -53,6 +53,13 @@ export function getAbout(): About {
 export function getProjects(): Project[] {
   return [
     {
+      name: 'VoiceTrack',
+      description:
+        'A voice-enabled productivity app that transcribes and organizes audio notes into tasks, ideas, and time logs using AI for effortless time and content management.',
+      stack: ['React', 'FastAPI', 'TypeScript', 'Python'],
+      livePreview: 'https://time-logger.replit.app/',
+    },
+    {
       name: 'Machine learning for food security',
       description:
         'explores the use of machine learning to predict food insecurity in sub-Saharan Africa, emphasizing the importance of transparency and usability for policy-makers by highlighting modeling choices that balance accuracy and recall.',
@@ -93,6 +100,6 @@ export function getSkills(): string[] {
 
 export function getContact(): Contact {
   return {
-    email: 'zhouyujun001@gmail.com',
+    email: 'yz@holyhub.ai',
   };
 }
