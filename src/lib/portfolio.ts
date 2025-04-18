@@ -41,7 +41,7 @@ export function getAbout(): About {
     name: 'Yujun Zhou',
     role: 'Data Scientist',
     description:
-      'An economist turned tech professional, I have worked on recommendation systems at Instagram and integrity at Facebook. Now at Annalect, I focus on applying LLMs to marketing challenges while pursuing generative AI side projects.',
+      'Economist by training, product thinker by practice. I use data science and generative AI as tools to reason, prototype, and build. Formerly at Meta to learn how tech works at scale — now applying that knowledge at Annalect and beyond.',
     social: {
       linkedin: 'https://www.linkedin.com/in/yujun-zhou/',
       github: 'https://github.com/zhou100',

@@ -1,9 +1,29 @@
 .contact {
   flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+.contact__email {
+  font-size: 1.1rem;
+  color: var(--clr-fg);
+  margin: 2em 0 3em 0;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.contact__email:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
   .contact {
     align-items: center;
+  }
+  
+  .contact__email {
+    padding: 1rem 1.5rem;
   }
 }
