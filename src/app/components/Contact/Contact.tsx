@@ -10,7 +10,7 @@ const Contact = () => {
 
   return (
     <section className="section contact center" id="contact">
-      <h2 className="section__title">Contact</h2>
+      <p className="eyebrow">Contact</p>
       <a href={`mailto:${email}`} className="contact__email">
         {email}
       </a>

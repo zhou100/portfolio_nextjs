@@ -12,6 +12,10 @@ const Navbar = () => {
 
   return (
     <nav className="center nav">
+      <a href="#home" className="nav__brand" aria-label={`${header.title} home`}>
+        {header.title}
+      </a>
+
       <ul
         style={{ display: showNavList ? 'flex' : undefined }}
         className="nav__list"
@@ -28,11 +32,11 @@ const Navbar = () => {
 
         <li className="nav__list-item">
           <a
-            href="#projects"
+            href="#about"
             onClick={toggleNavList}
             className="link link--nav"
           >
-            Projects
+            About
           </a>
         </li>
 
@@ -43,6 +47,26 @@ const Navbar = () => {
             className="link link--nav"
           >
             Skills
+          </a>
+        </li>
+
+        <li className="nav__list-item">
+          <a
+            href="#projects"
+            onClick={toggleNavList}
+            className="link link--nav"
+          >
+            Projects
+          </a>
+        </li>
+
+        <li className="nav__list-item">
+          <a
+            href="#writing"
+            onClick={toggleNavList}
+            className="link link--nav"
+          >
+            Writing
           </a>
         </li>
 

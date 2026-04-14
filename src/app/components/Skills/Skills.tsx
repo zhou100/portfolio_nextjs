@@ -10,10 +10,13 @@ const Skills = () => {
 
   return (
     <section className="section skills" id="skills">
-      <h2 className="section__title">Skills</h2>
+      <div className="section__heading">
+        <p className="eyebrow">Toolkit</p>
+        <h2 className="section__title">The capabilities I reach for most</h2>
+      </div>
       <ul className="skills__list">
-        {skills.map((skill, index) => (
-          <li key={index} className="skills__list-item btn btn--plain">
+        {skills.map((skill) => (
+          <li key={skill} className="skills__list-item">
             {skill}
           </li>
         ))}

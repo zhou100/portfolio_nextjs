@@ -15,21 +15,26 @@ const Projects = () => {
 
   return (
     <section className="section projects" id="projects">
-      <h2 className="section__title">Projects</h2>
+      <div className="section__heading">
+        <p className="eyebrow">Selected work</p>
+        <h2 className="section__title">Built, tested, and written for real decisions</h2>
+      </div>
 
-      <div className="projects__grid">
+      <div className="projects__list">
         {projects.map((project, index) => (
           <div key={index} className="project">
-            <h3 className="project__title">{project.name}</h3>
-            <p className="project__description">{project.description}</p>
-            
-            <ul className="project__stack">
-              {project.stack.map((item, index) => (
-                <li key={index} className="project__stack-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="project__copy">
+              <h3 className="project__title">{project.name}</h3>
+              <p className="project__description">{project.description}</p>
+
+              <ul className="project__stack">
+                {project.stack.map((item) => (
+                  <li key={item} className="project__stack-item">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="project__links">
               {project.sourceCode && (
@@ -41,6 +46,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                 >
                   <GitHubIcon />
+                  <span>Code</span>
                 </a>
               )}
 
@@ -53,6 +59,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                 >
                   <ArticleIcon />
+                  <span>Open</span>
                 </a>
               )}
             </div>

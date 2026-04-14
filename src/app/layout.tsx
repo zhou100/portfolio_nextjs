@@ -1,13 +1,11 @@
-'use client';
-
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
+const sourceSans = Source_Sans_3({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ["latin"],
   display: 'swap',
+  variable: '--font-sans',
 });
 
 export default function RootLayout({
@@ -16,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en" className={sourceSans.variable}>
       <head>
         <link 
           rel="stylesheet" 
