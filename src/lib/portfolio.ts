@@ -12,9 +12,13 @@ interface Social {
 interface About {
   name?: string;
   role?: string;
+  tagline?: string;
   description?: string;
+  profileImage?: string;
   resume?: string;
   social?: Social;
+  superpowers?: string[];
+  testimonials?: Testimonial[];
 }
 
 interface Project {
@@ -23,6 +27,22 @@ interface Project {
   stack: string[];
   sourceCode?: string;
   livePreview?: string;
+}
+
+interface Testimonial {
+  quote: string;
+  role: string;
+}
+
+interface Writing {
+  title: string;
+  authors?: string;
+  publication: string;
+  details?: string;
+  href: string;
+  citations?: number;
+  year?: number;
+  sourceCode?: string;
 }
 
 interface Contact {
@@ -39,9 +59,37 @@ export function getHeader(): Header {
 export function getAbout(): About {
   return {
     name: 'Yujun Zhou',
-    role: 'Data Scientist',
+    role: 'Data scientist and AI product builder',
+    profileImage: '/profile.jpg',
     description:
-      'Economist by training, product thinker by practice. I use data science and generative AI as tools to reason, prototype, and build. Formerly at Meta to learn how tech works at scale — now applying that knowledge at Annalect and beyond.',
+      'Economist by training, product thinker by practice. I bridge technology, data, and business, using data science and generative AI to reason, prototype, and build. Formerly at Meta learning how technology works at scale, now applying that perspective at Annalect and beyond.',
+    superpowers: [
+      'Economic thinking for causal, incentive-aware analysis',
+      'Data thought leadership that shapes product and strategy decisions',
+      'End-to-end data product building across modeling, backend, and UX',
+    ],
+    testimonials: [
+      {
+        quote:
+          'Consistent excellence in analytics work, with strong influence skills, operational rigor, and a high bar for data-driven decision making.',
+        role: 'Former manager, Instagram Relevance Analytics',
+      },
+      {
+        quote:
+          'An amazing tech lead and one of the best data scientists I had the chance to work with.',
+        role: 'Data science colleague',
+      },
+      {
+        quote:
+          'Always impressed by Yujun’s analytical skills and insights. Any team would be lucky to have him.',
+        role: 'Engineering manager',
+      },
+      {
+        quote:
+          'Played an incredible role supporting the team with strong technical skills and thoughtful partnership.',
+        role: 'Machine learning engineer',
+      },
+    ],
     social: {
       linkedin: 'https://www.linkedin.com/in/yujun-zhou/',
       github: 'https://github.com/zhou100',
@@ -53,35 +101,65 @@ export function getAbout(): About {
 export function getProjects(): Project[] {
   return [
     {
-      name: 'VoiceTrack',
+      name: 'Debrief',
       description:
-        'A voice-enabled productivity app that transcribes and organizes audio notes into tasks, ideas, and time logs using AI for effortless time and content management.',
-      stack: ['React', 'FastAPI', 'TypeScript', 'Python'],
-      livePreview: 'https://time-logger.replit.app/',
+        'A FastAPI and React voice app for turning quick voice logs into a useful record of the day and week. It transcribes and classifies captures, surfaces daily and weekly AI reviews, tracks open loops, and helps users recover thoughts, tasks, recurring themes, and patterns over time.',
+      stack: [
+        'React',
+        'FastAPI',
+        'TypeScript',
+        'PostgreSQL',
+        'OpenAI',
+      ],
+      livePreview: 'https://time.yujun.net/',
     },
     {
-      name: 'Machine learning for food security',
+      name: 'ChurchMap',
       description:
-        'explores the use of machine learning to predict food insecurity in sub-Saharan Africa, emphasizing the importance of transparency and usability for policy-makers by highlighting modeling choices that balance accuracy and recall.',
-      stack: ['Machine Learning', 'Python', 'R'],
+        'A technical church discovery app that combines first-visit geolocation with a Leaflet/OpenStreetMap interface to make nearby church search automatic and easy. It enriches church profiles by extracting Google Places review, photo, rating, hours, and contact data, then uses computed tags and review signals to make the results more useful than a plain directory.',
+      stack: [
+        'React',
+        'Leaflet',
+        'FastAPI',
+        'SQLite',
+        'Google Places API',
+      ],
+      livePreview: 'https://churchmap.vercel.app/',
+    },
+  ];
+}
+
+export function getWriting(): Writing[] {
+  return [
+    {
+      title: 'Machine learning for food security: Principles for transparency and usability',
+      authors: 'Y Zhou, E Lentz, H Michelson, C Kim, K Baylis',
+      publication: 'Applied Economic Perspectives and Policy',
+      details: '44 (2), 893-910',
+      citations: 54,
+      year: 2022,
+      href: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/aepp.13214',
       sourceCode: 'https://github.com/zhou100/FoodSecurityPrediction',
-      livePreview: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/aepp.13214',
     },
     {
-      name: 'A data-driven approach improves food insecurity crisis prediction',
-      description:
-        ' presents a transparent and data-driven model that significantly improves the prediction of food insecurity crises in Malawi compared to existing global methods..',
-      stack: ['Machine Learning', 'Python', 'R'],
+      title: 'A data-driven approach improves food insecurity crisis prediction',
+      authors: 'EC Lentz, H Michelson, K Baylis, Y Zhou',
+      publication: 'World Development',
+      details: '122, 399-409',
+      citations: 138,
+      year: 2019,
+      href: 'https://www.sciencedirect.com/science/article/abs/pii/S0305750X19301603',
       sourceCode: 'https://github.com/zhou100/WD-Early-Warning-Food-Insecurity',
-      livePreview: 'https://www.sciencedirect.com/science/article/abs/pii/S0305750X19301603',
     },
     {
-      name: 'Effects of Stockholding Policy on Maize Prices',
-      description:
-        'examines the effects of public stockholding policies by the Zambian Food Reserve Agency on maize prices, finding that purchases increase prices for producers while sales reduce prices for consumers within a cropping year, but have limited impact on inter-annual price volatility.',
-      stack: ['Causal Inference', 'Data Analysis', 'R'],
+      title: 'Effects of stockholding policy on maize prices: Evidence from Zambia',
+      authors: 'Y Zhou, K Baylis',
+      publication: 'Journal of Agricultural & Food Industrial Organization',
+      details: '18 (1), 20190057',
+      citations: 3,
+      year: 2020,
+      href: 'https://www.degruyter.com/document/doi/10.1515/jafio-2019-0057/html',
       sourceCode: 'https://github.com/zhou100/JAFIO-FRA-Zambia',
-      livePreview: 'https://www.degruyter.com/document/doi/10.1515/jafio-2019-0057/html',
     },
   ];
 }
@@ -100,6 +178,6 @@ export function getSkills(): string[] {
 
 export function getContact(): Contact {
   return {
-    email: 'yz@holyhub.ai',
+    email: 'zhou@yujun.net',
   };
 }

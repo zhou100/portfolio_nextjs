@@ -10,35 +10,39 @@ const LinkedInIcon = dynamic(() => import('@mui/icons-material/LinkedIn'), { ssr
 const SchoolIcon = dynamic(() => import('@mui/icons-material/School'), { ssr: false });
 
 const About = () => {
-  const { name, role, description, resume, social } = getAbout();
+  const {
+    name,
+    role,
+    tagline,
+    description,
+    profileImage,
+    resume,
+    social,
+    superpowers,
+    testimonials,
+  } = getAbout();
 
   return (
-    <div className='about center'>
-      {name && (
-        <h1>
-          Hi, I am <span className='about__name'>{name}.</span>
-        </h1>
-      )}
+    <section className="about" id="home">
+      <div className="about__hero">
+        <div className="about__portrait-wrap">
+          {profileImage && (
+            <img
+              className="about__portrait"
+              src={profileImage}
+              alt={`${name} profile`}
+              onError={(event) => {
+                event.currentTarget.src = 'https://github.com/zhou100.png';
+              }}
+            />
+          )}
 
-      {role && <h2 className='about__role'>A {role}.</h2>}
-      <p className='about__desc'>{description && description}</p>
-
-      <div className='about__contact center'>
-        {resume && (
-          <a href={resume}>
-            <span className='btn btn--outline'>
-              Resume
-            </span>
-          </a>
-        )}
-
-        {social && (
-          <>
-            {social.github && (
+          <div className='about__contact'>
+            {social?.github && (
               <a
                 href={social.github}
                 aria-label='github'
-                className='link link--icon'
+                className='about__social-link'
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -46,11 +50,11 @@ const About = () => {
               </a>
             )}
 
-            {social.linkedin && (
+            {social?.linkedin && (
               <a
                 href={social.linkedin}
                 aria-label='linkedin'
-                className='link link--icon'
+                className='about__social-link'
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -58,21 +62,64 @@ const About = () => {
               </a>
             )}
 
-            {social.googlescholar && (
+            {social?.googlescholar && (
               <a
                 href={social.googlescholar}
                 aria-label='google-scholar'
-                className='link link--icon'
+                className='about__social-link'
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <SchoolIcon />
               </a>
             )}
-          </>
+          </div>
+        </div>
+
+        <div className='about__intro'>
+          {name && <p className="eyebrow">Portfolio</p>}
+          {name && <h1>{name}</h1>}
+          {role && <h2>{role}</h2>}
+          {tagline && <p className='about__tagline'>{tagline}</p>}
+          {description && <p className='about__desc'>{description}</p>}
+
+          {!!superpowers?.length && (
+            <div className="about__superpowers">
+              <p>Three working strengths</p>
+              <ul>
+                {superpowers.map((power) => (
+                  <li key={power}>{power}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {resume && (
+            <a href={resume} className='btn btn--outline'>
+              Resume
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div className="profile-grid" id="about">
+        {!!testimonials?.length && (
+          <article className="profile-card profile-card--wide">
+            <div className="profile-card__header">
+              <h3>What people say</h3>
+            </div>
+            <div className="testimonials">
+              {testimonials.map((testimonial) => (
+                <blockquote key={testimonial.quote}>
+                  <p>{testimonial.quote}</p>
+                  <cite>{testimonial.role}</cite>
+                </blockquote>
+              ))}
+            </div>
+          </article>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
