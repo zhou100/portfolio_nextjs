@@ -1,183 +1,169 @@
-interface Header {
-  homepage?: string;
-  title?: string;
-}
-
-interface Social {
+export interface Social {
   linkedin?: string;
   github?: string;
-  googlescholar?: string;
+  googleScholar?: string;
 }
 
-interface About {
-  name?: string;
-  role?: string;
-  tagline?: string;
-  description?: string;
-  profileImage?: string;
-  resume?: string;
-  social?: Social;
-  superpowers?: string[];
-  testimonials?: Testimonial[];
+export interface Cta {
+  label: string;
+  href: string;
 }
 
-interface Project {
+export interface Site {
   name: string;
-  description: string;
-  stack: string[];
-  sourceCode?: string;
-  livePreview?: string;
+  brand: string;
+  eyebrow: string;
+  headline: string;
+  subheadline: string;
+  backgroundLine: string;
+  primaryCta: Cta;
+  /** Rendered only when `resume` is a real, downloadable file. */
+  resume?: string;
+  email: string;
+  social: Social;
+  url: string;
 }
 
-interface Testimonial {
+export interface ThesisCard {
+  label: string;
+  title: string;
+  layers: { name: string; question: string }[];
+  footnote: string;
+}
+
+export interface Role {
+  org: string;
+  title: string;
+  focus: string;
+  note?: string;
+}
+
+export interface Testimonial {
   quote: string;
   role: string;
+  attribution: string;
 }
 
-interface Writing {
-  title: string;
-  authors?: string;
-  publication: string;
-  details?: string;
-  href: string;
-  citations?: number;
-  year?: number;
-  sourceCode?: string;
+export interface AboutContent {
+  profileImage: string;
+  currentTitle: string;
+  paragraphs: string[];
+  roles: Role[];
+  education: Role[];
+  skillGroups: { name: string; items: string[] }[];
+  testimonials: Testimonial[];
 }
 
-interface Contact {
-  email?: string;
-}
-
-export function getHeader(): Header {
+export function getSite(): Site {
   return {
-    homepage: 'https://zhou100.github.io/',
-    title: 'YZ',
+    name: 'Yujun Zhou',
+    brand: 'Yujun Zhou',
+    eyebrow: 'Yujun Zhou · Senior Data Scientist · Economics PhD',
+    headline: 'I measure and improve AI products.',
+    subheadline:
+      'I use experimentation, causal inference, and evaluation to improve recommendations, advertising, and AI systems. My work spans Meta Reels and Integrity, enterprise AI at Annalect, and independent products I build and study.',
+    backgroundLine: 'Meta Reels & Integrity · Annalect · UIUC Applied Economics PhD',
+    primaryCta: { label: 'Explore selected work', href: '/work' },
+    // Set this to '/resume.pdf' once the file exists in `public/`. The nav link and
+    // the hero's secondary call to action appear automatically when it is set.
+    resume: undefined,
+    email: 'zhou@yujun.net',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/yujun-zhou/',
+      github: 'https://github.com/zhou100',
+      googleScholar: 'https://scholar.google.com/citations?user=1c8nq8EAAAAJ&hl=en',
+    },
+    url: 'https://yujun.net',
   };
 }
 
-export function getAbout(): About {
+export function getThesisCard(): ThesisCard {
   return {
-    name: 'Yujun Zhou',
-    role: 'Data scientist and AI product builder',
+    label: 'How I read evidence',
+    title: 'Three layers, kept separate',
+    layers: [
+      {
+        name: 'Label quality',
+        question: 'Can two people apply the definition and agree?',
+      },
+      {
+        name: 'Predictive value',
+        question: 'Does it still add information out of sample?',
+      },
+      {
+        name: 'Incremental impact',
+        question: 'Does changing it move the outcome in an experiment?',
+      },
+    ],
+    footnote:
+      'A pattern that clears the first two layers is still a hypothesis. I label it as one.',
+  };
+}
+
+export function getAbout(): AboutContent {
+  return {
     profileImage: '/profile.jpg',
-    description:
-      'Economist by training, product thinker by practice. I bridge technology, data, and business, using data science and generative AI to reason, prototype, and build. Formerly at Meta learning how technology works at scale, now applying that perspective at Annalect and beyond.',
-    superpowers: [
-      'Economic thinking for causal, incentive-aware analysis',
-      'Data thought leadership that shapes product and strategy decisions',
-      'End-to-end data product building across modeling, backend, and UX',
+    currentTitle: 'Data Science Manager & Tech Lead, Annalect',
+    paragraphs: [
+      'I’m a data scientist with a PhD in Applied Economics. At Meta, I worked on recommendation quality and integrity measurement. At Annalect, I work on enterprise AI systems and evaluation. Across these settings, I focus on defining useful outcomes, testing whether the evidence supports a decision, and building the tools needed to improve the product.',
+      'The through line is measurement under pressure. Engagement moves for reasons that have nothing to do with a better product. An assistant that reads well can still fail the task it was hired for. Most of my work is deciding which comparison is credible enough to act on, and saying plainly when it isn’t.',
+      'I build the systems I need to test my own ideas — evaluation pipelines, data contracts, and small products with real users — because a claim I cannot reproduce is not evidence I can defend.',
+    ],
+    roles: [
+      {
+        org: 'Annalect',
+        title: 'Data Science Manager & Tech Lead',
+        focus:
+          'Enterprise AI systems and evaluation: layered task metrics, human rubrics, regression gates, and the quality/cost tradeoffs behind a launch decision.',
+      },
+      {
+        org: 'Meta — Reels & Integrity',
+        title: 'Data Scientist',
+        focus:
+          'Recommendation quality and integrity measurement: defining consumption-side outcomes, running and reading experiments, and shifting product goals when engagement and experience diverged.',
+      },
+    ],
+    education: [
+      {
+        org: 'University of Illinois Urbana-Champaign',
+        title: 'PhD, Applied Economics',
+        focus:
+          'Causal identification, forecasting, and the gap between a model that fits and a model a decision-maker can use. Published in Applied Economic Perspectives and Policy, World Development, and JAFIO.',
+      },
+    ],
+    skillGroups: [
+      {
+        name: 'Measurement & inference',
+        items: [
+          'Experiment design',
+          'Causal inference',
+          'Metric definition',
+          'Sampling & power',
+          'Offline–online gap analysis',
+        ],
+      },
+      {
+        name: 'AI evaluation',
+        items: [
+          'Human rubrics & annotator agreement',
+          'Failure taxonomies',
+          'LLM-as-judge validation',
+          'Calibration & abstention',
+          'Regression gates',
+        ],
+      },
+      {
+        name: 'Building',
+        items: ['Python', 'SQL', 'FastAPI', 'React / TypeScript', 'Postgres & pgvector'],
+      },
     ],
     testimonials: [
       {
         quote:
           'Consistent excellence in analytics work, with strong influence skills, operational rigor, and a high bar for data-driven decision making.',
         role: 'Former manager, Instagram Relevance Analytics',
-      },
-      {
-        quote:
-          'An amazing tech lead and one of the best data scientists I had the chance to work with.',
-        role: 'Data science colleague',
-      },
-      {
-        quote:
-          'Always impressed by Yujun’s analytical skills and insights. Any team would be lucky to have him.',
-        role: 'Engineering manager',
-      },
-      {
-        quote:
-          'Played an incredible role supporting the team with strong technical skills and thoughtful partnership.',
-        role: 'Machine learning engineer',
+        attribution: 'Anonymized here at the source. Named reference available on request.',
       },
     ],
-    social: {
-      linkedin: 'https://www.linkedin.com/in/yujun-zhou/',
-      github: 'https://github.com/zhou100',
-      googlescholar: 'https://scholar.google.com/citations?user=1c8nq8EAAAAJ&hl=en',
-    },
-  };
-}
-
-export function getProjects(): Project[] {
-  return [
-    {
-      name: 'Debrief',
-      description:
-        'A FastAPI and React voice app for turning quick voice logs into a useful record of the day and week. It transcribes and classifies captures, surfaces daily and weekly AI reviews, tracks open loops, and helps users recover thoughts, tasks, recurring themes, and patterns over time.',
-      stack: [
-        'React',
-        'FastAPI',
-        'TypeScript',
-        'PostgreSQL',
-        'OpenAI',
-      ],
-      livePreview: 'https://time.yujun.net/',
-    },
-    {
-      name: 'ChurchMap',
-      description:
-        'A technical church discovery app that combines first-visit geolocation with a Leaflet/OpenStreetMap interface to make nearby church search automatic and easy. It enriches church profiles by extracting Google Places review, photo, rating, hours, and contact data, then uses computed tags and review signals to make the results more useful than a plain directory.',
-      stack: [
-        'React',
-        'Leaflet',
-        'FastAPI',
-        'SQLite',
-        'Google Places API',
-      ],
-      livePreview: 'https://churchmap.vercel.app/',
-    },
-  ];
-}
-
-export function getWriting(): Writing[] {
-  return [
-    {
-      title: 'Machine learning for food security: Principles for transparency and usability',
-      authors: 'Y Zhou, E Lentz, H Michelson, C Kim, K Baylis',
-      publication: 'Applied Economic Perspectives and Policy',
-      details: '44 (2), 893-910',
-      citations: 54,
-      year: 2022,
-      href: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/aepp.13214',
-      sourceCode: 'https://github.com/zhou100/FoodSecurityPrediction',
-    },
-    {
-      title: 'A data-driven approach improves food insecurity crisis prediction',
-      authors: 'EC Lentz, H Michelson, K Baylis, Y Zhou',
-      publication: 'World Development',
-      details: '122, 399-409',
-      citations: 138,
-      year: 2019,
-      href: 'https://www.sciencedirect.com/science/article/abs/pii/S0305750X19301603',
-      sourceCode: 'https://github.com/zhou100/WD-Early-Warning-Food-Insecurity',
-    },
-    {
-      title: 'Effects of stockholding policy on maize prices: Evidence from Zambia',
-      authors: 'Y Zhou, K Baylis',
-      publication: 'Journal of Agricultural & Food Industrial Organization',
-      details: '18 (1), 20190057',
-      citations: 3,
-      year: 2020,
-      href: 'https://www.degruyter.com/document/doi/10.1515/jafio-2019-0057/html',
-      sourceCode: 'https://github.com/zhou100/JAFIO-FRA-Zambia',
-    },
-  ];
-}
-
-export function getSkills(): string[] {
-  return [
-    'Python',
-    'SQL',
-    'Machine Learning',
-    'Gen AI',
-    'Data Analysis',
-    'Data Visualization',
-    'Causal Inference',
-  ];
-}
-
-export function getContact(): Contact {
-  return {
-    email: 'zhou@yujun.net',
   };
 }

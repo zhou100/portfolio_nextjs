@@ -1,96 +1,84 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
-import { getHeader } from '@/lib/portfolio';
+import { getSite } from '@/lib/portfolio';
 import './Navbar.css';
 
-const Navbar = () => {
-  const [showNavList, setShowNavList] = useState(false);
-  const header = getHeader();
+const links = [
+  { label: 'Work', href: '/work' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/about' },
+];
 
-  const toggleNavList = () => setShowNavList(!showNavList);
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const { brand, resume, email } = getSite();
+
+  const close = () => setOpen(false);
 
   return (
-    <nav className="center nav">
-      <a href="#home" className="nav__brand" aria-label={`${header.title} home`}>
-        {header.title}
-      </a>
+    <header className="nav">
+      <div className="wrap nav__inner">
+        <Link href="/" className="nav__brand" onClick={close}>
+          {brand}
+        </Link>
 
-      <ul
-        style={{ display: showNavList ? 'flex' : undefined }}
-        className="nav__list"
-      >
-        <li className="nav__list-item">
-          <a
-            href="#home"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            Home
-          </a>
-        </li>
+        <button
+          type="button"
+          className="nav__toggle"
+          aria-expanded={open}
+          aria-controls="nav-menu"
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="nav__toggle-label">{open ? 'Close' : 'Menu'}</span>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+            {open ? (
+              <path
+                d="M4 4l12 12M16 4L4 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            ) : (
+              <path
+                d="M2 5h16M2 10h16M2 15h16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            )}
+          </svg>
+        </button>
 
-        <li className="nav__list-item">
-          <a
-            href="#about"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            About
-          </a>
-        </li>
+        <nav id="nav-menu" className={`nav__menu${open ? ' nav__menu--open' : ''}`}>
+          <ul className="nav__list">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="nav__link" onClick={close}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
 
-        <li className="nav__list-item">
-          <a
-            href="#skills"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            Skills
-          </a>
-        </li>
+            {resume && (
+              <li>
+                <a className="nav__link" href={resume} onClick={close}>
+                  Resume
+                </a>
+              </li>
+            )}
 
-        <li className="nav__list-item">
-          <a
-            href="#projects"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            Projects
-          </a>
-        </li>
-
-        <li className="nav__list-item">
-          <a
-            href="#writing"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            Writing
-          </a>
-        </li>
-
-        <li className="nav__list-item">
-          <a
-            href="#contact"
-            onClick={toggleNavList}
-            className="link link--nav"
-          >
-            Contact
-          </a>
-        </li>
-      </ul>
-
-      <button
-        type="button"
-        onClick={toggleNavList}
-        className="btn btn--icon nav__hamburger"
-        aria-label="toggle navigation"
-      >
-        <i className="fas fa-bars"></i>
-      </button>
-    </nav>
+            <li>
+              <a className="nav__link nav__link--cta" href={`mailto:${email}`} onClick={close}>
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
-};
-
-export default Navbar;
+}

@@ -1,58 +1,68 @@
 # Yujun Zhou Portfolio
 
-A personal portfolio for Yujun Zhou, focused on data science, AI product building, applied economics, selected projects, and published research. Built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org/), and plain CSS.
+The personal site of Yujun Zhou — a senior data scientist working on experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products. Built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org/), and plain CSS. No UI framework, no CMS.
 
-## Features
+## What the site is organized around
 
-- **About**: Profile, strengths, and testimonials
-- **Projects**: Built products with concise descriptions, stack chips, and links
-- **Research and published work**: Publications with citation counts, code links, and article links
-- **Skills**: Key technical proficiencies
-- **Contact**: Email contact
-- **Responsive Design**: Mobile-friendly and accessible UI
-- **Static Export**: Configured for static site export and deployment (e.g., Vercel)
+The unit of content is a **case study**, not a project card. Every work item carries:
 
-## Getting Started
+- a **status** (`published` / `in-progress` / `proposed` / `archived`) — `published` means the case study is written, never that a business result was proven;
+- an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`) — each with a stated meaning of what it does and does not license;
+- explicit **limitations**, and a **next decision**.
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+Case studies follow a fixed reading order: Evidence → Study design → Results and failures → Next decision → Limitations → Appendix. Demo, code, and evaluation links render only when the resource actually exists.
 
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+## Routes
 
-   Open [http://localhost:3000](http://localhost:3000) to view the site.
+| Route | Purpose |
+|---|---|
+| `/` | Positioning, three featured cases, writing, what's being scoped |
+| `/work` | Industry cases, independent builds, in the lab, earlier research |
+| `/work/[slug]` | Case study, statically generated per item |
+| `/writing` | Planned pieces with the argument each must support, plus peer-reviewed research |
+| `/about` | Bio, experience, education, toolkit, research, one reference |
 
-3. **Build for production:**
-   ```bash
-   npm run build
-   npm run start
-   ```
+## Content model
 
-   Note: stop `npm run dev` before running `npm run build`. This avoids mixed Next dev/build cache output in `.next/`.
+All content is data, not JSX. Editing the site means editing three files:
 
-## Project Structure
+- `src/lib/portfolio.ts` — site copy, hero, social links, about page content
+- `src/lib/work.ts` — the `WorkItem` type and every case study
+- `src/lib/writing.ts` — planned articles and published papers
 
-- `src/app/` – Main app, pages, and layout
-- `src/app/about/` – About section
-- `src/app/projects/` – Projects showcase
-- `src/app/components/` – Navbar, Skills, Contact components
-- `src/lib/portfolio.ts` – Portfolio data for about, projects, skills, research, and contact
-- `public/profile.jpg` – Active profile image
-- `DESIGN.md` – Typography, spacing, color, and layout guidance
-- `archive/legacy-2026-04-14/` – Old generated output, starter assets, unused config, and legacy deployment files
+## Adding a resume
+
+The resume link is off until the file exists. To turn it on:
+
+1. Put the PDF at `public/resume.pdf`.
+2. Set `resume: '/resume.pdf'` in `getSite()` in `src/lib/portfolio.ts`.
+
+The nav link, the hero's secondary call to action, the About button, and the footer link all appear automatically. Leaving it unset is deliberate — a dead resume link is worse than none.
+
+## Getting started
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static export to out/
+npm run lint
+```
+
+Stop `npm run dev` before running `npm run build` so the `.next/` cache does not mix dev and build output.
+
+## Project structure
+
+- `src/app/` — routes, layout, and page-level CSS
+- `src/app/components/` — Navbar, Footer, and the shared work components (`WorkCard`, `StatusBadge`, `Blocks`)
+- `src/lib/` — all site content
+- `public/profile.jpg` — portrait
+- `DESIGN.md` — tokens, type scale, status conventions, page order. **Read it before any visual change.**
+- `archive/legacy-2026-04-14/` — old generated output, starter assets, unused config
 
 ## Deployment
 
-This project is configured for static export and can be deployed to [Vercel](https://vercel.com/) or any static hosting provider.
+Static export (`output: 'export'` in `next.config.js`). Deployable to Vercel or any static host. Every route is prerendered, including each case study, so a direct link or refresh works.
 
 ## License
 
-This project is for personal and demonstration purposes.
+For personal and demonstration purposes.
