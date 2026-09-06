@@ -1,0 +1,248 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  background: var(--clr-dark);
+  color: var(--clr-dark-ink);
+  padding: 84px 0 88px;
+}
+
+.hero__inner {
+  align-items: start;
+  display: grid;
+  gap: 56px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+}
+
+.hero__eyebrow {
+  color: var(--clr-accent-on-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  color: var(--clr-dark-ink);
+  font-size: 3.6rem;
+  max-width: 14ch;
+}
+
+.hero__sub {
+  color: var(--clr-dark-muted);
+  font-size: 1.18rem;
+  margin-top: 24px;
+  max-width: 56ch;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.hero__background {
+  border-top: 1px solid var(--clr-dark-border);
+  color: var(--clr-dark-muted);
+  font-size: 0.95rem;
+  margin-top: 36px;
+  padding-top: 20px;
+}
+
+/* ---------- Hero thesis card ---------- */
+
+.thesis {
+  background: var(--clr-dark-panel);
+  border: 1px solid var(--clr-dark-border);
+  border-radius: var(--radius);
+  padding: 26px;
+}
+
+.thesis__label {
+  color: var(--clr-accent-on-dark);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.thesis__title {
+  color: var(--clr-dark-ink);
+  font-size: 1.3rem;
+  margin: 10px 0 20px;
+}
+
+.thesis__item {
+  display: flex;
+  gap: 14px;
+}
+
+.thesis__item + .thesis__item {
+  border-top: 1px solid var(--clr-dark-border);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.thesis__num {
+  color: var(--clr-accent-on-dark);
+  flex: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.thesis__name {
+  color: var(--clr-dark-ink);
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.thesis__q {
+  color: var(--clr-dark-muted);
+  display: block;
+  font-size: 0.97rem;
+  margin-top: 2px;
+}
+
+.thesis__footnote {
+  border-top: 1px solid var(--clr-dark-border);
+  color: var(--clr-dark-muted);
+  font-size: 0.92rem;
+  margin-top: 20px;
+  padding-top: 16px;
+}
+
+/* ---------- Writing list ---------- */
+
+.articles {
+  border-top: 1px solid var(--clr-border);
+}
+
+.article {
+  border-bottom: 1px solid var(--clr-border);
+  display: grid;
+  gap: 8px 32px;
+  grid-template-columns: 200px minmax(0, 1fr);
+  padding: 24px 0;
+}
+
+.article__meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.article__title {
+  font-size: 1.22rem;
+}
+
+.article__argument {
+  color: var(--clr-muted);
+  font-size: 1rem;
+  grid-column: 2;
+  max-width: var(--prose);
+}
+
+/* ---------- In the lab ---------- */
+
+.lab {
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  padding: 28px;
+}
+
+.lab__title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.lab__question {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  max-width: 52ch;
+}
+
+.lab__body {
+  color: var(--clr-muted);
+  margin-bottom: 18px;
+  max-width: 56ch;
+}
+
+.lab__meta div + div {
+  margin-top: 18px;
+}
+
+/* ---------- Closer ---------- */
+
+.closer {
+  align-items: end;
+  border-top: 1px solid var(--clr-border);
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  padding-top: 40px;
+}
+
+.closer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    padding: 60px 0 64px;
+  }
+
+  .hero__inner,
+  .lab,
+  .closer {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__inner {
+    gap: 36px;
+  }
+
+  .hero__title {
+    font-size: 2.8rem;
+    max-width: none;
+  }
+
+  .article {
+    grid-template-columns: 1fr;
+  }
+
+  .article__argument {
+    grid-column: 1;
+  }
+
+  .closer {
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: 2.35rem;
+  }
+
+  .hero__sub {
+    font-size: 1.08rem;
+  }
+
+  .hero__ctas .btn {
+    flex: 1 1 100%;
+  }
+
+  .lab {
+    padding: 22px;
+  }
+}

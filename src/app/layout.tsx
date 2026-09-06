@@ -1,33 +1,54 @@
-import { Source_Sans_3 } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Source_Sans_3 } from 'next/font/google';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import { getSite } from '@/lib/portfolio';
+import './globals.css';
 
 const sourceSans = Source_Sans_3({
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ["latin"],
+  weight: ['400', '600', '700', '800'],
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const site = getSite();
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — Senior Data Scientist`,
+    template: `%s · ${site.name}`,
+  },
+  description:
+    'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    title: `${site.name} — Senior Data Scientist`,
+    description:
+      'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+    url: '/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${site.name} — Senior Data Scientist`,
+    description:
+      'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+  },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={sourceSans.variable}>
-      <head>
-        <link 
-          rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-          crossOrigin="anonymous" 
-          referrerPolicy="no-referrer" 
-        />
-      </head>
       <body>
-        <main>
-          {children}
-        </main>
+        <a className="skiplink" href="#main">
+          Skip to content
+        </a>
+        <Navbar />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );

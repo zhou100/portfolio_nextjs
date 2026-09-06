@@ -1,0 +1,114 @@
+.about__head {
+  align-items: start;
+  display: grid;
+  gap: 56px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr);
+}
+
+.about__title {
+  color: var(--clr-accent-dark);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.about__bio p + p {
+  margin-top: 18px;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.about__figure img {
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  object-fit: cover;
+  width: 100%;
+}
+
+.roles {
+  border-top: 1px solid var(--clr-border);
+}
+
+.role {
+  border-bottom: 1px solid var(--clr-border);
+  display: grid;
+  gap: 12px 40px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  padding: 24px 0;
+}
+
+.role__org {
+  font-size: 1.2rem;
+}
+
+.role__title {
+  color: var(--clr-muted);
+  font-size: 0.98rem;
+  margin-top: 4px;
+}
+
+.role__focus {
+  color: var(--clr-ink);
+  font-size: 1.02rem;
+  max-width: var(--prose);
+}
+
+.skills__name {
+  border-bottom: 1px solid var(--clr-border);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.quote {
+  border-left: 3px solid var(--clr-accent);
+  max-width: var(--prose);
+  padding-left: 24px;
+}
+
+.quote blockquote p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.quote figcaption {
+  margin-top: 16px;
+}
+
+.quote__role {
+  color: var(--clr-ink);
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.quote__note {
+  color: var(--clr-muted);
+  display: block;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 980px) {
+  .about__head {
+    gap: 36px;
+    grid-template-columns: 1fr;
+  }
+
+  .about__figure {
+    max-width: 260px;
+    order: -1;
+  }
+
+  .role {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
