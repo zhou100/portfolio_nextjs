@@ -102,3 +102,8 @@
     padding: 14px 0;
   }
 }
+
+.nav__link--current {
+  color: var(--clr-accent-dark);
+  font-weight: 700;
+}

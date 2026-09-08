@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import { getSite } from '@/lib/portfolio';
+import { getOgImage, getSite } from '@/lib/portfolio';
 import './globals.css';
 
 const sourceSans = Source_Sans_3({
@@ -14,28 +14,32 @@ const sourceSans = Source_Sans_3({
 
 const site = getSite();
 
+const description =
+  'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.';
+
+const ogImage = getOgImage();
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name} — Senior Data Scientist`,
     template: `%s · ${site.name}`,
   },
-  description:
-    'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+  description,
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: site.name,
     title: `${site.name} — Senior Data Scientist`,
-    description:
-      'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+    description,
     url: '/',
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${site.name} — Senior Data Scientist`,
-    description:
-      'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.',
+    description,
+    images: [ogImage.url],
   },
 };
 

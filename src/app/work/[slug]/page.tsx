@@ -4,12 +4,13 @@ import { notFound } from 'next/navigation';
 import {
   EVIDENCE_LABEL,
   EVIDENCE_MEANING,
+  KIND_LABEL,
   getWorkBySlug,
   getWorkSlugs,
   type WorkItem,
-  type WorkSection,
 } from '@/lib/work';
-import { getArticles } from '@/lib/writing';
+import { getOgImage } from '@/lib/portfolio';
+import { articleHref, getPublishedArticles } from '@/lib/writing';
 import Blocks from '../../components/Work/Blocks';
 import StatusBadge from '../../components/Work/StatusBadge';
 import './case.css';
@@ -24,83 +25,36 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
   return {
     title: item.title,
-    description: item.question,
+    description: item.brief.problem,
     alternates: { canonical: `/work/${item.slug}` },
     openGraph: {
       type: 'article',
       title: item.title,
-      description: item.question,
+      description: item.brief.problem,
       url: `/work/${item.slug}`,
+      images: [getOgImage()],
     },
   };
 }
 
-function Section({
-  id,
-  step,
-  heading,
-  section,
-}: {
-  id: string;
-  step: number;
-  heading: string;
-  section: WorkSection;
-}) {
+/** The 60-second read. Everything below it is optional for a scanning reader. */
+function Brief({ item }: { item: WorkItem }) {
   return (
-    <section className="case__section" id={id}>
-      <div className="case__sectionhead">
-        <span className="case__step">{String(step).padStart(2, '0')}</span>
-        <div>
-          <h2 className="case__h2">{heading}</h2>
-          <p className="case__prompt">{section.prompt}</p>
+    <div className="brief" id="brief">
+      <dl className="brief__list">
+        <div className="brief__row">
+          <dt>Problem</dt>
+          <dd>{item.brief.problem}</dd>
         </div>
-      </div>
-      <Blocks blocks={section.blocks} />
-    </section>
-  );
-}
-
-function Findings({ item }: { item: WorkItem }) {
-  if (!item.findings?.length) return null;
-
-  return (
-    <div className="findings">
-      <h3 className="case__h3">Findings, with what qualifies them</h3>
-      {item.findings.map((finding) => (
-        <article className="finding" key={finding.statement}>
-          <p className="finding__statement">{finding.statement}</p>
-          <dl className="finding__meta">
-            <div>
-              <dt>Source</dt>
-              <dd>{finding.source}</dd>
-            </div>
-            {finding.population && (
-              <div>
-                <dt>Population</dt>
-                <dd>{finding.population}</dd>
-              </div>
-            )}
-            {finding.baseline && (
-              <div>
-                <dt>Baseline</dt>
-                <dd>{finding.baseline}</dd>
-              </div>
-            )}
-            {finding.window && (
-              <div>
-                <dt>Window</dt>
-                <dd>{finding.window}</dd>
-              </div>
-            )}
-            {finding.uncertainty && (
-              <div>
-                <dt>Uncertainty</dt>
-                <dd>{finding.uncertainty}</dd>
-              </div>
-            )}
-          </dl>
-        </article>
-      ))}
+        <div className="brief__row">
+          <dt>My contribution</dt>
+          <dd>{item.brief.contribution}</dd>
+        </div>
+        <div className="brief__row">
+          <dt>{item.brief.outcomeLabel}</dt>
+          <dd>{item.brief.outcome}</dd>
+        </div>
+      </dl>
     </div>
   );
 }
@@ -109,8 +63,19 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const item = getWorkBySlug(params.slug);
   if (!item) notFound();
 
-  const related = getArticles().filter((article) => article.relatedWork === item.slug);
+  const related = getPublishedArticles().filter((article) => article.relatedWork === item.slug);
   const links = item.links;
+
+  // Where the reader should land first differs by content type. The brief sits
+  // immediately below the header, so it never needs a jump link of its own.
+  const primaryAnchor =
+    item.status === 'proposed'
+      ? { href: '#design', label: 'Read the study design' }
+      : { href: '#example', label: 'See a worked example' };
+  const showPrimaryAnchor = item.sections.some(
+    (section) => `#${section.id}` === primaryAnchor.href,
+  );
+  const hasActions = showPrimaryAnchor || !!links?.artifact || !!links?.demo || !!links?.code;
 
   return (
     <article className="case">
@@ -124,116 +89,100 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
           <div className="case__top">
             <StatusBadge status={item.status} onDark />
-            {item.org && <span className="case__org">{item.org}</span>}
+            <span className="case__org">{item.org ?? KIND_LABEL[item.kind]}</span>
           </div>
 
           <h1 className="case__title">{item.title}</h1>
-          {item.alias && <p className="case__alias">{item.alias}</p>}
           <p className="case__question">{item.question}</p>
 
-          <dl className="casemeta">
-            <div>
-              <dt>My role</dt>
-              <dd>{item.role}</dd>
-            </div>
-            <div>
-              <dt>Data status</dt>
-              <dd>{item.dataStatus}</dd>
-            </div>
-            <div>
-              <dt>Evidence type</dt>
-              <dd>
-                {item.evidenceType.length
-                  ? item.evidenceType.map((type) => EVIDENCE_LABEL[type]).join(' · ')
-                  : 'None yet — this is a study design.'}
-              </dd>
-            </div>
-            <div>
-              <dt>Methods</dt>
-              <dd>{item.methods.join(' · ')}</dd>
-            </div>
-          </dl>
+          <p className="case__databoundary">{item.dataNote}</p>
 
-          <div className="case__actions">
-            <a className="btn btn--on-dark" href="#study-design">
-              Read the study design
-            </a>
-            {links?.demo && (
-              <a
-                className="btn btn--on-dark"
-                href={links.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live demo
-              </a>
-            )}
-            {links?.code && (
-              <a
-                className="btn btn--on-dark"
-                href={links.code}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Code
-              </a>
-            )}
-            {links?.evaluation && (
-              <a
-                className="btn btn--on-dark"
-                href={links.evaluation}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Evaluation report
-              </a>
-            )}
-          </div>
+          {hasActions && (
+            <div className="case__actions">
+              {showPrimaryAnchor && (
+                <a className="btn btn--on-dark" href={primaryAnchor.href}>
+                  {primaryAnchor.label}
+                </a>
+              )}
+              {links?.artifact && (
+                <a
+                  className="btn btn--on-dark"
+                  href={links.artifact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {links.artifact.label}
+                </a>
+              )}
+              {links?.demo && (
+                <a
+                  className="btn btn--on-dark"
+                  href={links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Try the product
+                </a>
+              )}
+              {links?.code && (
+                <a
+                  className="btn btn--on-dark"
+                  href={links.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Code
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
       <div className="wrap case__body">
-        <Section id="evidence" step={1} heading="Evidence" section={item.sections.evidence} />
+        <Brief item={item} />
 
-        {!!item.evidenceType.length && (
-          <div className="case__section case__section--flush">
-            <dl className="deflist">
-              {item.evidenceType.map((type) => (
-                <div className="deflist__row" key={type}>
-                  <dt className="deflist__term">{EVIDENCE_LABEL[type]}</dt>
-                  <dd className="deflist__detail">{EVIDENCE_MEANING[type]}</dd>
-                </div>
-              ))}
-            </dl>
+        <dl className="casemeta">
+          <div>
+            <dt>My role</dt>
+            <dd>{item.role}</dd>
           </div>
-        )}
+          <div>
+            <dt>Methods</dt>
+            <dd>{item.methods.join(' · ')}</dd>
+          </div>
+          <div>
+            <dt>Evidence</dt>
+            <dd>
+              {item.evidenceType.length
+                ? item.evidenceType.map((type) => EVIDENCE_LABEL[type]).join(' · ')
+                : 'None yet — this is a study design.'}
+            </dd>
+          </div>
+          {item.alias && (
+            <div>
+              <dt>Also known as</dt>
+              <dd>{item.alias}</dd>
+            </div>
+          )}
+        </dl>
 
-        <Findings item={item} />
-
-        <Section
-          id="study-design"
-          step={2}
-          heading="Study design"
-          section={item.sections.studyDesign}
-        />
-
-        <Section
-          id="results"
-          step={3}
-          heading="Results and failures"
-          section={item.sections.results}
-        />
-
-        <Section
-          id="next-decision"
-          step={4}
-          heading="Next decision"
-          section={item.sections.nextDecision}
-        />
+        {item.sections.map((section, index) => (
+          <section className="case__section" id={section.id} key={section.id}>
+            <div className="case__sectionhead">
+              <span className="case__step">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h2 className="case__h2">{section.heading}</h2>
+                <p className="case__prompt">{section.prompt}</p>
+              </div>
+            </div>
+            <Blocks blocks={section.blocks} />
+          </section>
+        ))}
 
         <section className="case__section" id="limitations">
           <div className="case__sectionhead">
-            <span className="case__step">05</span>
+            <span className="case__step">{String(item.sections.length + 1).padStart(2, '0')}</span>
             <div>
               <h2 className="case__h2">Limitations</h2>
               <p className="case__prompt">What this case does not establish.</p>
@@ -244,27 +193,39 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               <li key={limitation}>{limitation}</li>
             ))}
           </ul>
-        </section>
 
-        {item.sections.appendix && (
-          <Section
-            id="appendix"
-            step={6}
-            heading="Appendix"
-            section={item.sections.appendix}
-          />
-        )}
+          {!!item.evidenceType.length && (
+            <dl className="deflist">
+              {item.evidenceType.map((type) => (
+                <div className="deflist__row" key={type}>
+                  <dt className="deflist__term">{EVIDENCE_LABEL[type]}</dt>
+                  <dd className="deflist__detail">{EVIDENCE_MEANING[type]}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </section>
 
         {!!related.length && (
           <section className="case__section" id="related-writing">
             <h2 className="case__h3">Related writing</h2>
             <ul className="bullets">
-              {related.map((article) => (
-                <li key={article.slug}>
-                  <strong>{article.title}</strong> — {article.argument}{' '}
-                  <span className="case__planned">Planned</span>
-                </li>
-              ))}
+              {related.map((article) => {
+                const href = articleHref(article);
+
+                return (
+                  <li key={article.slug}>
+                    {href ? (
+                      <Link className="textlink" href={href}>
+                        {article.title}
+                      </Link>
+                    ) : (
+                      <strong>{article.title}</strong>
+                    )}{' '}
+                    — {article.excerpt}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}

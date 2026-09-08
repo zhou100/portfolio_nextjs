@@ -3,7 +3,7 @@
 .hero {
   background: var(--clr-dark);
   color: var(--clr-dark-ink);
-  padding: 84px 0 88px;
+  padding: 48px 0 40px;
 }
 
 .hero__inner {
@@ -18,7 +18,7 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  margin-bottom: 22px;
+  margin-bottom: 12px;
   text-transform: uppercase;
 }
 
@@ -30,88 +30,75 @@
 
 .hero__sub {
   color: var(--clr-dark-muted);
-  font-size: 1.18rem;
-  margin-top: 24px;
-  max-width: 56ch;
+  font-size: 1.15rem;
+  margin-top: 18px;
+  max-width: 54ch;
 }
 
 .hero__ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 22px;
 }
 
 .hero__background {
   border-top: 1px solid var(--clr-dark-border);
   color: var(--clr-dark-muted);
   font-size: 0.95rem;
-  margin-top: 36px;
-  padding-top: 20px;
+  margin-top: 22px;
+  padding-top: 14px;
 }
 
-/* ---------- Hero thesis card ---------- */
+/* ---------- Hero focus index ---------- */
 
-.thesis {
+/* Three rows straight into the work. Replaces the old method-manifesto card so
+   the first case title is reachable without scrolling on a 900px window. */
+.focus {
   background: var(--clr-dark-panel);
   border: 1px solid var(--clr-dark-border);
   border-radius: var(--radius);
-  padding: 26px;
+  padding: 8px 20px;
 }
 
-.thesis__label {
+.focus__item + .focus__item {
+  border-top: 1px solid var(--clr-dark-border);
+}
+
+.focus__link {
+  color: inherit;
+  display: block;
+  padding: 16px 0;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.focus__label {
   color: var(--clr-accent-on-dark);
-  font-size: 0.75rem;
+  display: block;
+  font-size: 0.78rem;
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.thesis__title {
-  color: var(--clr-dark-ink);
-  font-size: 1.3rem;
-  margin: 10px 0 20px;
-}
-
-.thesis__item {
-  display: flex;
-  gap: 14px;
-}
-
-.thesis__item + .thesis__item {
-  border-top: 1px solid var(--clr-dark-border);
-  margin-top: 16px;
-  padding-top: 16px;
-}
-
-.thesis__num {
-  color: var(--clr-accent-on-dark);
-  flex: none;
-  font-size: 0.9rem;
-  font-weight: 800;
-  line-height: 1.5;
-}
-
-.thesis__name {
+.focus__line {
   color: var(--clr-dark-ink);
   display: block;
-  font-size: 1rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.focus__line::after {
+  color: var(--clr-accent-on-dark);
+  content: ' →';
   font-weight: 700;
 }
 
-.thesis__q {
-  color: var(--clr-dark-muted);
-  display: block;
-  font-size: 0.97rem;
-  margin-top: 2px;
-}
-
-.thesis__footnote {
-  border-top: 1px solid var(--clr-dark-border);
-  color: var(--clr-dark-muted);
-  font-size: 0.92rem;
-  margin-top: 20px;
-  padding-top: 16px;
+.focus__link:hover .focus__line,
+.focus__link:focus-visible .focus__line {
+  color: var(--clr-accent-on-dark);
 }
 
 /* ---------- Writing list ---------- */
@@ -148,35 +135,29 @@
 
 /* ---------- In the lab ---------- */
 
-.lab {
+/* One strip, not a full card: the schedule and stop conditions belong on the
+   study-design page, not the home page. */
+.labstrip {
+  align-items: end;
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);
   display: grid;
-  gap: 32px;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  padding: 28px;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 24px 28px;
 }
 
-.lab__title {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.lab__question {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  max-width: 52ch;
-}
-
-.lab__body {
-  color: var(--clr-muted);
-  margin-bottom: 18px;
+.labstrip__title {
+  font-size: 1.35rem;
+  margin: 6px 0 10px;
   max-width: 56ch;
 }
 
-.lab__meta div + div {
-  margin-top: 18px;
+.labstrip__body {
+  color: var(--clr-muted);
+  font-size: 1rem;
+  margin: 0;
+  max-width: var(--prose);
 }
 
 /* ---------- Closer ---------- */
@@ -202,7 +183,7 @@
   }
 
   .hero__inner,
-  .lab,
+  .labstrip,
   .closer {
     grid-template-columns: 1fr;
   }
@@ -242,7 +223,7 @@
     flex: 1 1 100%;
   }
 
-  .lab {
-    padding: 22px;
+  .labstrip {
+    padding: 20px;
   }
 }

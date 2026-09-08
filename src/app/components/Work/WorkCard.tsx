@@ -1,40 +1,30 @@
 import Link from 'next/link';
-import type { WorkItem } from '@/lib/work';
+import { KIND_LABEL, type WorkItem } from '@/lib/work';
 import StatusBadge from './StatusBadge';
 
+/**
+ * Title, one line of contribution, role, entry point. The question and the long
+ * summary live on the case page — a card exists to be compared, not read.
+ */
 export default function WorkCard({ item, wide = false }: { item: WorkItem; wide?: boolean }) {
   return (
     <article className={`card card--link${wide ? ' card--wide' : ''}`}>
       <div>
         <div className="card__top">
           <StatusBadge status={item.status} />
-          {item.org && <span className="card__org">{item.org}</span>}
+          <span className="card__org">{item.org ?? KIND_LABEL[item.kind]}</span>
         </div>
 
         <h3 className="card__title">
           <Link href={`/work/${item.slug}`}>{item.title}</Link>
         </h3>
-        <p className="card__question">{item.question}</p>
-        <p className="card__body">{item.summary}</p>
+        <p className="card__body">{item.contribution}</p>
       </div>
 
-      {wide && (
-        <dl className="workcard__meta">
-          <div>
-            <dt>My role</dt>
-            <dd>{item.role}</dd>
-          </div>
-          <div>
-            <dt>Data</dt>
-            <dd>{item.dataStatus}</dd>
-          </div>
-        </dl>
-      )}
-
       <div className="card__foot">
-        {!wide && <span className="card__role">{item.role}</span>}
+        <span className="card__role">{item.roleLabel}</span>
         <Link className="arrowlink" href={`/work/${item.slug}`}>
-          Read case study →
+          Read the case →
         </Link>
       </div>
     </article>

@@ -51,21 +51,53 @@
   max-width: 60ch;
 }
 
-.casemeta {
+/* One sentence of data boundary in the header. The rest is in Limitations. */
+.case__databoundary {
   border-top: 1px solid var(--clr-dark-border);
-  display: grid;
-  gap: 24px 32px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 36px;
-  padding-top: 28px;
-}
-
-.case__header .casemeta dt {
-  color: var(--clr-accent-on-dark);
-}
-
-.case__header .casemeta dd {
   color: var(--clr-dark-muted);
+  font-size: 0.98rem;
+  margin-top: 28px;
+  max-width: 70ch;
+  padding-top: 20px;
+}
+
+/* ---------- 60-second brief ---------- */
+
+.brief {
+  background: var(--clr-surface);
+  max-width: 920px;
+  border: 1px solid var(--clr-border-strong);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+}
+
+.brief__row + .brief__row {
+  border-top: 1px solid var(--clr-border);
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.brief__row dt {
+  color: var(--clr-accent-dark);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brief__row dd {
+  font-size: 1.08rem;
+  margin-top: 6px;
+  max-width: var(--prose);
+}
+
+.casemeta {
+  border-bottom: 1px solid var(--clr-border);
+  display: grid;
+  gap: 20px 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 32px;
+  padding-bottom: 32px;
 }
 
 .case__actions {
@@ -215,5 +247,26 @@
 
   .case__actions .btn {
     flex: 1 1 100%;
+  }
+}
+
+/* Sticky nav must not cover a heading a reader jumped to. */
+.case__section,
+.brief {
+  scroll-margin-top: 96px;
+}
+
+.block__h {
+  font-size: 1.25rem;
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .brief {
+    padding: 20px;
+  }
+
+  .casemeta {
+    grid-template-columns: 1fr;
   }
 }

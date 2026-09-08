@@ -9,6 +9,13 @@ function BlockView({ block }: { block: Block }) {
         </div>
       );
 
+    case 'h':
+      return (
+        <div className="block">
+          <h3 className="block__h">{block.text}</h3>
+        </div>
+      );
+
     case 'list':
       return (
         <div className="block block--list">

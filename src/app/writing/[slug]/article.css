@@ -1,0 +1,139 @@
+/* ---------- Article page ---------- */
+
+.article-page__back {
+  margin-bottom: 28px;
+}
+
+.article-page__back .arrowlink {
+  color: var(--clr-dark-muted);
+}
+
+.article-page__back .arrowlink:hover {
+  color: var(--clr-dark-ink);
+}
+
+.article-page__meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.article-page__meta span {
+  color: var(--clr-accent-on-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.article-page__header {
+  background: var(--clr-dark);
+  color: var(--clr-dark-ink);
+  padding: 40px 0 48px;
+}
+
+.article-page__title {
+  color: var(--clr-dark-ink);
+  font-size: 2.9rem;
+  margin-top: 16px;
+  max-width: 22ch;
+}
+
+.article-page__excerpt {
+  color: var(--clr-dark-muted);
+  font-size: 1.15rem;
+  margin-top: 18px;
+  max-width: 62ch;
+}
+
+.article-page__body {
+  padding-bottom: 64px;
+  padding-top: 40px;
+}
+
+/* Table of contents, generated from the same headings the body renders. */
+.toc {
+  border-left: 2px solid var(--clr-border-strong);
+  margin-bottom: 40px;
+  max-width: var(--prose);
+  padding: 4px 0 4px 20px;
+}
+
+.toc__label {
+  color: var(--clr-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toc__list {
+  counter-reset: toc;
+  margin-top: 10px;
+}
+
+.toc__list li + li {
+  margin-top: 6px;
+}
+
+.toc__list a {
+  color: var(--clr-accent-dark);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.toc__list a:hover {
+  text-decoration: underline;
+}
+
+.article-page__prose {
+  max-width: var(--prose);
+}
+
+.article-page__prose .block {
+  max-width: none;
+}
+
+.article-page__h2 {
+  font-size: 1.65rem;
+  margin-top: 20px;
+  scroll-margin-top: 96px;
+}
+
+.article-page__footer {
+  border-top: 1px solid var(--clr-border);
+  margin-top: 48px;
+  max-width: var(--prose);
+  padding-top: 24px;
+}
+
+.article-page__related {
+  color: var(--clr-muted);
+  margin-bottom: 16px;
+}
+
+@media (max-width: 980px) {
+  .article-page__title {
+    font-size: 2.4rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .article-page__title {
+    font-size: 2rem;
+  }
+
+  .article-page__excerpt {
+    font-size: 1.05rem;
+  }
+}
+
+.article-page__foot {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+}

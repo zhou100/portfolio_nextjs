@@ -34,3 +34,76 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Published list ---------- */
+
+.postlist {
+  border-top: 1px solid var(--clr-border);
+}
+
+.post {
+  border-bottom: 1px solid var(--clr-border);
+  padding: 28px 0;
+}
+
+.post__meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-bottom: 10px;
+}
+
+.post__title {
+  font-size: 1.5rem;
+  max-width: 32ch;
+}
+
+.post__excerpt {
+  color: var(--clr-muted);
+  margin-top: 10px;
+  max-width: var(--prose);
+}
+
+.post__foot {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 16px;
+}
+
+.post__related {
+  font-size: 0.95rem;
+}
+
+/* ---------- In progress ---------- */
+
+.queue {
+  border-top: 1px solid var(--clr-border);
+}
+
+.queue__item {
+  border-bottom: 1px solid var(--clr-border);
+  padding: 20px 0;
+}
+
+.queue__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.queue__excerpt {
+  color: var(--clr-muted);
+  font-size: 1rem;
+  margin-top: 6px;
+  max-width: var(--prose);
+}
+
+@media (max-width: 640px) {
+  .post__title {
+    font-size: 1.3rem;
+    max-width: none;
+  }
+}

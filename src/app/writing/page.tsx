@@ -1,108 +1,112 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getArticles, getPapers, type WritingTopic } from '@/lib/writing';
+import {
+  articleHref,
+  getDraftingArticles,
+  getPapers,
+  getPublishedArticles,
+} from '@/lib/writing';
+import { getSite } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
 import './writing.css';
 
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Method notes on measurement, AI evaluation, and building — each listed with the argument it has to support, plus peer-reviewed research.',
+    'Practical notes on evaluating AI systems, measuring product outcomes, and learning from things I build — plus peer-reviewed research.',
   alternates: { canonical: '/writing' },
 };
 
-const topics: WritingTopic[] = ['Measurement', 'AI Evaluation', 'Building'];
-
 export default function WritingIndex() {
-  const articles = getArticles();
+  const site = getSite();
+  const published = getPublishedArticles();
+  // At most three. A list of promises is not a body of work.
+  const next = getDraftingArticles().slice(0, 3);
   const papers = getPapers();
-  const next = articles.filter((article) => article.featured);
-  const backlog = articles.filter((article) => !article.featured);
 
   return (
     <>
       <header className="pagehead">
         <div className="wrap">
           <p className="eyebrow">Writing</p>
-          <h1 className="pagehead__title">One question, one study, one piece.</h1>
+          <h1 className="pagehead__title">Notes on measurement and AI evaluation.</h1>
           <p className="lede pagehead__lede">
-            Nothing here is published yet. Rather than post titles that imply results I do not have,
-            each entry states the argument it will need to support and the work it draws on. Pieces
-            go up when the underlying study is finished — there is no weekly schedule.
+            Practical notes on evaluating AI systems, measuring product outcomes, and learning from
+            things I build. Each piece supports one claim, with the examples worked through rather
+            than asserted.
           </p>
         </div>
       </header>
 
-      <section className="section" id="next">
-        <div className="wrap">
-          <div className="section__head">
-            <div>
-              <p className="eyebrow">Writing next</p>
-              <h2 className="section__title">The first three</h2>
-              <p className="section__lede">
-                One each for recommendations, advertising measurement, and AI evaluation.
-              </p>
-            </div>
-          </div>
+      {!!published.length && (
+        <section className="section" id="published">
+          <div className="wrap">
+            <ul className="postlist">
+              {published.map((article) => {
+                const href = articleHref(article);
+                const work = article.relatedWork ? getWorkBySlug(article.relatedWork) : undefined;
 
-          <div className="grid grid--3">
-            {next.map((article) => {
-              const work = article.relatedWork ? getWorkBySlug(article.relatedWork) : undefined;
-
-              return (
-                <article className="card" key={article.slug}>
-                  <div className="card__top">
-                    <span className="status status--proposed">Planned</span>
-                    <span className="card__org">{article.topic}</span>
-                  </div>
-                  <h3 className="card__title">{article.title}</h3>
-                  <p className="card__body">{article.argument}</p>
-                  {work && (
-                    <div className="card__foot">
-                      <span className="card__role">Draws on</span>
-                      <Link className="arrowlink" href={`/work/${work.slug}`}>
-                        {work.title} →
-                      </Link>
+                return (
+                  <li className="post" key={article.slug}>
+                    <div className="post__meta">
+                      <span className="card__org">{article.topic}</span>
+                      {article.publishedAt && (
+                        <span className="card__org">{article.publishedAt}</span>
+                      )}
+                      {article.readingTime && (
+                        <span className="card__org">{article.readingTime}</span>
+                      )}
                     </div>
-                  )}
-                </article>
-              );
-            })}
+                    <h2 className="post__title">
+                      {href ? <Link href={href}>{article.title}</Link> : article.title}
+                    </h2>
+                    <p className="post__excerpt">{article.excerpt}</p>
+                    <div className="post__foot">
+                      {href && (
+                        <Link className="arrowlink" href={href}>
+                          Read article →
+                        </Link>
+                      )}
+                      {work && (
+                        <Link className="textlink post__related" href={`/work/${work.slug}`}>
+                          Draws on {work.title}
+                        </Link>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="section section--tight" id="backlog">
-        <div className="wrap">
-          <div className="section__head">
-            <div>
-              <p className="eyebrow">Backlog</p>
-              <h2 className="section__title">Queued behind the work that supports them</h2>
+      {!!next.length && (
+        <section className="section section--tight" id="next">
+          <div className="wrap">
+            <div className="section__head">
+              <div>
+                <p className="eyebrow">In progress</p>
+                <h2 className="section__title">What I am writing next</h2>
+                <p className="section__lede">
+                  Listed with the claim each one has to support. They go up when the example work is
+                  done, not on a schedule.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="topics">
-            {topics.map((topic) => {
-              const inTopic = backlog.filter((article) => article.topic === topic);
-              if (!inTopic.length) return null;
-
-              return (
-                <section className="topic" key={topic}>
-                  <h3 className="topic__name">{topic}</h3>
-                  <ul className="topic__list">
-                    {inTopic.map((article) => (
-                      <li className="topic__item" key={article.slug}>
-                        <p className="topic__title">{article.title}</p>
-                        <p className="topic__argument">{article.argument}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              );
-            })}
+            <ul className="queue">
+              {next.map((article) => (
+                <li className="queue__item" key={article.slug}>
+                  <span className="card__org">{article.topic}</span>
+                  <p className="queue__title">{article.title}</p>
+                  <p className="queue__excerpt">{article.excerpt}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="section section--tight" id="research">
         <div className="wrap">
@@ -110,11 +114,17 @@ export default function WritingIndex() {
             <div>
               <p className="eyebrow">Research</p>
               <h2 className="section__title">Peer-reviewed publications</h2>
-              <p className="section__lede">
-                Citation counts are not shown here. They change over time and are counted
-                differently by different sources — Google Scholar has the current figures.
-              </p>
             </div>
+            {site.social.googleScholar && (
+              <a
+                className="arrowlink"
+                href={site.social.googleScholar}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Scholar →
+              </a>
+            )}
           </div>
 
           <ul className="papers">

@@ -28,9 +28,9 @@ export default function WorkIndex() {
           <p className="eyebrow">Work</p>
           <h1 className="pagehead__title">Decisions. Evidence. Working systems.</h1>
           <p className="lede pagehead__lede">
-            Every item below carries a status and an evidence type. Published means the case study is
-            written — never that a business result has been proven. Proposed means it has not been
-            built.
+            Each item opens with the problem, my contribution, and what changed. The label on the
+            card says what you are looking at: a case study written from industry work, a working
+            prototype, or a study design with nothing built yet.
           </p>
         </div>
       </header>
@@ -42,8 +42,9 @@ export default function WorkIndex() {
               <p className="eyebrow">Industry cases</p>
               <h2 className="section__title">Measurement work inside a team</h2>
               <p className="section__lede">
-                Reported from work I did. Underlying data is internal and is not reproduced here, so
-                these describe method, decision, and my own contribution.
+                Written from work I did inside a company. Employers and internal products are
+                described by category rather than by name, and confidential data and results are
+                omitted — what is here is my contribution and the method.
               </p>
             </div>
           </div>
@@ -84,8 +85,8 @@ export default function WorkIndex() {
               <p className="eyebrow">In the lab</p>
               <h2 className="section__title">Scoped, not built</h2>
               <p className="section__lede">
-                Study designs with stated stop conditions. Nothing here has results, and these pages
-                say so on the page rather than in a footnote.
+                Study designs with stated stop conditions. Nothing here has results, and the pages
+                say so at the top rather than in a footnote.
               </p>
             </div>
           </div>
