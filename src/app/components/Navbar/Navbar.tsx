@@ -22,7 +22,12 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="wrap nav__inner">
-        <Link href="/" className="nav__brand" onClick={close}>
+        <Link
+          href="/"
+          className="nav__brand"
+          aria-current={pathname === '/' ? 'page' : undefined}
+          onClick={close}
+        >
           {brand}
         </Link>
 

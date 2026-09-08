@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1 - 2026-09-08
+
+- Add an inspectable Narrative example with a deterministic baseline, checked-in output, pairwise metrics, one error analysis, and an explicit ambiguous-pair boundary.
+- Replace unverified historical process claims in the two industry cases with attributable role descriptions, safe decision logic, and clearly labelled teaching examples.
+- Add verified month-and-year chronology, split recommendation-quality and integrity work into separate roles, and clarify the current manager title versus senior data-science specialty.
+- Keep one data-boundary line per case instead of repeating generic evidence disclaimers throughout the page.
+- Add canonical-origin configuration, preview `noindex`, robots metadata, and a sitemap while retaining the static share-card PNG required by the export host.
+- Upgrade Next.js, clear the dependency audit, and add Vitest content contracts, CI, reproducible-fixture verification, and exported-link checks.
+
 ## 0.3.0 - 2026-09-08
 
 ### Naming

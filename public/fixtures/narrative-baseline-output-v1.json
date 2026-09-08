@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "fixture": "narrative-evaluation-fixture-v1.json",
+  "generatedBy": "node scripts/run-narrative-fixture.mjs",
+  "baseline": {
+    "name": "Single-link clustering over lowercase token Jaccard similarity",
+    "threshold": 0.15,
+    "note": "This deliberately simple baseline is deterministic and has no learned parameters."
+  },
+  "predictedClusters": [
+    {
+      "id": "baseline-1",
+      "passageIds": [
+        "p1",
+        "p4"
+      ]
+    },
+    {
+      "id": "baseline-2",
+      "passageIds": [
+        "p2"
+      ]
+    },
+    {
+      "id": "baseline-3",
+      "passageIds": [
+        "p3"
+      ]
+    },
+    {
+      "id": "baseline-4",
+      "passageIds": [
+        "p5"
+      ]
+    },
+    {
+      "id": "baseline-5",
+      "passageIds": [
+        "p6"
+      ]
+    }
+  ],
+  "pairwiseEvaluation": {
+    "evaluatedPairs": 5,
+    "ambiguousPairsExcluded": 1,
+    "truePositives": 1,
+    "falsePositives": 0,
+    "falseNegatives": 1,
+    "trueNegatives": 3,
+    "precision": 1,
+    "recall": 0.5,
+    "f1": 0.667
+  },
+  "evaluatedPairs": [
+    {
+      "passageIds": [
+        "p1",
+        "p2"
+      ],
+      "goldSameNarrative": true,
+      "predictedSameNarrative": false,
+      "tokenJaccard": 0.085
+    },
+    {
+      "passageIds": [
+        "p1",
+        "p4"
+      ],
+      "goldSameNarrative": true,
+      "predictedSameNarrative": true,
+      "tokenJaccard": 0.6
+    },
+    {
+      "passageIds": [
+        "p1",
+        "p3"
+      ],
+      "goldSameNarrative": false,
+      "predictedSameNarrative": false,
+      "tokenJaccard": 0.057
+    },
+    {
+      "passageIds": [
+        "p2",
+        "p3"
+      ],
+      "goldSameNarrative": false,
+      "predictedSameNarrative": false,
+      "tokenJaccard": 0.041
+    },
+    {
+      "passageIds": [
+        "p1",
+        "p5"
+      ],
+      "goldSameNarrative": false,
+      "predictedSameNarrative": false,
+      "tokenJaccard": 0.137
+    }
+  ],
+  "ambiguousPairs": [
+    {
+      "passageIds": [
+        "p3",
+        "p6"
+      ],
+      "goldLabel": "ambiguous",
+      "predictedSameNarrative": false,
+      "tokenJaccard": 0.098,
+      "handling": "Excluded from binary precision and recall."
+    }
+  ],
+  "errors": [
+    {
+      "type": "over-split",
+      "passageIds": [
+        "p1",
+        "p2"
+      ],
+      "tokenJaccard": 0.085,
+      "explanation": "The lexical baseline separated the same proposition because the passages use different surface wording."
+    }
+  ],
+  "boundary": "These metrics describe five binary-labelled pairs in one six-passage self-authored fixture and this deterministic baseline only. They do not estimate private-pipeline or production quality."
+}

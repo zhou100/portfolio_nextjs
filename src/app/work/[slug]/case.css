@@ -65,16 +65,20 @@
 
 .brief {
   background: var(--clr-surface);
-  max-width: 920px;
   border: 1px solid var(--clr-border-strong);
   border-radius: var(--radius);
   padding: 26px 28px;
 }
 
+.brief__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .brief__row + .brief__row {
-  border-top: 1px solid var(--clr-border);
-  margin-top: 18px;
-  padding-top: 18px;
+  border-left: 1px solid var(--clr-border);
+  margin-left: 22px;
+  padding-left: 22px;
 }
 
 .brief__row dt {
@@ -247,6 +251,19 @@
 
   .case__actions .btn {
     flex: 1 1 100%;
+  }
+
+  .brief__list {
+    grid-template-columns: 1fr;
+  }
+
+  .brief__row + .brief__row {
+    border-left: 0;
+    border-top: 1px solid var(--clr-border);
+    margin-left: 0;
+    margin-top: 18px;
+    padding-left: 0;
+    padding-top: 18px;
   }
 }
 

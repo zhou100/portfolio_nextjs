@@ -52,9 +52,11 @@ The label says what the reader is looking at, not how mature the work is.
 | `in-progress` | Working prototype | Built and running, quality not yet measured | That measurement is underway right now |
 | `proposed` | Study design | Design only, nothing built | That a prototype exists |
 
-Evidence type is shown in the case meta block and defined in `EVIDENCE_MEANING` in
-`src/lib/work.ts`. A link (Try the product, Code, an artifact) renders only when the
-resource exists and is reachable without private access.
+Evidence type is shown in the case meta block. One concise data boundary sits in the
+header; limitations and point-of-use labels carry any qualification that changes how
+the reader interprets the evidence. Generic disclaimers are not repeated. A link (Try
+the product, Code, an artifact) renders only when the resource exists and is reachable
+without private access.
 
 ## Content Hierarchy
 The reader meets the contribution before the method. This ordering is the point of the
@@ -128,3 +130,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-09-08 | Hero thesis card replaced by a three-row focus index | The card argued a method and was specific to one project. The index sends the reader into the work and buys back the vertical space. |
 | 2026-09-08 | Status labels renamed to Case study / Working prototype / Study design | "Published" was read as "result proven". The label now names the artifact type. |
 | 2026-09-08 | Share card is a committed PNG, not a generated route | `next/og` under `output: 'export'` emits an extensionless file with no Content-Type, which scrapers reject. |
+| 2026-09-08 | Public fixtures include a reproducible baseline output | An input-only fixture explains the task; output, errors, and a runnable check let a reader inspect one actual evaluation without treating it as production quality. |

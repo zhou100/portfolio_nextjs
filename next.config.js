@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  output: 'export',  // Enable static HTML export
+  outputFileTracingRoot: __dirname,
+  output: 'export',
+  // Lint runs as its own CI step. Next 15 no longer exposes `next lint`.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
-    unoptimized: true // Required for static export
-  }
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;

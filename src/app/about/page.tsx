@@ -180,8 +180,8 @@ export default function About() {
           <div className="wrap">
             <div className="section__head">
               <div>
-                <p className="eyebrow">Reference</p>
-                <h2 className="section__title">From a former manager</h2>
+                <p className="eyebrow">From a collaborator</p>
+                <h2 className="section__title">Reference</h2>
               </div>
             </div>
 

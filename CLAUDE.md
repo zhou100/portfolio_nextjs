@@ -5,3 +5,7 @@ Always read DESIGN.md before making any visual or UI decisions.
 All font choices, colors, spacing, and aesthetic direction are defined there.
 Do not deviate without explicit user approval.
 In QA mode, flag any code that does not match DESIGN.md.
+
+## Testing
+
+Run `npm test`, `npm run check:narrative-example`, `npm run lint`, `npm run build`, and `npm run check:links` before shipping. See `TESTING.md` for the suite structure and evidence-boundary guidance.

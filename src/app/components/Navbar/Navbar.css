@@ -25,6 +25,13 @@
   color: var(--clr-accent-dark);
 }
 
+.nav__brand[aria-current='page'] {
+  color: var(--clr-accent-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
 .nav__toggle {
   align-items: center;
   border: 1px solid var(--clr-border-strong);

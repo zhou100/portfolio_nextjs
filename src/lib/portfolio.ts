@@ -62,6 +62,13 @@ export interface AboutContent {
   testimonials: Testimonial[];
 }
 
+export function shouldIndexSite(): boolean {
+  if (process.env.NO_INDEX === 'true') return false;
+  if (process.env.VERCEL_ENV === 'preview') return false;
+  if (process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== 'main') return false;
+  return true;
+}
+
 export function getSite(): Site {
   return {
     name: 'Yujun Zhou',
@@ -82,7 +89,7 @@ export function getSite(): Site {
       github: 'https://github.com/zhou100',
       googleScholar: 'https://scholar.google.com/citations?user=1c8nq8EAAAAJ&hl=en',
     },
-    url: 'https://yujun.net',
+    url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yujun.net').replace(/\/$/, ''),
   };
 }
 
@@ -127,7 +134,7 @@ export function getAbout(): AboutContent {
     namingNote:
       'Employers and internal products are described by category rather than by name. Specifics are on my resume and I am happy to go through them in conversation.',
     paragraphs: [
-      'I’m a data scientist with a PhD in Applied Economics. I spent several years on recommendation quality and integrity measurement at a large short-form video platform, and I now lead data science for enterprise AI systems at an advertising and media group. Across both, my job is to define an outcome worth moving, test whether the evidence supports the decision, and build whatever is missing to check it.',
+      'I currently lead data science work as a Data Science Manager & Tech Lead. My specialty is senior data science: measurement, experimentation, and AI evaluation. I spent several years on recommendation quality and integrity measurement at a large consumer social platform, and I hold a PhD in Applied Economics.',
       'The through line is measurement under pressure. Engagement moves for reasons that have nothing to do with a better product. An assistant that reads well can still fail the task it was hired for. Most of my work is deciding which comparison is credible enough to act on, and saying plainly when it isn’t.',
       'I build the systems I need to test my own ideas — evaluation pipelines, data contracts, and small products with real users — because a claim I cannot reproduce is not evidence I can defend.',
     ],
@@ -135,32 +142,30 @@ export function getAbout(): AboutContent {
       {
         org: 'Advertising and media group',
         title: 'Data Science Manager & Tech Lead',
+        period: 'July 2023 – present',
         focus:
           'Enterprise AI evaluation: layered task metrics, human rubrics, regression gates, and the quality, cost, and latency tradeoffs behind a release decision.',
       },
       {
-        org: 'Short-form video platform',
-        title: 'Data Scientist',
+        org: 'Consumer social platform · Recommendation quality',
+        title: 'Senior Data Scientist',
+        period: 'April 2022 – June 2023',
         focus:
-          'Two measurement problems in one product, which is why they are listed apart — they fail in different ways and need different evaluation populations.',
-        streams: [
-          {
-            name: 'Recommendation quality',
-            detail:
-              'Defining consumption-side outcomes for a short-form video feed, reading experiments against them, and pairing a creator-side goal with a viewer-experience guardrail.',
-          },
-          {
-            name: 'Integrity measurement',
-            detail:
-              'Evaluating rare, high-cost failures, where a sample drawn for average performance does not have the resolution the decision requires.',
-          },
-        ],
+          'Recommendation-quality measurement: defining viewer-side outcomes and using experiment analysis to inform product decisions beyond engagement alone.',
+      },
+      {
+        org: 'Consumer social platform · Integrity measurement',
+        title: 'Senior Data Scientist',
+        period: 'July 2020 – March 2022',
+        focus:
+          'Integrity measurement: evaluation sampling, offline-to-online measurement gaps, and launch-readiness analysis for high-risk product surfaces.',
       },
     ],
     education: [
       {
         org: 'University of Illinois Urbana-Champaign',
         title: 'PhD, Applied Economics',
+        period: 'Completed May 2020',
         focus:
           'Causal identification, forecasting, and the gap between a model that fits and a model a decision-maker can use. Published in Applied Economic Perspectives and Policy, World Development, and JAFIO.',
       },
@@ -196,7 +201,7 @@ export function getAbout(): AboutContent {
         quote:
           'Consistent excellence in analytics work, with strong influence skills, operational rigor, and a high bar for data-driven decision making.',
         role: 'Former manager, recommendation relevance analytics',
-        attribution: 'Anonymized here at the source. Named reference available on request.',
+        attribution: 'Name withheld on this public site.',
       },
     ],
   };

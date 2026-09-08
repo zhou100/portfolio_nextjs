@@ -43,6 +43,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -51,6 +52,7 @@ body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
+  overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
 }
 
@@ -494,6 +496,7 @@ h4 {
   -webkit-overflow-scrolling: touch;
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);
+  max-width: 100%;
   overflow-x: auto;
 }
 

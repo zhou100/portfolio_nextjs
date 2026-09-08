@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   EVIDENCE_LABEL,
-  EVIDENCE_MEANING,
   KIND_LABEL,
   getWorkBySlug,
   getWorkSlugs,
@@ -19,8 +18,13 @@ export function generateStaticParams() {
   return getWorkSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const item = getWorkBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const item = getWorkBySlug(slug);
   if (!item) return {};
 
   return {
@@ -59,8 +63,13 @@ function Brief({ item }: { item: WorkItem }) {
   );
 }
 
-export default function CaseStudy({ params }: { params: { slug: string } }) {
-  const item = getWorkBySlug(params.slug);
+export default async function CaseStudy({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const item = getWorkBySlug(slug);
   if (!item) notFound();
 
   const related = getPublishedArticles().filter((article) => article.relatedWork === item.slug);
@@ -105,14 +114,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                 </a>
               )}
               {links?.artifact && (
-                <a
-                  className="btn btn--on-dark"
-                  href={links.artifact.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link className="btn btn--on-dark" href={links.artifact.href}>
                   {links.artifact.label}
-                </a>
+                </Link>
               )}
               {links?.demo && (
                 <a
@@ -194,16 +198,6 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             ))}
           </ul>
 
-          {!!item.evidenceType.length && (
-            <dl className="deflist">
-              {item.evidenceType.map((type) => (
-                <div className="deflist__row" key={type}>
-                  <dt className="deflist__term">{EVIDENCE_LABEL[type]}</dt>
-                  <dd className="deflist__detail">{EVIDENCE_MEANING[type]}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
         </section>
 
         {!!related.length && (

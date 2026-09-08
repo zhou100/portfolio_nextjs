@@ -29,19 +29,6 @@ export const EVIDENCE_LABEL: Record<EvidenceType, string> = {
   'synthetic-demo': 'Illustrative example',
 };
 
-/** What each evidence type does and does not license you to claim. */
-export const EVIDENCE_MEANING: Record<EvidenceType, string> = {
-  'reported-experience':
-    'Described from work I did inside a company. The underlying data is not public and is not reproduced here.',
-  observational:
-    'Measured on data that was not randomized. Supports hypotheses, not causal claims.',
-  'offline-benchmark':
-    'Measured on a frozen held-out set. Says nothing about live product impact.',
-  'randomized-experiment': 'Measured under a recorded random assignment.',
-  'synthetic-demo':
-    'Built on self-authored material to show the shape of a method. Not a result.',
-};
-
 export interface WorkLinks {
   caseStudy: string;
   demo?: string;
@@ -126,20 +113,19 @@ const items: WorkItem[] = [
       'Internal company work. This public case describes my contribution and the method; confidential definitions, data, and results are omitted.',
     evidenceType: ['reported-experience'],
     contribution:
-      'Defined consumption-side measures of viewer experience and made them part of how the team read a launch.',
+      'Worked on consumption-side measures of viewer experience to inform recommendation-quality decisions, adding a viewer-side read to engagement-focused analysis. The case shows how a launch read can connect each measure to a decision while keeping population estimates, decision-critical slices, and guardrails conceptually distinct.',
     brief: {
       problem:
-        'A creator-side engagement goal was moving in the right direction. That number alone could not say whether viewers were getting better content, or the same reliable content more often.',
+        'A creator-side engagement goal can move in the right direction without showing whether viewers are getting better content, or the same reliable content more often.',
       contribution:
-        'I defined consumption-side measures of the viewer experience, reported them by segment rather than in aggregate, and made the case for reading them next to the primary goal.',
+        'I worked on consumption-side measures of viewer experience and experiment analysis used to inform recommendation-quality decisions beyond engagement alone.',
       outcomeLabel: 'What changed',
       outcome:
-        'The creator-side metric stopped being read on its own. Viewer-experience measures and segment splits became part of the launch read.',
+        'The work gave launch discussions a viewer-side quality lens alongside engagement. This case maps that contribution to the product decisions it was meant to inform.',
     },
     limitations: [
       'Repeat exposure and viewing efficiency are proxies for experience. They are not satisfaction, and a viewer who is efficiently served mediocre content still had a mediocre session.',
       'This is my account of work done inside a team. Colleagues owned ranking, infrastructure, and shipping.',
-      'Effect sizes, denominators, and time windows are not published here, so nothing on this page should be read as a quantified result.',
     ],
     updatedAt: '2026-09-08',
     links: { caseStudy: '/work/recommendation-quality' },
@@ -179,12 +165,12 @@ const items: WorkItem[] = [
               {
                 term: 'Viewing efficiency',
                 detail:
-                  'Time spent watching relative to the effort spent finding something worth watching. Engagement can rise while the search cost rises faster. The exact numerator and denominator are internal; the direction of the idea is what matters here.',
+                  'A viewer-side quality measure intended to complement engagement. The internal numerator and denominator are not reconstructed here; the relevant public point is the product question the measure was built to inform.',
               },
               {
                 term: 'Segment reporting',
                 detail:
-                  'The same measures computed separately for viewer and creator segments rather than pooled. Averages across a heterogeneous population can move in a direction no individual segment experienced.',
+                  'Overall estimates and decision-critical slices answer different questions. The illustrative read below shows how to keep those questions separate without claiming a historical segment result.',
               },
             ],
           },
@@ -253,10 +239,6 @@ const items: WorkItem[] = [
               'Each guardrail has a defined failure mode, a meaningful threshold, and enough sensitivity to detect harm at the size that would matter. A guardrail that never binds may mean the risk never materialized or the design already prevented it; what makes it decoration is having no threshold and no consequence attached.',
             ],
           },
-          {
-            type: 'note',
-            text: 'Everything on this page is reported experience. The underlying data is internal and nothing here was re-run for this write-up.',
-          },
         ],
       },
       {
@@ -286,7 +268,7 @@ const items: WorkItem[] = [
     status: 'published',
     featured: true,
     role:
-      'Defined the evaluation, built the test set and rubric, set the release gate, and drove adoption across the team.',
+      'Enterprise AI evaluation, including task quality, unsupported claims, tool use, and launch readiness.',
     roleLabel: 'Data science · AI evaluation',
     methods: [
       'Layered task evaluation',
@@ -299,15 +281,15 @@ const items: WorkItem[] = [
       'Internal enterprise work. No client data, prompts, or transcripts are published here; the failure trace below is a reconstruction written for this page.',
     evidenceType: ['reported-experience'],
     contribution:
-      'Split one answer-quality score into layers that fail differently, then tied release to a stated gate instead of a demo.',
+      'Developed evaluation workflows for task quality, unsupported claims, tool use, and launch readiness. The case shows how separating retrieval, grounding, tool use, and end-to-end task success makes release discussions more diagnostic and ties each regression to an actionable failure layer.',
     brief: {
       problem:
-        'Answer-quality review kept passing systems that still could not finish the task a strategist actually had. Reviewers were grading prose; the product had to deliver a decision.',
+        'A polished answer can pass a blended quality review and still fail the task a strategist needs to complete. One score hides where the system broke.',
       contribution:
-        'I defined the evaluation as four separate layers — retrieval, tool use, unsupported claims, end-to-end task success — built the test set and rubric behind them, and set the release gate.',
+        'I work on enterprise AI evaluation across four separate layers: retrieval, tool use, unsupported claims, and end-to-end task success.',
       outcomeLabel: 'What changed',
       outcome:
-        'Release stopped depending on demo impressions and started depending on a frozen test set with a threshold stated before the run.',
+        'The evaluation process gives teams a shared failure taxonomy and a clearer release discussion, with each regression assigned to a layer the team can investigate.',
     },
     limitations: [
       'The layers have different tasks and different denominators. They do not combine into one accuracy number, and I do not report one.',
@@ -325,7 +307,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The failure mode that started this: a system that reviewed well answer by answer, and still could not complete a task end to end. A reviewer reading one answer at a time is grading fluency, sourcing, and tone. None of those tell you whether the person who asked could then go and do the thing they came to do.',
+            text: 'A common failure mode is a system that reviews well answer by answer and still cannot complete a task end to end. A reviewer reading one answer at a time is grading fluency, sourcing, and tone. None of those tell you whether the person who asked could then do the thing they came to do.',
           },
           {
             type: 'p',
@@ -370,7 +352,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Alongside the layers I built the test set from real task families rather than prompts that happened to demo well, wrote the rubric that defines each score point, and set the release gate as a threshold on a frozen slice, stated before the run together with what meeting it costs in latency and spend.',
+            text: 'A decision-ready implementation samples the real task families the product is expected to complete, defines rubric boundaries with worked examples, keeps a held-out slice separate from prompt iteration, and states any release threshold together with its latency, spend, and coverage tradeoffs.',
           },
         ],
       },
@@ -414,7 +396,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'A trace like this changes how a team argues. "The model is bad at this" becomes a claim you have to locate in a layer — and in my experience most located failures are not model failures.',
+            text: 'A trace like this changes how a team argues. "The model is bad at this" becomes a claim that has to be located in a layer, so the proposed repair can address the failure that actually occurred.',
           },
         ],
       },
@@ -475,10 +457,10 @@ const items: WorkItem[] = [
       'Evaluation design',
     ],
     dataNote:
-      'The pipeline runs over licensed sources in a private repository. The fixture linked below is written by me and is public, so the method can be checked without any access.',
+      'The production pipeline runs over licensed sources in a private repository. The self-authored fixture and deterministic baseline linked below are public and reproducible.',
     evidenceType: ['observational', 'synthetic-demo'],
     contribution:
-      'Built a pipeline that connects changing claims to their sources and tracks how they evolve over time.',
+      'Built a pipeline that connects changing claims to their sources and tracks how they evolve. A public self-authored fixture and deterministic baseline now expose the input, expected grouping, actual output, and one concrete error without private-repository or paid-source access.',
     brief: {
       problem:
         'Opinions about a company arrive continuously, restate each other, and occasionally reverse. Reading them as a stream loses the one thing that matters: whether the underlying claim actually changed.',
@@ -486,19 +468,19 @@ const items: WorkItem[] = [
         'I built the whole system — ingest, claim extraction, narrative clustering, stage and stance tracking, and the evaluation design that will say whether its judgements are any good.',
       outcomeLabel: 'Current result',
       outcome:
-        'The pipeline runs end to end and produces output. A public fixture is now checkable; measured quality is not, and the evaluation is designed rather than done.',
+        'The private pipeline runs end to end. A public deterministic baseline now makes one clustering task and its errors reproducible; production quality remains unmeasured.',
     },
     limitations: [
-      'The repository is private and sits on paid sources, so it is not a self-serve demo. The public fixture is the fix, and it is deliberately small.',
-      'The system produces output. That output has not been scored against human labels yet — the study is designed, not run.',
+      'The public baseline covers six self-authored passages and five binary-labelled pairs. It diagnoses that baseline, not the private pipeline or production quality.',
+      'One gold pair is intentionally ambiguous and excluded from the reported precision and recall rather than forced into a binary label.',
       'Price movement is an external outcome. It is not a label for whether a claim was faithfully extracted, and I do not use it as one.',
     ],
     updatedAt: '2026-09-08',
     links: {
       caseStudy: '/work/narrative-intelligence',
       artifact: {
-        href: '/fixtures/narrative-evaluation-fixture-v1.json',
-        label: 'Public evaluation fixture (JSON)',
+        href: '/work/narrative-intelligence/example',
+        label: 'View public example',
       },
     },
     sections: [
@@ -517,7 +499,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Not built: any systematic quality measurement. That is the honest state of this project and the reason it is labelled a working prototype rather than a finished case.',
+            text: 'Production quality has not been measured systematically. The public baseline evaluates one narrow clustering task on a six-passage teaching fixture; it makes the evaluation shape concrete without standing in for the private pipeline.',
           },
         ],
       },
@@ -528,7 +510,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The linked fixture is six short passages I wrote by hand, with the grouping I believe is correct and the reason for each decision. It exists so a reader can disagree with my labels without needing the repository, a subscription, or my word for anything.',
+            text: 'The public example contains six short passages I wrote by hand, the grouping I believe is correct, and an actual run of a deterministic lexical baseline. It exists so a reader can inspect the inputs, challenge my labels, and reproduce the output without the private repository or a subscription.',
           },
           {
             type: 'table',
@@ -550,7 +532,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'note',
-            text: 'The fixture contains inputs and my gold labels only. It does not contain model output or an error rate, because I have not run the annotation yet and will not publish a score I have not computed.',
+            text: 'On the five pairs with binary gold labels, the checked-in baseline has precision 1.000, recall 0.500, and F1 0.667. Those numbers describe this fixture and this baseline only; they are not a claim about the private pipeline.',
           },
         ],
       },
@@ -561,11 +543,11 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'Two failure classes show up repeatedly on inspection. Over-merging: two genuinely different theses about the same company collapse into one narrative because they share vocabulary. Retroactive coherence: once a stance flip is detected, the surrounding evidence reads as though it always pointed that way.',
+            text: 'The public run makes one failure inspectable: the lexical baseline over-splits two passages that express the same data-centre demand proposition in different language. It correctly keeps the labelled negative pairs apart on this small fixture.',
           },
           {
             type: 'p',
-            text: 'Neither is quantified. Naming a failure from inspection is not the same as measuring its rate, and I am not going to report an over-merge number I have not computed.',
+            text: 'The run has one false-negative pair and no false-positive pairs among the five binary labels. It provides no general over-merge estimate, and the ambiguous sixth pair is reported separately rather than counted as right or wrong.',
           },
         ],
       },
@@ -630,8 +612,8 @@ const items: WorkItem[] = [
           {
             type: 'list',
             items: [
-              'Extend the public fixture to cover hold, add, reverse, retract, and duplicated-source cases.',
-              'Run extraction and pairwise-clustering annotation on it, and publish the agreement rates including the bad ones.',
+              'Run the private extraction and clustering pipeline on the same public fixture, recording the model and prompt version.',
+              'Compare that output with the deterministic baseline and publish the versioned pairwise errors, including the failures.',
               'Only then decide whether the product surface should expand or narrow.',
             ],
           },
@@ -663,7 +645,7 @@ const items: WorkItem[] = [
       'Nothing has been built or measured. No licensed creative assets and no aligned delivery logs are confirmed, and this page is a study design.',
     evidenceType: [],
     contribution:
-      'A study design that keeps label quality, predictive value, and incremental impact as three separate claims.',
+      'Designed a proposed workflow connecting observable creative attributes to performance evidence and a testable production change. The study keeps label quality, predictive value, and incremental impact as three independently testable claims, with a stop condition at each stage rather than implying that accurate tags prove lift.',
     brief: {
       problem:
         'Creative intelligence products slide between three different claims: that a tag is accurate, that it predicts performance, and that changing the thing it describes improves the outcome.',
@@ -855,6 +837,13 @@ const items: WorkItem[] = [
               ],
             ],
           },
+        ],
+      },
+      {
+        id: 'next',
+        heading: 'Next',
+        prompt: 'What decides whether this study runs?',
+        blocks: [
           {
             type: 'p',
             text: 'Route selection comes first: with usable assets and aligned logs this becomes a tagging-then-performance study; with assets only it becomes a tagging benchmark plus an annotation-efficiency trial, which is still a real result; with neither it is shelved rather than stalled on a data cold start.',
@@ -878,7 +867,7 @@ const items: WorkItem[] = [
       'Public place data with lazy enrichment. Coverage and freshness vary by city, which is the interesting part of the problem.',
     evidenceType: ['observational'],
     contribution:
-      'Built a location-first directory, then reframed the problem from crawl volume to which fields a first visit cannot do without.',
+      'Built a location-first directory over Postgres and vector search, with lazy profile enrichment and crawl freshness tracking. The case reframes coverage from row count to the minimum trustworthy fields a first-time visitor needs, then makes a narrower city-and-task test the next decision.',
     brief: {
       problem:
         'A directory with thousands of rows can still fail a first-time visitor if the four fields that visit depends on are the missing ones.',
@@ -979,7 +968,7 @@ const items: WorkItem[] = [
       'Live product with anonymous trial and early users beyond me. Retention and extraction accuracy are not measured yet, so no usage figures appear here.',
     evidenceType: ['observational'],
     contribution:
-      'Built a voice-to-review product, and defined the first honest metric for it rather than adding features.',
+      'Built a voice app that turns spoken notes into structured reflections, follow-up actions, and open-loop reviews. Early users exist beyond me; the next step is measuring first-time value, extraction corrections, anonymous-to-saved conversion, and what brings people back without inventing traction numbers.',
     brief: {
       problem:
         'A voice app can produce a summary quickly and still not produce anything a user trusts enough to keep. The interesting step is the one between those two.',
@@ -1080,7 +1069,7 @@ const items: WorkItem[] = [
       'A prompt and a set of war stories. Not deployed, and nothing has been benchmarked.',
     evidenceType: [],
     contribution:
-      'A prompt that reviews analyses the way a skeptical data scientist would, plus the design for testing whether it works.',
+      'Built a prompt that reviews analyses like a skeptical data scientist, then scoped a comparison against a fixed human checklist. The proposed benchmark focuses on whether each reviewer catches the issue that changes the decision, while tracking unfounded criticism, evidence faithfulness, and actionability.',
     brief: {
       problem:
         'An AI reviewer that sounds reasonable is easy. One that catches the specific issue that would change a launch decision is the only version worth having.',

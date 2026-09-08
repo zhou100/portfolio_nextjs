@@ -7,7 +7,7 @@ The personal site of Yujun Zhou — a senior data scientist working on experimen
 The unit of content is a **case study**, not a project card. Every work item carries:
 
 - a **status** rendered as what the reader is looking at — Case study / Working prototype / Study design — never as a claim that a business result was proven;
-- an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`), each with a stated meaning of what it does and does not license;
+- an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`) paired with a concise data boundary and decision-relevant limitations;
 - a **brief** — Problem, My contribution, What changed (or Current result) — under 100 words, read before anything else;
 - explicit **limitations**, and a one-sentence data boundary.
 
@@ -24,6 +24,7 @@ Employers and internal products are described by category — "short-form video 
 | `/` | Positioning, three featured cases, writing, what's being scoped |
 | `/work` | Industry cases, independent builds, in the lab, earlier research |
 | `/work/[slug]` | Case study, statically generated per item |
+| `/work/narrative-intelligence/example` | Public fixture, deterministic output, metrics, and error analysis |
 | `/writing` | Published articles, at most three in progress, plus peer-reviewed research |
 | `/writing/[slug]` | Article body, statically generated per published piece |
 | `/about` | Bio, experience, education, toolkit, research, one reference |
@@ -50,13 +51,16 @@ The nav link, the hero's secondary call to action, the About button, and the foo
 ## Getting started
 
 ```bash
-npm install
+npm ci
 npm run dev      # http://localhost:3000
 npm run build    # static export to out/
 npm run lint
+npm test
+npm run check:narrative-example
+npm run check:links  # run after build
 ```
 
-Stop `npm run dev` before running `npm run build` so the `.next/` cache does not mix dev and build output.
+Stop `npm run dev` before running `npm run build` so the `.next/` cache does not mix dev and build output. See `TESTING.md` for the complete local and CI sequence.
 
 ## Project structure
 
@@ -65,13 +69,15 @@ Stop `npm run dev` before running `npm run build` so the `.next/` cache does not
 - `src/lib/` — all site content
 - `public/profile.jpg` — portrait
 - `public/og.png` — share card, rendered from `tools/og-card.html` (see `tools/README.md`)
-- `public/fixtures/` — public, self-authored evaluation fixtures a reader can check without any private access
+- `public/fixtures/` — public, self-authored evaluation inputs and checked-in baseline output
+- `scripts/` — reproducible fixture runner and exported-link checker
+- `docs/public-claim-ledger.md` — evidence boundaries for public copy
 - `DESIGN.md` — tokens, type scale, status conventions, page order. **Read it before any visual change.**
 - `archive/legacy-2026-04-14/` — old generated output, starter assets, unused config
 
 ## Deployment
 
-Static export (`output: 'export'` in `next.config.js`). Deployable to Vercel or any static host. Every route is prerendered, including each case study, so a direct link or refresh works.
+Static export (`output: 'export'` in `next.config.js`). Deployable to Vercel or any static host. Every route is prerendered, including each case study and published article, so a direct link or refresh works. Set `NEXT_PUBLIC_SITE_URL` to the production origin. Set `NO_INDEX=true` for previews; Vercel previews and non-main Cloudflare branches are also detected automatically.
 
 ## License
 

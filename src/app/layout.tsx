@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import { getOgImage, getSite } from '@/lib/portfolio';
+import { getOgImage, getSite, shouldIndexSite } from '@/lib/portfolio';
 import './globals.css';
 
 const sourceSans = Source_Sans_3({
@@ -13,6 +13,7 @@ const sourceSans = Source_Sans_3({
 });
 
 const site = getSite();
+const shouldIndex = shouldIndexSite();
 
 const description =
   'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.';
@@ -27,6 +28,10 @@ export const metadata: Metadata = {
   },
   description,
   alternates: { canonical: '/' },
+  robots: {
+    index: shouldIndex,
+    follow: shouldIndex,
+  },
   openGraph: {
     type: 'website',
     siteName: site.name,
@@ -51,7 +56,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <Navbar />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer />
       </body>
     </html>
