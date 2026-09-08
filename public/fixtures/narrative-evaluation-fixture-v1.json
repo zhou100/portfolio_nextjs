@@ -1,0 +1,141 @@
+{
+  "fixture": "narrative-clustering-evaluation",
+  "version": "1.0",
+  "created": "2026-09-08",
+  "author": "Yujun Zhou",
+  "license": "CC BY 4.0 — reuse and disagree freely",
+  "purpose": "A small, self-authored input set for evaluating whether a narrative-clustering system groups claims by proposition rather than by shared vocabulary. Published so the method can be checked without access to the private repository or any licensed data source.",
+  "status": {
+    "contains": ["input passages", "gold narrative groupings", "gold pairwise labels", "the rationale for each label"],
+    "does_not_contain": ["model output", "accuracy or agreement scores", "any licensed or third-party text"],
+    "why": "The annotation run has not happened yet. Publishing a score that has not been computed would defeat the point of the fixture."
+  },
+  "subject": {
+    "company": "Arcline Semiconductor",
+    "ticker": "ARCL",
+    "note": "Fictional company written for this fixture. Nothing here describes a real security, and no passage is a real quotation."
+  },
+  "annotation_task": "For each pair of passages, decide whether they express the same narrative. Two passages share a narrative when they make the same claim about the same entity, through the same mechanism, in the same direction, over a comparable horizon. Shared vocabulary, shared sector, and shared sentiment are not sufficient. 'ambiguous' is a permitted answer and is expected on at least one pair.",
+  "passages": [
+    {
+      "id": "p1",
+      "published_at": "2026-03-02T13:00:00Z",
+      "source_type": "sell-side note",
+      "text": "Arcline is a direct beneficiary of the current data-centre buildout. Accelerator demand from large AI buyers is running ahead of the company's stated capacity, and we expect the data-centre segment to carry group revenue through the next several quarters."
+    },
+    {
+      "id": "p2",
+      "published_at": "2026-03-03T09:20:00Z",
+      "source_type": "independent newsletter",
+      "text": "The AI infrastructure cycle is doing the heavy lifting at Arcline. Hyperscaler capital budgets are still expanding, and Arcline's accelerator line is the part of the business that captures it. The rest of the portfolio is a rounding error against that."
+    },
+    {
+      "id": "p3",
+      "published_at": "2026-03-04T15:45:00Z",
+      "source_type": "sell-side note",
+      "text": "Channel checks suggest Arcline's consumer graphics inventory has finally normalized after last year's glut. Distributor weeks-on-hand are back to pre-glut levels, which should stop the discounting that has been suppressing consumer segment margin."
+    },
+    {
+      "id": "p4",
+      "published_at": "2026-03-03T11:05:00Z",
+      "source_type": "aggregator repost",
+      "text": "ANALYST: Arcline a direct beneficiary of the data-centre buildout, with accelerator demand running ahead of stated capacity. Data-centre segment expected to carry group revenue for several quarters."
+    },
+    {
+      "id": "p5",
+      "published_at": "2026-04-11T20:30:00Z",
+      "source_type": "company disclosure",
+      "text": "Arcline today lowered its full-year revenue outlook, citing a slower ramp at a lead foundry partner. The company said accelerator demand remains ahead of supply and that the revision reflects the timing of deliverable capacity rather than a change in order book."
+    },
+    {
+      "id": "p6",
+      "published_at": "2026-04-12T08:00:00Z",
+      "source_type": "independent newsletter",
+      "text": "Two things are true at Arcline right now: the AI side cannot make product fast enough, and the consumer side is finally clean. Whether that nets out to a good year depends entirely on which one you were underwriting."
+    }
+  ],
+  "gold_narratives": [
+    {
+      "id": "N1",
+      "label": "AI data-centre demand drives revenue",
+      "claim": "Arcline's revenue is carried by accelerator demand from AI data-centre buildout.",
+      "mechanism": "third-party capital expenditure on AI infrastructure",
+      "direction": "positive",
+      "horizon": "next several quarters",
+      "passages": ["p1", "p2", "p4"],
+      "rationale": "p2 restates p1's proposition in different words and is a genuinely separate author. p4 is an aggregator repost of p1 — the same narrative, but not independent corroboration."
+    },
+    {
+      "id": "N2",
+      "label": "Consumer graphics inventory has normalized",
+      "claim": "Channel inventory in the consumer segment has returned to normal, removing a margin drag.",
+      "mechanism": "distributor inventory drawdown ending discounting",
+      "direction": "positive",
+      "horizon": "current quarter onward",
+      "passages": ["p3"],
+      "rationale": "Same company and same overall sentiment as N1, and a different proposition: different segment, different mechanism, different horizon. Merging it into N1 because both are positive about Arcline is the canonical over-merge."
+    },
+    {
+      "id": "N3",
+      "label": "Guidance cut on supply timing, not demand",
+      "claim": "Full-year revenue guidance is lower because of foundry ramp timing, with the demand claim explicitly reaffirmed.",
+      "mechanism": "supply-side constraint at a manufacturing partner",
+      "direction": "negative on revenue timing, neutral-to-positive on demand",
+      "horizon": "full year",
+      "passages": ["p5"],
+      "rationale": "This is new information, not a restatement. It is also not a reversal of N1: the disclosure reaffirms the demand claim while lowering the revenue number, and collapsing the two would record a stance flip that did not occur."
+    }
+  ],
+  "gold_pairs": [
+    {
+      "a": "p1",
+      "b": "p2",
+      "same_narrative": true,
+      "difficulty": "easy",
+      "rationale": "Same claim, same mechanism, same direction, different wording and different author."
+    },
+    {
+      "a": "p1",
+      "b": "p4",
+      "same_narrative": true,
+      "difficulty": "easy",
+      "source_independence": false,
+      "rationale": "Same narrative, but p4 is a repost of p1. A system that counts this as a second source will inflate every confidence figure downstream."
+    },
+    {
+      "a": "p1",
+      "b": "p3",
+      "same_narrative": false,
+      "difficulty": "medium",
+      "rationale": "Same company, same direction, same sector vocabulary. Different segment and different mechanism. The over-merge case."
+    },
+    {
+      "a": "p2",
+      "b": "p3",
+      "same_narrative": false,
+      "difficulty": "medium",
+      "rationale": "As above. Included so a system cannot pass by memorizing one passage id."
+    },
+    {
+      "a": "p1",
+      "b": "p5",
+      "same_narrative": false,
+      "difficulty": "hard",
+      "rationale": "p5 lowers the revenue number while explicitly reaffirming p1's demand claim. Treating this as a reversal of N1 records a stance flip that the source denies; treating it as the same narrative loses the new information."
+    },
+    {
+      "a": "p3",
+      "b": "p6",
+      "same_narrative": "ambiguous",
+      "difficulty": "hard",
+      "rationale": "p6 references both the AI demand claim and the consumer normalization claim in one passage without committing to either as its subject. A forced binary here manufactures agreement. The correct handling is to allow the ambiguous label, or to split p6 into two claim spans before pairing."
+    }
+  ],
+  "notes_for_annotators": [
+    "Direction and sentiment are not the same field. Two positive claims about one company are routinely different narratives.",
+    "A repost is a duplicate observation, not an independent source. Record source independence separately from narrative membership.",
+    "A stance flip requires the claim to change, not the number attached to it. A guidance cut that reaffirms demand is new evidence about a different proposition.",
+    "If you find yourself reasoning from what the share price did afterwards, stop. Price is an external outcome and is not a label for whether a claim was faithfully extracted."
+  ],
+  "next_step": "Run extraction and pairwise annotation against this fixture with at least two annotators, publish per-layer agreement including the disagreements, and only then extend the fixture to hold, add, reverse, retract, and duplicated-source cases at larger scale."
+}

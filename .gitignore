@@ -32,3 +32,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.gstack/
+
+# Internal planning and review notes. These name employers and products, which is
+# exactly what the site anonymizes — keep them out of the public repo.
+/portfolio_review_and_article_briefs.md
+/yujun_net_positioning_and_portfolio_plan.md

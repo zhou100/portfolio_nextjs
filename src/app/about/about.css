@@ -112,3 +112,26 @@
     gap: 10px;
   }
 }
+
+/* Why no employer is named on this site. */
+.about__naming {
+  border-left: 2px solid var(--clr-border-strong);
+  color: var(--clr-muted);
+  font-size: 0.98rem;
+  margin: 14px 0 20px;
+  max-width: 62ch;
+  padding-left: 16px;
+}
+
+.role__period {
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+/* Two workstreams inside one role stay visually separate. */
+.role__streams {
+  border-top: 1px solid var(--clr-border);
+  margin-top: 16px;
+  padding-top: 16px;
+}

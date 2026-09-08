@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import { getSite, getThesisCard } from '@/lib/portfolio';
+import { getFocusRows, getSite } from '@/lib/portfolio';
 import { getFeaturedWork, getWorkBySlug } from '@/lib/work';
-import { getFeaturedArticles } from '@/lib/writing';
+import { articleHref, getPublishedArticles } from '@/lib/writing';
 import WorkCard from './components/Work/WorkCard';
-import StatusBadge from './components/Work/StatusBadge';
 import './home.css';
 
 export default function Home() {
   const site = getSite();
-  const thesis = getThesisCard();
+  const focus = getFocusRows();
   const featured = getFeaturedWork();
-  const articles = getFeaturedArticles();
+  const articles = getPublishedArticles();
   const lab = getWorkBySlug('creative-evidence-lab');
 
   return (
@@ -40,26 +39,22 @@ export default function Home() {
             <p className="hero__background">{site.backgroundLine}</p>
           </div>
 
-          <aside className="thesis" aria-label={thesis.label}>
-            <p className="thesis__label">{thesis.label}</p>
-            <h2 className="thesis__title">{thesis.title}</h2>
-            <ol className="thesis__list">
-              {thesis.layers.map((layer, index) => (
-                <li className="thesis__item" key={layer.name}>
-                  <span className="thesis__num">{index + 1}</span>
-                  <span>
-                    <span className="thesis__name">{layer.name}</span>
-                    <span className="thesis__q">{layer.question}</span>
-                  </span>
+          <nav className="focus" aria-label="Where the work is">
+            <ul className="focus__list">
+              {focus.map((row) => (
+                <li className="focus__item" key={row.href}>
+                  <Link className="focus__link" href={row.href}>
+                    <span className="focus__label">{row.label}</span>
+                    <span className="focus__line">{row.line}</span>
+                  </Link>
                 </li>
               ))}
-            </ol>
-            <p className="thesis__footnote">{thesis.footnote}</p>
-          </aside>
+            </ul>
+          </nav>
         </div>
       </section>
 
-      <section className="section" id="selected-work">
+      <section className="section section--lead" id="selected-work">
         <div className="wrap">
           <div className="section__head">
             <div>
@@ -79,71 +74,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--tight" id="writing">
-        <div className="wrap">
-          <div className="section__head">
-            <div>
-              <p className="eyebrow">Writing</p>
-              <h2 className="section__title">Method notes, published when the study is done</h2>
-              <p className="section__lede">
-                These three are written and in progress, not published yet. Each one is listed with
-                the argument it has to support, so it can be judged when it lands.
-              </p>
+      {!!articles.length && (
+        <section className="section section--tight" id="writing">
+          <div className="wrap">
+            <div className="section__head">
+              <div>
+                <p className="eyebrow">Writing</p>
+                <h2 className="section__title">Notes on measurement and AI evaluation</h2>
+              </div>
+              <Link className="arrowlink" href="/writing">
+                All writing →
+              </Link>
             </div>
-            <Link className="arrowlink" href="/writing">
-              All writing →
-            </Link>
-          </div>
 
-          <ul className="articles">
-            {articles.map((article) => (
-              <li className="article" key={article.slug}>
-                <div className="article__meta">
-                  <span className="status status--proposed">Planned</span>
-                  <span className="card__org">{article.topic}</span>
-                </div>
-                <h3 className="article__title">{article.title}</h3>
-                <p className="article__argument">{article.argument}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            <ul className="articles">
+              {articles.map((article) => {
+                const href = articleHref(article);
+
+                return (
+                  <li className="article" key={article.slug}>
+                    <div className="article__meta">
+                      <span className="card__org">{article.topic}</span>
+                      {article.readingTime && (
+                        <span className="card__org">{article.readingTime}</span>
+                      )}
+                    </div>
+                    <h3 className="article__title">
+                      {href ? <Link href={href}>{article.title}</Link> : article.title}
+                    </h3>
+                    <p className="article__argument">{article.excerpt}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {lab && (
         <section className="section section--tight" id="lab">
           <div className="wrap">
-            <div className="section__head">
+            <article className="labstrip">
               <div>
-                <p className="eyebrow">In the lab</p>
-                <h2 className="section__title">What I am scoping next</h2>
+                <p className="eyebrow">Creative Evidence Lab · Study design</p>
+                <h2 className="labstrip__title">
+                  <Link href={`/work/${lab.slug}`}>{lab.question}</Link>
+                </h2>
+                <p className="labstrip__body">
+                  A proposed workflow connecting observable creative attributes, performance
+                  hypotheses, and an experiment brief — with label quality, predictive value, and
+                  incremental impact kept as three separate claims.
+                </p>
               </div>
-            </div>
-
-            <article className="lab">
-              <div className="lab__copy">
-                <div className="card__top">
-                  <StatusBadge status={lab.status} />
-                </div>
-                <h3 className="lab__title">
-                  <Link href={`/work/${lab.slug}`}>{lab.title}</Link>
-                </h3>
-                <p className="lab__question">{lab.question}</p>
-                <p className="lab__body">{lab.summary}</p>
-                <Link className="arrowlink" href={`/work/${lab.slug}`}>
-                  Read the study design →
-                </Link>
-              </div>
-              <dl className="lab__meta">
-                <div>
-                  <dt>Data status</dt>
-                  <dd>{lab.dataStatus}</dd>
-                </div>
-                <div>
-                  <dt>Next decision</dt>
-                  <dd>{lab.decision}</dd>
-                </div>
-              </dl>
+              <Link className="arrowlink" href={`/work/${lab.slug}`}>
+                Read the study design →
+              </Link>
             </article>
           </div>
         </section>
@@ -154,10 +139,12 @@ export default function Home() {
           <div className="closer">
             <div>
               <p className="eyebrow">Contact</p>
-              <h2 className="section__title">Happy to go deeper on any of it</h2>
+              <h2 className="section__title">
+                Let’s talk about product measurement and AI evaluation.
+              </h2>
               <p className="section__lede">
-                If a case raises a methods question — the sampling, the estimand, the guardrail that
-                did or did not bind — that is the conversation I want to have.
+                I’m interested in teams turning experimentation and evaluation into better product
+                decisions.
               </p>
             </div>
             <div className="closer__actions">

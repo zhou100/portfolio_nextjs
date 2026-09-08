@@ -6,11 +6,16 @@ The personal site of Yujun Zhou — a senior data scientist working on experimen
 
 The unit of content is a **case study**, not a project card. Every work item carries:
 
-- a **status** (`published` / `in-progress` / `proposed` / `archived`) — `published` means the case study is written, never that a business result was proven;
-- an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`) — each with a stated meaning of what it does and does not license;
-- explicit **limitations**, and a **next decision**.
+- a **status** rendered as what the reader is looking at — Case study / Working prototype / Study design — never as a claim that a business result was proven;
+- an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`), each with a stated meaning of what it does and does not license;
+- a **brief** — Problem, My contribution, What changed (or Current result) — under 100 words, read before anything else;
+- explicit **limitations**, and a one-sentence data boundary.
 
-Case studies follow a fixed reading order: Evidence → Study design → Results and failures → Next decision → Limitations → Appendix. Demo, code, and evaluation links render only when the resource actually exists.
+Sections are ordered per item rather than forced into one template: an industry case runs Problem → My contribution → Worked example → Method, while a study design runs Decision → Example → Design → Status → Next. Demo, code, and artifact links render only when the resource actually exists.
+
+### Naming
+
+Employers and internal products are described by category — "short-form video platform", "advertising and media group" — not by name. This is deliberate and applies to every surface, including case slugs and article copy. Specifics belong on the resume and in conversation.
 
 ## Routes
 
@@ -19,7 +24,8 @@ Case studies follow a fixed reading order: Evidence → Study design → Results
 | `/` | Positioning, three featured cases, writing, what's being scoped |
 | `/work` | Industry cases, independent builds, in the lab, earlier research |
 | `/work/[slug]` | Case study, statically generated per item |
-| `/writing` | Planned pieces with the argument each must support, plus peer-reviewed research |
+| `/writing` | Published articles, at most three in progress, plus peer-reviewed research |
+| `/writing/[slug]` | Article body, statically generated per published piece |
 | `/about` | Bio, experience, education, toolkit, research, one reference |
 
 ## Content model
@@ -28,7 +34,9 @@ All content is data, not JSX. Editing the site means editing three files:
 
 - `src/lib/portfolio.ts` — site copy, hero, social links, about page content
 - `src/lib/work.ts` — the `WorkItem` type and every case study
-- `src/lib/writing.ts` — planned articles and published papers
+- `src/lib/writing.ts` — articles (including their bodies) and published papers
+
+A single `status` drives every writing surface. `published` requires a `body`; `articleHref()` returns a link only for those, so flipping the enum alone cannot put an empty title on the home page.
 
 ## Adding a resume
 
@@ -56,6 +64,8 @@ Stop `npm run dev` before running `npm run build` so the `.next/` cache does not
 - `src/app/components/` — Navbar, Footer, and the shared work components (`WorkCard`, `StatusBadge`, `Blocks`)
 - `src/lib/` — all site content
 - `public/profile.jpg` — portrait
+- `public/og.png` — share card, rendered from `tools/og-card.html` (see `tools/README.md`)
+- `public/fixtures/` — public, self-authored evaluation fixtures a reader can check without any private access
 - `DESIGN.md` — tokens, type scale, status conventions, page order. **Read it before any visual change.**
 - `archive/legacy-2026-04-14/` — old generated output, starter assets, unused config
 

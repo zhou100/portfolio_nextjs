@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { getSite } from '@/lib/portfolio';
 import './Navbar.css';
@@ -13,6 +14,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const { brand, resume, email } = getSite();
 
   const close = () => setOpen(false);
@@ -55,13 +57,22 @@ export default function Navbar() {
 
         <nav id="nav-menu" className={`nav__menu${open ? ' nav__menu--open' : ''}`}>
           <ul className="nav__list">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="nav__link" onClick={close}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {links.map((link) => {
+              const current = pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`nav__link${current ? ' nav__link--current' : ''}`}
+                    aria-current={current ? 'page' : undefined}
+                    onClick={close}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
 
             {resume && (
               <li>

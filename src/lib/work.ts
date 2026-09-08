@@ -8,10 +8,17 @@ export type EvidenceType =
   | 'synthetic-demo';
 
 export const STATUS_LABEL: Record<WorkStatus, string> = {
-  proposed: 'Proposed',
-  'in-progress': 'In progress',
-  published: 'Published',
+  proposed: 'Study design',
+  'in-progress': 'Working prototype',
+  published: 'Case study',
   archived: 'Archived',
+};
+
+/** What the reader is looking at, independent of how mature the underlying work is. */
+export const KIND_LABEL: Record<WorkKind, string> = {
+  'industry-case': 'Industry case',
+  'independent-build': 'Independent build',
+  research: 'Research',
 };
 
 export const EVIDENCE_LABEL: Record<EvidenceType, string> = {
@@ -19,40 +26,33 @@ export const EVIDENCE_LABEL: Record<EvidenceType, string> = {
   observational: 'Observational',
   'offline-benchmark': 'Offline benchmark',
   'randomized-experiment': 'Randomized experiment',
-  'synthetic-demo': 'Synthetic demo',
+  'synthetic-demo': 'Illustrative example',
 };
 
 /** What each evidence type does and does not license you to claim. */
 export const EVIDENCE_MEANING: Record<EvidenceType, string> = {
   'reported-experience':
-    'Described from work I did. Underlying data is not public and is not re-verified here.',
+    'Described from work I did inside a company. The underlying data is not public and is not reproduced here.',
   observational:
     'Measured on data that was not randomized. Supports hypotheses, not causal claims.',
   'offline-benchmark':
     'Measured on a frozen held-out set. Says nothing about live product impact.',
   'randomized-experiment': 'Measured under a recorded random assignment.',
   'synthetic-demo':
-    'Built on synthetic or self-produced data to demonstrate a pipeline, not a result.',
+    'Built on self-authored material to show the shape of a method. Not a result.',
 };
-
-export interface Finding {
-  statement: string;
-  source: string;
-  population?: string;
-  window?: string;
-  baseline?: string;
-  uncertainty?: string;
-}
 
 export interface WorkLinks {
   caseStudy: string;
   demo?: string;
   code?: string;
-  evaluation?: string;
+  /** A file or page a reader can open and check without any private access. */
+  artifact?: { href: string; label: string };
 }
 
 export type Block =
   | { type: 'p'; text: string }
+  | { type: 'h'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'deflist'; items: { term: string; detail: string }[] }
   | { type: 'table'; head: string[]; rows: string[][]; caption?: string }
@@ -60,9 +60,20 @@ export type Block =
   | { type: 'template'; lines: { label: string; text: string }[] };
 
 export interface WorkSection {
+  id: string;
+  heading: string;
   /** The question a reader should be able to answer after this section. */
   prompt: string;
   blocks: Block[];
+}
+
+/** The 60-second read at the top of every case. Under 100 words in total. */
+export interface WorkBrief {
+  problem: string;
+  contribution: string;
+  /** "What changed" where an outcome is confirmed; "Current result" where it is not. */
+  outcomeLabel: string;
+  outcome: string;
 }
 
 export interface WorkItem {
@@ -76,76 +87,86 @@ export interface WorkItem {
   status: WorkStatus;
   featured: boolean;
   role: string;
+  /** Two or three words for the card. Not a sentence. */
+  roleLabel: string;
   methods: string[];
-  dataStatus: string;
+  /** One sentence. What a reader may and may not check for themselves. */
+  dataNote: string;
   evidenceType: EvidenceType[];
-  decision: string;
-  /** 30–50 words. Used on the landing page and the work index. */
-  summary: string;
-  findings?: Finding[];
+  /** One sentence for the card. What I did, in plain terms. */
+  contribution: string;
+  brief: WorkBrief;
   limitations: string[];
   updatedAt: string;
   links?: WorkLinks;
-  sections: {
-    evidence: WorkSection;
-    studyDesign: WorkSection;
-    results: WorkSection;
-    nextDecision: WorkSection;
-    appendix?: WorkSection;
-  };
+  /** Ordered by content type: an industry case does not read like a study design. */
+  sections: WorkSection[];
 }
 
 const items: WorkItem[] = [
   {
-    slug: 'reels-measurement',
+    slug: 'recommendation-quality',
     title: 'Recommendation Quality Beyond Engagement',
-    org: 'Meta — Reels & Integrity',
+    org: 'Short-form video platform',
     question:
-      'When creator-side metrics improve, how do we confirm that viewers are actually consuming better content?',
+      'When creator-side engagement improves, how do we confirm that viewers are actually getting better content?',
     kind: 'industry-case',
     status: 'published',
     featured: true,
     role:
-      'Measurement, analysis, and influencing the product decision. I did not build the Reels ranking system.',
+      'Measurement, analysis, and influencing the product decision. I did not build the ranking system.',
+    roleLabel: 'Data science · Measurement',
     methods: [
       'Metric definition',
       'Experiment design',
       'Guardrail analysis',
       'Segment heterogeneity',
     ],
-    dataStatus:
-      'Internal Meta data. Nothing confidential is reproduced here — this case describes the method and the decision, not the numbers.',
+    dataNote:
+      'Internal company work. This public case describes my contribution and the method; confidential definitions, data, and results are omitted.',
     evidenceType: ['reported-experience'],
-    decision:
-      'Product goals moved from a creator-side engagement target to a paired objective with a consumption-quality guardrail.',
-    summary:
-      'Creator-side engagement rose while parts of the viewer experience did not. I defined consumption-side measures, showed where the two diverged by segment, and moved the team to a paired goal with a guardrail.',
-    findings: [
-      {
-        statement:
-          'Creator-side engagement gains and viewer consumption quality moved in different directions for identifiable viewer segments.',
-        source: 'Internal experiment and observational analysis (reported experience).',
-        population: 'Reels viewers and creators in the studied surface.',
-        window: 'Not disclosed.',
-        baseline: 'The then-current ranking configuration.',
-        uncertainty:
-          'Effect sizes, denominators, and confidence intervals are withheld pending disclosure review. Treat this as a method case, not a numeric result.',
-      },
-    ],
+    contribution:
+      'Defined consumption-side measures of viewer experience and made them part of how the team read a launch.',
+    brief: {
+      problem:
+        'A creator-side engagement goal was moving in the right direction. That number alone could not say whether viewers were getting better content, or the same reliable content more often.',
+      contribution:
+        'I defined consumption-side measures of the viewer experience, reported them by segment rather than in aggregate, and made the case for reading them next to the primary goal.',
+      outcomeLabel: 'What changed',
+      outcome:
+        'The creator-side metric stopped being read on its own. Viewer-experience measures and segment splits became part of the launch read.',
+    },
     limitations: [
-      'My résumé states a creator-engagement improvement of roughly two percent. I do not publish that number here because the relative-vs-absolute basis, time window, experimental unit, and attribution rule need to be stated with it, and the disclosure boundary is not settled.',
-      'Repeat-exposure and consumption-efficiency measures are proxies for experience. They are not satisfaction.',
+      'Repeat exposure and viewing efficiency are proxies for experience. They are not satisfaction, and a viewer who is efficiently served mediocre content still had a mediocre session.',
       'This is my account of work done inside a team. Colleagues owned ranking, infrastructure, and shipping.',
+      'Effect sizes, denominators, and time windows are not published here, so nothing on this page should be read as a quantified result.',
     ],
-    updatedAt: '2026-09-05',
-    links: { caseStudy: '/work/reels-measurement' },
-    sections: {
-      evidence: {
-        prompt: 'What was actually measured, and what does it license me to say?',
+    updatedAt: '2026-09-08',
+    links: { caseStudy: '/work/recommendation-quality' },
+    sections: [
+      {
+        id: 'problem',
+        heading: 'The problem',
+        prompt: 'What could the existing numbers not answer?',
         blocks: [
           {
             type: 'p',
-            text: 'The team had a creator-side goal that was moving in the right direction. The open question was whether the viewer side had improved with it, or whether the same content was simply being shown more often to the people most likely to react to it.',
+            text: 'A short-form video feed has two sides that are easy to confuse. Creator-side engagement measures how much reaction the content collects. Viewer-side quality is whether the person scrolling got something worth their time. A ranking change can lift the first by leaning harder on what already works — showing the reliable creator again, resurfacing the format this viewer has reacted to before — without the second improving at all.',
+          },
+          {
+            type: 'p',
+            text: 'So the open question on a positive result was never "did the metric move." It was whether the metric had moved because the recommendations got better, or because they got more confident about a narrower set of content.',
+          },
+        ],
+      },
+      {
+        id: 'contribution',
+        heading: 'My contribution',
+        prompt: 'What did I define, and why those measures?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'I worked on the consumption side of the problem: measures that describe what the viewing session was actually like, reported in a form a launch review could act on.',
           },
           {
             type: 'deflist',
@@ -153,108 +174,120 @@ const items: WorkItem[] = [
               {
                 term: 'Repeat exposure',
                 detail:
-                  'How often a viewer saw near-duplicate or same-creator content within a session and across sessions. A cheap way to lift engagement is to show the reliable thing again.',
+                  'How often a viewer meets near-duplicate or same-creator content inside a session and across sessions. A cheap way to lift engagement is to show the reliable thing again, and an aggregate engagement number is happy to let that happen.',
               },
               {
-                term: 'Consumption efficiency',
+                term: 'Viewing efficiency',
                 detail:
-                  'Watched time relative to time spent scrolling to find something worth watching. Engagement can rise while the search cost rises faster.',
+                  'Time spent watching relative to the effort spent finding something worth watching. Engagement can rise while the search cost rises faster. The exact numerator and denominator are internal; the direction of the idea is what matters here.',
               },
               {
-                term: 'Segment split',
+                term: 'Segment reporting',
                 detail:
-                  'The same metrics computed separately for heavy and light viewers, and for established and emerging creators. The aggregate hid the disagreement.',
+                  'The same measures computed separately for viewer and creator segments rather than pooled. Averages across a heterogeneous population can move in a direction no individual segment experienced.',
               },
+            ],
+          },
+          {
+            type: 'p',
+            text: 'The integrity side of the work is a related but distinct measurement problem, which is why it is listed apart. Overall performance and performance on high-risk slices answer different questions. A sample sized for a population estimate does not automatically have the resolution to say anything about a rare, high-cost failure, so the evaluation sample has to be built for the decision it serves — with appropriate weighting when the population effect is what you need.',
+          },
+        ],
+      },
+      {
+        id: 'example',
+        heading: 'What a read looks like',
+        prompt: 'How does a measure turn into an action?',
+        blocks: [
+          {
+            type: 'note',
+            text: 'Illustrative example. The structure below is how I organize this kind of read; the specific definitions, thresholds, and results from my work are not published here.',
+          },
+          {
+            type: 'table',
+            caption:
+              'A metric earns its place on a launch review by naming the action it triggers, not by being available.',
+            head: ['Question the team has', 'What gets measured', 'Reported on', 'What the read triggers'],
+            rows: [
+              [
+                'Did engagement rise because supply narrowed?',
+                'Repeat exposure within and across sessions',
+                'Heavy and light viewers separately',
+                'A rise past the stated threshold holds the launch for review, even on a winning primary metric.',
+              ],
+              [
+                'Is watching getting cheaper or more expensive?',
+                'Watch time relative to search effort',
+                'Same segments as the primary goal',
+                'A primary win with a falling efficiency reading is escalated as a tradeoff, not announced as a win.',
+              ],
+              [
+                'Who is the average hiding?',
+                'The primary goal, computed per segment',
+                'Segments fixed before the read',
+                'Segment disagreement is reported in the launch note rather than filed as a follow-up analysis.',
+              ],
+            ],
+          },
+          {
+            type: 'p',
+            text: 'The point of writing it this way is that each row ends in an action. A guardrail with no stated threshold and no consequence is a chart, and charts do not stop launches.',
+          },
+        ],
+      },
+      {
+        id: 'method',
+        heading: 'Method',
+        prompt: 'What makes this kind of comparison credible?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'These are the conditions I hold this work to. On a surface that changes continuously, an aggregate before-and-after cannot separate "ranking got better" from "ranking got more confident," so the design has to do that work.',
+          },
+          {
+            type: 'list',
+            items: [
+              'The experimental unit matches how the surface allocates content, so a viewer does not experience both arms across sessions.',
+              'Consumption-side measures and their segments are named before the results are read. Heterogeneity found afterwards is a hypothesis, not a finding.',
+              'Guardrails cover the failure the primary goal is structurally unable to see — here, repetition, narrowing supply, and integrity-relevant exposure.',
+              'Each guardrail has a defined failure mode, a meaningful threshold, and enough sensitivity to detect harm at the size that would matter. A guardrail that never binds may mean the risk never materialized or the design already prevented it; what makes it decoration is having no threshold and no consequence attached.',
             ],
           },
           {
             type: 'note',
-            text: 'Everything in this section is reported experience. The underlying data is internal, and nothing here was re-run or re-verified for this write-up.',
+            text: 'Everything on this page is reported experience. The underlying data is internal and nothing here was re-run for this write-up.',
           },
         ],
       },
-      studyDesign: {
-        prompt: 'Why was this comparison credible?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'The design question was which comparison could separate "ranking got better" from "ranking got more confident." Aggregate before/after on a surface that is always changing cannot do that.',
-          },
-          {
-            type: 'list',
-            items: [
-              'Experimental unit and randomization matched how the surface allocates content, so a viewer could not sit in two arms across sessions.',
-              'Consumption-side measures were defined and registered before reading the results, so a null on the primary goal could not be rescued by a metric found afterwards.',
-              'Segments were fixed in advance. Heterogeneity found after the fact is a hypothesis, not a finding.',
-              'Guardrails covered the failure the creator goal could not see: repetition, narrow supply, and integrity-relevant exposure.',
-            ],
-          },
-          {
-            type: 'p',
-            text: 'The integrity side of the work mattered for the same reason. An evaluation population drawn from typical traffic under-represents the users a safety metric exists to protect, so the sample has to be built for the risk, not for convenience.',
-          },
-        ],
-      },
-      results: {
-        prompt: 'What happened, including what did not work?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'The headline creator metric improved. The consumption-side picture was not uniform: for some viewer segments the added engagement came with more repetition rather than more useful watching, and the aggregate average concealed it.',
-          },
-          {
-            type: 'p',
-            text: 'The uncomfortable part was that the first version of my consumption metric was gameable in the same way as the goal it was meant to check — it rewarded longer watches without asking what the viewer had to scroll past first. Rebuilding it around search cost was the change that made the analysis persuasive.',
-          },
-          {
-            type: 'note',
-            text: 'Effect sizes are not published here. See the limitations above for why.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What did the team do differently?',
+      {
+        id: 'ask-me',
+        heading: 'What a technical reader can ask me',
+        prompt: 'Where does the detail live?',
         blocks: [
           {
             type: 'list',
             items: [
-              'The creator-side metric stopped being read on its own and was paired with a consumption-quality guardrail.',
-              'Segment reporting became part of the launch read rather than a follow-up analysis.',
-              'A launch that improved the primary goal but crossed the repetition guardrail was treated as a hold, not a ship.',
-            ],
-          },
-          {
-            type: 'p',
-            text: 'The result that would overturn this: a guardrail that never binds. A guardrail that has never once stopped a launch is decoration, and should be either retired or re-specified.',
-          },
-        ],
-      },
-      appendix: {
-        prompt: 'What can a technical reader ask me about?',
-        blocks: [
-          {
-            type: 'list',
-            items: [
-              'The exact repeat-exposure definition, including the dedup key and the session boundary.',
-              'How power was computed given repeated observations per viewer.',
-              'How the integrity evaluation population was sampled, and why typical traffic was the wrong frame.',
+              'How a repeat-exposure measure gets defined in practice — the dedup key, the session boundary, and what breaks when either is wrong.',
+              'How power is computed with repeated observations per viewer.',
+              'How to size an evaluation sample so a rare, high-cost failure is actually resolvable, and how to weight back to a population estimate afterwards.',
             ],
           },
         ],
       },
-    },
+    ],
   },
   {
     slug: 'enterprise-ai-evaluation',
     title: 'Making Enterprise AI Evaluation Launch-Relevant',
-    org: 'Annalect',
+    org: 'Advertising and media group',
     question:
-      'How do you stop an assistant that sounds right from failing the marketing task it was built for?',
+      'How do you stop an assistant that sounds right from failing the task it was built for?',
     kind: 'industry-case',
     status: 'published',
     featured: true,
     role:
       'Defined the evaluation, built the test set and rubric, set the release gate, and drove adoption across the team.',
+    roleLabel: 'Data science · AI evaluation',
     methods: [
       'Layered task evaluation',
       'Human rubrics',
@@ -262,39 +295,49 @@ const items: WorkItem[] = [
       'Regression gates',
       'Cost/latency tradeoffs',
     ],
-    dataStatus:
-      'Internal Annalect systems and client work. No client data, prompts, or transcripts are published here.',
-    evidenceType: ['reported-experience', 'offline-benchmark'],
-    decision:
-      'Release stopped depending on demo impressions and started depending on a frozen test set with a stated regression gate.',
-    summary:
-      'Answer quality reviews kept passing systems that failed real marketing tasks. I split evaluation into retrieval, tool use, unsupported claims, and end-to-end success, then tied release to a frozen set and a stated gate.',
-    findings: [
-      {
-        statement:
-          'Separating retrieval, tool use, unsupported claims, and end-to-end task success exposed failures that a single answer-quality score had been averaging away.',
-        source: 'Internal evaluation program (reported experience).',
-        population: 'A representative test set of real marketing tasks.',
-        baseline: 'Ad-hoc reviewer judgement of individual answers.',
-        uncertainty:
-          'Improvements on each layer have different tasks and different denominators. They do not combine into one accuracy figure.',
-      },
-    ],
+    dataNote:
+      'Internal enterprise work. No client data, prompts, or transcripts are published here; the failure trace below is a reconstruction written for this page.',
+    evidenceType: ['reported-experience'],
+    contribution:
+      'Split one answer-quality score into layers that fail differently, then tied release to a stated gate instead of a demo.',
+    brief: {
+      problem:
+        'Answer-quality review kept passing systems that still could not finish the task a strategist actually had. Reviewers were grading prose; the product had to deliver a decision.',
+      contribution:
+        'I defined the evaluation as four separate layers — retrieval, tool use, unsupported claims, end-to-end task success — built the test set and rubric behind them, and set the release gate.',
+      outcomeLabel: 'What changed',
+      outcome:
+        'Release stopped depending on demo impressions and started depending on a frozen test set with a threshold stated before the run.',
+    },
     limitations: [
-      'My résumé reports separate improvements in task success, factuality, and unsupported claims. Those are different tasks with different denominators — collapsing them into a single "AI accuracy" number would be wrong, so I do not report one.',
-      'A frozen test set ages. It measures the failures we already knew to look for.',
-      'Human rubric scores carry annotator disagreement. Reporting a mean without the agreement rate overstates precision.',
+      'The layers have different tasks and different denominators. They do not combine into one accuracy number, and I do not report one.',
+      'A frozen test set ages. It measures the failures we already knew to look for, which is why the taxonomy feeds new cases back into it.',
+      'Human rubric scores carry annotator disagreement. A mean without an agreement rate overstates precision.',
+      'The end-to-end trace in this case is a reconstruction built to show the method. It is not a client incident report.',
     ],
-    updatedAt: '2026-09-05',
+    updatedAt: '2026-09-08',
     links: { caseStudy: '/work/enterprise-ai-evaluation' },
-    sections: {
-      evidence: {
-        prompt: 'What was being measured, layer by layer?',
+    sections: [
+      {
+        id: 'problem',
+        heading: 'The problem',
+        prompt: 'Why did a good review score not predict a working product?',
         blocks: [
           {
             type: 'p',
-            text: 'The failure mode that started this: a system reviewed well answer-by-answer and still could not complete the task a strategist actually had. Reviewers were grading prose. The product had to deliver a decision.',
+            text: 'The failure mode that started this: a system that reviewed well answer by answer, and still could not complete a task end to end. A reviewer reading one answer at a time is grading fluency, sourcing, and tone. None of those tell you whether the person who asked could then go and do the thing they came to do.',
           },
+          {
+            type: 'p',
+            text: 'A single answer-quality score also averages across failures that have nothing in common. Retrieval missing a document and a model misreading a document it did retrieve are the same score and completely different repairs.',
+          },
+        ],
+      },
+      {
+        id: 'contribution',
+        heading: 'My contribution',
+        prompt: 'What was measured, layer by layer?',
+        blocks: [
           {
             type: 'table',
             head: ['Layer', 'What it asks', 'What a good score does not prove'],
@@ -323,87 +366,107 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Each layer has its own denominator. Unsupported-claim rate is per factual sentence; task success is per task. A system can improve sharply on one while the other is flat, and reporting a single blended number hides exactly the tradeoff a launch decision turns on.',
+            text: 'Each layer has its own denominator. Unsupported-claim rate is per factual sentence; task success is per task. A system can improve sharply on one while the other is flat, and a single blended number hides exactly the tradeoff a release decision turns on.',
+          },
+          {
+            type: 'p',
+            text: 'Alongside the layers I built the test set from real task families rather than prompts that happened to demo well, wrote the rubric that defines each score point, and set the release gate as a threshold on a frozen slice, stated before the run together with what meeting it costs in latency and spend.',
           },
         ],
       },
-      studyDesign: {
-        prompt: 'Why was this evaluation trustworthy?',
+      {
+        id: 'example',
+        heading: 'One failure, traced end to end',
+        prompt: 'What does a layered diagnosis actually look like?',
         blocks: [
-          {
-            type: 'list',
-            items: [
-              'The test set was built from real task families, not from prompts that happened to demo well, and was stratified so no single client or task type dominated.',
-              'A written rubric defined each score point, with worked examples for the boundaries. Where two reviewers could not agree, the rubric was rewritten or the category dropped rather than averaged over.',
-              'A held-out slice stayed frozen and unexamined. Prompt iteration happened on the development slice only.',
-              'The release gate was stated as a threshold on the frozen slice before the run, together with what it would cost to meet it in latency and spend.',
-            ],
-          },
           {
             type: 'note',
-            text: 'An LLM judge was validated against human labels before it was trusted anywhere. Agreement with itself is not correctness, and a judge that shares the generator\'s blind spots will happily certify them.',
-          },
-        ],
-      },
-      results: {
-        prompt: 'What did a real failure look like, end to end?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'The most useful artifact was not the scoreboard. It was one failure traced the whole way: a task that failed end-to-end, where the trace showed retrieval had returned the correct document and the model had summarized a neighbouring passage instead. The fix was in chunk boundaries and citation enforcement, not in the model.',
+            text: 'Illustrative reconstruction. This trace is written for this page using a self-authored task. It shows the shape of the diagnosis, not a real client incident.',
           },
           {
-            type: 'p',
-            text: 'That trace changed how the team argued. "The model is bad at this" became a claim you had to locate in a layer, and most of the located failures were not model failures.',
-          },
-          {
-            type: 'p',
-            text: 'The negative result worth stating: raising factuality by tightening the evidence requirement made the system refuse more often, and some refusals were on tasks it could have completed. Quality gates trade against coverage, and pretending otherwise produces a system nobody uses.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What does the team do with this now?',
-        blocks: [
-          {
-            type: 'list',
-            items: [
-              'Changes ship against the frozen slice with the gate stated in advance, not against a reviewer\'s read of a handful of answers.',
-              'Every regression is filed into the failure taxonomy, so the test set grows from real defects rather than from imagination.',
-              'Quality is quoted with its cost and latency. A configuration that wins on quality and doubles response time is a tradeoff for the product owner, not a win to be announced.',
+            type: 'template',
+            lines: [
+              {
+                label: 'Task',
+                text: 'Which of our three campaigns should absorb the next increment of budget, and on what evidence?',
+              },
+              {
+                label: 'Retrieval',
+                text: 'Correct. The performance summary for all three campaigns was retrieved and passed to the model.',
+              },
+              {
+                label: 'Tool use',
+                text: 'Correct. The spend query ran with the right date range and returned the right rows.',
+              },
+              {
+                label: 'Answer',
+                text: 'Fluent, cited, and wrong at the level that matters: it quoted an adjacent passage describing a different campaign period, and recommended the increment on that basis.',
+              },
+              {
+                label: 'Located failure',
+                text: 'Not a model-capability failure. The chunk boundary split the campaign label from the numbers beneath it, so a correctly retrieved document supported a confident sentence about the wrong thing.',
+              },
+              {
+                label: 'Repair',
+                text: 'Chunking that keeps a label with its table, and a citation constraint that requires the cited span to contain the entity being described.',
+              },
             ],
           },
           {
             type: 'p',
-            text: 'What would overturn it: if refusal-driven coverage loss costs more task value than the factuality gain returns, the gate is set in the wrong place and needs to be re-derived from error cost.',
+            text: 'A trace like this changes how a team argues. "The model is bad at this" becomes a claim you have to locate in a layer — and in my experience most located failures are not model failures.',
           },
         ],
       },
-      appendix: {
-        prompt: 'What can a technical reader ask me about?',
+      {
+        id: 'method',
+        heading: 'Method',
+        prompt: 'What keeps the evaluation itself trustworthy?',
         blocks: [
           {
             type: 'list',
             items: [
-              'The rubric structure and how boundary cases were adjudicated.',
-              'How the LLM judge was validated, and where it still disagreed with humans.',
-              'How the regression threshold was derived from the cost of each error type.',
+              'The test set is stratified by task family so no single client or task type dominates the score.',
+              'The rubric defines each score point with worked examples at the boundaries. Where reviewers cannot agree, the rubric gets rewritten or the category dropped, rather than averaged over.',
+              'A held-out slice stays frozen. Prompt iteration happens on the development slice, or the gate is measuring the tuning rather than the system.',
+              'An LLM judge is validated against human labels before its score is allowed to gate anything. Agreement with itself is not correctness, and a judge sharing the generator’s blind spots will certify them.',
+              'Quality is quoted with its cost and latency. A configuration that wins on quality and doubles response time is a tradeoff for the product owner, not a win to announce.',
+            ],
+          },
+          {
+            type: 'p',
+            text: 'The tension worth stating plainly: tightening an evidence requirement raises factuality and also raises refusals, including refusals on tasks the system could have completed. Coverage and factuality trade against each other, so the gate has to be derived from the cost of each error type rather than set at whatever number looks rigorous.',
+          },
+        ],
+      },
+      {
+        id: 'ask-me',
+        heading: 'What a technical reader can ask me',
+        prompt: 'Where does the detail live?',
+        blocks: [
+          {
+            type: 'list',
+            items: [
+              'The rubric structure, and how boundary cases get adjudicated.',
+              'How to validate an LLM judge against human labels, and what to do where they keep disagreeing.',
+              'How to derive a regression threshold from the cost of each error type instead of picking a round number.',
             ],
           },
         ],
       },
-    },
+    ],
   },
   {
     slug: 'narrative-intelligence',
     title: 'Narrative Intelligence: Evaluating Evolving Claims',
-    alias: 'Repository name: narrative_TMTB (private)',
+    alias: 'Private repository over licensed sources',
     question:
       'How do you turn continuously changing opinions into a record that is traceable, comparable, and honest about uncertainty?',
     kind: 'independent-build',
     status: 'in-progress',
     featured: true,
     role: 'Sole author. Data pipeline, storage, narrative model, product surface, and evaluation design.',
+    roleLabel: 'Independent builder',
     methods: [
       'Claim extraction',
       'Narrative clustering',
@@ -411,32 +474,106 @@ const items: WorkItem[] = [
       'Timestamp discipline',
       'Evaluation design',
     ],
-    dataStatus:
-      'Private repository over licensed and paid sources. A small self-authored public fixture is planned so the method can be checked without repository or subscription access.',
-    evidenceType: ['observational'],
-    decision:
-      'The build works. The next decision is whether the extraction and clustering are good enough to trust before any surface is expanded.',
-    summary:
-      'A pipeline that tracks how claims about a ticker form, shift, and reverse — with event stages, stance flips, content-hash caching, and automated ingest. The system runs. The open question is whether its judgements are correct.',
+    dataNote:
+      'The pipeline runs over licensed sources in a private repository. The fixture linked below is written by me and is public, so the method can be checked without any access.',
+    evidenceType: ['observational', 'synthetic-demo'],
+    contribution:
+      'Built a pipeline that connects changing claims to their sources and tracks how they evolve over time.',
+    brief: {
+      problem:
+        'Opinions about a company arrive continuously, restate each other, and occasionally reverse. Reading them as a stream loses the one thing that matters: whether the underlying claim actually changed.',
+      contribution:
+        'I built the whole system — ingest, claim extraction, narrative clustering, stage and stance tracking, and the evaluation design that will say whether its judgements are any good.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'The pipeline runs end to end and produces output. A public fixture is now checkable; measured quality is not, and the evaluation is designed rather than done.',
+    },
     limitations: [
-      'The repository is private and sits on paid sources, so it is not currently a self-serve demo for a hiring reader. The public fixture is the fix.',
-      'The system runs and produces output. Output quality has not been measured against human labels yet — that study is designed, not done.',
+      'The repository is private and sits on paid sources, so it is not a self-serve demo. The public fixture is the fix, and it is deliberately small.',
+      'The system produces output. That output has not been scored against human labels yet — the study is designed, not run.',
       'Price movement is an external outcome. It is not a label for whether a claim was faithfully extracted, and I do not use it as one.',
     ],
-    updatedAt: '2026-09-05',
-    links: { caseStudy: '/work/narrative-intelligence' },
-    sections: {
-      evidence: {
-        prompt: 'What exists today, and what is still a plan?',
+    updatedAt: '2026-09-08',
+    links: {
+      caseStudy: '/work/narrative-intelligence',
+      artifact: {
+        href: '/fixtures/narrative-evaluation-fixture-v1.json',
+        label: 'Public evaluation fixture (JSON)',
+      },
+    },
+    sections: [
+      {
+        id: 'task',
+        heading: 'The task',
+        prompt: 'What does the system actually do?',
         blocks: [
           {
             type: 'p',
-            text: 'Built and running: a ticker-to-narrative pipeline with events and stages, stance-flip detection, content-hash caching to avoid reprocessing unchanged sources, R2 ingest, and automated narrative ingest.',
+            text: 'Given a stream of commentary about a company, produce a record of the distinct claims being made, group the ones that are actually the same claim, and detect when a claim changes stage or reverses. The output is meant to answer "what is new?" rather than "what was published?"',
           },
           {
             type: 'p',
-            text: 'Not yet done: any systematic quality measurement. That is the honest state of this project, and it is the reason it is listed as in progress rather than published.',
+            text: 'Built and running: a ticker-to-narrative pipeline with events and stages, stance-flip detection, content-hash caching so unchanged sources are not reprocessed, object-store ingest, and automated narrative ingest.',
           },
+          {
+            type: 'p',
+            text: 'Not built: any systematic quality measurement. That is the honest state of this project and the reason it is labelled a working prototype rather than a finished case.',
+          },
+        ],
+      },
+      {
+        id: 'example',
+        heading: 'A public example you can check',
+        prompt: 'What does one unit of input and expected output look like?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'The linked fixture is six short passages I wrote by hand, with the grouping I believe is correct and the reason for each decision. It exists so a reader can disagree with my labels without needing the repository, a subscription, or my word for anything.',
+          },
+          {
+            type: 'table',
+            caption:
+              'Two of the six fixture passages. Shared vocabulary is the trap: both mention the same company and the same industry, and they are not the same claim.',
+            head: ['Passage', 'Claim', 'Same narrative?'],
+            rows: [
+              [
+                'A',
+                'The company benefits from data-centre capital spending by AI buyers.',
+                'Grouped with the passage restating it in different words.',
+              ],
+              [
+                'B',
+                'The company’s consumer graphics inventory has normalized after a glut.',
+                'Kept separate. Same company, different mechanism, different time horizon.',
+              ],
+            ],
+          },
+          {
+            type: 'note',
+            text: 'The fixture contains inputs and my gold labels only. It does not contain model output or an error rate, because I have not run the annotation yet and will not publish a score I have not computed.',
+          },
+        ],
+      },
+      {
+        id: 'observed',
+        heading: 'What the build has taught me',
+        prompt: 'What goes wrong, and how confident am I about it?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Two failure classes show up repeatedly on inspection. Over-merging: two genuinely different theses about the same company collapse into one narrative because they share vocabulary. Retroactive coherence: once a stance flip is detected, the surrounding evidence reads as though it always pointed that way.',
+          },
+          {
+            type: 'p',
+            text: 'Neither is quantified. Naming a failure from inspection is not the same as measuring its rate, and I am not going to report an over-merge number I have not computed.',
+          },
+        ],
+      },
+      {
+        id: 'evaluation',
+        heading: 'The evaluation this needs',
+        prompt: 'How would the study be run so the result means something?',
+        blocks: [
           {
             type: 'table',
             caption: 'The evaluation study this project needs, and the confusion each layer prevents.',
@@ -469,48 +606,32 @@ const items: WorkItem[] = [
               ],
             ],
           },
-        ],
-      },
-      studyDesign: {
-        prompt: 'How would the study be run so the result means something?',
-        blocks: [
           {
             type: 'list',
             items: [
               'Start at roughly fifty closely read cases, then widen. This is proposed work, not an existing dataset.',
-              'Record published_at, available_at, ingested_at, and evaluated_at separately, freeze the inputs, and only then validate on a forward window. Without the four timestamps there is no way to prove the model was not reading the future.',
+              'Record published_at, available_at, ingested_at, and evaluated_at separately, freeze the inputs, and only then validate on a forward window. Without the four timestamps there is no way to show the model was not reading the future.',
               'Hold out by narrative family and by source, so a near-duplicate article cannot appear on both sides of the split.',
-              'Compare deterministic rules, an LLM, and a hybrid on the same set, and report cost, latency, and error type — rather than assuming the LLM wins.',
-              'Allow annotators to mark a stage as ambiguous. Forcing every passage into a definite stage manufactures agreement that does not exist.',
+              'Compare deterministic rules, an LLM, and a hybrid on the same set, and report cost, latency, and error type rather than assuming the model wins.',
+              'Let annotators mark a stage as ambiguous. Forcing every passage into a definite stage manufactures agreement that does not exist.',
             ],
           },
           {
             type: 'note',
-            text: 'KOL data is used for source diversity, independent corroboration, and disagreement. A repost is not an independent source, and counting reposts as evidence would inflate every confidence number in the system.',
+            text: 'Reposts are used for source diversity and disagreement, never as independent corroboration. A repost is not a second source, and counting it as one would inflate every confidence number in the system.',
           },
         ],
       },
-      results: {
-        prompt: 'What has the build already taught me?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'Two failure classes show up repeatedly on inspection, and both are why the evaluation study is scoped the way it is. Over-merging: two genuinely different theses about the same company collapse into one narrative because they share vocabulary. Retroactive coherence: once a stance flip is detected, the surrounding evidence reads as though it always pointed that way.',
-          },
-          {
-            type: 'p',
-            text: 'Neither is quantified yet. Naming them from inspection is not the same as measuring their rate, and I am not going to report an over-merge number I have not computed.',
-          },
-        ],
-      },
-      nextDecision: {
+      {
+        id: 'next',
+        heading: 'Next',
         prompt: 'What happens next, and what would stop it?',
         blocks: [
           {
             type: 'list',
             items: [
-              'Build the public fixture: self-authored, licence-clean passages covering hold, add, reverse, retract, and duplicated-source cases.',
-              'Run the extraction and pairwise-clustering annotation on that fixture and publish the agreement rates, including the ones that look bad.',
+              'Extend the public fixture to cover hold, add, reverse, retract, and duplicated-source cases.',
+              'Run extraction and pairwise-clustering annotation on it, and publish the agreement rates including the bad ones.',
               'Only then decide whether the product surface should expand or narrow.',
             ],
           },
@@ -520,7 +641,7 @@ const items: WorkItem[] = [
           },
         ],
       },
-    },
+    ],
   },
   {
     slug: 'creative-evidence-lab',
@@ -531,63 +652,106 @@ const items: WorkItem[] = [
     status: 'proposed',
     featured: false,
     role: 'Proposed sole author: taxonomy, annotation protocol, tagging baselines, error analysis, and experiment design.',
+    roleLabel: 'Independent · Study design',
     methods: [
       'Multimodal tagging',
       'Annotator agreement',
       'Predictive evaluation',
       'Experiment design',
     ],
-    dataStatus:
-      'No licensed creative assets and no aligned delivery logs are confirmed. Scoped tagging-first: the first milestone needs assets and annotators, not performance data.',
+    dataNote:
+      'Nothing has been built or measured. No licensed creative assets and no aligned delivery logs are confirmed, and this page is a study design.',
     evidenceType: [],
-    decision:
-      'Two hours of data and scoping checks decide whether this runs as a tagging benchmark, a performance study, or not at all.',
-    summary:
-      'Connect what is observable in an ad creative to performance evidence, then to a testable production change. Proposed, not built: label quality, predictive value, and incremental impact are kept as three separate claims.',
+    contribution:
+      'A study design that keeps label quality, predictive value, and incremental impact as three separate claims.',
+    brief: {
+      problem:
+        'Creative intelligence products slide between three different claims: that a tag is accurate, that it predicts performance, and that changing the thing it describes improves the outcome.',
+      contribution:
+        'I designed the study that keeps them apart — an annotation protocol, a predictive evaluation with a fair baseline, and an experiment that intervenes on one attribute.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'None. This is a design with stated stop conditions, published so the reasoning can be criticized before any of it is built.',
+    },
     limitations: [
-      'Nothing here has been built or measured. This page is a study design.',
-      'Annalect performance figures belong to that work and are not transferable to this project.',
+      'Nothing here has been built or measured. This page is a study design and says so at the top.',
+      'Performance figures from my employment belong to that work and are not transferable to this project.',
       'Public ad libraries do not ship CTR, CVR, or ROAS alongside the creative. Stitching public creatives to unrelated click data would produce a join key that means nothing.',
     ],
-    updatedAt: '2026-09-05',
+    updatedAt: '2026-09-08',
     links: { caseStudy: '/work/creative-evidence-lab' },
-    sections: {
-      evidence: {
-        prompt: 'Who is this for, and what would they get?',
+    sections: [
+      {
+        id: 'decision',
+        heading: 'The decision this has to serve',
+        prompt: 'What would someone do differently because of it?',
         blocks: [
           {
-            type: 'table',
-            head: ['Role', 'Their question', 'What they should receive'],
-            rows: [
-              [
-                'Creative strategist',
-                'Which element should the next batch change first?',
-                'A change hypothesis with the raw evidence attached and its conditions stated.',
-              ],
-              [
-                'Performance marketer',
-                'Which differences are worth investigating at similar budget and audience?',
-                'A comparison that shows sample size and uncertainty, not a ranked leaderboard.',
-              ],
-              [
-                'DS / measurement lead',
-                'Which of these can be read causally, and how do we test the rest?',
-                'Estimand, intervention, assignment unit, power, and guardrails.',
-              ],
+            type: 'p',
+            text: 'A creative strategist has to pick what the next batch of assets changes first. The useful output is not a score; it is one hypothesis with the evidence attached, the conditions it holds under, and the test that would kill it.',
+          },
+          {
+            type: 'deflist',
+            items: [
+              {
+                term: '1 — Label quality',
+                detail:
+                  'Can two people apply the definition and agree? Until this holds, everything downstream is measuring annotation noise.',
+              },
+              {
+                term: '2 — Predictive value',
+                detail:
+                  'Does the label still add information out of sample, over a baseline that already knows the delivery context?',
+              },
+              {
+                term: '3 — Incremental impact',
+                detail:
+                  'Does changing the attribute move the outcome under a recorded random assignment? Nothing below this line supports the word "lift."',
+              },
             ],
           },
           {
-            type: 'p',
-            text: 'The user flow is deliberately short: pick an asset, inspect its timestamped tags, compare against similar assets where data exists, read one evidenced hypothesis, export an experiment brief.',
-          },
-          {
-            type: 'p',
-            text: 'What it must not do is emit a long list of generic advice. Every recommendation carries what to change, what it rests on, what else could explain it, how to test it, and what result would kill it.',
+            type: 'note',
+            text: 'A pattern that clears the first two layers is still a hypothesis. The point of separating them is that they have different burdens of proof and are routinely reported as one.',
           },
         ],
       },
-      studyDesign: {
-        prompt: 'What actually gets built, and in what order?',
+      {
+        id: 'example',
+        heading: 'One worked example',
+        prompt: 'What does a single output look like?',
+        blocks: [
+          {
+            type: 'template',
+            lines: [
+              {
+                label: 'Observed',
+                text: 'The first spoken brand mention occurs at 00:06. The visual logo tag still requires review.',
+              },
+              {
+                label: 'Hypothesis',
+                text: 'An earlier brand reveal may improve recall for this campaign. Incremental conversion impact is not established.',
+              },
+              {
+                label: 'Recommended test',
+                text: 'Compare the current version against an earlier reveal, holding the offer and the CTA fixed.',
+              },
+              {
+                label: 'Decision rule',
+                text: 'Ship only if the preregistered primary outcome and the guardrails support the change; otherwise keep the original or collect more evidence.',
+              },
+            ],
+          },
+          {
+            type: 'note',
+            text: 'The timestamps are illustrative. Every line in the product would be tagged as observation, association, hypothesis, or experimental result, so an uncertain suggestion cannot be rendered as a confident recommendation.',
+          },
+        ],
+      },
+      {
+        id: 'design',
+        heading: 'Design and data requirements',
+        prompt: 'What gets built, in what order, and on what data?',
         blocks: [
           {
             type: 'p',
@@ -596,7 +760,7 @@ const items: WorkItem[] = [
           {
             type: 'table',
             caption:
-              'Roughly eight to twelve core tags in the first version. Google\'s ABCD framework is a reference for organizing them, not ground truth and not a claim that each attribute has a general causal effect.',
+              'Roughly eight to twelve core tags in a first version. Google’s ABCD framework is a public reference for organizing them, not ground truth and not a claim that each attribute has a general causal effect.',
             head: ['Tag group', 'Example fields', 'Annotation requirement'],
             rows: [
               [
@@ -627,25 +791,17 @@ const items: WorkItem[] = [
             ],
           },
           {
-            type: 'p',
-            text: 'The data contract is five tables: creative_assets by asset version, creative_tags by asset × tag × model or human version, delivery_outcomes by asset × campaign × audience × placement × day, experiment_assignments by unit × experiment, and experiment_outcomes by unit over a fixed observation window.',
-          },
-          {
-            type: 'note',
-            text: 'Two joins to get wrong here: double-counting conversions after the fan-out, and treating creative-day rows as independent assets. Spend is also not a clean pre-treatment confounder — delivery systems allocate it in response to how the creative performs.',
-          },
-          {
             type: 'deflist',
             items: [
               {
                 term: 'Layer 1 — Is the label trustworthy?',
                 detail:
-                  'A rubric pilot of thirty to fifty assets, widening to roughly one hundred fifty to two hundred fifty, stratified by language, duration, and creative family. Part of the sample double-annotated, disagreements adjudicated. Report per-tag agreement and prevalence, never one blended score. Then compare OCR/ASR plus rules against a VLM on identical assets, with the final holdout isolated by creative family and frozen before testing.',
+                  'A rubric pilot of thirty to fifty assets, widening to roughly one hundred fifty to two hundred fifty, stratified by language, duration, and creative family. Part of the sample double-annotated, disagreements adjudicated. Report per-tag agreement and prevalence, never one blended score. Then compare OCR/ASR plus rules against a vision-language model on identical assets, with the final holdout isolated by creative family and frozen before testing.',
               },
               {
                 term: 'Layer 2 — Do the labels add predictive information?',
                 detail:
-                  'Only opens once assets and outcomes are genuinely aligned. Name one target — CTR, CVR, and ROAS are different tasks and do not roll up into a Creative Score. Baseline 0 is a grouped historical rate, Baseline 1 is pre-delivery context only, Model 2 adds tags. Out-of-time holdout, creative families isolated, calibration reported, and a leakage check for future performance leaking into tags or campaign names encoding the outcome.',
+                  'Only opens once assets and outcomes are genuinely aligned. Name one target — CTR, CVR, and ROAS are different tasks and do not roll up into a creative score. Baseline 0 is a grouped historical rate, Baseline 1 is pre-delivery context only, Model 2 adds tags. Out-of-time holdout, creative families isolated, calibration reported, and a leakage check for future performance leaking into tags or campaign names encoding the outcome.',
               },
               {
                 term: 'Layer 3 — Does changing the creative change the outcome?',
@@ -655,48 +811,24 @@ const items: WorkItem[] = [
             ],
           },
           {
+            type: 'p',
+            text: 'The data contract is five tables: creative_assets by asset version, creative_tags by asset × tag × model or human version, delivery_outcomes by asset × campaign × audience × placement × day, experiment_assignments by unit × experiment, and experiment_outcomes by unit over a fixed observation window.',
+          },
+          {
             type: 'note',
-            text: 'Running two ad versions at the same time is not randomization — the platform may adapt budget and audience toward the version that is already winning. If only campaign- or geo-level randomization is available, the analysis and the power calculation have to use that cluster. And since exposure itself can be affected by treatment, click-conditioned CVR cannot stand in for the ITT result.',
+            text: 'Running two ad versions at the same time is not randomization — the platform may move budget and audience toward whichever is already winning. If only campaign- or geo-level randomization is available, the analysis and the power calculation have to use that cluster. And since exposure itself can be affected by treatment, click-conditioned CVR cannot stand in for the ITT result.',
           },
         ],
       },
-      results: {
-        prompt: 'What results exist?',
+      {
+        id: 'status',
+        heading: 'Current status',
+        prompt: 'What exists today?',
         blocks: [
           {
             type: 'p',
-            text: 'None. No assets have been collected, no annotation has been run, and no performance data has been obtained. This page describes what would be measured and how the output would be phrased.',
+            text: 'A design. No assets have been collected, no annotation has been run, and no performance data has been obtained.',
           },
-          {
-            type: 'template',
-            lines: [
-              {
-                label: 'Observed',
-                text: 'The first spoken brand mention occurs at 00:06. The visual tag still requires review.',
-              },
-              {
-                label: 'Hypothesis',
-                text: 'An earlier brand reveal may improve recall for this campaign. Incremental conversion impact is not established.',
-              },
-              {
-                label: 'Recommended test',
-                text: 'Compare the current version with an earlier reveal, keeping the offer and CTA fixed.',
-              },
-              {
-                label: 'Decision rule',
-                text: 'Ship only if the preregistered primary outcome and guardrails support the change; otherwise retain the original or collect more evidence.',
-              },
-            ],
-          },
-          {
-            type: 'note',
-            text: 'The timestamps above are illustrative. Every line in the product is tagged as observation, association, hypothesis, or experimental result, so an uncertain suggestion cannot be rendered as a confident recommendation.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What decides whether this runs at all?',
-        blocks: [
           {
             type: 'table',
             head: ['Stage', 'Condition to continue', 'If it fails'],
@@ -725,24 +857,11 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Route selection first, in about two hours: with usable assets and aligned logs this becomes a tagging-then-performance study; with assets only it becomes a tagging benchmark plus an annotation-efficiency trial, which is still a real result; with neither it is shelved in favour of the Narrative Change Benchmark rather than stalling on a data cold start again.',
+            text: 'Route selection comes first: with usable assets and aligned logs this becomes a tagging-then-performance study; with assets only it becomes a tagging benchmark plus an annotation-efficiency trial, which is still a real result; with neither it is shelved rather than stalled on a data cold start.',
           },
         ],
       },
-      appendix: {
-        prompt: 'Where do the design choices come from?',
-        blocks: [
-          {
-            type: 'list',
-            items: [
-              'Tag grouping references Google\'s ABCD framework for video creative. It is a reference for organizing observable attributes, not ground truth.',
-              'Thresholds are set after the pilot and before the final holdout, derived from the cost of each error type.',
-              'Zero errors in a small sample does not mean a zero error rate. Sample size and interval get reported with every accuracy number.',
-            ],
-          },
-        ],
-      },
-    },
+    ],
   },
   {
     slug: 'churchmap',
@@ -753,27 +872,37 @@ const items: WorkItem[] = [
     status: 'published',
     featured: false,
     role: 'Sole author. Data pipeline, enrichment, search, and interface.',
+    roleLabel: 'Independent builder',
     methods: ['Coverage analysis', 'Crawl freshness', 'Task-success framing'],
-    dataStatus:
+    dataNote:
       'Public place data with lazy enrichment. Coverage and freshness vary by city, which is the interesting part of the problem.',
     evidenceType: ['observational'],
-    decision:
-      'Reframed from "crawl more" to a scope decision: which city, which users, and which fields are actually required for a first visit.',
-    summary:
-      'Location-first church discovery over Postgres and pgvector, with lazy profile enrichment and crawl freshness and coverage tracking. The real problem was never crawl volume — it was deciding which fields a first visit cannot do without.',
+    contribution:
+      'Built a location-first directory, then reframed the problem from crawl volume to which fields a first visit cannot do without.',
+    brief: {
+      problem:
+        'A directory with thousands of rows can still fail a first-time visitor if the four fields that visit depends on are the missing ones.',
+      contribution:
+        'I built the product end to end — geolocation search over Postgres and pgvector, lazy profile enrichment, and freshness and coverage tracking on the crawl itself.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'A live site, and a reframing: coverage is measured against a required field set for one user situation rather than by row count.',
+    },
     limitations: [
       'Coverage is uneven across cities, and search quality follows coverage.',
       'There is no evidence of product-market fit here, and I do not claim any.',
       'Enrichment freshness is monitored, not guaranteed. A crawl that logs no errors can still be quietly stale.',
     ],
-    updatedAt: '2026-09-05',
+    updatedAt: '2026-09-08',
     links: {
       caseStudy: '/work/churchmap',
       demo: 'https://churchmap.vercel.app/',
       code: 'https://github.com/zhou100/church_map',
     },
-    sections: {
-      evidence: {
+    sections: [
+      {
+        id: 'task',
+        heading: 'The task',
         prompt: 'What is the actual product problem?',
         blocks: [
           {
@@ -782,15 +911,28 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'The framing that took longest to reach: "we need more data" is not a project. A first-time visitor needs a small set of fields — service times, location, whether it is currently active, and how to arrive. A directory with ten fields and the wrong four missing fails the task just as completely as an empty one.',
-          },
-          {
-            type: 'note',
-            text: 'The site previously described this as SQLite. It runs on Supabase Postgres with pgvector. Corrected here.',
+            text: 'The framing that took longest to reach: "we need more data" is not a project. A first-time visitor needs a small set of fields — service times, location, whether it is currently active, and how to get there. A directory with ten fields and the wrong four missing fails the task as completely as an empty one.',
           },
         ],
       },
-      studyDesign: {
+      {
+        id: 'observed',
+        heading: 'What the data looks like',
+        prompt: 'What actually breaks?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Coverage is strongly uneven by city, and the long tail is missing exactly the fields the task depends on. Enrichment fills profiles on demand, which keeps cost sane, but it makes coverage a function of traffic rather than of importance.',
+          },
+          {
+            type: 'p',
+            text: 'The failure that generalizes past this project: a pipeline reporting no errors is not a healthy pipeline. Silent staleness and partial coverage produce clean logs and a broken product.',
+          },
+        ],
+      },
+      {
+        id: 'evaluation',
+        heading: 'How coverage should be measured',
         prompt: 'How would coverage be tied to task success?',
         blocks: [
           {
@@ -804,21 +946,10 @@ const items: WorkItem[] = [
           },
         ],
       },
-      results: {
-        prompt: 'What does the data look like in practice?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'Coverage is strongly uneven by city, and the long tail is missing exactly the fields the task depends on. Enrichment fills profiles on demand, which keeps cost sane, but it means coverage is a function of traffic rather than of importance.',
-          },
-          {
-            type: 'p',
-            text: 'The failure that generalizes beyond this project: a pipeline reporting no errors is not a healthy pipeline. Silent staleness and partial coverage produce clean logs and a broken product.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What next?',
+      {
+        id: 'next',
+        heading: 'Next',
+        prompt: 'What happens next?',
         blocks: [
           {
             type: 'list',
@@ -830,44 +961,54 @@ const items: WorkItem[] = [
           },
         ],
       },
-    },
+    ],
   },
   {
     slug: 'debrief',
     title: 'Debrief',
-    alias: 'Repository name: brief-voice-memo',
+    alias: 'Published from the repository brief-voice-memo',
     question:
       'What has to happen between a first voice memo and a user who saves the result and comes back?',
     kind: 'independent-build',
     status: 'published',
     featured: false,
     role: 'Sole author. Voice pipeline, classification, summaries, and interface.',
+    roleLabel: 'Independent builder',
     methods: ['Time-to-value analysis', 'Extraction error review', 'Funnel framing'],
-    dataStatus:
-      'Live product with anonymous trial. My own usage is not retention evidence and is not reported as such.',
+    dataNote:
+      'Live product with anonymous trial and early users beyond me. Retention and extraction accuracy are not measured yet, so no usage figures appear here.',
     evidenceType: ['observational'],
-    decision:
-      'Measure the anonymous-to-saved conversion path rather than adding features to a funnel that has not been read.',
-    summary:
-      'A voice app that turns quick spoken logs into daily and weekly reviews, tracking open loops over time. The interesting measurement is the path from first recording to a result a user trusts enough to save.',
+    contribution:
+      'Built a voice-to-review product, and defined the first honest metric for it rather than adding features.',
+    brief: {
+      problem:
+        'A voice app can produce a summary quickly and still not produce anything a user trusts enough to keep. The interesting step is the one between those two.',
+      contribution:
+        'I built the product end to end — capture, transcription, classification, daily and weekly reviews, open-loop tracking — and defined what to measure first.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'Live, with early users beyond me. The next step is understanding where first-time users find value, where extraction needs correction, and what brings them back.',
+    },
     limitations: [
-      'I use this product myself. That is a design signal, not retention evidence.',
+      'There are early external users, but no reliable retention or outcome measurement yet. I do not report user counts, activity, or anything resembling product-market fit.',
       'Task extraction errors are visible on inspection but have not been counted against a labelled set.',
-      'Anonymous trial means the top of the funnel is measurable and the identity-linked part is not.',
+      'The anonymous trial and the signed-in stage can each be measured; connecting them depends on instrumentation and identity rules that are not fully in place, which is a gap in what I currently measure rather than something unmeasurable.',
     ],
-    updatedAt: '2026-09-05',
+    updatedAt: '2026-09-08',
     links: {
       caseStudy: '/work/debrief',
       demo: 'https://time.yujun.net/',
       code: 'https://github.com/zhou100/brief-voice-memo',
     },
-    sections: {
-      evidence: {
+    sections: [
+      {
+        id: 'task',
+        heading: 'The task',
         prompt: 'What does the product do, and what is measurable?',
         blocks: [
           {
             type: 'p',
-            text: 'Anonymous trial, voice capture, transcription and classification, daily and weekly AI reviews, and open-loop tracking. A user can get to a result without an account, which makes the first-value moment measurable and the long-run behaviour harder to see.',
+            text: 'Debrief turns spoken notes into structured reflections and follow-up actions: anonymous trial, voice capture, transcription and classification, daily and weekly reviews, and open-loop tracking. A user can reach a result without an account, which makes the first-value moment easy to observe and the long-run behaviour harder to see.',
           },
           {
             type: 'deflist',
@@ -891,8 +1032,25 @@ const items: WorkItem[] = [
           },
         ],
       },
-      studyDesign: {
-        prompt: 'How would this be studied properly?',
+      {
+        id: 'observed',
+        heading: 'Where it stands',
+        prompt: 'What is actually known?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'The product is live and has early users beyond me. What I cannot yet say is where first-time users find value, how often extraction needs correcting, or what brings anyone back — none of that is instrumented well enough to report, and I would rather say so than publish a number I would not defend.',
+          },
+          {
+            type: 'p',
+            text: 'My own daily use is a design signal: it keeps the product honest about friction. It is not retention evidence and is not reported as such.',
+          },
+        ],
+      },
+      {
+        id: 'evaluation',
+        heading: 'How this should be studied',
+        prompt: 'What would make the next decision an informed one?',
         blocks: [
           {
             type: 'list',
@@ -900,33 +1058,12 @@ const items: WorkItem[] = [
               'Instrument the funnel to the save action before adding capability.',
               'Hand-label a small set of recordings for extracted tasks, then measure precision and recall against it.',
               'Separate "the transcription was wrong" from "the extraction was wrong" — they have different fixes.',
+              'Keep the display name and the repository name explained in one place, so the product, the site, and the README agree.',
             ],
           },
         ],
       },
-      results: {
-        prompt: 'What is known so far?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'The product works and I use it. That is the entire evidence base right now, and it is a weak one: a builder using their own tool tells you the tool is usable by its designer, nothing more.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What next?',
-        blocks: [
-          {
-            type: 'list',
-            items: [
-              'Read the funnel to the save action before building anything new.',
-              'Build the labelled extraction set so error claims can be quantified.',
-              'Unify the name across the site, the repository, and the product.',
-            ],
-          },
-        ],
-      },
-    },
+    ],
   },
   {
     slug: 'analytics-skeptic',
@@ -937,36 +1074,52 @@ const items: WorkItem[] = [
     status: 'proposed',
     featured: false,
     role: 'Proposed: benchmark construction, blind scoring design, and comparison against a human checklist.',
+    roleLabel: 'Independent · Study design',
     methods: ['Blind evaluation', 'Benchmark construction', 'Adjudicated labels'],
-    dataStatus:
-      'Currently a prompt plus a set of war stories. Not deployed. The agreed next step is five real users, before any evaluation extension.',
+    dataNote:
+      'A prompt and a set of war stories. Not deployed, and nothing has been benchmarked.',
     evidenceType: [],
-    decision:
-      'Validate with five real users first. Without user pull, it stays a prompt and does not become a platform.',
-    summary:
-      'A prompt that reviews analyses the way a skeptical DS would. It is a prompt and a set of war stories, not a deployed product — and the honest next step is five users, not a bigger architecture.',
+    contribution:
+      'A prompt that reviews analyses the way a skeptical data scientist would, plus the design for testing whether it works.',
+    brief: {
+      problem:
+        'An AI reviewer that sounds reasonable is easy. One that catches the specific issue that would change a launch decision is the only version worth having.',
+      contribution:
+        'I wrote the prompt and the war stories behind it, and designed the blind evaluation that would separate useful criticism from confident noise.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'A prompt, not a product. The honest next step is five real users, not a bigger architecture.',
+    },
     limitations: [
       'Nothing is deployed. Describing this as an agent platform would be false.',
-      'A single author cannot write the gold standard and also score it. Blind scoring needs someone else.',
+      'A single author cannot write the gold standard and also score against it. Blind scoring needs someone else.',
       '"Users found it insightful" is a separate record from whether it was correct, and cannot substitute for it.',
     ],
-    updatedAt: '2026-09-05',
+    updatedAt: '2026-09-08',
     links: {
       caseStudy: '/work/analytics-skeptic',
       code: 'https://github.com/zhou100/analytics_skeptic',
     },
-    sections: {
-      evidence: {
-        prompt: 'What exists?',
+    sections: [
+      {
+        id: 'decision',
+        heading: 'The decision this has to serve',
+        prompt: 'What exists, and what is the open question?',
         blocks: [
           {
             type: 'p',
             text: 'A prompt and a collection of war stories about analyses that went wrong. The README states the position plainly: no deployment, and the goal is five real users first. That is where it stands.',
           },
+          {
+            type: 'p',
+            text: 'The question is not whether the output reads well. It is whether it surfaces the issue that would have changed the decision — and whether it does that more often than a fixed human checklist.',
+          },
         ],
       },
-      studyDesign: {
-        prompt: 'What would a real evaluation look like?',
+      {
+        id: 'evaluation',
+        heading: 'What a real evaluation would look like',
+        prompt: 'How would it be tested?',
         blocks: [
           {
             type: 'list',
@@ -980,17 +1133,10 @@ const items: WorkItem[] = [
           },
         ],
       },
-      results: {
-        prompt: 'What results exist?',
-        blocks: [
-          {
-            type: 'p',
-            text: 'None. The five-user trial has not been completed, and no benchmark has been built.',
-          },
-        ],
-      },
-      nextDecision: {
-        prompt: 'What next?',
+      {
+        id: 'next',
+        heading: 'Next',
+        prompt: 'What happens next?',
         blocks: [
           {
             type: 'p',
@@ -998,7 +1144,7 @@ const items: WorkItem[] = [
           },
         ],
       },
-    },
+    ],
   },
 ];
 

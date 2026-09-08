@@ -148,6 +148,15 @@ h4 {
   padding: 72px 0;
 }
 
+/* First section after the hero: the reader should reach a case title fast. */
+.section--lead {
+  padding-top: 40px;
+}
+
+.section--lead .section__head {
+  margin-bottom: 24px;
+}
+
 .section--tight {
   padding: 48px 0;
 }
@@ -363,11 +372,12 @@ h4 {
   transform: translateY(-2px);
 }
 
+/* Status on one row, category on the next. A flex row wraps at different widths
+   per card, which knocks the titles out of alignment across a grid. */
 .card__top {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
   margin-bottom: 14px;
 }
 

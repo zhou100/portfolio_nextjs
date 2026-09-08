@@ -1,5 +1,81 @@
 # Changelog
 
+## 0.3.0 - 2026-09-08
+
+### Naming
+
+- Remove every employer and internal product name from the site. Work is described by
+  category — "short-form video platform", "advertising and media group", "independent
+  project" — across copy, card labels, slugs, and metadata. Recorded as a standing
+  constraint in `DESIGN.md`.
+- Rename the first industry case slug to `/work/recommendation-quality`; the previous
+  slug named a product.
+
+### Accuracy
+
+- Remove first-person claims that could not be supported from available material:
+  metric pre-registration, fixed-in-advance segments, a self-attributed metric failure
+  and rebuild, and named segment-level results. The method they described is kept, now
+  written as the conditions the work is held to.
+- Remove the resume-derived percentage and the paragraph explaining why it was withheld.
+  The page no longer both withholds a number and states it.
+- Replace "a guardrail that has never once stopped a launch is decoration" with the
+  falsifiable version: a guardrail needs a defined failure mode, a threshold, a
+  consequence, and enough sensitivity to bind.
+- Replace "typical traffic under-represents the users a safety metric protects" with the
+  accurate statement that overall and high-risk-slice performance answer different
+  questions, and the sample should support the decision.
+- Label the enterprise failure trace as an illustrative reconstruction and drop the
+  `offline-benchmark` evidence tag, which had no public artifact behind it.
+- Correct Debrief: it has early users beyond me, with no retention or extraction accuracy
+  measured yet. Drop "my own usage is the entire evidence base" and the claim that the
+  identity-linked funnel is not measurable.
+- Drop the unevidenced claim about what most creative-intelligence products report.
+
+### Reading order
+
+- Add a 60-second brief to every case — Problem, My contribution, What changed (or
+  Current result) — above the fold of the case body.
+- Replace the fixed five-section case template with a per-item ordered `sections` array,
+  so an industry case, a working prototype, and a study design each read in their own
+  order.
+- Compress work cards to title, one contribution sentence, role, and link.
+- Replace the hero thesis card with a three-row index straight into the work, and tighten
+  the hero so the first case title lands inside a 900px-tall desktop window.
+- Compress the home-page lab section to a single strip; the schedule and stop conditions
+  stay on the study-design page.
+- Rename status labels to Case study / Working prototype / Study design.
+
+### Writing
+
+- Publish the first three articles with full bodies: "When a Better Offline Metric Is the
+  Wrong Launch Signal", "Creative Tagging Is Easy. Proving Lift Is Harder.", and "An AI
+  Evaluator Needs an Evaluation".
+- Add `/writing/[slug]` with a generated table of contents.
+- Drive every writing surface from one `status`, with `articleHref()` returning a link
+  only for a published piece that has a body. Removes the home page claiming articles
+  were "written and in progress" while the data said planned.
+- Reorder `/writing` to published, then at most three in progress, then research. Replace
+  the citation-count explanation with a Google Scholar link.
+
+### Evidence a reader can check
+
+- Add `public/fixtures/narrative-evaluation-fixture-v1.json`: six self-authored passages
+  with gold narrative groupings and pairwise labels, linked from the Narrative case. It
+  contains inputs and labels only — no model output and no scores, because the annotation
+  has not been run.
+- Add an illustrative metric-to-action table to the recommendation-quality case and an
+  end-to-end failure trace to the enterprise case, both explicitly labelled.
+
+### Other
+
+- Add a committed Open Graph share image at `public/og.png`, rendered from
+  `tools/og-card.html`, and reference it from every page. `next/og` under
+  `output: 'export'` emits an extensionless file with no Content-Type.
+- Add `aria-current="page"` to the nav and `scroll-margin-top` to section anchors.
+- Split the two workstreams in the About experience entry and add an optional role period
+  field (unset — real dates still needed).
+
 ## 0.2.0 - 2026-09-05
 
 - Restructure the site around case studies with explicit status and evidence type: add `/work`, statically generated `/work/[slug]`, `/writing`, and a real `/about` page.

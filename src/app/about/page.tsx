@@ -25,6 +25,7 @@ export default function About() {
             <p className="eyebrow">About</p>
             <h1 className="pagehead__title">{site.name}</h1>
             <p className="about__title">{about.currentTitle}</p>
+            <p className="about__naming">{about.namingNote}</p>
             <div className="about__bio prose">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
@@ -73,8 +74,21 @@ export default function About() {
                 <div>
                   <h3 className="role__org">{role.org}</h3>
                   <p className="role__title">{role.title}</p>
+                  {role.period && <p className="role__period">{role.period}</p>}
                 </div>
-                <p className="role__focus">{role.focus}</p>
+                <div>
+                  <p className="role__focus">{role.focus}</p>
+                  {role.streams && (
+                    <dl className="deflist role__streams">
+                      {role.streams.map((stream) => (
+                        <div className="deflist__row" key={stream.name}>
+                          <dt className="deflist__term">{stream.name}</dt>
+                          <dd className="deflist__detail">{stream.detail}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
@@ -96,6 +110,7 @@ export default function About() {
                 <div>
                   <h3 className="role__org">{entry.org}</h3>
                   <p className="role__title">{entry.title}</p>
+                  {entry.period && <p className="role__period">{entry.period}</p>}
                 </div>
                 <p className="role__focus">{entry.focus}</p>
               </li>
@@ -166,7 +181,7 @@ export default function About() {
             <div className="section__head">
               <div>
                 <p className="eyebrow">Reference</p>
-                <h2 className="section__title">One, with its provenance stated</h2>
+                <h2 className="section__title">From a former manager</h2>
               </div>
             </div>
 
