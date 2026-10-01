@@ -1,0 +1,139 @@
+/* Career timeline in the dark hero. See DESIGN.md → Home hero. */
+
+.path {
+  border-top: 1px solid var(--clr-dark-border);
+  margin-top: 44px;
+  padding-top: 28px;
+}
+
+.path__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin-bottom: 26px;
+}
+
+.path__label {
+  color: var(--clr-accent-on-dark);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.path__intro {
+  color: var(--clr-dark-muted);
+  font-size: 0.95rem;
+}
+
+.path__list {
+  display: grid;
+  gap: 0 32px;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  position: relative;
+}
+
+/* One continuous rule through every dot, running to the right edge. */
+.path__list::before {
+  background: var(--clr-dark-border);
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+.path__step {
+  position: relative;
+}
+
+.path__dot {
+  background: var(--clr-dark);
+  border: 2px solid var(--clr-dark-muted);
+  border-radius: 50%;
+  display: block;
+  height: 17px;
+  margin-bottom: 22px;
+  position: relative;
+  width: 17px;
+}
+
+.path__step--current .path__dot {
+  background: var(--clr-accent-on-dark);
+  border-color: var(--clr-accent-on-dark);
+  box-shadow: 0 0 0 6px rgba(69, 179, 168, 0.22);
+}
+
+.path__org {
+  color: var(--clr-dark-ink);
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.path__role,
+.path__detail {
+  color: var(--clr-dark-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.path__role {
+  margin-top: 10px;
+}
+
+.path__now {
+  border: 1px solid var(--clr-accent-on-dark);
+  border-radius: var(--radius);
+  color: var(--clr-accent-on-dark);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-left: 10px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Below tablet the line turns vertical: dots down the left edge. */
+@media (max-width: 760px) {
+  .path__list {
+    gap: 26px;
+    grid-auto-flow: row;
+    padding-left: 34px;
+  }
+
+  /* Connectors run dot to dot, so the rule stops at the current step. */
+  .path__list::before {
+    display: none;
+  }
+
+  .path__step:not(:last-child)::before {
+    background: var(--clr-dark-border);
+    bottom: -32px;
+    content: '';
+    left: -26px;
+    position: absolute;
+    top: 23px;
+    width: 1px;
+  }
+
+  .path__dot {
+    left: -34px;
+    margin: 0;
+    position: absolute;
+    top: 6px;
+  }
+
+  .path__org {
+    font-size: 1.35rem;
+  }
+
+  .path__role {
+    margin-top: 6px;
+  }
+}

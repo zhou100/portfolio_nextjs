@@ -25,9 +25,6 @@ export default function Footer() {
             <li>
               <Link href="/writing">Writing</Link>
             </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
             {resume && (
               <li>
                 <a href={resume}>Resume</a>

@@ -42,8 +42,7 @@ export default function WorkIndex() {
               <p className="eyebrow">Industry cases</p>
               <h2 className="section__title">Measurement work inside a team</h2>
               <p className="section__lede">
-                Written from work I did inside a company. Employers and internal products are
-                described by category rather than by name, and confidential data and results are
+                Written from work I did inside a company. Confidential data and results are
                 omitted — what is here is my contribution and the method.
               </p>
             </div>

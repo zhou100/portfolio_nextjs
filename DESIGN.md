@@ -36,11 +36,10 @@
 - **Status:** live `#0f5f5a`, in progress `#8a5a10`, proposed/archived `#4a5b64`
 
 ## Naming Convention
-No employer or internal product is named anywhere on the site. They are described by
-category: *short-form video platform*, *advertising and media group*, *independent
-project*. This holds for headings, body copy, card labels, slugs, and metadata. It is
-a standing constraint, not a placeholder to fill in later — do not "restore" a company
-name because a sentence reads thin without it. Rewrite the sentence.
+Employers are named: *Facebook AI*, *Instagram Reels*, *Omnicom*. Independent work is
+labelled *independent project*. Internal product names, confidential data, and results
+are never published — describe the problem, not the internal system. Case slugs describe
+the problem, not a product.
 
 ## Status Convention
 Every work item shows a status as **both a word and a color**. Color alone never carries the meaning.
@@ -72,9 +71,13 @@ The reader meets the contribution before the method. This ordering is the point 
   the body — a limitation that does not change how the reader reads the case is cut.
 - **Cards compare, they do not read.** A work card is title + one contribution sentence +
   role + link. The question and the long summary live on the case page.
-- **Home hero is an index, not a manifesto.** Three clickable rows into the work. The first
-  case title must be reachable inside a 900px-tall desktop window; trim copy and vertical
-  rhythm to hold that, never the body size or a fixed height.
+- **Home hero is an introduction.** Portrait, name, the one-line claim, a short intro, and
+  two calls to action, then the career Path timeline. Selected work follows directly, so
+  the hero does not repeat links into the cases. Keep the intro to two or three sentences;
+  trim copy and vertical rhythm before body size.
+- **The Path timeline** is one horizontal rule with a dot per step (vertical below 760px).
+  Steps name the employer. The current step has a filled light-accent dot and a
+  "Now" tag beside the name, so color never carries it alone.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -86,7 +89,7 @@ The reader meets the contribution before the method. This ordering is the point 
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
-- **Hero:** Copy left, focus index right. Single column below 980px, copy first.
+- **Hero:** Copy left, circular portrait right (340px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
 - **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover is a border color change plus a 2px lift.
 - **Tables:** always inside `.tablewrap` with `overflow-x: auto`. The page body must never scroll horizontally.
 
@@ -103,12 +106,11 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (headline + focus index) → Selected work → Writing → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work → Writing → Lab strip → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → In progress (max 3) → Research
 `/writing/[slug]` Header → Table of contents → Body → Related work
-`/about` Bio → Experience → Education → Toolkit → Research → Reference
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -128,3 +130,8 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-09-08 | Hero thesis card replaced by a three-row focus index | The card argued a method and was specific to one project. The index sends the reader into the work and buys back the vertical space. |
 | 2026-09-08 | Status labels renamed to Case study / Working prototype / Study design | "Published" was read as "result proven". The label now names the artifact type. |
 | 2026-09-08 | Share card is a committed PNG, not a generated route | `next/og` under `output: 'export'` emits an extensionless file with no Content-Type, which scrapers reject. |
+| 2026-10-01 | Home hero leads with portrait, name, and a short intro; focus index replaced by a Path timeline | A first-time reader wanted to know who this is and how they got here before reading cases. The name returns to the H1 and the claim moves directly under it. |
+| 2026-10-01 | Portrait moved right and enlarged to 340px; Path timeline names employers | The small left portrait left the right half of the hero empty. Owner approved naming employers on the timeline only. |
+| 2026-10-01 | Employers named across the site; the "described by category" note removed | Owner decision. Supersedes the 2026-09-08 no-names rule. Internal product names and confidential results stay off the site. |
+| 2026-10-01 | Removed /about; hero eyebrow is "Data Scientist and AI builder" | The home hero and Path timeline already carry the bio and experience. Research lives at /writing#research. |
+| 2026-10-01 | Four testimonials restored, verbatim, in the hero under the Path timeline | Owner asked for them next to the experience. Quotes are never shortened; compactness comes from type size and the shared four-column grid instead. |

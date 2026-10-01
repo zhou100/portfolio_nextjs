@@ -1,16 +1,26 @@
 /* ---------- Hero ---------- */
 
+/* Short intro left, large portrait right, career path underneath. */
 .hero {
   background: var(--clr-dark);
   color: var(--clr-dark-ink);
-  padding: 48px 0 40px;
+  padding: 56px 0 48px;
 }
 
-.hero__inner {
-  align-items: start;
+.hero__intro {
+  align-items: center;
   display: grid;
-  gap: 56px;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 64px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+
+.hero__photo {
+  aspect-ratio: 1;
+  border: 2px solid var(--clr-dark-border);
+  border-radius: 50%;
+  justify-self: end;
+  object-fit: cover;
+  width: 340px;
 }
 
 .hero__eyebrow {
@@ -18,21 +28,28 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .hero__title {
   color: var(--clr-dark-ink);
   font-size: 3.6rem;
-  max-width: 14ch;
+}
+
+.hero__claim {
+  color: var(--clr-dark-ink);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 10px;
 }
 
 .hero__sub {
   color: var(--clr-dark-muted);
-  font-size: 1.15rem;
-  margin-top: 18px;
-  max-width: 54ch;
+  font-size: 1.125rem;
+  margin-top: 12px;
+  max-width: 64ch;
 }
 
 .hero__ctas {
@@ -40,65 +57,6 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 22px;
-}
-
-.hero__background {
-  border-top: 1px solid var(--clr-dark-border);
-  color: var(--clr-dark-muted);
-  font-size: 0.95rem;
-  margin-top: 22px;
-  padding-top: 14px;
-}
-
-/* ---------- Hero focus index ---------- */
-
-/* Three rows straight into the work. Replaces the old method-manifesto card so
-   the first case title is reachable without scrolling on a 900px window. */
-.focus {
-  background: var(--clr-dark-panel);
-  border: 1px solid var(--clr-dark-border);
-  border-radius: var(--radius);
-  padding: 8px 20px;
-}
-
-.focus__item + .focus__item {
-  border-top: 1px solid var(--clr-dark-border);
-}
-
-.focus__link {
-  color: inherit;
-  display: block;
-  padding: 16px 0;
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-.focus__label {
-  color: var(--clr-accent-on-dark);
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.focus__line {
-  color: var(--clr-dark-ink);
-  display: block;
-  font-size: 1.02rem;
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.focus__line::after {
-  color: var(--clr-accent-on-dark);
-  content: ' →';
-  font-weight: 700;
-}
-
-.focus__link:hover .focus__line,
-.focus__link:focus-visible .focus__line {
-  color: var(--clr-accent-on-dark);
 }
 
 /* ---------- Writing list ---------- */
@@ -160,6 +118,43 @@
   max-width: var(--prose);
 }
 
+/* ---------- Testimonials (in the hero, under Path) ---------- */
+
+/* Same four-column grid as the Path timeline, so each quote sits under a step.
+   Quotes are verbatim; the layout stays quiet so they read as support, not a section. */
+.kudos {
+  border-top: 1px solid var(--clr-dark-border);
+  margin-top: 36px;
+  padding-top: 24px;
+}
+
+.kudos__label {
+  color: var(--clr-accent-on-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.kudos__list {
+  display: grid;
+  gap: 24px 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.kudos__quote p {
+  color: var(--clr-dark-ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.kudos__role {
+  color: var(--clr-dark-muted);
+  font-size: 0.88rem;
+  margin-top: 10px;
+}
+
 /* ---------- Closer ---------- */
 
 .closer {
@@ -179,26 +174,33 @@
 
 @media (max-width: 980px) {
   .hero {
-    padding: 60px 0 64px;
+    padding: 44px 0 40px;
   }
 
-  .hero__inner,
   .labstrip,
   .closer {
     grid-template-columns: 1fr;
   }
 
-  .hero__inner {
-    gap: 36px;
+  .hero__intro {
+    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) 240px;
+  }
+
+  .hero__photo {
+    width: 240px;
   }
 
   .hero__title {
     font-size: 2.8rem;
-    max-width: none;
   }
 
   .article {
     grid-template-columns: 1fr;
+  }
+
+  .kudos__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .article__argument {
@@ -215,8 +217,24 @@
     font-size: 2.35rem;
   }
 
+  .hero__intro {
+    align-items: start;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .hero__photo {
+    justify-self: start;
+    order: -1;
+    width: 160px;
+  }
+
+  .hero__claim {
+    font-size: 1.25rem;
+  }
+
   .hero__sub {
-    font-size: 1.08rem;
+    font-size: 1.0625rem;
   }
 
   .hero__ctas .btn {
@@ -225,5 +243,9 @@
 
   .labstrip {
     padding: 20px;
+  }
+
+  .kudos__list {
+    grid-template-columns: 1fr;
   }
 }

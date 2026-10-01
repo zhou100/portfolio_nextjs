@@ -668,7 +668,7 @@ td {
   margin-top: 16px;
 }
 
-/* ---------- Page headers (shared by /work, /writing, /about) ---------- */
+/* ---------- Page headers (shared by /work, /writing) ---------- */
 
 .pagehead {
   border-bottom: 1px solid var(--clr-border);

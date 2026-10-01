@@ -1,5 +1,29 @@
 # Changelog
 
+## Unreleased - 2026-10-01
+
+### Home
+
+- Hero leads with name, a short intro, and a large portrait on the right.
+- Replace the focus index with a Path timeline: University of Illinois → Facebook AI →
+  Instagram Reels → Omnicom.
+
+### Naming
+
+- Name employers across the site (Facebook AI, Instagram Reels, Omnicom) and remove the
+  "described by category" notes on About and Work. Supersedes the 0.3.0 naming rule.
+- Split the About experience into separate Instagram Reels and Facebook AI roles, and move
+  the integrity paragraph out of the Reels recommendation-quality case.
+
+### Structure
+
+- Remove the About page and its nav and footer links; the home hero and Path timeline
+  carry the bio and experience. Research stays at `/writing#research`.
+- Hero eyebrow is now "Data Scientist and AI builder".
+- Show all four testimonials verbatim in the hero under the Path timeline (manager, data
+  science colleague, engineering manager, ML engineer), restored from before 0.3.0.
+- Retitle the Omnicom case "AI Agents Orchestration and Evaluation" (slug unchanged).
+
 ## 0.3.0 - 2026-09-08
 
 ### Naming
