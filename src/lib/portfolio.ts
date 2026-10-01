@@ -11,7 +11,7 @@ export interface Cta {
 
 export interface Site {
   name: string;
-  /** Square portrait in `public/`, shown in the home hero and on About. */
+  /** Square portrait in `public/`, shown in the home hero. */
   profileImage: string;
   brand: string;
   eyebrow: string;
@@ -38,38 +38,12 @@ export interface PathStep {
   current?: boolean;
 }
 
-export interface Role {
-  org: string;
-  title: string;
-  /** Employment period, e.g. "2021 — 2024". Rendered only when set. */
-  period?: string;
-  focus: string;
-  /** Separate workstreams inside one role, when they answer different questions. */
-  streams?: { name: string; detail: string }[];
-  note?: string;
-}
-
-export interface Testimonial {
-  quote: string;
-  role: string;
-  attribution: string;
-}
-
-export interface AboutContent {
-  currentTitle: string;
-  paragraphs: string[];
-  roles: Role[];
-  education: Role[];
-  skillGroups: { name: string; items: string[] }[];
-  testimonials: Testimonial[];
-}
-
 export function getSite(): Site {
   return {
     name: 'Yujun Zhou',
     profileImage: '/profile.jpg',
     brand: 'Yujun Zhou',
-    eyebrow: 'Senior Data Scientist · Economics PhD',
+    eyebrow: 'Data Scientist and AI builder',
     headline: 'I measure and improve AI products.',
     intro:
       'I’m a data scientist with an economics PhD. I work on experimentation and evaluation for recommendations, advertising, and AI systems — connecting product decisions to evidence, and building the tools to check it when they don’t exist yet.',
@@ -127,77 +101,4 @@ export function getPath(): PathStep[] {
       current: true,
     },
   ];
-}
-
-export function getAbout(): AboutContent {
-  return {
-    currentTitle: 'Data Science Manager & Tech Lead · Omnicom',
-    paragraphs: [
-      'I’m a data scientist with a PhD in Applied Economics. I worked on fake-account and integrity measurement at Facebook AI, then on recommendation quality for Instagram Reels, and I now lead data science for AI agent orchestration and evaluation at Omnicom. Across all three, my job is to define an outcome worth moving, test whether the evidence supports the decision, and build whatever is missing to check it.',
-      'The through line is measurement under pressure. Engagement moves for reasons that have nothing to do with a better product. An assistant that reads well can still fail the task it was hired for. Most of my work is deciding which comparison is credible enough to act on, and saying plainly when it isn’t.',
-      'I build the systems I need to test my own ideas — evaluation pipelines, data contracts, and small products with real users — because a claim I cannot reproduce is not evidence I can defend.',
-    ],
-    roles: [
-      {
-        org: 'Omnicom',
-        title: 'Data Science Manager & Tech Lead',
-        focus:
-          'AI agent orchestration and evaluation: layered task metrics, human rubrics, regression gates, and the quality, cost, and latency tradeoffs behind a release decision.',
-      },
-      {
-        org: 'Instagram Reels',
-        title: 'Data Scientist',
-        focus:
-          'Recommendation quality: defining consumption-side outcomes for a short-form video feed, reading experiments against them, and pairing a creator-side goal with a viewer-experience guardrail.',
-      },
-      {
-        org: 'Facebook AI',
-        title: 'Data Scientist',
-        focus:
-          'Fake accounts and integrity measurement: evaluating rare, high-cost failures, where a sample drawn for average performance does not have the resolution the decision requires.',
-      },
-    ],
-    education: [
-      {
-        org: 'University of Illinois Urbana-Champaign',
-        title: 'PhD, Applied Economics',
-        focus:
-          'Causal identification, forecasting, and the gap between a model that fits and a model a decision-maker can use. Published in Applied Economic Perspectives and Policy, World Development, and JAFIO.',
-      },
-    ],
-    skillGroups: [
-      {
-        name: 'Measurement & inference',
-        items: [
-          'Experiment design',
-          'Causal inference',
-          'Metric definition',
-          'Sampling & power',
-          'Offline–online gap analysis',
-        ],
-      },
-      {
-        name: 'AI evaluation',
-        items: [
-          'Human rubrics & annotator agreement',
-          'Failure taxonomies',
-          'LLM-as-judge validation',
-          'Calibration & abstention',
-          'Regression gates',
-        ],
-      },
-      {
-        name: 'Building',
-        items: ['Python', 'SQL', 'FastAPI', 'React / TypeScript', 'Postgres & pgvector'],
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          'Consistent excellence in analytics work, with strong influence skills, operational rigor, and a high bar for data-driven decision making.',
-        role: 'Former manager, recommendation relevance analytics',
-        attribution: 'Anonymized here at the source. Named reference available on request.',
-      },
-    ],
-  };
 }

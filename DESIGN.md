@@ -111,7 +111,6 @@ The reader meets the contribution before the method. This ordering is the point 
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → In progress (max 3) → Research
 `/writing/[slug]` Header → Table of contents → Body → Related work
-`/about` Bio → Experience → Education → Toolkit → Research → Reference
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -134,3 +133,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Home hero leads with portrait, name, and a short intro; focus index replaced by a Path timeline | A first-time reader wanted to know who this is and how they got here before reading cases. The name returns to the H1 and the claim moves directly under it. |
 | 2026-10-01 | Portrait moved right and enlarged to 340px; Path timeline names employers | The small left portrait left the right half of the hero empty. Owner approved naming employers on the timeline only. |
 | 2026-10-01 | Employers named across the site; the "described by category" note removed | Owner decision. Supersedes the 2026-09-08 no-names rule. Internal product names and confidential results stay off the site. |
+| 2026-10-01 | Removed /about; hero eyebrow is "Data Scientist and AI builder" | The home hero and Path timeline already carry the bio and experience. Research lives at /writing#research. |

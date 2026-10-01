@@ -26,13 +26,12 @@ Employers are named (Facebook AI, Instagram Reels, Omnicom). Internal product na
 | `/work/[slug]` | Case study, statically generated per item |
 | `/writing` | Published articles, at most three in progress, plus peer-reviewed research |
 | `/writing/[slug]` | Article body, statically generated per published piece |
-| `/about` | Bio, experience, education, toolkit, research, one reference |
 
 ## Content model
 
 All content is data, not JSX. Editing the site means editing three files:
 
-- `src/lib/portfolio.ts` — site copy, hero, social links, about page content
+- `src/lib/portfolio.ts` — site copy, hero, Path timeline, social links
 - `src/lib/work.ts` — the `WorkItem` type and every case study
 - `src/lib/writing.ts` — articles (including their bodies) and published papers
 

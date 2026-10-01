@@ -15,6 +15,13 @@
 - Split the About experience into separate Instagram Reels and Facebook AI roles, and move
   the integrity paragraph out of the Reels recommendation-quality case.
 
+### Structure
+
+- Remove the About page and its nav and footer links; the home hero and Path timeline
+  carry the bio and experience. Research stays at `/writing#research`.
+- Hero eyebrow is now "Data Scientist and AI builder".
+- Retitle the Omnicom case "AI Agents Orchestration and Evaluation" (slug unchanged).
+
 ## 0.3.0 - 2026-09-08
 
 ### Naming

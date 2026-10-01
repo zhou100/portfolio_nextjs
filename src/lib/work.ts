@@ -274,7 +274,7 @@ const items: WorkItem[] = [
   },
   {
     slug: 'enterprise-ai-evaluation',
-    title: 'Making Enterprise AI Evaluation Launch-Relevant',
+    title: 'AI Agents Orchestration and Evaluation',
     org: 'Omnicom',
     question:
       'How do you stop an assistant that sounds right from failing the task it was built for?',

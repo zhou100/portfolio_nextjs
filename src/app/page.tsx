@@ -34,9 +34,9 @@ export default function Home() {
                     View resume
                   </a>
                 ) : (
-                  <Link className="btn btn--on-dark" href="/about">
-                    About me
-                  </Link>
+                  <a className="btn btn--on-dark" href={`mailto:${site.email}`}>
+                    Get in touch
+                  </a>
                 )}
               </div>
             </div>
@@ -152,8 +152,8 @@ export default function Home() {
               <a className="btn btn--primary" href={`mailto:${site.email}`}>
                 {site.email}
               </a>
-              <Link className="btn btn--ghost" href="/about">
-                Background and research
+              <Link className="btn btn--ghost" href="/writing#research">
+                Published research
               </Link>
             </div>
           </div>

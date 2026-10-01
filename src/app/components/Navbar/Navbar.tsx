@@ -9,7 +9,6 @@ import './Navbar.css';
 const links = [
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },
-  { label: 'About', href: '/about' },
 ];
 
 export default function Navbar() {
