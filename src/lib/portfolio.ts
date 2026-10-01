@@ -119,7 +119,7 @@ export function getTestimonials(): Testimonial[] {
     {
       quote:
         'An amazing tech lead and one of the best data scientists I had the chance to work with.',
-      role: 'Data science colleague, Facebook',
+      role: 'Data science colleague, Facebook AI',
     },
     {
       quote:
@@ -129,7 +129,7 @@ export function getTestimonials(): Testimonial[] {
     {
       quote:
         'Played an incredible role supporting the team with strong technical skills and thoughtful partnership.',
-      role: 'Machine learning engineer, Facebook',
+      role: 'Machine learning engineer, Facebook AI',
     },
   ];
 }
