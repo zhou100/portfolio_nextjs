@@ -106,7 +106,7 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (portrait + intro, Path timeline) → Selected work → Writing → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline) → Selected work → Writing → Lab strip → Testimonials → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → In progress (max 3) → Research
@@ -134,3 +134,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Portrait moved right and enlarged to 340px; Path timeline names employers | The small left portrait left the right half of the hero empty. Owner approved naming employers on the timeline only. |
 | 2026-10-01 | Employers named across the site; the "described by category" note removed | Owner decision. Supersedes the 2026-09-08 no-names rule. Internal product names and confidential results stay off the site. |
 | 2026-10-01 | Removed /about; hero eyebrow is "Data Scientist and AI builder" | The home hero and Path timeline already carry the bio and experience. Research lives at /writing#research. |
+| 2026-10-01 | Four testimonials restored to the home page, attributed by role | The About page that held the one remaining quote was removed; the colleague and partner quotes were restored from history at the owner's request. |

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPath, getSite } from '@/lib/portfolio';
+import { getPath, getSite, getTestimonials } from '@/lib/portfolio';
 import { getFeaturedWork, getWorkBySlug } from '@/lib/work';
 import { articleHref, getPublishedArticles } from '@/lib/writing';
 import CareerPath from './components/CareerPath/CareerPath';
@@ -10,6 +10,7 @@ import './home.css';
 export default function Home() {
   const site = getSite();
   const path = getPath();
+  const testimonials = getTestimonials();
   const featured = getFeaturedWork();
   const articles = getPublishedArticles();
   const lab = getWorkBySlug('creative-evidence-lab');
@@ -131,6 +132,32 @@ export default function Home() {
                 Read the study design →
               </Link>
             </article>
+          </div>
+        </section>
+      )}
+
+      {!!testimonials.length && (
+        <section className="section section--tight" id="testimonials">
+          <div className="wrap">
+            <div className="section__head">
+              <div>
+                <p className="eyebrow">Testimonials</p>
+                <h2 className="section__title">From people I’ve worked with</h2>
+              </div>
+            </div>
+
+            <ul className="grid grid--2 quotes">
+              {testimonials.map((testimonial) => (
+                <li key={testimonial.quote}>
+                  <figure className="quote">
+                    <blockquote>
+                      <p>{testimonial.quote}</p>
+                    </blockquote>
+                    <figcaption className="quote__role">{testimonial.role}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

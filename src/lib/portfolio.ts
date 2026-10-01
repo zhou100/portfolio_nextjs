@@ -102,3 +102,34 @@ export function getPath(): PathStep[] {
     },
   ];
 }
+
+export interface Testimonial {
+  quote: string;
+  /** Who said it, by role. Names are available on request. */
+  role: string;
+}
+
+export function getTestimonials(): Testimonial[] {
+  return [
+    {
+      quote:
+        'Consistent excellence in analytics work, with strong influence skills, operational rigor, and a high bar for data-driven decision making.',
+      role: 'Former manager, Instagram Relevance Analytics',
+    },
+    {
+      quote:
+        'An amazing tech lead and one of the best data scientists I had the chance to work with.',
+      role: 'Data science colleague',
+    },
+    {
+      quote:
+        'Always impressed by Yujun’s analytical skills and insights. Any team would be lucky to have him.',
+      role: 'Engineering manager',
+    },
+    {
+      quote:
+        'Played an incredible role supporting the team with strong technical skills and thoughtful partnership.',
+      role: 'Machine learning engineer',
+    },
+  ];
+}

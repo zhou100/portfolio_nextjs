@@ -118,6 +118,36 @@
   max-width: var(--prose);
 }
 
+/* ---------- Testimonials ---------- */
+
+.quotes > li {
+  display: flex;
+}
+
+.quote {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-left: 3px solid var(--clr-accent);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  width: 100%;
+}
+
+.quote blockquote p {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.quote__role {
+  color: var(--clr-muted);
+  font-size: 0.95rem;
+  margin-top: 16px;
+}
+
 /* ---------- Closer ---------- */
 
 .closer {
@@ -200,7 +230,8 @@
     flex: 1 1 100%;
   }
 
-  .labstrip {
+  .labstrip,
+  .quote {
     padding: 20px;
   }
 }
