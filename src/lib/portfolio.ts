@@ -119,17 +119,17 @@ export function getTestimonials(): Testimonial[] {
     {
       quote:
         'An amazing tech lead and one of the best data scientists I had the chance to work with.',
-      role: 'Data science colleague',
+      role: 'Data science colleague, Meta',
     },
     {
       quote:
         'Always impressed by Yujun’s analytical skills and insights. Any team would be lucky to have him.',
-      role: 'Engineering manager',
+      role: 'Engineering manager, Meta',
     },
     {
       quote:
         'Played an incredible role supporting the team with strong technical skills and thoughtful partnership.',
-      role: 'Machine learning engineer',
+      role: 'Machine learning engineer, Meta',
     },
   ];
 }
