@@ -19,15 +19,6 @@ export default function Home() {
       <section className="hero">
         <div className="wrap">
           <div className="hero__intro">
-            <Image
-              className="hero__photo"
-              src={site.profileImage}
-              alt={`${site.name}, portrait`}
-              width={200}
-              height={200}
-              priority
-            />
-
             <div className="hero__copy">
               <p className="hero__eyebrow">{site.eyebrow}</p>
               <h1 className="hero__title">{site.name}</h1>
@@ -49,6 +40,15 @@ export default function Home() {
                 )}
               </div>
             </div>
+
+            <Image
+              className="hero__photo"
+              src={site.profileImage}
+              alt={`${site.name}, portrait`}
+              width={400}
+              height={400}
+              priority
+            />
           </div>
 
           <CareerPath intro={site.pathIntro} steps={path} />

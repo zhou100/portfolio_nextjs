@@ -42,6 +42,10 @@ project*. This holds for headings, body copy, card labels, slugs, and metadata. 
 a standing constraint, not a placeholder to fill in later — do not "restore" a company
 name because a sentence reads thin without it. Rewrite the sentence.
 
+**One exception, approved 2026-10-01:** the home-page Path timeline names employers
+(Facebook AI, Instagram Reels, Omnicom). Nowhere else — case studies, cards, slugs, and
+the About page keep category descriptions.
+
 ## Status Convention
 Every work item shows a status as **both a word and a color**. Color alone never carries the meaning.
 The label says what the reader is looking at, not how mature the work is.
@@ -77,8 +81,8 @@ The reader meets the contribution before the method. This ordering is the point 
   the hero does not repeat links into the cases. Keep the intro to two or three sentences;
   trim copy and vertical rhythm before body size.
 - **The Path timeline** is one horizontal rule with a dot per step (vertical below 760px).
-  Steps follow the naming convention. The current step has a filled light-accent dot and a
-  "Now" label, so color never carries it alone.
+  Steps name employers (the one exception to the naming convention). The current step has a filled light-accent dot and a
+  "Now" tag beside the name, so color never carries it alone.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -90,7 +94,7 @@ The reader meets the contribution before the method. This ordering is the point 
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
-- **Hero:** Circular portrait (200px desktop, 150px tablet, 120px mobile) left of the copy; stacks above it below 640px. Path timeline sits under both, separated by a dark-border rule.
+- **Hero:** Copy left, circular portrait right (340px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
 - **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover is a border color change plus a 2px lift.
 - **Tables:** always inside `.tablewrap` with `overflow-x: auto`. The page body must never scroll horizontally.
 
@@ -133,3 +137,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-09-08 | Status labels renamed to Case study / Working prototype / Study design | "Published" was read as "result proven". The label now names the artifact type. |
 | 2026-09-08 | Share card is a committed PNG, not a generated route | `next/og` under `output: 'export'` emits an extensionless file with no Content-Type, which scrapers reject. |
 | 2026-10-01 | Home hero leads with portrait, name, and a short intro; focus index replaced by a Path timeline | A first-time reader wanted to know who this is and how they got here before reading cases. The name returns to the H1 and the claim moves directly under it. |
+| 2026-10-01 | Portrait moved right and enlarged to 340px; Path timeline names employers | The small left portrait left the right half of the hero empty. Owner approved naming employers on the timeline only. |

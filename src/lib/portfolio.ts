@@ -27,8 +27,8 @@ export interface Site {
 }
 
 /**
- * One stop on the career path shown under the home hero. Orgs follow the naming
- * convention in DESIGN.md: categories, never employer names.
+ * One stop on the career path shown under the home hero. This is the one place
+ * employers are named; see the naming exception in DESIGN.md.
  */
 export interface PathStep {
   org: string;
@@ -113,12 +113,16 @@ export function getPath(): PathStep[] {
       detail: 'Causal inference and forecasting',
     },
     {
-      org: 'Short-form video platform',
+      org: 'Facebook AI',
+      role: 'Data Scientist',
+    },
+    {
+      org: 'Instagram Reels',
       role: 'Data Scientist',
       detail: 'Recommendation quality and integrity measurement',
     },
     {
-      org: 'Advertising and media group',
+      org: 'Omnicom',
       role: 'Data Science Manager & Tech Lead',
       detail: 'Enterprise AI evaluation',
       current: true,

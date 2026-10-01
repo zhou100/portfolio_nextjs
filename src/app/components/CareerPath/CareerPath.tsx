@@ -28,11 +28,11 @@ export default function CareerPath({ intro, steps }: Props) {
             aria-current={step.current ? 'step' : undefined}
           >
             <span className="path__dot" aria-hidden="true" />
-            <h3 className="path__org">{step.org}</h3>
-            <p className="path__role">
-              {step.role}
-              {step.current && <span className="path__now"> · Now</span>}
-            </p>
+            <h3 className="path__org">
+              {step.org}
+              {step.current && <span className="path__now">Now</span>}
+            </h3>
+            <p className="path__role">{step.role}</p>
             {step.detail && <p className="path__detail">{step.detail}</p>}
           </li>
         ))}

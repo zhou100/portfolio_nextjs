@@ -86,8 +86,17 @@
 }
 
 .path__now {
+  border: 1px solid var(--clr-accent-on-dark);
+  border-radius: var(--radius);
   color: var(--clr-accent-on-dark);
+  display: inline-block;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-left: 10px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 /* Below tablet the line turns vertical: dots down the left edge. */
