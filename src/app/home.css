@@ -118,34 +118,41 @@
   max-width: var(--prose);
 }
 
-/* ---------- Testimonials ---------- */
+/* ---------- Testimonials (in the hero, under Path) ---------- */
 
-.quotes > li {
-  display: flex;
+/* Same four-column grid as the Path timeline, so each quote sits under a step.
+   Quotes are verbatim; the layout stays quiet so they read as support, not a section. */
+.kudos {
+  border-top: 1px solid var(--clr-dark-border);
+  margin-top: 36px;
+  padding-top: 24px;
 }
 
-.quote {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-left: 3px solid var(--clr-accent);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px;
-  width: 100%;
-}
-
-.quote blockquote p {
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.quote__role {
-  color: var(--clr-muted);
+.kudos__label {
+  color: var(--clr-accent-on-dark);
   font-size: 0.95rem;
-  margin-top: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.kudos__list {
+  display: grid;
+  gap: 24px 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.kudos__quote p {
+  color: var(--clr-dark-ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.kudos__role {
+  color: var(--clr-dark-muted);
+  font-size: 0.88rem;
+  margin-top: 10px;
 }
 
 /* ---------- Closer ---------- */
@@ -192,6 +199,10 @@
     grid-template-columns: 1fr;
   }
 
+  .kudos__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .article__argument {
     grid-column: 1;
   }
@@ -230,8 +241,11 @@
     flex: 1 1 100%;
   }
 
-  .labstrip,
-  .quote {
+  .labstrip {
     padding: 20px;
+  }
+
+  .kudos__list {
+    grid-template-columns: 1fr;
   }
 }

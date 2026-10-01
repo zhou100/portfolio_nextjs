@@ -53,6 +53,26 @@ export default function Home() {
           </div>
 
           <CareerPath intro={site.pathIntro} steps={path} />
+
+          {!!testimonials.length && (
+            <section className="kudos" aria-labelledby="kudos-label">
+              <h2 className="kudos__label" id="kudos-label">
+                What colleagues say
+              </h2>
+              <ul className="kudos__list">
+                {testimonials.map((testimonial) => (
+                  <li key={testimonial.quote}>
+                    <figure className="kudos__item">
+                      <blockquote className="kudos__quote">
+                        <p>“{testimonial.quote}”</p>
+                      </blockquote>
+                      <figcaption className="kudos__role">{testimonial.role}</figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </section>
 
@@ -132,32 +152,6 @@ export default function Home() {
                 Read the study design →
               </Link>
             </article>
-          </div>
-        </section>
-      )}
-
-      {!!testimonials.length && (
-        <section className="section section--tight" id="testimonials">
-          <div className="wrap">
-            <div className="section__head">
-              <div>
-                <p className="eyebrow">Testimonials</p>
-                <h2 className="section__title">From people I’ve worked with</h2>
-              </div>
-            </div>
-
-            <ul className="grid grid--2 quotes">
-              {testimonials.map((testimonial) => (
-                <li key={testimonial.quote}>
-                  <figure className="quote">
-                    <blockquote>
-                      <p>{testimonial.quote}</p>
-                    </blockquote>
-                    <figcaption className="quote__role">{testimonial.role}</figcaption>
-                  </figure>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
       )}

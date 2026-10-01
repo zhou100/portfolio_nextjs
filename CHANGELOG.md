@@ -20,8 +20,8 @@
 - Remove the About page and its nav and footer links; the home hero and Path timeline
   carry the bio and experience. Research stays at `/writing#research`.
 - Hero eyebrow is now "Data Scientist and AI builder".
-- Add a Testimonials section to the home page with all four quotes (manager, data science
-  colleague, engineering manager, ML engineer), restored from before 0.3.0.
+- Show all four testimonials verbatim in the hero under the Path timeline (manager, data
+  science colleague, engineering manager, ML engineer), restored from before 0.3.0.
 - Retitle the Omnicom case "AI Agents Orchestration and Evaluation" (slug unchanged).
 
 ## 0.3.0 - 2026-09-08
