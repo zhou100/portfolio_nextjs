@@ -46,7 +46,7 @@ export default function About() {
 
           <figure className="about__figure">
             <Image
-              src={about.profileImage}
+              src={site.profileImage}
               alt={`${site.name}, portrait`}
               width={360}
               height={360}

@@ -1,13 +1,15 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { getFocusRows, getSite } from '@/lib/portfolio';
+import { getPath, getSite } from '@/lib/portfolio';
 import { getFeaturedWork, getWorkBySlug } from '@/lib/work';
 import { articleHref, getPublishedArticles } from '@/lib/writing';
+import CareerPath from './components/CareerPath/CareerPath';
 import WorkCard from './components/Work/WorkCard';
 import './home.css';
 
 export default function Home() {
   const site = getSite();
-  const focus = getFocusRows();
+  const path = getPath();
   const featured = getFeaturedWork();
   const articles = getPublishedArticles();
   const lab = getWorkBySlug('creative-evidence-lab');
@@ -15,42 +17,41 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="wrap hero__inner">
-          <div className="hero__copy">
-            <p className="hero__eyebrow">{site.eyebrow}</p>
-            <h1 className="hero__title">{site.headline}</h1>
-            <p className="hero__sub">{site.subheadline}</p>
+        <div className="wrap">
+          <div className="hero__intro">
+            <Image
+              className="hero__photo"
+              src={site.profileImage}
+              alt={`${site.name}, portrait`}
+              width={200}
+              height={200}
+              priority
+            />
 
-            <div className="hero__ctas">
-              <Link className="btn btn--primary" href={site.primaryCta.href}>
-                {site.primaryCta.label}
-              </Link>
-              {site.resume ? (
-                <a className="btn btn--on-dark" href={site.resume}>
-                  View resume
-                </a>
-              ) : (
-                <Link className="btn btn--on-dark" href="/about">
-                  How I work
+            <div className="hero__copy">
+              <p className="hero__eyebrow">{site.eyebrow}</p>
+              <h1 className="hero__title">{site.name}</h1>
+              <p className="hero__claim">{site.headline}</p>
+              <p className="hero__sub">{site.intro}</p>
+
+              <div className="hero__ctas">
+                <Link className="btn btn--primary" href={site.primaryCta.href}>
+                  {site.primaryCta.label}
                 </Link>
-              )}
+                {site.resume ? (
+                  <a className="btn btn--on-dark" href={site.resume}>
+                    View resume
+                  </a>
+                ) : (
+                  <Link className="btn btn--on-dark" href="/about">
+                    About me
+                  </Link>
+                )}
+              </div>
             </div>
-
-            <p className="hero__background">{site.backgroundLine}</p>
           </div>
 
-          <nav className="focus" aria-label="Where the work is">
-            <ul className="focus__list">
-              {focus.map((row) => (
-                <li className="focus__item" key={row.href}>
-                  <Link className="focus__link" href={row.href}>
-                    <span className="focus__label">{row.label}</span>
-                    <span className="focus__line">{row.line}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <CareerPath intro={site.pathIntro} steps={path} />
         </div>
       </section>
 

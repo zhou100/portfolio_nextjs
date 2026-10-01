@@ -72,9 +72,13 @@ The reader meets the contribution before the method. This ordering is the point 
   the body — a limitation that does not change how the reader reads the case is cut.
 - **Cards compare, they do not read.** A work card is title + one contribution sentence +
   role + link. The question and the long summary live on the case page.
-- **Home hero is an index, not a manifesto.** Three clickable rows into the work. The first
-  case title must be reachable inside a 900px-tall desktop window; trim copy and vertical
-  rhythm to hold that, never the body size or a fixed height.
+- **Home hero is an introduction.** Portrait, name, the one-line claim, a short intro, and
+  two calls to action, then the career Path timeline. Selected work follows directly, so
+  the hero does not repeat links into the cases. Keep the intro to two or three sentences;
+  trim copy and vertical rhythm before body size.
+- **The Path timeline** is one horizontal rule with a dot per step (vertical below 760px).
+  Steps follow the naming convention. The current step has a filled light-accent dot and a
+  "Now" label, so color never carries it alone.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -86,7 +90,7 @@ The reader meets the contribution before the method. This ordering is the point 
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
-- **Hero:** Copy left, focus index right. Single column below 980px, copy first.
+- **Hero:** Circular portrait (200px desktop, 150px tablet, 120px mobile) left of the copy; stacks above it below 640px. Path timeline sits under both, separated by a dark-border rule.
 - **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover is a border color change plus a 2px lift.
 - **Tables:** always inside `.tablewrap` with `overflow-x: auto`. The page body must never scroll horizontally.
 
@@ -103,7 +107,7 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (headline + focus index) → Selected work → Writing → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline) → Selected work → Writing → Lab strip → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → In progress (max 3) → Research
@@ -128,3 +132,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-09-08 | Hero thesis card replaced by a three-row focus index | The card argued a method and was specific to one project. The index sends the reader into the work and buys back the vertical space. |
 | 2026-09-08 | Status labels renamed to Case study / Working prototype / Study design | "Published" was read as "result proven". The label now names the artifact type. |
 | 2026-09-08 | Share card is a committed PNG, not a generated route | `next/og` under `output: 'export'` emits an extensionless file with no Content-Type, which scrapers reject. |
+| 2026-10-01 | Home hero leads with portrait, name, and a short intro; focus index replaced by a Path timeline | A first-time reader wanted to know who this is and how they got here before reading cases. The name returns to the H1 and the claim moves directly under it. |

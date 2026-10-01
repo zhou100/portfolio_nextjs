@@ -11,11 +11,13 @@ export interface Cta {
 
 export interface Site {
   name: string;
+  /** Square portrait in `public/`, shown in the home hero and on About. */
+  profileImage: string;
   brand: string;
   eyebrow: string;
   headline: string;
-  subheadline: string;
-  backgroundLine: string;
+  intro: string;
+  pathIntro: string;
   primaryCta: Cta;
   /** Rendered only when `resume` is a real, downloadable file. */
   resume?: string;
@@ -25,13 +27,16 @@ export interface Site {
 }
 
 /**
- * Three clickable rows under the headline. Each one names a domain, states the
- * measurement problem in a line, and goes straight to the case that shows it.
+ * One stop on the career path shown under the home hero. Orgs follow the naming
+ * convention in DESIGN.md: categories, never employer names.
  */
-export interface FocusRow {
-  label: string;
-  line: string;
-  href: string;
+export interface PathStep {
+  org: string;
+  role: string;
+  /** Optional second line: scope or the problem worked on. */
+  detail?: string;
+  /** Marks where I am now. Exactly one step should set it. */
+  current?: boolean;
 }
 
 export interface Role {
@@ -52,7 +57,6 @@ export interface Testimonial {
 }
 
 export interface AboutContent {
-  profileImage: string;
   currentTitle: string;
   namingNote: string;
   paragraphs: string[];
@@ -65,13 +69,14 @@ export interface AboutContent {
 export function getSite(): Site {
   return {
     name: 'Yujun Zhou',
+    profileImage: '/profile.jpg',
     brand: 'Yujun Zhou',
-    eyebrow: 'Yujun Zhou · Senior Data Scientist · Economics PhD',
+    eyebrow: 'Senior Data Scientist · Economics PhD',
     headline: 'I measure and improve AI products.',
-    subheadline:
-      'I work on experimentation and evaluation for recommendations, advertising, and AI systems. Inside product teams I connect decisions to evidence; on my own I build the tools that test those ideas in practice.',
-    backgroundLine:
-      'Short-form video recommendations & integrity · Enterprise AI evaluation · Applied Economics PhD',
+    intro:
+      'I’m a data scientist with an economics PhD. I work on experimentation and evaluation for recommendations, advertising, and AI systems — connecting product decisions to evidence, and building the tools to check it when they don’t exist yet.',
+    pathIntro:
+      'From economics research to product measurement to leading AI evaluation, each move closer to the decision itself',
     primaryCta: { label: 'Explore selected work', href: '/work' },
     // Set this to '/resume.pdf' once the file exists in `public/`. The nav link and
     // the hero's secondary call to action appear automatically when it is set.
@@ -100,29 +105,29 @@ export function getOgImage() {
   };
 }
 
-export function getFocusRows(): FocusRow[] {
+export function getPath(): PathStep[] {
   return [
     {
-      label: 'Recommendations',
-      line: 'Measuring viewer experience beyond engagement',
-      href: '/work/recommendation-quality',
+      org: 'University of Illinois',
+      role: 'PhD, Applied Economics',
+      detail: 'Causal inference and forecasting',
     },
     {
-      label: 'Enterprise AI',
-      line: 'Evaluating whether assistants complete real tasks',
-      href: '/work/enterprise-ai-evaluation',
+      org: 'Short-form video platform',
+      role: 'Data Scientist',
+      detail: 'Recommendation quality and integrity measurement',
     },
     {
-      label: 'Independent work',
-      line: 'Building a system that tracks evolving claims',
-      href: '/work/narrative-intelligence',
+      org: 'Advertising and media group',
+      role: 'Data Science Manager & Tech Lead',
+      detail: 'Enterprise AI evaluation',
+      current: true,
     },
   ];
 }
 
 export function getAbout(): AboutContent {
   return {
-    profileImage: '/profile.jpg',
     currentTitle: 'Data Science Manager & Tech Lead · Advertising and media group',
     namingNote:
       'Employers and internal products are described by category rather than by name. Specifics are on my resume and I am happy to go through them in conversation.',
