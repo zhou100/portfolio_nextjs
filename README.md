@@ -15,7 +15,7 @@ Sections are ordered per item rather than forced into one template: an industry 
 
 ### Naming
 
-Employers and internal products are described by category — "short-form video platform", "advertising and media group" — not by name. This is deliberate and applies to every surface, including case slugs and article copy. Specifics belong on the resume and in conversation.
+Employers are named (Facebook AI, Instagram Reels, Omnicom). Internal product names, confidential data, and results stay off the site; case slugs describe the problem, not the product.
 
 ## Routes
 

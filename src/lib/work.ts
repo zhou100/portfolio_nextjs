@@ -107,7 +107,7 @@ const items: WorkItem[] = [
   {
     slug: 'recommendation-quality',
     title: 'Recommendation Quality Beyond Engagement',
-    org: 'Short-form video platform',
+    org: 'Instagram Reels',
     question:
       'When creator-side engagement improves, how do we confirm that viewers are actually getting better content?',
     kind: 'industry-case',
@@ -187,10 +187,6 @@ const items: WorkItem[] = [
                   'The same measures computed separately for viewer and creator segments rather than pooled. Averages across a heterogeneous population can move in a direction no individual segment experienced.',
               },
             ],
-          },
-          {
-            type: 'p',
-            text: 'The integrity side of the work is a related but distinct measurement problem, which is why it is listed apart. Overall performance and performance on high-risk slices answer different questions. A sample sized for a population estimate does not automatically have the resolution to say anything about a rare, high-cost failure, so the evaluation sample has to be built for the decision it serves — with appropriate weighting when the population effect is what you need.',
           },
         ],
       },
@@ -279,7 +275,7 @@ const items: WorkItem[] = [
   {
     slug: 'enterprise-ai-evaluation',
     title: 'Making Enterprise AI Evaluation Launch-Relevant',
-    org: 'Advertising and media group',
+    org: 'Omnicom',
     question:
       'How do you stop an assistant that sounds right from failing the task it was built for?',
     kind: 'industry-case',

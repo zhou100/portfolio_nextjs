@@ -27,8 +27,7 @@ export interface Site {
 }
 
 /**
- * One stop on the career path shown under the home hero. This is the one place
- * employers are named; see the naming exception in DESIGN.md.
+ * One stop on the career path shown under the home hero.
  */
 export interface PathStep {
   org: string;
@@ -58,7 +57,6 @@ export interface Testimonial {
 
 export interface AboutContent {
   currentTitle: string;
-  namingNote: string;
   paragraphs: string[];
   roles: Role[];
   education: Role[];
@@ -115,16 +113,17 @@ export function getPath(): PathStep[] {
     {
       org: 'Facebook AI',
       role: 'Data Scientist',
+      detail: 'Fake accounts and integrity measurement',
     },
     {
       org: 'Instagram Reels',
       role: 'Data Scientist',
-      detail: 'Recommendation quality and integrity measurement',
+      detail: 'Recommendation quality',
     },
     {
       org: 'Omnicom',
       role: 'Data Science Manager & Tech Lead',
-      detail: 'Enterprise AI evaluation',
+      detail: 'AI agents orchestration and evaluation',
       current: true,
     },
   ];
@@ -132,38 +131,30 @@ export function getPath(): PathStep[] {
 
 export function getAbout(): AboutContent {
   return {
-    currentTitle: 'Data Science Manager & Tech Lead · Advertising and media group',
-    namingNote:
-      'Employers and internal products are described by category rather than by name. Specifics are on my resume and I am happy to go through them in conversation.',
+    currentTitle: 'Data Science Manager & Tech Lead · Omnicom',
     paragraphs: [
-      'I’m a data scientist with a PhD in Applied Economics. I spent several years on recommendation quality and integrity measurement at a large short-form video platform, and I now lead data science for enterprise AI systems at an advertising and media group. Across both, my job is to define an outcome worth moving, test whether the evidence supports the decision, and build whatever is missing to check it.',
+      'I’m a data scientist with a PhD in Applied Economics. I worked on fake-account and integrity measurement at Facebook AI, then on recommendation quality for Instagram Reels, and I now lead data science for AI agent orchestration and evaluation at Omnicom. Across all three, my job is to define an outcome worth moving, test whether the evidence supports the decision, and build whatever is missing to check it.',
       'The through line is measurement under pressure. Engagement moves for reasons that have nothing to do with a better product. An assistant that reads well can still fail the task it was hired for. Most of my work is deciding which comparison is credible enough to act on, and saying plainly when it isn’t.',
       'I build the systems I need to test my own ideas — evaluation pipelines, data contracts, and small products with real users — because a claim I cannot reproduce is not evidence I can defend.',
     ],
     roles: [
       {
-        org: 'Advertising and media group',
+        org: 'Omnicom',
         title: 'Data Science Manager & Tech Lead',
         focus:
-          'Enterprise AI evaluation: layered task metrics, human rubrics, regression gates, and the quality, cost, and latency tradeoffs behind a release decision.',
+          'AI agent orchestration and evaluation: layered task metrics, human rubrics, regression gates, and the quality, cost, and latency tradeoffs behind a release decision.',
       },
       {
-        org: 'Short-form video platform',
+        org: 'Instagram Reels',
         title: 'Data Scientist',
         focus:
-          'Two measurement problems in one product, which is why they are listed apart — they fail in different ways and need different evaluation populations.',
-        streams: [
-          {
-            name: 'Recommendation quality',
-            detail:
-              'Defining consumption-side outcomes for a short-form video feed, reading experiments against them, and pairing a creator-side goal with a viewer-experience guardrail.',
-          },
-          {
-            name: 'Integrity measurement',
-            detail:
-              'Evaluating rare, high-cost failures, where a sample drawn for average performance does not have the resolution the decision requires.',
-          },
-        ],
+          'Recommendation quality: defining consumption-side outcomes for a short-form video feed, reading experiments against them, and pairing a creator-side goal with a viewer-experience guardrail.',
+      },
+      {
+        org: 'Facebook AI',
+        title: 'Data Scientist',
+        focus:
+          'Fake accounts and integrity measurement: evaluating rare, high-cost failures, where a sample drawn for average performance does not have the resolution the decision requires.',
       },
     ],
     education: [

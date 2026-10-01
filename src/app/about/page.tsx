@@ -25,7 +25,6 @@ export default function About() {
             <p className="eyebrow">About</p>
             <h1 className="pagehead__title">{site.name}</h1>
             <p className="about__title">{about.currentTitle}</p>
-            <p className="about__naming">{about.namingNote}</p>
             <div className="about__bio prose">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>

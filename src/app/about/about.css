@@ -113,15 +113,6 @@
   }
 }
 
-/* Why no employer is named on this site. */
-.about__naming {
-  border-left: 2px solid var(--clr-border-strong);
-  color: var(--clr-muted);
-  font-size: 0.98rem;
-  margin: 14px 0 20px;
-  max-width: 62ch;
-  padding-left: 16px;
-}
 
 .role__period {
   color: var(--clr-muted);
