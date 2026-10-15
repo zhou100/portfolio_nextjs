@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased - 2026-10-15
+
+### Home
+
+- Selected work now opens with an Independent builds showcase: El Niño and Commodity
+  Futures, ChurchMap, and Debrief, each with a tagline, a "try it" link, and three real
+  screenshots captured from the live product. Case cards follow under "Case studies".
+
+### Links
+
+- The El Niño research workbench moved to https://elnino.yujun.net/.
+
 ## Unreleased - 2026-10-01
 
 ### Home

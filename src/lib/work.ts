@@ -50,6 +50,25 @@ export interface WorkLinks {
   artifact?: { href: string; label: string };
 }
 
+/** A real screenshot of a live product, captured from the public site. Never a mock-up. */
+export interface Shot {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  /** Portrait captures (a phone view) are letterboxed instead of cropped. */
+  fit?: 'contain';
+}
+
+/** Home-page product showcase. Only for builds a reader can open without private access. */
+export interface Showcase {
+  /** One sentence on what the product does for its user. */
+  tagline: string;
+  /** First shot is the large one. */
+  shots: Shot[];
+}
+
 export type Block =
   | { type: 'p'; text: string }
   | { type: 'h'; text: string }
@@ -99,6 +118,7 @@ export interface WorkItem {
   limitations: string[];
   updatedAt: string;
   links?: WorkLinks;
+  showcase?: Showcase;
   /** Ordered by content type: an industry case does not read like a study design. */
   sections: WorkSection[];
 }
@@ -679,9 +699,36 @@ const items: WorkItem[] = [
     links: {
       caseStudy: '/work/el-nino-commodities',
       artifact: {
-        href: 'https://climcomm-public.pages.dev/',
+        href: 'https://elnino.yujun.net/',
         label: 'Open the research workbench',
       },
+    },
+    showcase: {
+      tagline:
+        'A public research workbench that follows one El Niño from ocean heat to palm oil prices, with every test written down before it ran.',
+      shots: [
+        {
+          src: '/work/el-nino-commodities/overview.webp',
+          alt: 'Workbench overview: the four-step evidence chain from climate to prices, above the event-year futures results.',
+          caption: 'Overview: the evidence chain and the headline tests',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/el-nino-commodities/evidence-chain.webp',
+          alt: 'Stacked monthly charts of spot price, ONI sea temperature, regional SPI6 rainfall, palm oil output and stocks for 2025–26.',
+          caption: 'One timeline: price, climate, rainfall, supply, stocks',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/el-nino-commodities/palm-map.webp',
+          alt: 'Map of Malaysia shaded by mapped oil palm area per grid cell across the Peninsula, Sabah and Sarawak.',
+          caption: 'Where the oil palm actually grows',
+          width: 1440,
+          height: 900,
+        },
+      ],
     },
     sections: [
       {
@@ -1088,6 +1135,33 @@ const items: WorkItem[] = [
       demo: 'https://churchmap.vercel.app/',
       code: 'https://github.com/zhou100/church_map',
     },
+    showcase: {
+      tagline:
+        'Search a city and see what each church says about itself — beliefs, programs, and tone — summarised from its own website, before a first Sunday visit.',
+      shots: [
+        {
+          src: '/work/churchmap/search-map.webp',
+          alt: 'ChurchMap search for Brooklyn, NY: a list of churches with tags from their websites beside a map of pins.',
+          caption: 'Location-first search over the directory',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/churchmap/landing.webp',
+          alt: 'ChurchMap home page headline, “Know what a Sunday is actually like — before you walk in,” with a city search box.',
+          caption: 'Landing page and city search',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/churchmap/church-profile.webp',
+          alt: 'A church profile page with a street map, contact links, and a summary drawn from the church’s own website.',
+          caption: 'A profile built from the church’s own website',
+          width: 1440,
+          height: 900,
+        },
+      ],
+    },
     sections: [
       {
         id: 'task',
@@ -1188,6 +1262,34 @@ const items: WorkItem[] = [
       caseStudy: '/work/debrief',
       demo: 'https://time.yujun.net/',
       code: 'https://github.com/zhou100/brief-voice-memo',
+    },
+    showcase: {
+      tagline:
+        'Talk through your day for half a minute and get back a summary, key points, and todos. No sign-in needed to try it.',
+      shots: [
+        {
+          src: '/work/debrief/home.webp',
+          alt: 'Debrief home page: a large record button, example prompts, and an example debrief with summary, key points, and todos.',
+          caption: 'Tap to speak, no sign-in required',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/debrief/mobile.webp',
+          alt: 'Debrief on a phone-width screen, with the record button and suggested things to say.',
+          caption: 'Built for a phone first',
+          width: 390,
+          height: 844,
+          fit: 'contain',
+        },
+        {
+          src: '/work/debrief/example-debrief.webp',
+          alt: 'An example debrief card titled “Wednesday afternoon debrief” with a one-line summary and key points.',
+          caption: 'What a 28-second entry turns into',
+          width: 632,
+          height: 400,
+        },
+      ],
     },
     sections: [
       {
@@ -1343,6 +1445,14 @@ export function getWork(): WorkItem[] {
 
 export function getFeaturedWork(): WorkItem[] {
   return items.filter((item) => item.featured);
+}
+
+/** Builds a reader can open and try, in home-page order. */
+export function getShowcaseWork(): WorkItem[] {
+  const order = ['el-nino-commodities', 'churchmap', 'debrief'];
+  return order
+    .map((slug) => items.find((item) => item.slug === slug))
+    .filter((item): item is WorkItem => !!item?.showcase);
 }
 
 export function getWorkBySlug(slug: string): WorkItem | undefined {
