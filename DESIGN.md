@@ -135,3 +135,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Employers named across the site; the "described by category" note removed | Owner decision. Supersedes the 2026-09-08 no-names rule. Internal product names and confidential results stay off the site. |
 | 2026-10-01 | Removed /about; hero eyebrow is "Data Scientist and AI builder" | The home hero and Path timeline already carry the bio and experience. Research lives at /writing#research. |
 | 2026-10-01 | Four testimonials restored, verbatim, in the hero under the Path timeline | Owner asked for them next to the experience. Quotes are never shortened; compactness comes from type size and the shared four-column grid instead. |
+| 2026-10-15 | Independent builds grid on `/work` moved from three columns to two | A fourth build left one card alone on a row; two columns hold an even count without changing card design. |

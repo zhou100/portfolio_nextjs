@@ -640,6 +640,199 @@ const items: WorkItem[] = [
     ],
   },
   {
+    slug: 'el-nino-commodities',
+    title: 'El Niño and Commodity Futures',
+    question:
+      'Does a very strong El Niño tell a futures trader anything the market has not already priced — and how do you test that honestly with a dozen historical events?',
+    kind: 'independent-build',
+    status: 'published',
+    featured: false,
+    role: 'Sole author. Research design, data pipeline, tests, weekly monitoring, and the public workbench.',
+    roleLabel: 'Independent research',
+    methods: [
+      'Event study',
+      'Pre-registered tests',
+      'Point-in-time data',
+      'Whole-event holdout',
+    ],
+    dataNote:
+      'Public climate, crop, and spot-price data plus one-shot tests on futures history. Licensed futures prices are not reproduced; the public workbench shows the method and findings only.',
+    evidenceType: ['observational'],
+    contribution:
+      'Built a point-in-time research system that tests an El Niño trade one link at a time, and reported the links that failed.',
+    brief: {
+      problem:
+        'A record El Niño is forming in 2026. The popular story says it lifts palm and soybean oil prices. Only twelve comparable events exist since 1963, and only three overlap usable US futures data.',
+      contribution:
+        'I split the story into three testable links, wrote each test down before running it, and built a weekly pipeline that only uses data published before each decision date.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'Palm oil prices tend to rise after the peak. Rainfall does not improve output forecasts, and the effect does not carry to US soybean oil futures. The current call is watch, not trade.',
+    },
+    limitations: [
+      'Twelve events is a small sample, and the futures tests rest on three or four of them. "Supported" means the pre-registered conditions were met, not that the effect is established.',
+      'Most historical inputs are today’s revised values, not what was first published. Where the original release is unavailable, a conservative release schedule is assumed and labelled.',
+      'The palm oil futures test was not blind: the event years were known before it ran. Subtracting a broad metals index roughly halves the event-year return.',
+      'The 2026–27 event is one out-of-sample observation. On its own it cannot confirm or reject the framework.',
+    ],
+    updatedAt: '2026-10-15',
+    links: {
+      caseStudy: '/work/el-nino-commodities',
+      artifact: {
+        href: 'https://climcomm-public.pages.dev/',
+        label: 'Open the research workbench',
+      },
+    },
+    sections: [
+      {
+        id: 'problem',
+        heading: 'The problem',
+        prompt: 'Why is "El Niño is bullish for vegetable oil" not yet a testable claim?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'The usual argument runs: warm water in the Pacific, drought over the growing regions, lower palm oil output, higher prices — and then a jump to US soybean oil futures, the market a US trader can actually use. Each step can fail on its own. A strong event does not guarantee dry weather in Malaysia, dry weather reaches output only months later, and palm oil is a substitute for soybean oil, not the same contract.',
+          },
+          {
+            type: 'p',
+            text: 'The sample is the second problem. There are twelve moderate-or-stronger El Niño events since 1963. Three overlap the US futures data I could use, and four overlap Chinese palm oil futures. A method that turns twelve events into hundreds of observations by counting commodities or months is manufacturing confidence.',
+          },
+        ],
+      },
+      {
+        id: 'contribution',
+        heading: 'My contribution',
+        prompt: 'What did I build, and what rules does it follow?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'I designed and built the system end to end: data ingestion and archive, the event studies and forecast comparisons, a weekly monitoring report, and the research workbench. The rules mattered more than the models.',
+          },
+          {
+            type: 'deflist',
+            items: [
+              {
+                term: 'One link at a time',
+                detail:
+                  'The claim is split into three hypotheses: does region rainfall improve palm output forecasts, do palm oil prices rise after the peak, and does climate information add anything to US soybean oil futures. Each can be rejected without dragging the others down.',
+              },
+              {
+                term: 'Point-in-time data',
+                detail:
+                  'Every value carries the time its source published it and the time I captured it. A model only sees data released before its decision date. A trading rule may use the date an event was detectable, never the peak date that is only known afterwards.',
+              },
+              {
+                term: 'Written down first',
+                detail:
+                  'Lags, thresholds, and feature sets are committed as code constants and a protocol document before results are pulled. Every specification tried, including the failures, goes into the report appendix.',
+              },
+              {
+                term: 'Hold out whole events',
+                detail:
+                  'Evaluation leaves out an entire El Niño episode at a time, so information from one event cannot sit on both sides of the split.',
+              },
+              {
+                term: 'A stop rule',
+                detail:
+                  'Once the 2010–2025 history had been tested several times, I froze it: no new models, no threshold searches. The 2026–27 event is monitored forward and counts as one out-of-sample observation.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'example',
+        heading: 'What the evidence says, link by link',
+        prompt: 'Which links held, and which did not?',
+        blocks: [
+          {
+            type: 'table',
+            head: ['Link', 'Test', 'Result', 'Verdict'],
+            rows: [
+              [
+                'Palm oil price after the peak',
+                'Monthly spot prices, 12 events, excess over a metals index, 6–12 months after the peak',
+                '+16.7 log points on average; positive in 9 of 12 events',
+                'Supported, on spot prices anchored to the after-the-fact peak',
+              ],
+              [
+                'The same trade on futures',
+                'Chinese palm oil futures, long February to the following January, one pre-registered run',
+                '+28.3% average in event years against −3.5% in other years; 4 of 4 event years positive',
+                'Supported, weakly: four events, not blind',
+              ],
+              [
+                'Rainfall → output forecast',
+                'Add region rainfall to a seasonal baseline forecast of national output',
+                'Beat the baseline at 0 of 4 horizons, and 0 of 3 in a revised design',
+                'Not supported',
+              ],
+              [
+                'Climate signal → US soybean oil futures',
+                'Add ENSO or drought to a fixed futures model, holding out whole events',
+                'No improvement, on three futures events',
+                'Not supported',
+              ],
+              [
+                'Event-year long on US soybean oil',
+                'The same February-to-January design, one pre-registered run',
+                '+0.5% average in event years, 2 of 3 positive; dropping one event flips the sign',
+                'Uncertain',
+              ],
+            ],
+            caption:
+              'Figures as reported by each pre-registered test. Futures results are net of a 3 bps cost per trade.',
+          },
+          {
+            type: 'p',
+            text: 'Read across the rows, the evidence says something narrower than the popular story. Palm oil prices have tended to rise after strong El Niño peaks. The mechanism I could test — rainfall predicting output — added no forecasting value, and the price effect does not reliably reach US soybean oil.',
+          },
+          {
+            type: 'p',
+            text: 'The weekly evidence card follows from that. The Pacific index is above its threshold, but the three Malaysian growing regions are not in drought at the same time, so the output is "watch, do not trade." The system is built to say that often.',
+          },
+        ],
+      },
+      {
+        id: 'method',
+        heading: 'Method',
+        prompt: 'How is it built, and kept honest week to week?',
+        blocks: [
+          {
+            type: 'list',
+            items: [
+              'Sources: NOAA ENSO indices and ocean heat content, CHIRPS rainfall aggregated to three Malaysian regions, Malaysian Palm Oil Board output and stocks, World Bank monthly spot prices, USDA and EIA supply and demand, and exchange futures history.',
+              'Every download is archived with its source release time, capture time, and file hash, in an append-only store. Nothing is overwritten.',
+              'A scheduled job builds the ENSO weekly report each Tuesday: seven turning-point indicators, a comparison with past strong events, the evidence card, and a forward log that only ever gains rows.',
+              'Paid futures data runs under a hard budget of one US dollar a month, reserved before each request. Vendor prices never leave the private repository.',
+              'The public workbench is a static site built from committed reports. It recomputes nothing, and the build refuses to publish if futures quotes or trading state slip in.',
+            ],
+          },
+          {
+            type: 'note',
+            text: 'The repository is private. The workbench is the public view of the same reports, with licensed prices and trading state removed.',
+          },
+        ],
+      },
+      {
+        id: 'ask-me',
+        heading: 'What a technical reader can ask me',
+        prompt: 'Where is the method most open to challenge?',
+        blocks: [
+          {
+            type: 'list',
+            items: [
+              'How release-time rules are enforced in code when a source does not publish its own release history.',
+              'Why the event study anchors on the after-the-fact peak, and why no trading rule is allowed to.',
+              'How a twelve-event sample changes what a p-value, a holdout, or a "supported" verdict can mean.',
+              'Why the research was frozen after the historical tests, and what the 2026–27 event can and cannot settle.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: 'creative-evidence-lab',
     title: 'Creative Evidence Lab',
     question:

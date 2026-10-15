@@ -69,7 +69,7 @@ export default function WorkIndex() {
             </div>
           </div>
 
-          <div className="grid grid--3">
+          <div className="grid grid--2">
             {builds.map((item) => (
               <WorkCard item={item} key={item.slug} />
             ))}
