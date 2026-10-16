@@ -110,8 +110,8 @@
 
 /* ---------- Market stories ---------- */
 
-/* Links out to Narrative Atlas. The chart frame uses the source site's chart ground so a
-   short snapshot letterboxes cleanly instead of being cropped. */
+/* The chart frame uses the charts' own ground so a short chart letterboxes cleanly
+   instead of being cropped. */
 .stories {
   display: grid;
   gap: 20px;

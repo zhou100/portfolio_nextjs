@@ -159,8 +159,7 @@ export default function Home() {
             <div className="subhead subhead--stories">
               <h3 className="subhead__title">Market stories</h3>
               <p className="subhead__lede">
-                From Narrative Atlas: how the analyst view on a stock changed, each turning point
-                tied to its source.{' '}
+                How the analyst view on a stock changed, each turning point tied to its sources.{' '}
                 <Link className="textlink" href="/writing#market-stories">
                   All stories with summaries
                 </Link>

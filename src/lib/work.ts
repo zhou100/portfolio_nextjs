@@ -491,7 +491,7 @@ const items: WorkItem[] = [
       'Evaluation design',
     ],
     dataNote:
-      'The pipeline runs over licensed sources in a private repository. Its generated market stories are public on Narrative Atlas without the source text, and the fixture linked below is written by me, so the method can be checked without any access.',
+      'The pipeline runs over licensed sources in a private repository. The fixture linked below is written by me and is public, so the method can be checked without any access.',
     evidenceType: ['observational', 'synthetic-demo'],
     contribution:
       'Built a pipeline that connects changing claims to their sources and tracks how they evolve over time.',
@@ -502,48 +502,20 @@ const items: WorkItem[] = [
         'I built the whole system — ingest, claim extraction, narrative clustering, stage and stance tracking, and the evaluation design that will say whether its judgements are any good.',
       outcomeLabel: 'Current result',
       outcome:
-        'The pipeline runs end to end and publishes Narrative Atlas, a public site of market stories updated from daily ingest. A public fixture is checkable; measured quality is not, and the evaluation is designed rather than done.',
+        'The pipeline runs end to end and produces output. A public fixture is now checkable; measured quality is not, and the evaluation is designed rather than done.',
     },
     limitations: [
-      'The repository is private and sits on paid sources. Narrative Atlas shows the generated stories with source attributions but not the source text, so a reader can inspect outputs but cannot audit them against the inputs. The public fixture covers that gap, and it is deliberately small.',
+      'The repository is private and sits on paid sources, so it is not a self-serve demo. The public fixture is the fix, and it is deliberately small.',
       'The system produces output. That output has not been scored against human labels yet — the study is designed, not run.',
       'Price movement is an external outcome. It is not a label for whether a claim was faithfully extracted, and I do not use it as one.',
     ],
-    updatedAt: '2026-10-16',
+    updatedAt: '2026-09-08',
     links: {
       caseStudy: '/work/narrative-intelligence',
-      demo: 'https://narrative-graph.onrender.com/',
       artifact: {
         href: '/fixtures/narrative-evaluation-fixture-v1.json',
         label: 'Public evaluation fixture (JSON)',
       },
-    },
-    showcase: {
-      tagline:
-        'Narrative Atlas: market stories that follow how the analyst view on a stock or a group of stocks changed, each turning point tied to its source and set against QQQ.',
-      shots: [
-        {
-          src: '/work/narrative-intelligence/market-stories.webp',
-          alt: 'Narrative Atlas market stories page: a story card on software companies with a bar chart of nine stocks’ returns against QQQ.',
-          caption: 'Market stories, each with a matched-period price comparison',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-intelligence/story-detail.webp',
-          alt: 'A market story on Meta with a thesis paragraph and a META versus QQQ chart marked with seven numbered turning points.',
-          caption: 'A story: dated turning points on the price chart',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-intelligence/narratives.webp',
-          alt: 'Narratives index grouped by sector, listing narratives such as AI infrastructure capex with tickers, last source date, and a summary.',
-          caption: '45 narratives across 5 sectors',
-          width: 1440,
-          height: 900,
-        },
-      ],
     },
     sections: [
       {
@@ -1477,7 +1449,7 @@ export function getFeaturedWork(): WorkItem[] {
 
 /** Builds a reader can open and try, in home-page order. */
 export function getShowcaseWork(): WorkItem[] {
-  const order = ['el-nino-commodities', 'narrative-intelligence', 'churchmap', 'debrief'];
+  const order = ['el-nino-commodities', 'churchmap', 'debrief'];
   return order
     .map((slug) => items.find((item) => item.slug === slug))
     .filter((item): item is WorkItem => !!item?.showcase);

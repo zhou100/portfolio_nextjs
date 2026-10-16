@@ -1,0 +1,93 @@
+/* ---------- Market story page (extends article.css) ---------- */
+
+.story-page__window {
+  color: var(--clr-dark-muted);
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+
+.story-sources {
+  color: var(--clr-muted);
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+
+.story-sources > span:first-child {
+  color: var(--clr-ink);
+  font-weight: 600;
+}
+
+.story-sources a {
+  border-bottom: 1px solid var(--clr-border-strong);
+  color: var(--clr-accent-dark);
+}
+
+.story-sources a:hover {
+  border-color: var(--clr-accent);
+}
+
+/* Charts are wider than the prose measure; small multiples need the room. */
+.story-figure {
+  margin: 24px 0 40px;
+}
+
+.story-figure img {
+  background: #f3eee5;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+.story-figure figcaption {
+  color: var(--clr-muted);
+  display: grid;
+  font-size: 0.92rem;
+  gap: 4px;
+  margin-top: 10px;
+  max-width: var(--prose);
+}
+
+.story-section + .story-section {
+  border-top: 1px solid var(--clr-border);
+  margin-top: 40px;
+  padding-top: 8px;
+}
+
+.story-note {
+  color: var(--clr-muted);
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.story-item {
+  margin-top: 22px;
+}
+
+.story-item__title {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.story-item p {
+  max-width: var(--prose);
+}
+
+.story-table {
+  margin-top: 24px;
+}
+
+.story-table__notes {
+  color: var(--clr-muted);
+  font-size: 0.88rem;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.story-table__notes li + li {
+  margin-top: 4px;
+}
+
+/* "Next story: <title>" is long; let it wrap on narrow screens. */
+.story-page .article-page__foot .arrowlink {
+  white-space: normal;
+}
