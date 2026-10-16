@@ -24,6 +24,9 @@
   stratification, algorithmic confounding, Facebook's ad-measurement experiments,
   divergent delivery, LLM-judge position and length bias). Section headings, checklists
   and the table of contents are gone; papers are listed on one line at the end.
+- Publish "Why My El Niño Research Mostly Says Don't Trade" in the same essay format, linked
+  from the El Niño and Commodity Futures case. Every figure comes from the project's
+  pre-registered reports; the yield-lag point cites Kamil et al. (Heliyon, 2024).
 
 ### Links
 

@@ -45,6 +45,76 @@ export interface Paper {
 
 const articles: Article[] = [
   {
+    slug: 'el-nino-watch-not-trade',
+    title: 'Why My El Niño Research Mostly Says Don’t Trade',
+    topic: 'Measurement',
+    status: 'published',
+    publishedAt: '2026-10-16',
+    readingTime: '5 min',
+    excerpt:
+      'A record El Niño, a popular trade, and a research system whose most frequent answer is “watch.” Split into links that can each be tested, the trade story mostly fails, and saying so is the useful result.',
+    relatedWork: 'el-nino-commodities',
+    tldr: [
+      'With the El Niño index at a record +2.2 in early October 2026, my research system’s weekly answer is still “watch, do not trade.”',
+      'Split into three testable links, the trade story mostly fails. Palm oil prices rose after past peaks, but rainfall did not improve output forecasts, and the effect did not reliably reach US soybean oil futures.',
+      'With twelve events in sixty years, the honest unit is the event, the peak date cannot be used to trade, and “not supported” is a result worth reporting.',
+    ],
+    body: [
+      {
+        type: 'p',
+        text: 'In early October 2026 the Pacific’s main El Niño index stood at about +2.2, higher than any recorded event at the same point in the year. The trade that goes with a headline like that is well known. Strong El Niño years dry out Southeast Asia, oil palm yields fall some months later, palm oil gets expensive, and the soybean oil futures a US trader can actually buy follow it up. The research system I built to test that story produces a weekly evidence card, and this week, like most weeks, it says watch, do not trade. The pattern I have learned to trust is that a confident market story is usually a chain of claims, and most of the chain is weaker than the headline.',
+      },
+      {
+        type: 'table',
+        caption: 'Results from the project’s pre-registered reports. The first row is lined up on the peak date, which is known only afterwards.',
+        head: ['Link', 'Result', 'Verdict'],
+        rows: [
+          ['Palm oil price after the peak', '+16.7 log points above a metals index, 6–12 months after the peak; positive in 9 of 12 events', 'Supported, on spot prices lined up on the after-the-fact peak'],
+          ['The same trade on palm oil futures', '+28.3% average in event years against −3.5% in other years; 4 of 4 event years positive', 'Supported, weakly: four events, and not blind'],
+          ['Rainfall → output forecast', 'Beat a seasonal baseline at 0 of 4 forecast horizons', 'Not supported'],
+          ['Climate signal → US soybean oil futures', 'No improvement, on three futures events', 'Not supported'],
+          ['Event-year long on US soybean oil', '+0.5% average, 2 of 3 events positive; dropping one event flips the sign', 'Uncertain'],
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Read down the table and the evidence is narrower than the story. Palm oil prices have tended to rise after strong peaks: by 16.7 log points against a metals index six to twelve months later, and in 9 of the 12 events. On palm oil futures the event years averaged +28.3% against −3.5% in other years. But the mechanism I could test, rainfall in the growing regions predicting palm output, beat a plain seasonal forecast at none of four horizons. And the US soybean oil contract that motivated the exercise showed nothing reliable: a +0.5% average that turns negative if you drop one of its three events.',
+      },
+      {
+        type: 'p',
+        text: 'The usual version of the trade treats all of this as one physical story. Drought cuts yields, lower yields raise prices, and the price spills over into substitutes. Each step sounds obvious, which is part of why the trade is popular. Even the agronomy is looser than that. A study of 4,785 Malaysian estates from 2015 to 2023 linked lower yields to El Niño and La Niña extremes anywhere in the 23 months before harvest, not at one fixed lag. A link that can arrive at any point over two years is hard to trade on a calendar.',
+      },
+      {
+        type: 'p',
+        text: 'My first point is that the chain has to be split, because a strong link will otherwise vouch for a weak one. I tested three questions that could each be rejected on their own: does rainfall in the three Malaysian growing regions improve a forecast of palm output, do palm oil prices rise after a strong peak, and does climate information add anything to US soybean oil futures. The results above show why that matters. The price link held while the weather link failed, so the price rise cannot be credited to the drought mechanism I could measure, and rainfall maps turn out to be the wrong thing to watch for this trade. Had I tested the story as one claim, the price result would have carried the rest.',
+      },
+      {
+        type: 'p',
+        text: 'Second, the sample is twelve events, not hundreds of rows. There have been twelve moderate-or-stronger El Niño events since 1963. Only three overlap the US soybean oil futures data I could use, and four overlap Chinese palm oil futures. It is easy to make that look bigger: test twenty-two commodities and you have 264 commodity-events; use monthly returns and you have thousands of rows. None of that creates new El Niño events. The commodities move together, and the months inside one event are not independent, so a significance test that treats them as independent measures how many rows you have, not how much you know. Every evaluation therefore holds out a whole event at a time, and every result is reported as “k of n events” next to the average. Four out of four is encouraging. It is also four.',
+      },
+      {
+        type: 'p',
+        text: 'Third, the date everyone lines events up on is one nobody could have traded. The natural way to study El Niño is to align events on their peak, but you only know where the peak was after it has passed. In a replay that used only the data available each month, the rule that confirms a peak, the index falling half a degree from its high, fired two to three months after the real peak, and entering on that confirmation did clearly worse on the same events than a simple calendar rule. So the system keeps two dates apart: the peak may describe history, and a trading rule may only use the date an event was detectable, with execution after that information was published. Every input carries both its publication time and the time I captured it. The price result in the first row is anchored on the peak, which makes it a description of history, not a rule anyone could have followed. The futures result needs its own caveats said out loud: I knew which years were event years before it ran, and subtracting a broad metals index roughly halves the event-year return, which says part of it was a general commodity rally.',
+      },
+      {
+        type: 'p',
+        text: 'One more safeguard mattered with a sample this small. To keep it from turning into a search, lags, thresholds and feature sets were committed as code and a protocol document before results were pulled, every specification tried went into the report appendix, the 2010–2025 history was frozen after several rounds, and the two later futures tests were each registered in advance and run once.',
+      },
+      {
+        type: 'p',
+        text: 'What I am watching now is narrow. The evidence card asks for the ocean signal and drought in the growing regions together. The ocean signal is there. In the latest complete month of rainfall data Sarawak is in drought, while Peninsular Malaysia and Sabah are not, so the card says watch. The next scheduled check is in early January, when final rainfall for September through November is published, and what that check is allowed to change was written down in October, before anyone knows the answer. The 2026–27 event will make twelve events thirteen. It will not settle the question, and the system is set up so that nobody, including me, gets to pretend otherwise. The same habits carry over to product experiments: split a feature-to-revenue story into its links, count independent units rather than rows, never let an evaluation use information the decision could not have had, and decide when to stop before you start. A system that often says “watch” is telling you how often the evidence is actually there.',
+      },
+    ],
+    sources: [
+      { name: 'Project reports: event study; Sprints 4b, 5, 10 and 13; weekly report of Oct 13, 2026' },
+      {
+        name: 'Kamil et al., Nonlinear Impacts of Climate Anomalies on Oil Palm Productivity (Heliyon, 2024)',
+        href: 'https://doi.org/10.1016/j.heliyon.2024.e35798',
+      },
+      { name: 'Public research workbench (licensed prices and trading state removed)', href: 'https://elnino.yujun.net/' },
+    ],
+  },
+  {
     slug: 'offline-metric-wrong-launch-signal',
     title: 'When a Better Offline Metric Is the Wrong Launch Signal',
     topic: 'Measurement',
