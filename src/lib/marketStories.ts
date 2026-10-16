@@ -3,9 +3,9 @@ import data from '@/content/market-stories.json';
 /**
  * Market stories hosted on this site. Each one follows how the analyst view on a stock or a
  * group of stocks changed, ties each turning point to its sources, and sets the price path
- * against QQQ. Content is a fixed snapshot (prices through Oct 2, 2026) kept in
- * `src/content/market-stories.json`; source excerpts are not reproduced, only attributions,
- * with links to public primary filings where they exist.
+ * against QQQ. Content is a fixed snapshot kept in `src/content/market-stories.json`; each
+ * story carries its own price window (`pricesThrough`). Source excerpts are not reproduced,
+ * only attributions, with links to public primary filings where they exist.
  */
 
 export interface StorySource {
@@ -60,9 +60,6 @@ export interface MarketStory {
   sections: StorySection[];
 }
 
-/** Prices in every story run through this date. */
-export const MARKET_STORIES_AS_OF = 'Oct 2, 2026';
-
 const stories = data as MarketStory[];
 
 export function getMarketStories(): MarketStory[] {
@@ -75,6 +72,13 @@ export function getMarketStoryBySlug(slug: string): MarketStory | undefined {
 
 export function marketStoryHref(story: MarketStory): string {
   return `/writing/market-stories/${story.slug}`;
+}
+
+/** Last price date in this story's window ("… · Prices: Aug 5, 2026 – Aug 6, 2026"). */
+export function pricesThrough(story: MarketStory): string {
+  const prices = story.window.split('Prices:')[1];
+  if (!prices) throw new Error(`Market story ${story.slug} has no price window`);
+  return prices.split('–').pop()!.trim();
 }
 
 /** The analysis window alone, for cards. */

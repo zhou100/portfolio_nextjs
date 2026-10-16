@@ -31,11 +31,38 @@
   margin: 24px 0 40px;
 }
 
-.story-figure img {
+.story-figure__frame {
   background: #f3eee5;
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);
+}
+
+.story-figure img {
   width: 100%;
+}
+
+.story-figure__frame:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
+}
+
+.story-figure__open {
+  font-size: 0.95rem;
+  justify-self: start;
+  margin-top: 4px;
+}
+
+/* Below 760px the small multiples render at their source size, where the axis text and
+   event labels are legible, and scroll sideways inside their frame. */
+@media (max-width: 760px) {
+  .story-figure--wide .story-figure__frame {
+    overflow-x: auto;
+  }
+
+  .story-figure--wide img {
+    max-width: none;
+    width: auto;
+  }
 }
 
 .story-figure figcaption {

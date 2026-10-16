@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  MARKET_STORIES_AS_OF,
   analysisWindow,
   getMarketStories,
   marketStoryHref,
@@ -71,8 +70,8 @@ export default function MarketStories({ compact = false }: { compact?: boolean }
         })}
       </ul>
       <p className="stories__note">
-        Prices through {MARKET_STORIES_AS_OF}. Price charts give context; they do not establish
-        what caused a return.
+        Each story is a fixed snapshot with its own price window. Price charts give context; they
+        do not establish what caused a return.
       </p>
     </>
   );

@@ -13,7 +13,8 @@
 - New Market stories section on `/writing` (after Published) and a compact list in the home
   Writing section, plus a page per story at `/writing/market-stories/<slug>`: seven stories
   with tickers, thesis, price chart, how the view changed, the case on each side, what to
-  watch, and a look back. Prices through Oct 2, 2026; source attributions only.
+  watch, and a look back. Each story states its own price cutoff; every chart has a full-size
+  link, and multi-panel charts scroll sideways on phones. Source attributions only.
 
 ### Links
 

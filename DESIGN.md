@@ -84,9 +84,11 @@ The reader meets the contribution before the method. This ordering is the point 
   caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
   `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
   compare-not-read rule.
-- **Market stories are hosted here.** Seven fixed stories (prices through Oct 2, 2026) live in
+- **Market stories are hosted here.** Seven fixed stories live in
   `src/content/market-stories.json` and render at `/writing/market-stories/[slug]`
-  (`src/lib/marketStories.ts`). They carry attributions only — no source excerpts — and link
+  (`src/lib/marketStories.ts`). Each states its own price cutoff (`pricesThrough`), never a
+  shared date. Every chart has a full-size link; multi-panel charts scroll sideways at their
+  source size below 760px rather than shrinking past legibility. They carry attributions only — no source excerpts — and link
   out only to public primary filings. They are not `Article`s and never appear in Published.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getOgImage } from '@/lib/portfolio';
 import {
-  MARKET_STORIES_AS_OF,
   getMarketStories,
   getMarketStoryBySlug,
   marketStoryHref,
+  pricesThrough,
   type StorySource,
 } from '@/lib/marketStories';
 import '../../[slug]/article.css';
@@ -72,6 +72,8 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
   const all = getMarketStories();
   const position = all.findIndex((item) => item.slug === story.slug);
   const next = all[(position + 1) % all.length];
+  // The multi-panel charts (1236px source) carry small axis text and event labels.
+  const wideChart = story.chart.width > 1000;
 
   return (
     <article className="article-page story-page">
@@ -97,20 +99,35 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
       <div className="wrap article-page__body">
         <Sources sources={story.thesisSources} label="Thesis sources" />
 
-        <figure className="story-figure">
-          <Image
-            src={story.chart.src}
-            alt={story.chart.alt}
-            width={story.chart.width}
-            height={story.chart.height}
-            priority
-          />
-          {(story.chartNote || story.note) && (
-            <figcaption>
-              {story.chartNote && <span>{story.chartNote}</span>}
-              {story.note && <span>{story.note}</span>}
-            </figcaption>
-          )}
+        {/* Small multiples are too dense to shrink to a phone: they scroll sideways at a
+            readable width instead, and every chart has a full-size link. */}
+        <figure className={`story-figure${wideChart ? ' story-figure--wide' : ''}`}>
+          <div
+            className="story-figure__frame"
+            {...(wideChart
+              ? { tabIndex: 0, role: 'region', 'aria-label': 'Chart, scrolls sideways' }
+              : {})}
+          >
+            <Image
+              src={story.chart.src}
+              alt={story.chart.alt}
+              width={story.chart.width}
+              height={story.chart.height}
+              priority
+            />
+          </div>
+          <figcaption>
+            {story.chartNote && <span>{story.chartNote}</span>}
+            {story.note && <span>{story.note}</span>}
+            <a
+              className="arrowlink story-figure__open"
+              href={story.chart.src}
+              target="_blank"
+              rel="noopener"
+            >
+              Open full-size chart ↗
+            </a>
+          </figcaption>
         </figure>
 
         {story.sections.length > 1 && (
@@ -206,7 +223,7 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
 
         <footer className="article-page__footer">
           <p className="article-page__related">
-            Prices through {MARKET_STORIES_AS_OF}. Price moves provide context; they do not
+            Prices through {pricesThrough(story)}. Price moves provide context; they do not
             establish what caused a return. Not investment advice.
           </p>
           <div className="article-page__foot">
