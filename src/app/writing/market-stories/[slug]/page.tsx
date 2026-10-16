@@ -35,20 +35,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
-/** Attributions only. Public primary filings link out; everything else is plain text. */
-function Sources({ sources, label = 'Sources' }: { sources?: StorySource[]; label?: string }) {
-  if (!sources?.length) return null;
+/** One line at the end. Public primary filings link out; everything else is plain text. */
+function Sources({ sources }: { sources: StorySource[] }) {
+  if (!sources.length) return null;
 
   return (
     <p className="story-sources">
-      <span>{label}:</span>{' '}
+      <span>Sources:</span>{' '}
       {sources.map((source, index) => (
         <span key={`${source.name}-${index}`}>
           {index > 0 && ' · '}
@@ -91,13 +84,25 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
           </div>
 
           <h1 className="article-page__title">{story.title}</h1>
-          <p className="article-page__excerpt">{story.thesis}</p>
           <p className="story-page__window">Analysis: {story.window}</p>
         </div>
       </header>
 
       <div className="wrap article-page__body">
-        <Sources sources={story.thesisSources} label="Thesis sources" />
+        <section className="story-tldr" aria-label="In short">
+          <p className="story-tldr__label">In short</p>
+          <ul className="bullets">
+            {story.tldr.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </section>
+
+        <div className="article-page__prose story-prose">
+          {story.lead.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
 
         {/* Small multiples are too dense to shrink to a phone: they scroll sideways at a
             readable width instead, and every chart has a full-size link. */}
@@ -117,8 +122,7 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
             />
           </div>
           <figcaption>
-            {story.chartNote && <span>{story.chartNote}</span>}
-            {story.note && <span>{story.note}</span>}
+            <span>{story.chartNote}</span>
             <a
               className="arrowlink story-figure__open"
               href={story.chart.src}
@@ -130,95 +134,11 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
           </figcaption>
         </figure>
 
-        {story.sections.length > 1 && (
-          <nav className="toc" aria-label="On this page">
-            <p className="toc__label">On this page</p>
-            <ol className="toc__list">
-              {story.sections.map((section) => (
-                <li key={section.heading}>
-                  <a href={`#${slugify(section.heading)}`}>{section.heading}</a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        )}
-
-        <div className="article-page__prose">
-          {story.sections.map((section) => (
-            <section className="story-section" key={section.heading}>
-              <h2 className="article-page__h2" id={slugify(section.heading)}>
-                {section.heading}
-              </h2>
-              {section.notes?.map((note) => (
-                <div key={note.text}>
-                  {note.sources ? (
-                    <Sources sources={note.sources} label={note.text.replace(/:$/, '')} />
-                  ) : (
-                    <p className="story-note">{note.text}</p>
-                  )}
-                </div>
-              ))}
-              {section.asof && <p className="story-note">{section.asof}</p>}
-
-              {section.items?.map((item) =>
-                item.label.includes(' · ') ? (
-                  <div className="story-item" key={item.label}>
-                    <h3 className="story-item__title">{item.label}</h3>
-                    <p>{item.text}</p>
-                    <Sources sources={item.sources} />
-                  </div>
-                ) : (
-                  <div className="story-item" key={item.label}>
-                    <p>
-                      {item.label && <strong>{item.label}:</strong>} {item.text}
-                    </p>
-                    <Sources sources={item.sources} />
-                  </div>
-                ),
-              )}
-
-              {section.tables?.map((table) => (
-                <div className="story-table" key={table.title ?? table.head.join('|')}>
-                  {table.title && <h3 className="story-item__title">{table.title}</h3>}
-                  <div className="tablewrap">
-                    <table>
-                      <thead>
-                        <tr>
-                          {table.head.map((cell) => (
-                            <th key={cell} scope="col">
-                              {cell}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {table.rows.map((row) => (
-                          <tr key={row.join('|')}>
-                            {row.map((cell, index) =>
-                              index === 0 ? (
-                                <th key={`${index}-${cell}`} scope="row">
-                                  {cell}
-                                </th>
-                              ) : (
-                                <td key={`${index}-${cell}`}>{cell}</td>
-                              ),
-                            )}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  {!!table.notes.length && (
-                    <ul className="story-table__notes">
-                      {table.notes.map((note) => (
-                        <li key={note}>{note}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
-            </section>
+        <div className="article-page__prose story-prose">
+          {story.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
           ))}
+          <Sources sources={story.sources} />
         </div>
 
         <footer className="article-page__footer">

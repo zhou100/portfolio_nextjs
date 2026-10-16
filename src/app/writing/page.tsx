@@ -89,9 +89,9 @@ export default function WritingIndex() {
               <p className="eyebrow">Market stories</p>
               <h2 className="section__title">How the view on a stock changed, and why</h2>
               <p className="section__lede">
-                Each story follows how the analyst view on one company or a group of companies
-                changed, ties every turning point to its sources, and sets the price path against
-                QQQ.
+                Short essays on one company or a group of companies: the pattern I saw, how the
+                price moved against the Nasdaq-100, how analysts read it, what I think and why, and
+                what I&apos;m watching next.
               </p>
             </div>
           </div>

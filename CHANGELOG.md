@@ -15,6 +15,10 @@
   with tickers, thesis, price chart, how the view changed, the case on each side, what to
   watch, and a look back. Each story states its own price cutoff; every chart has a full-size
   link, and multi-panel charts scroll sideways on phones. Source attributions only.
+- Market stories rewritten as essays. Each opens with three takeaways, then runs as plain
+  paragraphs: the pattern, what the chart shows, how analysts read it, my view as separate
+  arguments with their evidence, and what to watch. Subheadings, tables and per-section
+  source lists are gone; sources are one line at the end.
 
 ### Links
 
