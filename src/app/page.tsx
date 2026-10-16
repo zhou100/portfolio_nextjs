@@ -5,6 +5,7 @@ import { getFeaturedWork, getShowcaseWork, getWorkBySlug } from '@/lib/work';
 import { articleHref, getPublishedArticles } from '@/lib/writing';
 import CareerPath from './components/CareerPath/CareerPath';
 import Showcase from './components/Work/Showcase';
+import MarketStories from './components/Writing/MarketStories';
 import WorkCard from './components/Work/WorkCard';
 import './home.css';
 
@@ -14,6 +15,8 @@ export default function Home() {
   const testimonials = getTestimonials();
   const featured = getFeaturedWork();
   const showcase = getShowcaseWork();
+  const showcased = new Set(showcase.map((item) => item.slug));
+  const cases = featured.filter((item) => !showcased.has(item.slug));
   const articles = getPublishedArticles();
   const lab = getWorkBySlug('creative-evidence-lab');
 
@@ -111,8 +114,8 @@ export default function Home() {
               each decision.
             </p>
           </div>
-          <div className="grid grid--3">
-            {featured.map((item) => (
+          <div className={`grid grid--${cases.length >= 3 ? 3 : 2}`}>
+            {cases.map((item) => (
               <WorkCard item={item} key={item.slug} />
             ))}
           </div>
@@ -152,6 +155,18 @@ export default function Home() {
                 );
               })}
             </ul>
+
+            <div className="subhead subhead--stories">
+              <h3 className="subhead__title">Market stories</h3>
+              <p className="subhead__lede">
+                From Narrative Atlas: how the analyst view on a stock changed, each turning point
+                tied to its source.{' '}
+                <Link className="textlink" href="/writing#market-stories">
+                  All stories with summaries
+                </Link>
+              </p>
+            </div>
+            <MarketStories compact />
           </div>
         </section>
       )}

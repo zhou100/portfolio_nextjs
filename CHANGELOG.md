@@ -7,6 +7,15 @@
 - Selected work now opens with an Independent builds showcase: El Niño and Commodity
   Futures, ChurchMap, and Debrief, each with a tagline, a "try it" link, and three real
   screenshots captured from the live product. Case cards follow under "Case studies".
+- Narrative Intelligence joins the showcase with its public site, Narrative Atlas
+  (https://narrative-graph.onrender.com/); the case now links to it and its limitations say
+  what the public site does and does not show.
+
+### Writing
+
+- New Market stories section on `/writing` (after Published) and a compact list in the home
+  Writing section: the seven Narrative Atlas stories, each with tickers, a summary, what to
+  watch, and a dated chart snapshot, all linking to the live story.
 
 ### Links
 

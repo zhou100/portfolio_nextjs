@@ -39,6 +39,26 @@ export interface Paper {
   sourceCode?: string;
 }
 
+/**
+ * A story published by Narrative Atlas (the Narrative Intelligence build). The story itself
+ * lives on that site and updates with daily ingest; this is the index entry, written from
+ * the story card. The chart is a dated snapshot of the live card.
+ */
+export interface MarketStory {
+  slug: string;
+  title: string;
+  tickers: string[];
+  /** Analysis window shown on the live story when the snapshot was taken. */
+  window: string;
+  summary: string;
+  watch: string;
+  chart: { src: string; width: number; height: number; alt: string };
+}
+
+export const MARKET_STORIES_URL = 'https://narrative-graph.onrender.com/';
+/** When the summaries and chart snapshots below were taken from the live site. */
+export const MARKET_STORIES_AS_OF = 'Oct 16, 2026';
+
 const articles: Article[] = [
   {
     slug: 'offline-metric-wrong-launch-signal',
@@ -532,6 +552,121 @@ const articles: Article[] = [
   },
 ];
 
+const marketStories: MarketStory[] = [
+  {
+    slug: 'software-companies',
+    title: 'Software did not trade as one AI story',
+    tickers: ['CRM', 'TEAM', 'NOW', 'PLTR', 'CRWD', 'PANW', 'ZS', 'ADBE', 'INTU'],
+    window: 'Jan 12 – Oct 2, 2026',
+    summary:
+      'Growing AI use did not guarantee faster revenue growth across nine software companies.',
+    watch:
+      'Whether Salesforce pilots and ServiceNow AI interest turn into production revenue.',
+    chart: {
+      src: '/writing/market-stories/software-companies.webp',
+      width: 638,
+      height: 494,
+      alt: 'Bar chart of returns for nine software stocks against QQQ from Dec 31, 2025 to Oct 2, 2026.',
+    },
+  },
+  {
+    slug: 'meta-ai-returns',
+    title: 'Meta: AI growth must cover rising costs',
+    tickers: ['META'],
+    window: 'Apr 5, 2025 – Oct 2, 2026',
+    summary:
+      'Meta’s AI investment case depends on covering spending commitments beyond its reported capital budget.',
+    watch:
+      'Disclosed Muse revenue, which would support payback; Morgan Stanley expects meaningful monetization to take years.',
+    chart: {
+      src: '/writing/market-stories/meta-ai-returns.webp',
+      width: 638,
+      height: 267,
+      alt: 'Line chart of META against QQQ, rebased to 100, from Jun 26, 2025 to Oct 1, 2026.',
+    },
+  },
+  {
+    slug: 'optical-demand',
+    title: 'Optics: strong demand, uncertain policy gains',
+    tickers: ['LITE', 'COHR'],
+    window: 'Oct 13, 2025 – Oct 1, 2026',
+    summary:
+      'Possible restrictions on next-generation optical imports could favor Lumentum and Coherent, but remain a proposal.',
+    watch:
+      'Adopted rules and covered products. A proposal alone does not change near-term sales.',
+    chart: {
+      src: '/writing/market-stories/optical-demand.webp',
+      width: 638,
+      height: 267,
+      alt: 'Line chart of LITE and COHR against QQQ, rebased to 100.',
+    },
+  },
+  {
+    slug: 'rddt-audience',
+    title: 'Reddit: strong ads, uncertain user growth',
+    tickers: ['RDDT'],
+    window: 'Feb 22, 2024 – Oct 2, 2026',
+    summary:
+      'Reddit’s advertising grew strongly, while third-party tracking pointed to weaker daily user growth.',
+    watch:
+      'Reported daily users: stronger growth would challenge the weak tracking; a miss would reinforce the audience concern.',
+    chart: {
+      src: '/writing/market-stories/rddt-audience.webp',
+      width: 638,
+      height: 267,
+      alt: 'Line chart of RDDT against QQQ, rebased to 100.',
+    },
+  },
+  {
+    slug: 'ai-spending',
+    title: 'AI spending: four companies, different paths to payback',
+    tickers: ['GOOGL', 'MSFT', 'AMZN', 'META'],
+    window: 'Jan 23 – Oct 2, 2026',
+    summary:
+      'Analysts see stronger Google products, Microsoft demand and AWS pricing; Meta monetization and investment obligations remain open tests.',
+    watch:
+      'Recognized profit and cash after investment and lease commitments across all four companies.',
+    chart: {
+      src: '/writing/market-stories/ai-spending.webp',
+      width: 638,
+      height: 284,
+      alt: 'Bar chart of returns for GOOGL, META, MSFT and AMZN against QQQ from Jan 22 to Oct 2, 2026.',
+    },
+  },
+  {
+    slug: 'sndk-rebound',
+    title: 'Memory and storage: shared demand, different supply risks',
+    tickers: ['SNDK'],
+    window: 'Jul 1 – Oct 2, 2026',
+    summary:
+      'AI connects DRAM/HBM, NAND and HDD demand; contracts, customer budgets and competing capacity separate supplier outcomes.',
+    watch:
+      'Qualified supply, contract margins and customer budgets across the sector. The chart shows SanDisk only.',
+    chart: {
+      src: '/writing/market-stories/sndk-rebound.webp',
+      width: 638,
+      height: 286,
+      alt: 'Line chart of SNDK against QQQ, rebased to 100, from May 1 to Oct 2, 2026.',
+    },
+  },
+  {
+    slug: 'advertising-reactions',
+    title: 'AppLovin and Unity after August earnings',
+    tickers: ['APP', 'U'],
+    window: 'Aug 5 – 6, 2026',
+    summary:
+      'One session, two ad-tech results: AppLovin faced execution questions while Unity’s Grow and Vector progress drew attention.',
+    watch:
+      'Advertiser sign-ups: more would have supported AppLovin’s expansion; stalled sign-ups would have weakened it.',
+    chart: {
+      src: '/writing/market-stories/advertising-reactions.webp',
+      width: 638,
+      height: 200,
+      alt: 'Bar chart of one-session returns for APP, U and QQQ on Aug 5–6, 2026.',
+    },
+  },
+];
+
 const papers: Paper[] = [
   {
     title: 'Machine learning for food security: Principles for transparency and usability',
@@ -592,4 +727,12 @@ export function articleHref(article: Article): string | undefined {
 
 export function getPapers(): Paper[] {
   return [...papers].sort((a, b) => b.year - a.year);
+}
+
+export function getMarketStories(): MarketStory[] {
+  return marketStories;
+}
+
+export function marketStoryHref(story: MarketStory): string {
+  return `${MARKET_STORIES_URL}stories/${story.slug}`;
 }

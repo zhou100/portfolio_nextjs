@@ -148,6 +148,11 @@ h4 {
   padding: 72px 0;
 }
 
+/* Linked sections (/writing#market-stories, /writing#research) clear the sticky nav. */
+.section[id] {
+  scroll-margin-top: 96px;
+}
+
 /* First section after the hero: the reader should reach a case title fast. */
 .section--lead {
   padding-top: 40px;

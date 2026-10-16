@@ -8,6 +8,7 @@ import {
 } from '@/lib/writing';
 import { getSite } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
+import MarketStories from '../components/Writing/MarketStories';
 import './writing.css';
 
 export const metadata: Metadata = {
@@ -80,6 +81,27 @@ export default function WritingIndex() {
           </div>
         </section>
       )}
+
+      <section className="section section--tight" id="market-stories">
+        <div className="wrap">
+          <div className="section__head">
+            <div>
+              <p className="eyebrow">Market stories</p>
+              <h2 className="section__title">How the view on a stock changed, and why</h2>
+              <p className="section__lede">
+                Published by Narrative Atlas, the product side of{' '}
+                <Link className="textlink" href="/work/narrative-intelligence">
+                  Narrative Intelligence
+                </Link>
+                . Each story follows the analyst view on one company or a group, ties every turning
+                point to its source, and sets the price path against QQQ.
+              </p>
+            </div>
+          </div>
+
+          <MarketStories />
+        </div>
+      </section>
 
       {!!next.length && (
         <section className="section section--tight" id="next">

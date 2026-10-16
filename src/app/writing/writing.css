@@ -107,3 +107,89 @@
     max-width: none;
   }
 }
+
+/* ---------- Market stories ---------- */
+
+/* Links out to Narrative Atlas. The chart frame uses the source site's chart ground so a
+   short snapshot letterboxes cleanly instead of being cropped. */
+.stories {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+}
+
+.story {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.story__chart {
+  aspect-ratio: 638 / 300;
+  background: #f3eee5;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  display: block;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+
+.story__chart:hover {
+  border-color: var(--clr-accent);
+}
+
+.story__chart img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.story__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-bottom: 8px;
+}
+
+.story__title {
+  font-size: 1.25rem;
+}
+
+.story__summary {
+  color: var(--clr-ink);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.story__watch {
+  color: var(--clr-muted);
+  font-size: 0.95rem;
+  margin: 10px 0 16px;
+}
+
+.story__watch span {
+  color: var(--clr-ink);
+  font-weight: 700;
+}
+
+.story__link {
+  margin-top: auto;
+}
+
+.stories__note {
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+  margin-top: 20px;
+  max-width: var(--prose);
+}
+
+@media (max-width: 780px) {
+  .stories {
+    grid-template-columns: 1fr;
+  }
+}
