@@ -447,13 +447,16 @@
   },
   {
     "slug": "sndk-rebound",
-    "title": "Memory and storage: shared demand, different supply risks",
+    "title": "Memory and storage: one AI cycle, four different businesses",
     "tickers": [
+      "SK HYNIX",
+      "SAMSUNG",
+      "MU",
       "SNDK"
     ],
-    "window": "Jul 1, 2026 – Oct 2, 2026 · Prices: May 1, 2026 – Oct 2, 2026",
-    "summary": "AI lifts demand for all memory and storage; contracts, new capacity and customer budgets decide which suppliers keep the gains.",
-    "watch": "The prices SanDisk actually realizes as spot gains slow, and how fast new Chinese flash capacity arrives.",
+    "window": "Jul 7, 2026 – Oct 2, 2026 · Prices: Dec 31, 2025 – Oct 2, 2026",
+    "summary": "Four memory makers rose and fell together in 2026; high-bandwidth memory share, contracts and new supply are what separate them.",
+    "watch": "Whether price increases keep slowing after about +20% in the third quarter, and who wins HBM4 share at Nvidia.",
     "thumb": {
       "src": "/writing/market-stories/sndk-rebound.webp",
       "width": 638,
@@ -461,26 +464,27 @@
     },
     "chart": {
       "src": "/writing/market-stories/sndk-rebound-chart.webp",
-      "width": 916,
-      "height": 515,
-      "alt": "Price chart of SNDK against QQQ, rebased to 100, with numbered turning points: 1. Jul 13, 2026 Evercore raises target; 2. Jul 28, 2026 Korea memory rout; 3. Jul 30, 2026 Liquidation reported; 4. Aug 14, 2026 13F shows June stake; 5. Sep 22, 2026 Recovery noted (source-reported)."
+      "width": 1236,
+      "height": 840,
+      "alt": "Small-multiple price charts for SK Hynix, Samsung, Micron and SanDisk, each against QQQ and rebased to 100 at Dec 31, 2025 on a shared log scale, with the late-June to July 30 sell-off shaded."
     },
-    "chartNote": "SanDisk against QQQ, adjusted close, rebased to 100 at May 1, 2026. Numbered markers are turning points. The chart covers SanDisk only, not the sector.",
+    "chartNote": "Each panel shows one company against QQQ, adjusted close, rebased to 100 at Dec 31, 2025, on a shared log scale. SK Hynix and Samsung are in won. Shaded: the late-June to July 30 sell-off.",
     "tldr": [
-      "SanDisk fell with Korean memory stocks in July, then rose 69% from its late-July low to Oct 2 while the Nasdaq-100 rose 13%. Much of that swing came from forced selling and crowded positioning, not new business news.",
-      "AI raises demand for every kind of memory and storage at once, but suppliers differ in how much is under contract, how much new capacity they face and how far customers will let prices rise.",
-      "SanDisk’s long-term contracts are the best evidence that this cycle is different. Suppliers are already holding back on price increases, though, and Chinese capacity is the long-run risk to flash prices."
+      "SK Hynix, Samsung, Micron and SanDisk rose between 131% and 625% this year, then all fell 39–57% from late June to July 30, even though memory prices kept rising.",
+      "The market trades them as one AI memory bet, but they sell different things: high-bandwidth memory for AI chips, ordinary server and phone memory, and flash storage, each with its own supply and customers.",
+      "My view: scarcity is real across all of them for now. What separates them is high-bandwidth memory share (Samsung is gaining on SK Hynix), how much is under contract, and how much new supply each faces by 2028."
     ],
     "lead": [
-      "Memory and storage moved as one trade in 2026, but the companies in it are not one business. AI raises demand at every level at once: DRAM, the working memory in servers; HBM, the stacked version that sits beside AI chips; NAND flash, used in solid-state drives; and hard drives for cheap bulk storage. Who keeps the profit from that demand depends on things that differ by supplier and product: how much is under contract, how much new capacity is coming, and how far customers will let prices rise. SanDisk, a flash maker and the one company in the chart, is a useful place to watch those forces because its stock moved so violently in both directions."
+      "In 2026 the market treated memory as one AI trade. The four largest listed makers I follow rose together, fell together in July and recovered together, and on the worst days the moves were nearly identical. But they are not one business. AI raises demand at several levels at once: DRAM, the working memory in servers and phones; HBM, the stacked high-bandwidth DRAM that sits beside AI chips; NAND flash, used in solid-state drives; and hard drives for bulk storage. SK Hynix is mostly DRAM and HBM. Samsung makes all of it. Micron makes DRAM, HBM and flash. SanDisk makes only flash. The shared rally hid real differences in who sells what, and those differences started to show in the second half of the year."
     ],
     "body": [
-      "The chart sets SanDisk and QQQ, the Nasdaq-100 fund, to 100 on May 1, 2026. Through July SanDisk fell with Korean memory stocks several times. Samsung’s preliminary results on Jul 7 beat by less than investors had hoped, Korea’s market fell 9% on Jul 13, and Jul 28 brought one of the worst sessions on record for Korean memory. Around then a hedge fund, Situational Awareness, was reported to have sold its entire public stock portfolio to Citadel after heavy losses, with SanDisk among its largest positions. From the Jul 29 low to Oct 2 SanDisk rose 69.3% against 13.4% for QQQ. That window starts at a low picked in hindsight, so it overstates what anyone could have captured, but the shape is clear.",
-      "Analysts agreed on demand and argued about how long it lasts. Evercore raised its SanDisk target to $3,100 from $1,400 in July, arguing that new long-term agreements, about $42 billion of commitments across three signed deals, make earnings depend less on spot prices. In late September it went further: AI agents keep their working state in memory and spill it into flash, which makes SanDisk the clearest beneficiary. Bernstein took the longer view. It expects shortages of conventional memory to last through 2027, but by 2028 it expects more capacity and limits on AI budgets to bring prices down, with supplier gross margins falling from around 90% at the peak toward the high 70s. It sees Chinese suppliers as the larger long-term threat, especially in flash.",
-      "My first point is that the July collapse and rebound were mostly about positioning, not the business. The daily market newsletter I followed described heavy de-risking at the time, and called SanDisk one of the most crowded and volatile names in the market. When the Situational Awareness sale was reported on Jul 30, traders read it as the end of a forced seller, and SanDisk was among the fund’s holdings that rose most that day. By Aug 4 markets were back to where they had been before the unwind began. Nothing about SanDisk’s contracts changed between Evercore’s July note and the CFO’s update in September. One caution: the fund’s quarterly holdings filing showed only its June-end stake, so it cannot prove when or what it sold.",
-      "Second, contracts change the shape of this cycle but do not end it. SanDisk’s CFO said in September that the new agreements cover 50% of the flash it ships this fiscal year and two-thirds in fiscal 2028, with roughly 80% gross margin at the price floor, and that two customers had already reopened their contracts to ask for more volume and longer terms. Micron described something similar on Oct 1: more than 75% of its 2027 output is committed, and long-term agreements cover more than 35% of expected revenue through 2030. Micron’s terms also show the trade-off, since most of its priced agreements have ceilings as well as floors. And the suppliers themselves are wary of pushing too far. Kioxia’s chief executive told his sales team in September not to demand steep price increases from data-center customers, because “hyperscalers also have finite budgets.”",
-      "Third, new supply is coming, more slowly than the headlines suggest and unevenly across products. SanDisk says all of its supply growth comes from moving to newer manufacturing processes rather than adding wafers. Micron’s capital spending will rise more than 80% next fiscal year, but most of the increase goes to building clean rooms that become usable in late 2028. In China the money is real. YMTC, already the third-largest flash maker, is preparing a listing of about $5 billion and aims to lead the flash market by the end of 2027, and CXMT, which listed in Shanghai in July, reached 10% of global DRAM in the June quarter, up from 4% a year earlier. Funding is not qualified output, though. CXMT’s chips are in only a few laptop models outside the US so far, and it remains vague on when it will make HBM. Hard drives have their own version: Toshiba plans to double its AI data-center drive capacity in fiscal 2027.",
-      "Micron’s report on Oct 1 is a good preview of what to watch. Flash prices rose about 30% in the quarter, well above the roughly 20% analysts expected, and flash drove two-thirds of the revenue beat, yet next-quarter gross-margin guidance came in below what investors wanted. For SanDisk I’d watch the prices it actually realizes as spot gains slow, the share of its flash under the new agreements, and whether more customers reopen contracts. For the sector, I’d watch YMTC’s listing and capacity plans, whether CXMT’s HBM passes customer qualification, and whether Kioxia’s restraint becomes the norm. Shared demand does not mean equal returns."
+      "The chart sets each company and QQQ, the Nasdaq-100 fund, to 100 at the end of 2025, on a log scale so that a doubling looks the same in every panel. Through Oct 2 SanDisk was up 625%, Micron 277%, SK Hynix 183% and Samsung 131% (the Korean shares in won), against 22% for QQQ. All four peaked in late June and hit their lows on Jul 29 or 30: SanDisk fell 56%, SK Hynix 55%, Samsung 43% and Micron 39%. Three days did most of the damage. On Jul 7 Samsung’s preliminary results beat by less than investors had hoped; on Jul 13 Korea’s market fell 9%, taking SK Hynix down 15% and Samsung 11%; and on Jul 28, one of Korea’s worst sessions on record, the four fell between 9% and 15%. The rebound was uneven. From Jun 30 to Oct 2 Micron was down 7%, Samsung 17%, SanDisk 24% and SK Hynix 31%, while QQQ was up 2%.",
+      "The July drop came with almost no bad news on prices, which is why I read it as positioning more than fundamentals. Samsung’s July results still showed DRAM and flash prices rising strongly, and industry checks in late August had third-quarter memory prices finishing about 20% higher. What changed was who was holding the stocks. Situational Awareness, a hedge fund with large memory positions, was reported on Jul 30 to have sold its public portfolio to Citadel after heavy losses; that day Micron rose 18% and SanDisk 26%, and by Aug 4 markets were back where they had been before the unwind began.",
+      "Analysts mostly agreed on demand and argued about how long it lasts. JPMorgan, starting coverage of SK Hynix in September, called the cycle mid-stage, with more than half of SK Hynix’s capacity under long-term agreements and earnings per share growing about 34% a year through 2027. UBS raised its third-quarter DRAM price forecast to +23%, above the roughly 18% consensus. Evercore argued that AI agents, which keep their working state in memory, raise demand across every tier at once. Bernstein took the longer view: shortages of ordinary memory through 2027, then more capacity and limits on AI budgets bringing prices down in 2028, with supplier gross margins falling from around 90% at the peak toward the high 70s. Through September the bears’ main worries were that price increases were slowing and that Chinese supply was coming.",
+      "My first point is that high-bandwidth memory is what divides the suppliers, and the share is moving. Bernstein’s tracking of Korean exports in July implied Samsung’s HBM revenue could rise about 80% in the third quarter while SK Hynix’s fell about 20%, which it put down to delayed shipments of the newest generation, HBM4, for Nvidia’s Rubin chips rather than weaker demand. Samsung’s HBM4 yields were reported to have climbed to about 80% from 60% at the start of production, it expected third-quarter HBM4 revenue to more than triple, and on Oct 2 it was reported to be asking mid-to-high $4 per gigabit for HBM4 in 2027, against about $1.50 for the previous generation. Micron said most of its 2027 HBM supply is already contracted at significantly higher prices and that it is co-developing a custom HBM4E with Nvidia. That shift fits the chart: SK Hynix, which had led the HBM market, had the weakest second half of the four. It also cuts both ways for the group. Bernstein trimmed its 2027 HBM price forecast because more competition means HBM may end up less profitable than ordinary DRAM.",
+      "Second, the scarcity is broad right now precisely because HBM eats capacity. HBM needs more than three times the wafer capacity of ordinary DRAM for the same number of bits, and Samsung expects it to take nearly 30% of the industry’s DRAM wafers in 2027, up from about 20%. That squeezes the ordinary memory everyone else buys. Micron’s results on Oct 1 showed it clearly: flash prices rose about 30% in the quarter against about 20% expected, and flash drove two-thirds of the revenue beat. So the flash-heavy names are not riding on someone else’s AI story; they are getting the overflow. The limit is the customer. Kioxia’s chief executive told his sales team in September not to push steep price increases on data-center buyers because their budgets are finite, Micron flagged that PC and smartphone unit sales could fall by double digits in 2026, and fourth-quarter price increases were tracking 5–10%, well below the third quarter’s.",
+      "Third, contracts and buybacks change the shape of this cycle, but new supply is coming, and it lands unevenly. More of each company’s output is now committed: over half of SK Hynix’s capacity, according to JPMorgan; more than 75% of Micron’s 2027 output, with long-term agreements covering over 35% of its expected revenue through 2030, most of them with price ceilings as well as floors; and half of SanDisk’s flash this fiscal year, rising to two-thirds in fiscal 2028, at about 80% gross margin at the price floor. The companies are also handing cash back: SK Hynix announced a new buyback in August and committed to return more than half of its 2025–27 free cash flow, and SanDisk put $4.5 billion of a $5 billion quarter of free cash flow into buybacks. The supply side differs by company and product. SK Hynix is expanding its flash plant in Dalian by about 50%, and talks reported in September about making memory with Intel in the US by 2030 knocked the whole group down. Micron’s capital spending will rise more than 80% next fiscal year, mostly on clean rooms usable from late 2028. In China, CXMT, which listed in Shanghai in July, reached 10% of global DRAM in the June quarter, and YMTC is preparing a roughly $5 billion listing with the aim of leading the flash market by the end of 2027.",
+      "So I would stop asking whether memory is in a good cycle and ask which part of it each company sells. For the October reports I’d watch the pace of price increases after the third quarter’s roughly 20%; who wins HBM4 volume at Nvidia, and whether SK Hynix catches up later this year as Bernstein expects; whether customers accept Samsung’s HBM4 premium; how much of each company’s output sits under contracts with price floors; and every new supply announcement, from CXMT’s high-bandwidth memory qualification to YMTC’s listing and any SK Hynix plant in the US. Shared demand does not mean equal returns."
     ],
     "sources": [
       {
@@ -488,30 +492,38 @@
         "href": "https://www.sec.gov/Archives/edgar/data/2045724/000093583626000418/0000935836-26-000418-index.html"
       },
       {
-        "name": "13F information table (as of Jun 30)",
-        "href": "https://www.sec.gov/Archives/edgar/data/2045724/000093583626000418/xslForm13F_X02/form13fInfoTable.xml"
-      },
-      {
         "name": "SSE listing notice (Jul 24, 2026)",
         "href": "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260724_10826610.shtml"
-      },
-      {
-        "name": "Evercore ISI"
       },
       {
         "name": "Bernstein"
       },
       {
-        "name": "SanDisk CFO at Citi conference"
+        "name": "JPMorgan"
+      },
+      {
+        "name": "UBS"
+      },
+      {
+        "name": "Evercore ISI"
+      },
+      {
+        "name": "Jefferies"
+      },
+      {
+        "name": "Barclays"
       },
       {
         "name": "Micron results and management"
       },
       {
-        "name": "Kioxia CEO (via Bloomberg)"
+        "name": "SanDisk CFO at Citi conference"
       },
       {
-        "name": "Samsung preliminary results"
+        "name": "Samsung and SK Hynix statements as reported"
+      },
+      {
+        "name": "Kioxia CEO (via Bloomberg)"
       },
       {
         "name": "CNBC"
@@ -526,16 +538,13 @@
         "name": "Wall Street Journal"
       },
       {
-        "name": "Nikkei Asia"
-      },
-      {
-        "name": "DigiTimes"
-      },
-      {
-        "name": "Nikkei via TrendForce"
+        "name": "Korean press reports"
       },
       {
         "name": "a daily markets newsletter"
+      },
+      {
+        "name": "prices: Yahoo Finance adjusted close"
       }
     ]
   },

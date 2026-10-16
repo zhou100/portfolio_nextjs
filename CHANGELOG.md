@@ -27,6 +27,10 @@
 - Publish "Why My El Niño Research Mostly Says Don't Trade" in the same essay format, linked
   from the El Niño and Commodity Futures case. Every figure comes from the project's
   pre-registered reports; the yield-lag point cites Kamil et al. (Heliyon, 2024).
+- The memory story now covers the sector, not SanDisk alone: SK Hynix, Samsung, Micron and
+  SanDisk, with a new four-panel chart (rebased at Dec 31, 2025, shared log scale) and
+  arguments on HBM share, broad scarcity from HBM's capacity needs, and contracts versus
+  new supply.
 
 ### Links
 
