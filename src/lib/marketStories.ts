@@ -1,38 +1,18 @@
 import data from '@/content/market-stories.json';
 
 /**
- * Market stories hosted on this site. Each one follows how the analyst view on a stock or a
- * group of stocks changed, ties each turning point to its sources, and sets the price path
- * against QQQ. Content is a fixed snapshot kept in `src/content/market-stories.json`; each
- * story carries its own price window (`pricesThrough`). Source excerpts are not reproduced,
- * only attributions, with links to public primary filings where they exist.
+ * Market stories hosted on this site. Each one is a short essay on how the view on a stock or
+ * a group of stocks changed: three takeaways, the pattern, the price chart against QQQ, how
+ * analysts read it, my view with its evidence, and what to watch. Content is a fixed snapshot
+ * kept in `src/content/market-stories.json`; each story carries its own price window
+ * (`pricesThrough`). Sources are listed once, on one line at the end, with links only to
+ * public primary filings.
  */
 
 export interface StorySource {
   name: string;
   /** Only public primary sources (filings, investor relations). */
   href?: string;
-}
-
-export interface StoryItem {
-  label: string;
-  text: string;
-  sources: StorySource[];
-}
-
-export interface StoryTable {
-  title?: string;
-  head: string[];
-  rows: string[][];
-  notes: string[];
-}
-
-export interface StorySection {
-  heading: string;
-  notes?: { text: string; sources?: StorySource[] }[];
-  asof?: string;
-  items?: StoryItem[];
-  tables?: StoryTable[];
 }
 
 export interface StoryImage {
@@ -53,11 +33,15 @@ export interface MarketStory {
   watch: string;
   thumb: StoryImage;
   chart: StoryImage & { alt: string };
-  thesis: string;
-  thesisSources: StorySource[];
-  chartNote?: string;
-  note?: string;
-  sections: StorySection[];
+  /** What the chart plots, for the caption. */
+  chartNote: string;
+  /** Three takeaways, shown first. */
+  tldr: string[];
+  /** Paragraphs before the chart: the pattern. */
+  lead: string[];
+  /** Paragraphs after the chart: how it moved, how analysts read it, my view, what to watch. */
+  body: string[];
+  sources: StorySource[];
 }
 
 const stories = data as MarketStory[];

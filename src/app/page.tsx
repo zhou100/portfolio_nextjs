@@ -159,7 +159,7 @@ export default function Home() {
             <div className="subhead subhead--stories">
               <h3 className="subhead__title">Market stories</h3>
               <p className="subhead__lede">
-                How the analyst view on a stock changed, each turning point tied to its sources.{' '}
+                Short essays on how the view on a stock changed, and what I think of it.{' '}
                 <Link className="textlink" href="/writing#market-stories">
                   All stories with summaries
                 </Link>
