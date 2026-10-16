@@ -25,8 +25,12 @@ export interface Article {
   relatedWork?: string;
   publishedAt?: string;
   readingTime?: string;
+  /** Three takeaways shown above the body. */
+  tldr?: string[];
   /** Required for `published`. A status change without a body is not a publish. */
   body?: Block[];
+  /** One line at the end of the piece. */
+  sources?: { name: string; href?: string }[];
 }
 
 export interface Paper {
@@ -46,23 +50,27 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'published',
     publishedAt: '2026-09-08',
-    readingTime: '5 min',
+    readingTime: '6 min',
     excerpt:
-      'A model can improve on the test set and still fail the launch decision. Two examples — recommendation quality and rare high-cost failures — show how the evaluation population, the metric, and the guardrails decide what an offline win actually means.',
+      'A model can improve on the test set and still be the wrong launch. The overall score measures typical traffic; the decision usually turns on a small slice and on failures the logged data cannot show.',
     relatedWork: 'recommendation-quality',
+    tldr: [
+      'A model can win on the held-out set and still be the wrong launch. In the example below it wins overall by about two points and loses the slice the product cares about by ten.',
+      'The overall number measures typical traffic. Launch decisions usually turn on a small slice, or on failures the logged data cannot show, and the evidence on both is weaker than the headline suggests.',
+      'I accept an offline win only with the slices named in advance, the metric’s blind spots stated, and guardrails that have a threshold and a consequence.',
+    ],
     body: [
       {
         type: 'p',
-        text: 'Here is a readout that arrives on a launch review most weeks. The new model scores 83% against 80% for the incumbent on the held-out set. It is a clean win, the sample is large, and everyone in the room would like to ship it.',
+        text: 'A launch review I have sat through many times goes like this. The new model scores 83% on the held-out set against 80% for the one in production. The sample is large, the win is clean, and everyone would like to ship. The pattern I keep seeing is that the number answers a different question from the one the launch is deciding. It tells you how the model does on typical traffic. The launch is usually about something narrower: a group of users the product worries about, or a kind of failure the test set was never built to show.',
       },
       {
         type: 'p',
-        text: 'Then someone splits the same evaluation set into the ordinary slice and the slice the product actually worries about.',
+        text: 'Here is the same evaluation split into ordinary traffic and the slice the product actually cares about. The numbers are illustrative, chosen so the arithmetic is easy to check.',
       },
       {
         type: 'table',
-        caption:
-          'Illustrative numbers, chosen so the arithmetic is easy to check. The slice weights are the population shares, not a modelling choice.',
+        caption: 'Illustrative numbers. The slice weights are population shares, not a modeling choice.',
         head: ['Slice', 'Share of population', 'Incumbent', 'Candidate'],
         rows: [
           ['Ordinary traffic', '95%', '80%', '83%'],
@@ -72,61 +80,34 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The candidate wins overall by more than two points and loses the high-risk slice by ten. Both statements are true, computed from the same table. Which one is the launch signal depends on a question the accuracy number cannot answer: what is this evaluation supposed to decide?',
-      },
-      { type: 'h', text: 'Overall performance and slice performance answer different questions' },
-      {
-        type: 'p',
-        text: 'A sample drawn from typical traffic is the right sample for estimating typical performance. That is not a flaw, it is the design working. What it cannot do is say much about a slice that makes up 5% of the population — at that share, most of the sample is spent on the case you already understand, and the interval on the slice estimate is wide enough to hide a real regression.',
+        text: 'The candidate wins overall, 81.35% to 79.0%, because 95% of the population is ordinary traffic where it gains three points. On the high-risk slice, 5% of the population, it drops from 60% to 50%. Both statements come from the same table. Which one should decide the launch depends on what the evaluation is for, and the overall number cannot tell you that.',
       },
       {
         type: 'p',
-        text: 'The mistake is not sampling from typical traffic. The mistake is reading one number as though it answered both questions. If the decision depends on the rare slice, then the slice needs enough sample to support an estimate, which usually means oversampling it and weighting back when you want the population figure. Reporting the weighted overall alongside the unweighted slice estimates, each with its interval, costs one extra row and removes the ambiguity entirely.',
-      },
-      {
-        type: 'note',
-        text: 'A point estimate without a sample size is not a result. Two of the four numbers in the table above would move meaningfully on a resample of the 5% slice, and nothing in this article tells you which two.',
-      },
-      { type: 'h', text: 'The metric can be gameable in a direction the test set cannot see' },
-      {
-        type: 'p',
-        text: 'The second failure is subtler, because it survives every sampling fix. Consider a recommendation model evaluated on whether the viewer engages with what it shows. A model that leans harder on the creators a viewer has already reacted to will score well on that metric. It is genuinely better at predicting engagement.',
+        text: 'The common practice is to treat the held-out score as the launch signal, with a few guardrail metrics on the readout. It is a reasonable default. A sample drawn from typical traffic is the right sample for estimating typical performance, and a large sample makes the overall number precise. The trouble is that precision on the average says little about precision where the decision actually turns.',
       },
       {
         type: 'p',
-        text: 'It may also be showing the same three creators repeatedly. Engagement per item goes up. The session gets narrower. Offline, those two outcomes are indistinguishable, because the offline metric is built from historical interactions with a catalogue the model is now choosing differently from.',
+        text: 'My first point is that the sample is built for the average, so it is weakest exactly on the slice that matters. In an evaluation set of 2,000 items, a 5% slice is 100 items. At an accuracy around 55%, the standard error on that slice is about 5 points, so a 95% interval runs roughly 10 points either side, which is wide enough to hide the regression in the table. This is not only a teaching problem. Oakden-Rayner and colleagues called it hidden stratification in medical imaging: models with strong overall scores that failed on clinically important subsets, with performance gaps of more than 20% on some of them. The fix is cheap. Oversample the slice so it supports its own estimate, weight back when you want the population figure, and report both with their intervals.',
       },
       {
         type: 'p',
-        text: 'The fix is not a better offline metric. It is knowing which product failure the offline metric is structurally unable to see, and putting that failure on the launch readout as a separate measurement — repetition, supply concentration, the effort a viewer spends before finding something worth watching. These are proxies for experience, and imperfect ones. Their value is that they fail in a different direction from the primary metric, so when both move the right way you have learned something the primary metric alone could not tell you.',
-      },
-      { type: 'h', text: 'A guardrail needs a threshold and a consequence' },
-      {
-        type: 'p',
-        text: 'It is tempting to conclude that a guardrail which never stops a launch is decoration. That inference does not hold. A guardrail may never bind because the risk did not materialize, or because the design that produced the candidate already avoided it. Neither is evidence the guardrail is useless.',
+        text: 'Second, some failures cannot be seen offline however you sample, because the offline metric is built from what the old system showed people. Take a recommendation model scored on whether viewers engage with what it shows. A model that leans harder on creators a viewer already likes will score well, and it may also show the same few creators again and again. Engagement per item goes up while the session gets narrower, and the logged data cannot tell the two apart. Chaney, Stewart and Engelhardt showed in simulation that training and evaluating on data shaped by an existing recommender makes behavior more uniform without making it more useful, and that it biases held-out evaluation. Garcin and colleagues found the same gap in a live news recommender at swissinfo.ch: recommending popular stories looked best offline and did worst online, while methods that ranked lower offline raised click-through by up to 35%. So the readout needs separate measures for what the main metric cannot see, such as repetition, how concentrated the supply becomes, and how much effort a viewer spends before finding something worth watching. They are imperfect proxies, but they fail in a different direction from the main metric, which is what makes them useful.',
       },
       {
         type: 'p',
-        text: 'What does make a guardrail decoration is being unfalsifiable: no defined failure mode, no stated threshold, and no consequence attached to crossing it. Those three are checkable before the launch, and they are what separates a guardrail from a chart. A guardrail also needs enough sensitivity to detect harm at a size that would actually change the decision — a metric too noisy to move outside its own interval will never bind no matter what happens.',
-      },
-      { type: 'h', text: 'What a launch readout has to state' },
-      {
-        type: 'p',
-        text: 'The version of this I would defend in a review is short. Four fields, stated before the results are read:',
-      },
-      {
-        type: 'list',
-        items: [
-          'Population — who this was evaluated on, and how that differs from who the decision affects. Name the slices before you look.',
-          'Comparison — what the candidate is being compared against, and whether the comparison holds anything constant that the launch will not.',
-          'Primary metric — one, with its denominator, plus what it structurally cannot see.',
-          'Guardrails — each with a failure mode, a threshold, and what crossing it triggers. "Escalate for discussion" is a legitimate consequence; "note it" is not.',
-        ],
+        text: 'Third, a guardrail only works if it can actually stop something. A guardrail that never blocks a launch is not necessarily useless; the risk may simply not have happened, or the design may already have avoided it. What makes it decoration is having no named failure, no threshold and no consequence for crossing it, or being so noisy that it could never move outside its own interval. Kohavi, Tang and Xu treat guardrail metrics the same way in their book on online experiments: they exist to catch harm the main metric misses, and they need enough statistical power to see harm at a size that would change the decision.',
       },
       {
         type: 'p',
-        text: 'None of this makes an offline win worthless. It makes the win a claim about a specific population and a specific outcome, which is the only form in which it can be checked. The launch decision is a different question, and it stays a different question no matter how clean the test-set number is.',
+        text: 'What I ask for before anyone reads the results is short. Name the population and the slices, and how they differ from the people the launch affects. Say what the candidate is compared against, and whether the comparison holds anything fixed that the launch will not. Pick one primary metric with its denominator, and say what it cannot see. Give each guardrail a failure mode, a threshold and what crossing it triggers; “escalate for discussion” is a real consequence, “note it” is not. None of this makes an offline win worthless. It turns the win into a claim about a specific population and a specific outcome, which is the only form in which anyone can check it.',
       },
+    ],
+    sources: [
+      { name: 'Oakden-Rayner et al., Hidden Stratification (CHIL 2020)', href: 'https://arxiv.org/abs/1909.12475' },
+      { name: 'Chaney, Stewart & Engelhardt, Algorithmic Confounding in Recommendation Systems (RecSys 2018)', href: 'https://arxiv.org/abs/1710.11214' },
+      { name: 'Garcin et al., Offline and Online Evaluation of News Recommender Systems at swissinfo.ch (RecSys 2014)', href: 'https://infoscience.epfl.ch/record/210409' },
+      { name: 'Kohavi, Tang & Xu, Trustworthy Online Controlled Experiments (2020)' },
     ],
   },
   {
@@ -137,127 +118,53 @@ const articles: Article[] = [
     publishedAt: '2026-09-08',
     readingTime: '6 min',
     excerpt:
-      'Finding a logo in a video, predicting which ad performs well, and proving that an earlier brand reveal improves outcomes are three different tasks with three different burdens of proof. This piece follows one creative change through all three.',
+      'A correct tag, a tag that predicts performance, and an attribute that causes better results are three different claims. Most creative insight is one of the first two, described in the language of the third.',
     relatedWork: 'creative-evidence-lab',
+    tldr: [
+      'A creative tool makes three claims that sound like one: the tag is right, the tag predicts performance, and changing the attribute changes the outcome. Each needs its own evidence.',
+      'Most creative “insight” is a correct tag or a prediction, described in the language of cause. In Facebook’s own experiments, observational estimates of ad lift were often off by a factor of three.',
+      'Only a randomized test of two otherwise identical versions shows an effect, and the platform’s built-in split test is not randomized in the way it looks.',
+    ],
     body: [
       {
         type: 'p',
-        text: 'Take a fifteen-second video ad. The logo appears at 00:02 in the corner of the frame. A voiceover says the brand name at 00:06. A call to action appears on screen at 00:12 and is spoken at 00:13.',
-      },
-      {
-        type: 'p',
-        text: 'A creative intelligence product will tell you three things about this ad, and they sound like one thing. They are not. Accurate tags, predictive tags, and tags whose underlying attribute causes the outcome are separate claims, and each needs its own evaluation.',
-      },
-      { type: 'h', text: 'Claim one: the tag is correct' },
-      {
-        type: 'p',
-        text: 'Ask two annotators for "first brand appearance" on the ad above. One says 00:02, reading the corner logo. The other says 00:06, reasoning that a logo small enough to miss is not an appearance in any sense the viewer experiences. Both are being careful. The definition is what failed.',
-      },
-      {
-        type: 'p',
-        text: 'This is the cheapest failure to fix and the one most often skipped, because the model produces a number either way. The repairs are unglamorous: split visual and spoken brand presence into separate fields; require every tag to be bound to a time range and a frame or transcript reference; keep "absent" and "not detected" as different values, because a pipeline that cannot see the logo and an ad that has no logo are different facts about the world.',
-      },
-      {
-        type: 'p',
-        text: 'Then measure per tag, not in aggregate. A blended tagging accuracy of 91% is compatible with a CTA-presence tag at 99% and a first-brand-appearance tag at 62%, and the second one is the tag every downstream analysis is about to use.',
-      },
-      {
-        type: 'note',
-        text: 'Zero errors on a pilot of thirty assets is not a zero error rate. Report the sample size and the interval next to every accuracy figure, or the number is decoration.',
-      },
-      { type: 'h', text: 'Claim two: the tag predicts performance' },
-      {
-        type: 'p',
-        text: 'Suppose the labels are now trustworthy, and the data shows that ads with a brand reveal before 00:03 have higher ROAS than ads that reveal later. This is a real pattern in the data. It is also close to uninterpretable on its own.',
-      },
-      {
-        type: 'p',
-        text: 'Large brands with big budgets reveal early — it is house style, and they have the recognition to make it work. They also buy better placements, target warmer audiences, and run against higher-converting offers. Every one of those is a plausible explanation for the ROAS gap, and the tag is partly a proxy for "this is a large advertiser."',
-      },
-      {
-        type: 'p',
-        text: 'A predictive evaluation that means anything has to answer: better than what? The honest baseline ladder is three rungs.',
+        text: 'Creative intelligence products are good at telling you what is in an ad. Take a fifteen-second video: the logo appears in a corner at 0:02, a voiceover says the brand name at 0:06, and a call to action appears on screen at 0:12 and is spoken at 0:13. A tool will tag all of that, then tell you which tags go with better results, then suggest you move the brand earlier. Those are three different claims stacked on top of each other. The pattern I see is that the evidence gets weaker at each step while the language gets stronger.',
       },
       {
         type: 'table',
-        head: ['Model', 'What it knows', 'What it establishes'],
+        caption: 'The same ad, three claims. Each row needs the evidence in its last column, and none of them supplies the next row’s.',
+        head: ['Claim', 'The question', 'What settles it'],
         rows: [
-          [
-            'Baseline 0',
-            'The grouped historical rate for this advertiser and objective',
-            'The floor. A tag model that loses to this has added nothing.',
-          ],
-          [
-            'Baseline 1',
-            'Pre-delivery context: budget, audience, placement, objective, format',
-            'How much of the pattern is delivery context wearing a creative costume.',
-          ],
-          [
-            'Model 2',
-            'Baseline 1 plus the creative tags',
-            'The incremental information in the tags, and only that.',
-          ],
+          ['The tag is correct', 'Does the brand really appear at 0:02?', 'Agreement between annotators, per tag, with a sample size'],
+          ['The tag predicts performance', 'Do early-reveal ads do better?', 'Beating a baseline that already knows budget, audience and placement, on held-out campaigns'],
+          ['The attribute causes the outcome', 'Would moving the reveal earlier help this ad?', 'A randomized test of two versions that differ only in that attribute'],
         ],
       },
       {
         type: 'p',
-        text: 'Hold out by creative family and out of time, or near-duplicate assets from the same campaign land on both sides of the split and the score measures memorization. Check for leakage in both directions: performance data that leaked into a tag, and campaign names that encode the outcome. And pick one target — CTR, CVR, and ROAS are different tasks with different denominators, and they do not roll up into a creative score.',
+        text: 'Read down the table and each step asks for more. A correct tag says nothing about performance. A tag that predicts performance says nothing about what would happen if you changed it. The common practice skips between them anyway. A dashboard reports tagging accuracy, then a correlation between tags and return on ad spend, then a recommendation, and the recommendation inherits the confidence of the first number.',
       },
       {
         type: 'p',
-        text: 'Suppose Model 2 beats Baseline 1 out of sample. You have shown the tags carry information the delivery context does not. You have not shown that changing the creative changes anything.',
-      },
-      { type: 'h', text: 'Claim three: changing the attribute changes the outcome' },
-      {
-        type: 'p',
-        text: 'Only an intervention gets you here, and the intervention has to be narrow enough to interpret. Two versions of the same asset, differing in the tested attribute and nothing else.',
-      },
-      {
-        type: 'template',
-        lines: [
-          {
-            label: 'Observation',
-            text: 'In this account, ads with a spoken brand mention before 00:03 show higher ROAS than ads that mention it later. Confounded with budget, audience, and offer.',
-          },
-          {
-            label: 'Hypothesis',
-            text: 'Moving the spoken brand mention earlier improves conversion rate for this campaign. Not established.',
-          },
-          {
-            label: 'Intervention',
-            text: 'Version A: brand mention at 00:06, unchanged. Version B: identical edit with the brand mention at 00:02. Same offer, same CTA, same length, same audio bed.',
-          },
-          {
-            label: 'Metric',
-            text: 'ITT difference in qualified conversion rate per assigned unit, in a fixed window. Guardrails on completion rate and cost per qualified action.',
-          },
-          {
-            label: 'Decision rule',
-            text: 'Ship B only if the preregistered primary outcome clears the minimum effect and no guardrail is crossed. Otherwise keep A.',
-          },
-        ],
+        text: 'My first point is that tag accuracy is mostly a definition problem, and it has to be measured tag by tag. Ask two annotators for the first brand appearance in the ad above. One says 0:02, reading the corner logo. The other says 0:06, reasoning that a logo small enough to miss is not an appearance the viewer experiences. Both are being careful; the definition failed. The repairs are unglamorous: record visual and spoken brand presence as separate fields, tie every tag to a time range and a frame or transcript reference, and keep “absent” and “not detected” as different values. Then report accuracy per tag. A blended accuracy of 91% is compatible with a call-to-action tag at 99% and a first-brand-appearance tag at 62%, and the second is the one every downstream analysis is about to use. Sample size matters as much: zero errors on a pilot of thirty assets still leaves a 95% upper bound of about 10% on the error rate.',
       },
       {
         type: 'p',
-        text: 'Two traps at this stage. Running both versions simultaneously in one campaign is not randomization — the delivery system reallocates budget toward whichever version is already winning, so exposure is a function of the outcome. If the only randomization available is campaign or geo level, then that cluster is the unit, and the power calculation has to use it. Second, click-conditioned conversion rate cannot stand in for the ITT result, because treatment can change who clicks in the first place.',
-      },
-      { type: 'h', text: 'The check' },
-      {
-        type: 'p',
-        text: 'Before repeating any creative finding, ask which of the three claims it actually is:',
-      },
-      {
-        type: 'list',
-        items: [
-          'Is this a label, and do I know its per-tag agreement and sample size?',
-          'Is this a prediction, and does it beat a baseline that already knows the delivery context?',
-          'Is this a causal claim, and is there a recorded random assignment behind it?',
-        ],
+        text: 'Second, a tag that predicts performance is usually standing in for who made the ad and how it was delivered. Large brands reveal early as house style. They also buy better placements, reach warmer audiences and run stronger offers, and each of those can explain a gap in return on ad spend. This is not a hypothetical worry. Gordon, Zettelmeyer, Bhargava and Chapsky compared observational methods with randomized results across 15 advertising experiments at Facebook, covering 1.6 billion impressions. The observational methods often failed to recover the experimental effect, even with rich data on users, and in half of the studies the estimated lift was off by a factor of about three. So a predictive claim has to beat a ladder of baselines: the advertiser’s historical rate, then a model that knows the delivery context before launch, then that model plus the tags. Only the last step measures what the tags add. Hold out whole creative families and later time periods, or near-copies of the same ad land on both sides of the split, and pick one target, because click-through, conversion rate and return on ad spend have different denominators.',
       },
       {
         type: 'p',
-        text: 'Most creative insight lives at rung one or two and gets described in the language of rung three. Accurate tags do not establish incremental lift. Each claim needs its own evaluation, and saying which one you have is not a hedge — it is the entire content of the finding.',
+        text: 'Third, only an intervention shows that changing the attribute changes the outcome, and it has to be narrow enough to read. Two versions of the same edit, with the brand mention at 0:06 in one and 0:02 in the other, and the same offer, call to action, length and audio. The trap is the platform’s own split test. Braun and Schwartz showed in the Journal of Marketing that ad platforms deliver each version to a different, optimized mix of users during the test, so the “winner” may simply have reached people more likely to respond. A later study of Meta’s tools found the problem specific to its A/B tests, not to lift tests with a holdout group. If the only real randomization is at the campaign or regional level, that cluster is the unit and the power calculation has to use it. And the outcome should be conversions per assigned unit, not conversion rate among clickers, because the change can alter who clicks in the first place.',
       },
+      {
+        type: 'p',
+        text: 'Before I repeat a creative finding, I ask which of the three claims it is. If it is a tag, do I know its agreement and sample size? If it is a prediction, does it beat a baseline that already knows the delivery context? If it is a causal claim, is there a recorded random assignment behind it? Saying which one you have is not a hedge. It is the content of the finding.',
+      },
+    ],
+    sources: [
+      { name: 'Gordon, Zettelmeyer, Bhargava & Chapsky, A Comparison of Approaches to Advertising Measurement (Marketing Science, 2019)', href: 'https://www.kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf' },
+      { name: 'Braun & Schwartz, Where A/B Testing Goes Wrong (Journal of Marketing, 2025)', href: 'https://papers.ssrn.com/abstract=3896024' },
+      { name: 'Divergent delivery in Meta A/B and lift tests (arXiv 2508.21251)', href: 'https://arxiv.org/abs/2508.21251' },
     ],
   },
   {
@@ -268,143 +175,63 @@ const articles: Article[] = [
     publishedAt: '2026-09-08',
     readingTime: '6 min',
     excerpt:
-      'An evaluator can reward a polished answer that misses the task. Two deliberately difficult answer pairs show how to test a judge for grounding and task completion, compare it against human ratings, and learn from the disagreements before its score gates a release.',
+      'An LLM judge that gates a release is a measuring instrument. Two deliberately hard answer pairs show why one score cannot hold grounding and task completion, and how blind human ratings and the disagreements decide what the judge may grade alone.',
     relatedWork: 'enterprise-ai-evaluation',
+    tldr: [
+      'An LLM judge that gates a release is a measuring instrument. Checking that it agrees with itself shows it is consistent, not that it is right.',
+      'Judges have known biases. Swapping the order of two answers let one model beat ChatGPT on 66 of 80 questions, and longer answers get rewarded for their length.',
+      'Score grounding, task completion and unsupported recommendations separately, compare against blind human ratings, and use the disagreements to decide what the judge may grade alone.',
+    ],
     body: [
       {
         type: 'p',
-        text: 'If an LLM judge is going to gate a release, it is a measurement instrument, and measurement instruments get validated before they are trusted. The usual validation — checking that the judge agrees with itself across runs — establishes reliability, not correctness. A judge that shares the generator’s blind spots will certify them consistently.',
+        text: 'More teams now let a language model grade another model’s answers and use that grade to decide what ships. The pattern I see is that the judge gets less scrutiny than the system it is judging. The usual check is that the judge gives the same score on repeated runs. That shows the judge is consistent. A judge that shares the generator’s blind spots will certify them consistently.',
       },
       {
         type: 'p',
-        text: 'Here are two answer pairs written to be hard in the specific way that matters. Read them and decide which answer in each pair is better before reading on.',
+        text: 'Here are two answer pairs written to be hard in the way that matters. Decide which answer in each pair is better before reading on.',
       },
-      { type: 'h', text: 'Task A: the confident recommendation' },
       {
         type: 'deflist',
         items: [
-          {
-            term: 'Question',
-            detail:
-              'Campaign C has the highest ROAS of our three campaigns this quarter. Should we move the next budget increment into it?',
-          },
-          {
-            term: 'Answer 1',
-            detail:
-              'Cites the correct ROAS figures for all three campaigns, correctly identifies C as highest, and recommends moving the increment into C to capture the higher return.',
-          },
-          {
-            term: 'Answer 2',
-            detail:
-              'Cites the same correct figures, then says the ranking does not answer the question: observed ROAS reflects where spend has already been allocated and which audiences were reachable, so the marginal return on new spend in C is not established. Proposes a spend-level holdout or an incrementality test before shifting the increment.',
-          },
+          { term: 'Task A', detail: 'Campaign C has the highest return on ad spend of our three campaigns this quarter. Should we move the next budget increment into it?' },
+          { term: 'Answer A1', detail: 'Cites the correct figures for all three campaigns, identifies C as highest, and recommends moving the increment into C.' },
+          { term: 'Answer A2', detail: 'Cites the same figures, then says the ranking does not answer the question: past return reflects where money was already spent and which audiences were reachable, so the return on new spend in C is unknown. Proposes a holdout test before moving the money.' },
+          { term: 'Task B', detail: 'Which of these two product lines should we prioritize in next quarter’s campaign?' },
+          { term: 'Answer B1', detail: 'Three sentences. Says the decision needs gross margin per line, which the material does not contain, and asks for it; revenue alone favors line A, and margin could reverse that.' },
+          { term: 'Answer B2', detail: 'Six well-organized paragraphs recommending line A, including a margin comparison. The margin figures appear nowhere in the source material.' },
         ],
       },
       {
         type: 'p',
-        text: 'Answer 1 is factually grounded and every number is right. It is also the wrong recommendation, because average ROAS on delivered spend does not identify the marginal return on new spend. A judge scoring grounding will rate Answer 1 highly. A judge scoring whether the user can act correctly on the answer will not.',
-      },
-      { type: 'h', text: 'Task B: the fluent fabrication' },
-      {
-        type: 'deflist',
-        items: [
-          {
-            term: 'Question',
-            detail: 'Which of these two product lines should we prioritize in next quarter’s campaign?',
-          },
-          {
-            term: 'Answer 1',
-            detail:
-              'Three sentences. States that the decision needs gross margin per line, which is not in the provided material, and asks for it. Notes that revenue alone would favour line A and that margin could reverse the ranking.',
-          },
-          {
-            term: 'Answer 2',
-            detail:
-              'Six well-organized paragraphs with a clear recommendation for line A, including a margin comparison. The margin figures do not appear anywhere in the source material.',
-          },
-        ],
+        text: 'In Task A every number in A1 is right, and the recommendation is still wrong, because average return on money already spent does not tell you the return on the next dollar. In Task B, B2 is longer, better organized and more decisive, and it invents its key numbers; B1 is the correct professional response to an underspecified question. A judge that scores grounding will like A1. A judge that is impressed by length and confidence will like B2. Both are the answers a user could not act on.',
       },
       {
         type: 'p',
-        text: 'Answer 2 is longer, better structured, more decisive, and contains invented numbers. Answer 1 is the correct professional response to an underspecified question. Judges — and human reviewers reading quickly — reliably prefer Answer 2 unless the rubric forces the check.',
-      },
-      { type: 'h', text: 'One score cannot hold this' },
-      {
-        type: 'p',
-        text: 'Both pairs fail under a single "answer quality" score for the same reason: the dimensions move in opposite directions. Split them.',
-      },
-      {
-        type: 'table',
-        caption:
-          'Scored independently, on the same answer. Collapsing them into a mean is what lets a polished, unusable answer pass.',
-        head: ['Dimension', 'What it asks', 'Task A', 'Task B'],
-        rows: [
-          [
-            'Grounding',
-            'Is every factual sentence traceable to the provided evidence?',
-            'Both answers pass.',
-            'Answer 1 passes, Answer 2 fails on the invented margins.',
-          ],
-          [
-            'Task completion',
-            'Could the user act correctly on this and get the outcome they came for?',
-            'Answer 1 fails, Answer 2 passes.',
-            'Answer 1 passes, Answer 2 fails.',
-          ],
-          [
-            'Unsupported recommendation',
-            'Does it advise an action the evidence does not support?',
-            'Answer 1 fails.',
-            'Answer 2 fails.',
-          ],
-        ],
+        text: 'The common defense of LLM judges is that they agree with people about as often as people agree with each other. Zheng and colleagues found GPT-4’s verdicts matched human experts about 85% of the time on MT-Bench when ties were excluded, against 81% agreement between the humans themselves. I take that result seriously. But it is an average over one benchmark, and later work on when to trust a judge found GPT-4 almost never reached 80% agreement with people on a subset of Chatbot Arena. An average agreement figure is exactly the number that hides cases like the two above.',
       },
       {
         type: 'p',
-        text: 'Note what the third dimension catches that the first two do not. Answer 1 in Task A is fully grounded and still recommends an action the evidence cannot support. Grounding is about sentences; the recommendation is about the inference drawn from them, and a system can be perfect at the first while failing at the second.',
-      },
-      { type: 'h', text: 'How to run the comparison' },
-      {
-        type: 'p',
-        text: 'The protocol matters as much as the rubric, because most of the ways this goes wrong are procedural:',
-      },
-      {
-        type: 'list',
-        items: [
-          'Score blind. Reviewers should not know which system produced an answer, and neither should the judge — a model name in the context is a prior.',
-          'Swap presentation order across items. Position effects are large enough to move a pairwise result on their own.',
-          'Have humans score first, on the same rubric, before anyone sees the judge’s output. Reading the judge first anchors the human labels and destroys the comparison.',
-          'Report per-dimension agreement, never a single blended agreement figure. A judge can track humans closely on grounding and barely at all on task completion, which is exactly the case where a mean is most misleading.',
-          'Keep the disagreements. They are the output of this exercise, not the noise in it.',
-        ],
-      },
-      { type: 'h', text: 'What the disagreements tell you' },
-      {
-        type: 'p',
-        text: 'Disagreement is diagnostic, and the direction matters. Where the judge is more generous than humans, you are looking at the failure class the judge will let through — typically fluent answers that miss the task, which is precisely the release risk. Where the judge is harsher, you often find a rubric that is underspecified rather than a model that is wrong; two humans disagreeing on the same item is a signal to rewrite the rubric or drop the category, not to average them.',
+        text: 'My first point is that one quality score cannot hold these answers, because the dimensions move in opposite directions. Score them separately. Grounding asks whether every factual sentence traces to the evidence: both Task A answers pass, and B2 fails. Task completion asks whether the user could act on the answer and get what they came for: A1 and B2 fail. A third check, whether the answer recommends something the evidence does not support, catches A1, which is fully grounded and still draws the wrong inference. There is outside evidence that a blended score drifts toward surface features. When Dubois and colleagues adjusted AlpacaEval’s judge scores for answer length, the benchmark’s rank correlation with Chatbot Arena’s human votes rose from 0.94 to 0.98, which means length had been moving the scores.',
       },
       {
         type: 'p',
-        text: 'That triage is the useful product of a judge evaluation: a decision about which error types the judge is allowed to adjudicate alone, and which ones route to a person regardless of score. A judge that handles the high-volume, low-ambiguity cases and escalates the rest is worth having. A judge trusted uniformly because its overall agreement number looked good is a release gate with a hole in it.',
-      },
-      { type: 'h', text: 'The check' },
-      {
-        type: 'p',
-        text: 'Before letting a judge score gate anything:',
-      },
-      {
-        type: 'list',
-        items: [
-          'Can I name a failure the judge is known to miss, and say what happens to it instead?',
-          'Was the human comparison collected blind, before the judge output was visible?',
-          'Is agreement reported per dimension, with the model version, prompt, and adjudication rule recorded alongside it?',
-          'If the judge and the humans disagree next quarter, do I know whether the model drifted or the rubric was always ambiguous?',
-        ],
+        text: 'Second, the procedure matters as much as the rubric, because judges react to things that should not matter. Wang and colleagues found that simply swapping the order of two answers changed the verdict often enough that Vicuna-13B could beat ChatGPT on 66 of 80 questions with ChatGPT as the judge. So I score blind, with no model names in the context; swap the order of answers across items; have humans score on the same rubric before anyone sees the judge’s output, since reading the judge first anchors the people; and report agreement per dimension, never as one blended figure. A judge can track people closely on grounding and barely at all on task completion, which is the case where an average misleads most.',
       },
       {
         type: 'p',
-        text: 'The answer pairs above are self-authored teaching cases, and this article deliberately reports no judge scores: I have not run this comparison as a published study, and a number I have not computed would undercut the entire argument. What the exercise costs is an afternoon and two dozen carefully written items. What it buys is knowing which of your quality gates is actually load-bearing.',
+        text: 'Third, the disagreements are the useful output, and their direction tells you what to do. Where the judge is more generous than people, you are looking at the failures it will let through, usually fluent answers that miss the task. Where it is harsher, the rubric is often underspecified, and two people disagreeing on the same item is a reason to rewrite the rubric, not to average them. The end product is a decision about which kinds of errors the judge may grade alone and which go to a person regardless of score. The “Trust or Escalate” work makes the same move formally: the judge abstains and escalates when its confidence is too low to keep agreement with people above a target. A judge that handles the easy, high-volume cases and escalates the rest is worth having. One trusted everywhere because its overall agreement looked good is a release gate with a hole in it.',
       },
+      {
+        type: 'p',
+        text: 'Before I let a judge’s score gate anything, I want to be able to name a failure it is known to miss and say where that failure goes instead; to know the human comparison was collected blind, before the judge’s output was visible; to see agreement per dimension, with the model version, prompt and tie-breaking rule recorded; and, if the judge and the people disagree next quarter, to be able to tell whether the model drifted or the rubric was always ambiguous. The answer pairs here are teaching cases I wrote, and this piece reports no judge scores of my own, because a number I have not computed would undercut the argument. The exercise costs an afternoon and two dozen carefully written items. It tells you which of your quality gates is actually doing the work.',
+      },
+    ],
+    sources: [
+      { name: 'Zheng et al., Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (NeurIPS 2023)', href: 'https://arxiv.org/abs/2306.05685' },
+      { name: 'Wang et al., Large Language Models are not Fair Evaluators (ACL 2024)', href: 'https://arxiv.org/abs/2305.17926' },
+      { name: 'Dubois et al., Length-Controlled AlpacaEval (2024)', href: 'https://arxiv.org/abs/2404.04475' },
+      { name: 'Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement (ICLR 2025)', href: 'https://arxiv.org/abs/2407.18370' },
     ],
   },
   {

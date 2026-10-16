@@ -8,8 +8,8 @@ import {
   getMarketStoryBySlug,
   marketStoryHref,
   pricesThrough,
-  type StorySource,
 } from '@/lib/marketStories';
+import { InShort, SourcesLine } from '../../../components/Writing/Essay';
 import '../../[slug]/article.css';
 import './story.css';
 
@@ -33,29 +33,6 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       images: [getOgImage()],
     },
   };
-}
-
-/** One line at the end. Public primary filings link out; everything else is plain text. */
-function Sources({ sources }: { sources: StorySource[] }) {
-  if (!sources.length) return null;
-
-  return (
-    <p className="story-sources">
-      <span>Sources:</span>{' '}
-      {sources.map((source, index) => (
-        <span key={`${source.name}-${index}`}>
-          {index > 0 && ' · '}
-          {source.href ? (
-            <a href={source.href} target="_blank" rel="noopener noreferrer">
-              {source.name}
-            </a>
-          ) : (
-            source.name
-          )}
-        </span>
-      ))}
-    </p>
-  );
 }
 
 export default function MarketStoryPage({ params }: { params: { slug: string } }) {
@@ -89,14 +66,7 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
       </header>
 
       <div className="wrap article-page__body">
-        <section className="story-tldr" aria-label="In short">
-          <p className="story-tldr__label">In short</p>
-          <ul className="bullets">
-            {story.tldr.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-        </section>
+        <InShort points={story.tldr} />
 
         <div className="article-page__prose story-prose">
           {story.lead.map((paragraph) => (
@@ -138,7 +108,7 @@ export default function MarketStoryPage({ params }: { params: { slug: string } }
           {story.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <Sources sources={story.sources} />
+          <SourcesLine sources={story.sources} />
         </div>
 
         <footer className="article-page__footer">

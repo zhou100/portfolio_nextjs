@@ -87,6 +87,53 @@
   text-decoration: underline;
 }
 
+/* Essays (articles and market stories): three takeaways first, sources on one line last. */
+.essay-tldr {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  max-width: var(--prose);
+  padding: 22px 24px;
+}
+
+.essay-tldr__label {
+  color: var(--clr-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .essay-tldr {
+    padding: 18px 20px;
+  }
+}
+
+.essay-sources {
+  border-top: 1px solid var(--clr-border);
+  color: var(--clr-muted);
+  font-size: 0.88rem;
+  margin-top: 32px;
+  padding-top: 16px;
+}
+
+.essay-sources > span:first-child {
+  color: var(--clr-ink);
+  font-weight: 600;
+}
+
+.essay-sources a {
+  border-bottom: 1px solid var(--clr-border-strong);
+  color: var(--clr-accent-dark);
+}
+
+.essay-sources a:hover {
+  border-color: var(--clr-accent);
+}
+
 .article-page__prose {
   max-width: var(--prose);
 }

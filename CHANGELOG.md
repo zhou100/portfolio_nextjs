@@ -19,6 +19,11 @@
   paragraphs: the pattern, what the chart shows, how analysts read it, my view as separate
   arguments with their evidence, and what to watch. Subheadings, tables and per-section
   source lists are gone; sources are one line at the end.
+- The three published articles are rewritten the same way: three takeaways, one worked
+  example, then paragraphs with each argument backed by published research (hidden
+  stratification, algorithmic confounding, Facebook's ad-measurement experiments,
+  divergent delivery, LLM-judge position and length bias). Section headings, checklists
+  and the table of contents are gone; papers are listed on one line at the end.
 
 ### Links
 
