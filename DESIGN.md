@@ -8,7 +8,7 @@
 ## Aesthetic Direction
 - **Direction:** Editorial, evidence-first. Dark hero over a warm off-white body, with one restrained teal accent.
 - **Mood:** Calm, exact, and unhurried. It should read like a researcher's notebook that someone bothered to typeset, not a product landing page.
-- **Rule:** Nothing decorative competes with the text. No fabricated product screenshots, no stock imagery, no motion that is not a state change.
+- **Rule:** Nothing decorative competes with the text. No fabricated product screenshots, no stock imagery, no motion that is not a state change. Real screenshots captured from a live, publicly reachable product are allowed in the Selected work showcase.
 
 ## Typography
 - **Family:** Source Sans 3 throughout, weights 400 / 600 / 700 / 800.
@@ -78,6 +78,12 @@ The reader meets the contribution before the method. This ordering is the point 
 - **The Path timeline** is one horizontal rule with a dot per step (vertical below 760px).
   Steps name the employer. The current step has a filled light-accent dot and a
   "Now" tag beside the name, so color never carries it alone.
+- **Selected work leads with a product showcase.** Independent builds with a live public
+  product get a full-width row: status, title, one-sentence tagline, contribution, a
+  primary "try it" button, and three real screenshots (one large, two small, each with a
+  caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
+  `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
+  compare-not-read rule.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -106,7 +112,7 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work → Writing → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies) → Writing → Lab strip → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → In progress (max 3) → Research
@@ -136,3 +142,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Removed /about; hero eyebrow is "Data Scientist and AI builder" | The home hero and Path timeline already carry the bio and experience. Research lives at /writing#research. |
 | 2026-10-01 | Four testimonials restored, verbatim, in the hero under the Path timeline | Owner asked for them next to the experience. Quotes are never shortened; compactness comes from type size and the shared four-column grid instead. |
 | 2026-10-15 | Independent builds grid on `/work` moved from three columns to two | A fourth build left one card alone on a row; two columns hold an even count without changing card design. |
+| 2026-10-15 | Selected work leads with an Independent builds showcase with real screenshots | Owner asked to highlight the live products. Three builds a reader can open (El Niño workbench, ChurchMap, Debrief) get screenshots; Narrative Intelligence has no public interface and stays a card. |

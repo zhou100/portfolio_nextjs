@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased - 2026-10-15
+
+### Home
+
+- Selected work now opens with an Independent builds showcase: El Niño and Commodity
+  Futures, ChurchMap, and Debrief, each with a tagline, a "try it" link, and three real
+  screenshots captured from the live product. Case cards follow under "Case studies".
+
+### Links
+
+- The El Niño research workbench moved to https://elnino.yujun.net/.
+
+### Build
+
+- Self-host Source Sans 3 (Fontsource variable woff2, OFL-1.1) with `next/font/local`. Google
+  Fonts now serves extensionless font URLs that crash the Next 14.1 Google font loader on
+  Cloudflare Pages; the build no longer needs network access for fonts.
+
 ## Unreleased - 2026-10-01
 
 ### Home

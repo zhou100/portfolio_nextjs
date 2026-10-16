@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPath, getSite, getTestimonials } from '@/lib/portfolio';
-import { getFeaturedWork, getWorkBySlug } from '@/lib/work';
+import { getFeaturedWork, getShowcaseWork, getWorkBySlug } from '@/lib/work';
 import { articleHref, getPublishedArticles } from '@/lib/writing';
 import CareerPath from './components/CareerPath/CareerPath';
+import Showcase from './components/Work/Showcase';
 import WorkCard from './components/Work/WorkCard';
 import './home.css';
 
@@ -12,6 +13,7 @@ export default function Home() {
   const path = getPath();
   const testimonials = getTestimonials();
   const featured = getFeaturedWork();
+  const showcase = getShowcaseWork();
   const articles = getPublishedArticles();
   const lab = getWorkBySlug('creative-evidence-lab');
 
@@ -88,6 +90,27 @@ export default function Home() {
             </Link>
           </div>
 
+          {!!showcase.length && (
+            <div className="showcases">
+              <div className="subhead">
+                <h3 className="subhead__title">Independent builds</h3>
+                <p className="subhead__lede">
+                  Products I designed, built, and run end to end. Each one is live — try it.
+                </p>
+              </div>
+              {showcase.map((item) => (
+                <Showcase item={item} key={item.slug} />
+              ))}
+            </div>
+          )}
+
+          <div className="subhead">
+            <h3 className="subhead__title">Case studies</h3>
+            <p className="subhead__lede">
+              Measurement and evaluation work, written up with the method and the evidence behind
+              each decision.
+            </p>
+          </div>
           <div className="grid grid--3">
             {featured.map((item) => (
               <WorkCard item={item} key={item.slug} />

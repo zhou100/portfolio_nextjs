@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
-import { Source_Sans_3 } from 'next/font/google';
+import localFont from 'next/font/local';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import { getOgImage, getSite } from '@/lib/portfolio';
 import './globals.css';
 
-const sourceSans = Source_Sans_3({
-  weight: ['400', '600', '700', '800'],
-  subsets: ['latin'],
+// Self-hosted (Fontsource 5.3.1, OFL-1.1): the build no longer fetches from Google Fonts,
+// whose extensionless font URLs break the Next 14.1 Google font loader.
+const sourceSans = localFont({
+  src: './fonts/source-sans-3-latin-wght-normal.woff2',
+  weight: '200 900',
   display: 'swap',
   variable: '--font-sans',
 });
