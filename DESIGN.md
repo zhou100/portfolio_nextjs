@@ -84,6 +84,10 @@ The reader meets the contribution before the method. This ordering is the point 
   caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
   `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
   compare-not-read rule.
+- **Market stories link out.** They are published and kept current by Narrative Atlas, so
+  the site lists them (`getMarketStories()` in `src/lib/writing.ts`) with a one-sentence
+  summary, a what-to-watch line, and a dated chart snapshot, and every entry opens the live
+  story. They are not articles and never get a body or an `articleHref()` here.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -112,10 +116,10 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies) → Writing → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies) → Writing (articles → Market stories, compact) → Lab strip → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
-`/writing` Published → In progress (max 3) → Research
+`/writing` Published → Market stories → In progress (max 3) → Research
 `/writing/[slug]` Header → Table of contents → Body → Related work
 
 ## Decisions Log
@@ -143,3 +147,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Four testimonials restored, verbatim, in the hero under the Path timeline | Owner asked for them next to the experience. Quotes are never shortened; compactness comes from type size and the shared four-column grid instead. |
 | 2026-10-15 | Independent builds grid on `/work` moved from three columns to two | A fourth build left one card alone on a row; two columns hold an even count without changing card design. |
 | 2026-10-15 | Selected work leads with an Independent builds showcase with real screenshots | Owner asked to highlight the live products. Three builds a reader can open (El Niño workbench, ChurchMap, Debrief) get screenshots; Narrative Intelligence has no public interface and stays a card. |
+| 2026-10-16 | Narrative Intelligence joins the showcase; market stories listed under Writing | Narrative Atlas is public. Its seven market stories are listed on `/writing` and compactly on the home page, linking to the live stories rather than copying them, since they update daily and sit on licensed sources. |

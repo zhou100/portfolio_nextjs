@@ -380,3 +380,80 @@
 .shot a:hover img {
   border-color: var(--clr-accent);
 }
+
+/* ---------- Writing: market stories (compact) ---------- */
+
+.subhead--stories {
+  margin: 40px 0 16px;
+}
+
+.storylist {
+  display: grid;
+  gap: 12px 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+}
+
+.storyrow {
+  align-items: center;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  background: var(--clr-surface);
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 132px minmax(0, 1fr);
+  height: 100%;
+  padding: 10px 14px 10px 10px;
+  transition: border-color 0.18s ease;
+}
+
+.storyrow:hover {
+  border-color: var(--clr-accent);
+}
+
+.storyrow__chart {
+  aspect-ratio: 638 / 300;
+  background: #f3eee5;
+  border-radius: 2px;
+  display: block;
+  overflow: hidden;
+}
+
+.storyrow__chart img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.storyrow__tickers {
+  color: var(--clr-muted);
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.storyrow__title {
+  color: var(--clr-ink);
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.storyrow:hover .storyrow__title {
+  color: var(--clr-accent-dark);
+}
+
+@media (max-width: 780px) {
+  .storylist {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .storyrow {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+}
