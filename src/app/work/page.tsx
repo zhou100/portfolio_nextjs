@@ -69,7 +69,8 @@ export default function WorkIndex() {
             </div>
           </div>
 
-          <div className="grid grid--2">
+          {/* Three builds fill one row of three; any other count pairs up in two columns. */}
+          <div className={`grid grid--${builds.length === 3 ? 3 : 2}`}>
             {builds.map((item) => (
               <WorkCard item={item} key={item.slug} />
             ))}

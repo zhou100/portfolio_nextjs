@@ -414,7 +414,6 @@ const articles: Article[] = [
     status: 'drafting',
     excerpt:
       'Two claims can mention the same company and still tell different stories. A small set of paired examples shows how to distinguish over-merging from over-splitting, write clearer annotation rules, and evaluate clusters without treating shared vocabulary as shared meaning.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 'llm-versus-deterministic-rule',
@@ -423,7 +422,6 @@ const articles: Article[] = [
     status: 'drafting',
     excerpt:
       'A rule can be predictable and brittle; a model can be flexible and inconsistent. Using short claims with negation and stance changes, this piece sets out a comparison of rules, a model, and a hybrid — measuring errors, review effort, cost, and latency.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 'no-errors-is-not-healthy',
@@ -441,7 +439,6 @@ const articles: Article[] = [
     status: 'planned',
     excerpt:
       'A stronger headline is not necessarily new evidence. Comparing reposts, new disclosures, and genuine reversals separates changes in language from changes in the underlying claim.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 'model-confident-should-product-be',
@@ -468,7 +465,6 @@ const articles: Article[] = [
     status: 'planned',
     excerpt:
       'Every metric on a surface should name the action it triggers, shown through a before-and-after task-completion test rather than a redesign screenshot.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 'cold-start-is-a-scope-decision',
@@ -486,7 +482,6 @@ const articles: Article[] = [
     status: 'planned',
     excerpt:
       'Query patterns, update semantics, consistency, and replay requirements force the migration. Volume alone usually does not.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 's3-needs-a-table-layer',
@@ -511,7 +506,6 @@ const articles: Article[] = [
     status: 'planned',
     excerpt:
       'Availability time, event confounding, and survivorship decide whether a backtest means anything. A method piece, not a stock list.',
-    relatedWork: 'narrative-intelligence',
   },
   {
     slug: 'forecasts-to-product-evaluation',

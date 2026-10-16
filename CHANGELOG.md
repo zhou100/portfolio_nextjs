@@ -19,6 +19,12 @@
 
 - The El Niño research workbench moved to https://elnino.yujun.net/.
 
+### Removed
+
+- The Narrative Intelligence case, its public evaluation fixture
+  (`public/fixtures/narrative-evaluation-fixture-v1.json`), and the links to it from planned
+  writing.
+
 ### Build
 
 - Self-host Source Sans 3 (Fontsource variable woff2, OFL-1.1) with `next/font/local`. Google
