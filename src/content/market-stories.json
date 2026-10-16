@@ -1,0 +1,1820 @@
+[
+  {
+    "slug": "software-companies",
+    "title": "Software did not trade as one AI story",
+    "tickers": [
+      "CRM",
+      "TEAM",
+      "NOW",
+      "PLTR",
+      "CRWD",
+      "PANW",
+      "ZS",
+      "ADBE",
+      "INTU"
+    ],
+    "window": "Jan 12, 2026 – Oct 2, 2026 · Prices: Dec 31, 2025 – Oct 2, 2026",
+    "summary": "Growing AI use did not guarantee faster revenue growth across nine software companies.",
+    "watch": "Whether Salesforce pilots and ServiceNow AI interest turn into production revenue.",
+    "thumb": {
+      "src": "/writing/market-stories/software-companies.webp",
+      "width": 638,
+      "height": 494
+    },
+    "chart": {
+      "src": "/writing/market-stories/software-companies-chart.webp",
+      "width": 1236,
+      "height": 1090,
+      "alt": "Small-multiple price charts, one per company (CRM, TEAM, NOW, PLTR, CRWD, PANW, ZS, ADBE, INTU), each against QQQ and rebased to 100."
+    },
+    "thesis": "AI created different opportunities and constraints across software companies. Later customer checks supported workflow demand but exposed barriers between AI interest, production adoption and revenue. Company evidence and matched price windows clarify the split without proving what caused returns.",
+    "thesisSources": [
+      {
+        "name": "Goldman Sachs"
+      },
+      {
+        "name": "Oppenheimer"
+      },
+      {
+        "name": "JPMorgan"
+      }
+    ],
+    "chartNote": "Q3 rebounds did not erase earlier drawdowns: CRM, TEAM, NOW and PLTR all still lagged QQQ year to date.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "Where the evidence diverged",
+        "items": [
+          {
+            "label": "Sep 16–29, 2026 · CRM: core demand improved, AI conversion lagged",
+            "text": "Dreamforce checks supported core demand and headless workflows, but Jefferies and Oppenheimer found pricing, data readiness and pilots constraining monetization. CRM returned +46.8% in Q3 and −10.8% year to date, versus QQQ +22.4% year to date.",
+            "sources": [
+              {
+                "name": "Evercore ISI"
+              },
+              {
+                "name": "Jefferies"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "Aug 7–Sep 14, 2026 · TEAM: seats and usage pricing are different tests",
+            "text": "Seat expansion supported August results; Mizuho later expected price increases and usage billing to add growth, with monetization still prospective. TEAM returned +130.5% in Q3 and +15.9% year to date, versus QQQ +22.4% year to date.",
+            "sources": [
+              {
+                "name": "Atlassian results"
+              },
+              {
+                "name": "Mizuho"
+              }
+            ]
+          },
+          {
+            "label": "Sep 15–Oct 2, 2026 · NOW and PLTR: demand meets delivery constraints",
+            "text": "UBS found PLTR delivery bottlenecks; JPMorgan found strong NOW renewals but costs and governance delaying AI production. NOW and PLTR returned +35.0% and +60.3% in Q3 and −12.3% and +6.2% year to date, versus QQQ +22.4% year to date.",
+            "sources": [
+              {
+                "name": "UBS"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "Apr 22–Sep 28, 2026 · Cybersecurity: platform demand, separate execution risks",
+            "text": "Wells favored PANW and CRWD platform demand; BTIG forecast PANW growth, while ZS changed sales leadership with competition unresolved. CRWD, PANW and ZS returned +130.4%, +118.9% and −12.6% year to date, versus QQQ +22.4%.",
+            "sources": [
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "BTIG"
+              },
+              {
+                "name": "Zscaler announcement"
+              }
+            ]
+          },
+          {
+            "label": "Sep 11–14, 2026 · ADBE and INTU: adoption versus acquisition",
+            "text": "Adobe needed incremental AI monetization; JPMorgan later highlighted Intuit customer-addition weakness and reliance on revenue per customer. ADBE and INTU returned +17.0% and +6.1% in Q3 and −32.1% and −57.2% year to date, versus QQQ +22.4% year to date.",
+            "sources": [
+              {
+                "name": "Adobe results"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The strongest case on each side",
+        "items": [
+          {
+            "label": "Support",
+            "text": "Core workflow demand, seat expansion, renewals and platform consolidation support distinct company cases. Broker checks and forecasts are not independently verified outcomes.",
+            "sources": [
+              {
+                "name": "JPMorgan · Sep 23, 2026"
+              },
+              {
+                "name": "Atlassian results"
+              },
+              {
+                "name": "JPMorgan · Oct 2, 2026"
+              },
+              {
+                "name": "Wells Fargo"
+              }
+            ]
+          },
+          {
+            "label": "Challenge",
+            "text": "Pilots, implementation capacity, token costs and weak customer acquisition can prevent interest from becoming durable revenue. A rebound cannot settle those tests.",
+            "sources": [
+              {
+                "name": "Oppenheimer"
+              },
+              {
+                "name": "UBS"
+              },
+              {
+                "name": "JPMorgan · Oct 2, 2026"
+              },
+              {
+                "name": "JPMorgan · Sep 14, 2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What to watch and how to update the view",
+        "items": [
+          {
+            "label": "Enterprise applications",
+            "text": "If CRM pilots, TEAM paid usage, NOW production adoption and PLTR delivery capacity improve, strengthen each company case separately.",
+            "sources": [
+              {
+                "name": "Oppenheimer"
+              },
+              {
+                "name": "Mizuho"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "Security",
+            "text": "If PANW forecasts convert to results, CRWD bookings grow and ZS execution improves after its leadership transition, strengthen each case separately.",
+            "sources": [
+              {
+                "name": "BTIG"
+              },
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Zscaler announcement"
+              }
+            ]
+          },
+          {
+            "label": "Laggards",
+            "text": "Incremental AI monetization would strengthen Adobe; recovering customer additions would support Intuit. Adoption or price gains alone leave these tests open.",
+            "sources": [
+              {
+                "name": "Adobe results"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Jan 12, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "Goldman rated Salesforce and ServiceNow Buy, but Adobe Sell. It expected AI to benefit software companies differently.",
+            "sources": [
+              {
+                "name": "Jan 12, 2026 · Goldman Sachs"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "That split already argued against treating all software companies as the same AI bet.",
+            "sources": [
+              {
+                "name": "Jan 12, 2026 · Goldman Sachs"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "Dreamforce checks found improving core Salesforce demand but slow AI conversion. JPMorgan later found healthy ServiceNow renewals with costs and governance delaying production adoption.",
+            "sources": [
+              {
+                "name": "Sep 23, 2026 · JPMorgan"
+              },
+              {
+                "name": "Sep 29, 2026 · Oppenheimer"
+              },
+              {
+                "name": "Oct 2, 2026 · JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Can interest and pilots become durable revenue after deployment, cost and customer-acquisition constraints?",
+            "sources": [
+              {
+                "name": "Sep 29, 2026 · Oppenheimer"
+              },
+              {
+                "name": "Oct 2, 2026 · JPMorgan"
+              },
+              {
+                "name": "Sep 14, 2026 · JPMorgan"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "meta-ai-returns",
+    "title": "Meta’s AI products still need to earn their keep",
+    "tickers": [
+      "META"
+    ],
+    "window": "Apr 5, 2025 – Oct 2, 2026 · Prices: Jun 26, 2025 – Oct 2, 2026",
+    "summary": "Meta’s AI investment case depends on covering spending commitments beyond its reported capital budget.",
+    "watch": "Disclosed Muse revenue, which would support payback; Morgan Stanley expects meaningful monetization to take years.",
+    "thumb": {
+      "src": "/writing/market-stories/meta-ai-returns.webp",
+      "width": 638,
+      "height": 267
+    },
+    "chart": {
+      "src": "/writing/market-stories/meta-ai-returns-chart.webp",
+      "width": 916,
+      "height": 538,
+      "alt": "Price chart of META against QQQ, rebased to 100, with numbered turning points: 1. Jul 28, 2025 Superintelligence Labs chief named; 2. Oct 29, 2025 Q3 guide lifts capex; 3. Jan 28, 2026 2026 capex guide; 4. Apr 8, 2026 Muse Spark released; 5. Apr 27, 2026 Manus unwind ordered; 6. Jul 30, 2026 Q2 results; 7. Sep 9, 2026 Muse adoption takes off."
+    },
+    "thesis": "Meta’s advertising business is benefiting from AI, while its rebuilt models and new products offer another route to growth. The investment question is whether those benefits can cover the cost of its expanding AI commitments.",
+    "thesisSources": [
+      {
+        "name": "Meta Q2 results"
+      },
+      {
+        "name": "Newsletter · Apr 8, 2026"
+      },
+      {
+        "name": "Newsletter · Sep 9, 2026"
+      }
+    ],
+    "chartNote": "Full history: Jun 26, 2025–Oct 2, 2026: META +0.7%, QQQ +38.0%; 37.3 percentage points behind QQQ.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "How the view changed",
+        "notes": [
+          {
+            "text": "These themes overlap in time; each date range identifies the sources for that theme."
+          }
+        ],
+        "items": [
+          {
+            "label": "Jun 12–Oct 16, 2025 · Meta hired leaders and reorganized research",
+            "text": "Meta named Zhao chief scientist of Superintelligence Labs, planned another reorganization and hired senior researchers after Alexandr Wang joined.",
+            "sources": [
+              {
+                "name": "Newsletter headline"
+              },
+              {
+                "name": "The Information"
+              },
+              {
+                "name": "Bloomberg"
+              }
+            ]
+          },
+          {
+            "label": "Jun 27–Oct 29, 2025 · Better ads, bigger spending plans",
+            "text": "Piper reported better ad conversions from recommendations; Meta later raised its capital-spending guidance. On Oct 30, 2025, from the Oct 29 close, META fell 11.3% and QQQ fell 1.5%.",
+            "sources": [
+              {
+                "name": "Piper Sandler"
+              },
+              {
+                "name": "Citi"
+              },
+              {
+                "name": "Meta Q3 2025 release (Oct 29, 2025)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
+              }
+            ]
+          },
+          {
+            "label": "Jan 26–Apr 29, 2026 · Meta raised spending plans twice",
+            "text": "Meta raised spending plans in January and April; the shares rose after one report and fell after the other. On Jan 29, 2026, META rose 10.4% and QQQ fell 0.6%; on Apr 30, META fell 8.6% and QQQ rose 0.9%.",
+            "sources": [
+              {
+                "name": "KeyBanc"
+              },
+              {
+                "name": "Meta Q4 2025 release (Jan 28, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003832/meta-12312025xexhibit991.htm"
+              },
+              {
+                "name": "Meta Q1 2026 release (Apr 29, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
+              }
+            ]
+          },
+          {
+            "label": "Jan 7–May 21, 2026 · China ordered Meta to unwind Manus",
+            "text": "China ordered Meta to unwind its purchase of Manus, an AI-agent developer; its founders reportedly explored financing a buyback, with completion unconfirmed.",
+            "sources": [
+              {
+                "name": "Media report (newsletter excerpt)"
+              },
+              {
+                "name": "WSJ · Mar 25, 2026"
+              },
+              {
+                "name": "WSJ · Apr 27, 2026"
+              }
+            ]
+          },
+          {
+            "label": "Apr 8–Jun 3, 2026 · Meta released Muse Spark",
+            "text": "Meta launched Muse Spark, its rebuilt AI model; brokers saw progress, but the Financial Times later reported reused Llama code and data and weaknesses in coding.",
+            "sources": [
+              {
+                "name": "Newsletter · Apr 8, 2026"
+              },
+              {
+                "name": "Morgan Stanley"
+              },
+              {
+                "name": "Barclays"
+              }
+            ]
+          },
+          {
+            "label": "Jul 6–30, 2026 · Ad growth faced rising costs",
+            "text": "July results showed advertising growth alongside pressure on margins and cash flow; analysts disagreed over computing costs. On Jul 30, 2026, from the Jul 29 close, META fell 8.0% and QQQ rose 3.3%.",
+            "sources": [
+              {
+                "name": "Needham"
+              },
+              {
+                "name": "BofA"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "Sep 9–Oct 2, 2026 · Product adoption raised the revenue question",
+            "text": "Muse usage and commerce features grew, but Morgan Stanley expected monetization to take time; Needham questioned returns after including broader spending commitments.",
+            "sources": [
+              {
+                "name": "Newsletter · Sep 9, 2026"
+              },
+              {
+                "name": "JPM"
+              },
+              {
+                "name": "Meta at Connect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The strongest case on each side",
+        "items": [
+          {
+            "label": "Support",
+            "text": "Meta grew advertising revenue, launched Muse Spark and attracted users to Muse.",
+            "sources": [
+              {
+                "name": "Meta Q2 results"
+              },
+              {
+                "name": "Newsletter · Apr 8, 2026"
+              },
+              {
+                "name": "Newsletter · Sep 9, 2026"
+              }
+            ]
+          },
+          {
+            "label": "Challenge",
+            "text": "Meta faces an ordered Manus unwind, weaknesses in coding and spending commitments that raise the cost of earning a return.",
+            "sources": [
+              {
+                "name": "WSJ"
+              },
+              {
+                "name": "Financial Times"
+              },
+              {
+                "name": "Needham"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What to watch and how to update the view",
+        "items": [
+          {
+            "label": "Commercial use",
+            "text": "Watch for Meta to disclose Muse subscription or transaction revenue: growing sales would support payback; usage without sales would leave it unproven.",
+            "sources": [
+              {
+                "name": "Morgan Stanley"
+              },
+              {
+                "name": "Newsletter · Sep 9, 2026"
+              }
+            ]
+          },
+          {
+            "label": "Model delivery",
+            "text": "Watch independent tests of Muse Spark’s coding and task performance: sustained gains would support Meta’s rebuild; persistent weaknesses would challenge it.",
+            "sources": [
+              {
+                "name": "Financial Times"
+              },
+              {
+                "name": "JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "Investment economics",
+            "text": "Compare Meta’s reported advertising gains and AI revenue with cash spending and commitments: benefits catching up would support payback; costs pulling ahead would weaken it.",
+            "sources": [
+              {
+                "name": "Needham"
+              },
+              {
+                "name": "Meta Q2 2026 release (Jul 29, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Sep 21, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "Evercore saw Muse, Meta’s consumer AI agent, winning users after its app-store success.",
+            "sources": [
+              {
+                "name": "Sep 21, 2026 · Evercore ISI"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "Wolfe flagged weak trust in sharing payment details. Amazon blocked access, showing that gaining users did not guarantee access to their shopping.",
+            "sources": [
+              {
+                "name": "Sep 14, 2026 · Wolfe Research"
+              },
+              {
+                "name": "Sep 21, 2026 · Amazon"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "StoneX thought subscriptions would mostly cover computing costs. Morgan Stanley later pushed meaningful revenue further out, separating popularity from profit.",
+            "sources": [
+              {
+                "name": "Sep 22, 2026 · StoneX"
+              },
+              {
+                "name": "Oct 1, 2026 · Morgan Stanley"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Will users make purchases through Muse, and will the resulting revenue justify its serving costs?",
+            "sources": [
+              {
+                "name": "Oct 1, 2026 · Morgan Stanley"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "optical-demand",
+    "title": "Optical demand is strong; future profits face harder tests",
+    "tickers": [
+      "LITE",
+      "COHR"
+    ],
+    "window": "Oct 13, 2025 – Oct 1, 2026 · Prices: Oct 10, 2025 – Oct 2, 2026",
+    "summary": "Possible restrictions on next-generation optical imports could favor Lumentum and Coherent, but remain a proposal.",
+    "watch": "Adopted rules and covered products. A proposal alone does not change near-term sales.",
+    "thumb": {
+      "src": "/writing/market-stories/optical-demand.webp",
+      "width": 638,
+      "height": 267
+    },
+    "chart": {
+      "src": "/writing/market-stories/optical-demand-chart.webp",
+      "width": 916,
+      "height": 538,
+      "alt": "Price chart of LITE, COHR against QQQ, rebased to 100, with numbered turning points: 1. Oct 13, 2025 Aletheia initiates on scarcity; 2. Jan 20, 2026 Rebuttal on wafer supply; 3. Apr 9, 2026 JPM raises post-OFC forecasts; 4. Jun 10, 2026 Interim optical designs defended; 5. Aug 11, 2026 LITE reports upside; 6. Sep 24, 2026 PhotonLink value questioned; 7. Oct 1, 2026 Analysts question policy gains."
+    },
+    "thesis": "Lumentum’s earnings supported the case for tight laser supply and stronger pricing. Investors must now separate delivered profits from forecasts for new optical connections, added factory capacity and possible restrictions on competing imports.",
+    "thesisSources": [
+      {
+        "name": "Lumentum results"
+      },
+      {
+        "name": "Aletheia Capital"
+      }
+    ],
+    "chartNote": "Full history: Oct 10, 2025–Oct 2, 2026: LITE +625.5%, COHR +203.4%, QQQ +27.8%; LITE 597.7 percentage points ahead of QQQ, COHR 175.6 ahead.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "How the view changed",
+        "items": [
+          {
+            "label": "Oct 13–Dec 5, 2025 · Faster connections supported laser pricing",
+            "text": "Aletheia expected faster connections and higher laser prices to lift earnings; December analysts added scarce indium phosphide wafers and optical circuit switching (OCS), which routes light between connections, to the growth case.",
+            "sources": [
+              {
+                "name": "Aletheia Capital"
+              },
+              {
+                "name": "JPM"
+              }
+            ]
+          },
+          {
+            "label": "Jan 9–20, 2026 · Analysts disagreed over wafer supply",
+            "text": "Rosenblatt flagged dependence on wafer supplier AXT (AXTI); Aletheia cited alternatives and better economics for faster electro-absorption modulated lasers (EMLs).",
+            "sources": [
+              {
+                "name": "Rosenblatt"
+              },
+              {
+                "name": "Aletheia Capital"
+              }
+            ]
+          },
+          {
+            "label": "Mar 18–Apr 10, 2026 · Forecasts ran ahead of confirmed orders",
+            "text": "UBS expected connections between racks (scale-out) before connections within computing systems (scale-up); Lumentum’s chief executive projected enough orders to fill 2028 capacity within two quarters, without claiming those orders were secured.",
+            "sources": [
+              {
+                "name": "UBS"
+              },
+              {
+                "name": "JPMorgan"
+              },
+              {
+                "name": "Lumentum CEO"
+              }
+            ]
+          },
+          {
+            "label": "May 28–Jul 16, 2026 · Analysts debated new connection designs",
+            "text": "Reports questioned co-packaged optics (CPO) timing; others defended near-packaged optics (NPO) and removable modules as interim designs, while the newsletter questioned stagnant earnings estimates and added capacity.",
+            "sources": [
+              {
+                "name": "Newsletter · May 28, 2026"
+              },
+              {
+                "name": "Newsletter · Jun 9, 2026"
+              },
+              {
+                "name": "Newsletter · Jun 10, 2026"
+              }
+            ]
+          },
+          {
+            "label": "Aug 4–11, 2026 · Lumentum delivered stronger earnings",
+            "text": "Brokers questioned the scope and feasibility of possible Chinese-product restrictions; Lumentum then beat margin and earnings expectations and raised guidance.",
+            "sources": [
+              {
+                "name": "Newsletter · Aug 4, 2026"
+              },
+              {
+                "name": "Newsletter · Aug 10, 2026"
+              },
+              {
+                "name": "Lumentum results"
+              }
+            ]
+          },
+          {
+            "label": "Sep 22–Oct 1, 2026 · New products and import rules divided analysts",
+            "text": "Stifel favored Coherent’s PhotonLink optical connection technology; other analysts questioned its value, while proposed 3.2T (3.2 terabits per second) import restrictions drew disagreement over near-term benefits.",
+            "sources": [
+              {
+                "name": "Stifel"
+              },
+              {
+                "name": "Morgan Stanley"
+              },
+              {
+                "name": "Newsletter · Sep 24, 2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The strongest case on each side",
+        "items": [
+          {
+            "label": "Support",
+            "text": "Lumentum beat earnings and margin expectations and raised guidance, supporting the case for tight laser supply.",
+            "sources": [
+              {
+                "name": "Lumentum results"
+              }
+            ]
+          },
+          {
+            "label": "Challenge",
+            "text": "Added factory capacity could weaken pricing, while delayed products and Coherent’s sales mix could limit profits.",
+            "sources": [
+              {
+                "name": "Newsletter · Jun 17, 2026"
+              },
+              {
+                "name": "Commercial Times"
+              },
+              {
+                "name": "Bernstein"
+              },
+              {
+                "name": "COHR management at a JPM fireside"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What to watch and how to update the view",
+        "items": [
+          {
+            "label": "Delivery and margins",
+            "text": "Check Lumentum’s and Coherent’s reported shipments and margins separately: sustained pricing gains would support tight supply; weaker margins would challenge that benefit.",
+            "sources": [
+              {
+                "name": "Lumentum results"
+              },
+              {
+                "name": "Bernstein"
+              }
+            ]
+          },
+          {
+            "label": "Architecture milestones",
+            "text": "Watch announced customer wins and shipments for new optical connections: delivery on schedule would support growth forecasts; delays would weaken them.",
+            "sources": [
+              {
+                "name": "UBS"
+              },
+              {
+                "name": "Commercial Times"
+              },
+              {
+                "name": "Bernstein"
+              }
+            ]
+          },
+          {
+            "label": "Policy",
+            "text": "Watch for adopted import rules that name products and timing: restrictions covering competing products would support the policy case; narrow or delayed rules would limit it.",
+            "sources": [
+              {
+                "name": "Morgan Stanley strategists"
+              },
+              {
+                "name": "A chat participant quoted by the newsletter"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Apr 9, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "JPM raised Lumentum forecasts for co-packaged optics (CPO), optical circuit switches (OCS) and networking between AI processors.",
+            "sources": [
+              {
+                "name": "Apr 9, 2026 · JPMorgan"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "UBS expected adoption between processors later than between racks. Optical products had different sales timelines.",
+            "sources": [
+              {
+                "name": "Mar 18, 2026 · UBS"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "June’s dispute questioned CPO’s readiness. August brought stronger margins and earnings: current performance and future technology needed separate checks.",
+            "sources": [
+              {
+                "name": "Jun 10, 2026 · Newsletter author"
+              },
+              {
+                "name": "Aug 12, 2026 · Lumentum results"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Will laser demand stay strong if customers choose near-packaged rather than co-packaged optics?",
+            "sources": [
+              {
+                "name": "Sep 30, 2026 · Bernstein"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "rddt-audience",
+    "title": "Reddit’s ads are growing faster than its audience",
+    "tickers": [
+      "RDDT"
+    ],
+    "window": "Feb 22, 2024 – Oct 2, 2026 · Prices: Jul 25, 2025 – Oct 2, 2026",
+    "summary": "Reddit’s advertising grew strongly, while third-party tracking pointed to weaker daily user growth.",
+    "watch": "Reported daily users: stronger growth would challenge the weak tracking; a miss would reinforce the audience concern.",
+    "thumb": {
+      "src": "/writing/market-stories/rddt-audience.webp",
+      "width": 638,
+      "height": 267
+    },
+    "chart": {
+      "src": "/writing/market-stories/rddt-audience-chart.webp",
+      "width": 916,
+      "height": 538,
+      "alt": "Price chart of RDDT against QQQ, rebased to 100, with numbered turning points: 1. Jul 28, 2025 DAU growth stabilizes; 2. Oct 9, 2025 ChatGPT citation risk; 3. Apr 2, 2026 Licensing pitched as engine; 4. May 1, 2026 Q1: ads strong, users flat; 5. Jul 31, 2026 Ads grow; fewer US users; 6. Sep 16, 2026 App versus search divergence; 7. Oct 2, 2026 Latest traffic and downloads."
+    },
+    "thesis": "Reddit earns more from advertising while its reliance on Google visitors raises questions about repeat use. Licensing its conversations to AI companies offers another revenue stream, but larger contracts and lasting audience growth still need evidence.",
+    "thesisSources": [
+      {
+        "name": "Reddit Q2 results"
+      },
+      {
+        "name": "Needham"
+      }
+    ],
+    "chartNote": "Full history: Jul 25, 2025–Oct 2, 2026: RDDT −1.2%, QQQ +33.1%; 34.3 percentage points behind QQQ.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "How the view changed",
+        "items": [
+          {
+            "label": "Jul 28, 2025 · Ad revenue per user supported recovery",
+            "text": "Jefferies saw daily active user (DAU) growth stabilizing around 13%, with performance advertising and average revenue per user (ARPU) supporting recovery.",
+            "sources": [
+              {
+                "name": "Jefferies"
+              }
+            ]
+          },
+          {
+            "label": "Oct 9–Nov 25, 2025 · ChatGPT visibility fell, then recovered",
+            "text": "Reddit appeared less often in ChatGPT answers, raising concerns about referrals and bargaining power; November tracking showed better visibility and US usage, without measuring licensing revenue.",
+            "sources": [
+              {
+                "name": "Newsletter · Oct 9, 2025"
+              },
+              {
+                "name": "Newsletter · Nov 25, 2025"
+              }
+            ]
+          },
+          {
+            "label": "Apr 2–May 26, 2026 · Licensing offered growth; search posed a risk",
+            "text": "Analysts expected more licensing revenue while Google’s AI summaries threatened visits; RBC argued prominent links could help referrals, but larger contract renewals remained forecasts.",
+            "sources": [
+              {
+                "name": "Needham"
+              },
+              {
+                "name": "Newsletter · May 6, 2026"
+              },
+              {
+                "name": "RBC Capital Markets"
+              }
+            ]
+          },
+          {
+            "label": "May 1, 2026 · Ads grew while logged-in users stalled",
+            "text": "Q1 revenue rose 69% and advertising 74%, but US logged-in daily users rose only 1%, leaving repeat use a concern.",
+            "sources": [
+              {
+                "name": "Reddit Q1 results"
+              }
+            ]
+          },
+          {
+            "label": "Jul 31, 2026 · Strong ads accompanied fewer US users",
+            "text": "Q2 ads grew 64%, yet US daily users fell sequentially as Google referrals weakened; management reported better new-app-user retention but stopped separating logged-in and logged-out users.",
+            "sources": [
+              {
+                "name": "Reddit Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "Sep 8–16, 2026 · A larger Google deal remained unsigned",
+            "text": "Wells estimated a $250–300 million annual Google deal that remained unsigned; other sources disputed its bargaining-power concerns, while app tracking improved and Google referrals weakened.",
+            "sources": [
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "A chat participant quoted in the wrap"
+              },
+              {
+                "name": "Reddit CEO"
+              }
+            ]
+          },
+          {
+            "label": "Oct 1–2, 2026 · Traffic measures gave different signals",
+            "text": "Guggenheim tracked weaker Google traffic and recovering downloads; positive revenue chatter was unverified, and Reddit’s targeting-model change made advertising-reach comparisons unreliable.",
+            "sources": [
+              {
+                "name": "Guggenheim"
+              },
+              {
+                "name": "Unverified social-media chatter"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The strongest case on each side",
+        "items": [
+          {
+            "label": "Support",
+            "text": "Reddit’s advertising grew strongly, and licensing its conversations gives it another way to earn revenue.",
+            "sources": [
+              {
+                "name": "Reddit Q1 results"
+              },
+              {
+                "name": "Reddit Q2 results"
+              },
+              {
+                "name": "Needham"
+              }
+            ]
+          },
+          {
+            "label": "Challenge",
+            "text": "Reddit relies on Google referrals, repeat use remains uncertain, and larger licensing renewals remain unsigned.",
+            "sources": [
+              {
+                "name": "Reddit Q2 results"
+              },
+              {
+                "name": "Yipit data"
+              },
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Piper Sandler"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What to watch and how to update the view",
+        "items": [
+          {
+            "label": "Repeat engagement",
+            "text": "Watch comparable reports of app use and user retention: more returning users with steady ad returns would support audience growth; falling retention would weaken it.",
+            "sources": [
+              {
+                "name": "Reddit CEO"
+              },
+              {
+                "name": "Guggenheim"
+              }
+            ]
+          },
+          {
+            "label": "Contract economics",
+            "text": "Watch for signed licensing renewals with disclosed payments: larger contracts would support revenue growth; weaker terms would challenge it.",
+            "sources": [
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Reddit CEO"
+              }
+            ]
+          },
+          {
+            "label": "Traffic conversion",
+            "text": "Compare Google referral tracking with reported daily users and app use: replacing lost visitors with regular users would support lasting growth; continued audience losses would weaken it.",
+            "sources": [
+              {
+                "name": "Guggenheim · Sep 16, 2026"
+              },
+              {
+                "name": "Guggenheim · Oct 2, 2026"
+              },
+              {
+                "name": "Yipit data"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: May 1, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "Reddit reported strong advertising growth and better results for advertisers.",
+            "sources": [
+              {
+                "name": "May 1, 2026 · Reddit Q1 results"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "The same report showed weak growth in US logged-in users. Better advertising results did not mean Reddit was attracting more regular users.",
+            "sources": [
+              {
+                "name": "May 1, 2026 · Reddit Q1 results"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "July brought strong ad growth but falling US users. Reddit reduced user disclosures, making it harder to track the audience behind that revenue.",
+            "sources": [
+              {
+                "name": "Jul 31, 2026 · Reddit Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Will Google renew on better terms, and will consistent user measurements show lasting audience growth?",
+            "sources": [
+              {
+                "name": "Sep 10, 2026 · Piper Sandler"
+              },
+              {
+                "name": "Sep 16, 2026 · Wells Fargo"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ai-spending",
+    "title": "AI spending: four companies, different paths to payback",
+    "tickers": [
+      "GOOGL",
+      "MSFT",
+      "AMZN",
+      "META"
+    ],
+    "window": "Jan 23, 2026 – Oct 2, 2026 · Prices: Jan 22, 2026 – Oct 2, 2026",
+    "summary": "Analysts see stronger Google products, Microsoft demand and AWS pricing; Meta monetization and investment obligations remain open tests.",
+    "watch": "Recognized profit and cash after investment and lease commitments across all four companies.",
+    "thumb": {
+      "src": "/writing/market-stories/ai-spending.webp",
+      "width": 638,
+      "height": 284
+    },
+    "chart": {
+      "src": "/writing/market-stories/ai-spending-chart.webp",
+      "width": 1236,
+      "height": 691,
+      "alt": "Small-multiple price charts, one per company (GOOGL, MSFT, AMZN, META), each against QQQ and rebased to 100."
+    },
+    "thesis": "AI demand strengthened, but the path from spending to cash differs across Alphabet, Microsoft, Amazon and Meta. Later checks add product, pricing and financing evidence without establishing a comparable return on AI investment.",
+    "thesisSources": [
+      {
+        "name": "Wolfe Research"
+      },
+      {
+        "name": "Wells Fargo"
+      },
+      {
+        "name": "Financial Times"
+      },
+      {
+        "name": "Needham"
+      }
+    ],
+    "chartNote": "All four lagged QQQ over both windows; the returns describe price paths, not AI efficiency or causal effects.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "Four paths from demand to cash",
+        "items": [
+          {
+            "label": "A common baseline, different accounting.",
+            "text": "Early growth forecasts gave way to component inflation and funding concerns before stronger July results. The tables retain the same June-quarter filings: cloud scopes differ, Azure profit is undisclosed, AWS includes noncash energy gains, and Meta advertising is a separate comparator. September/October checks are not newer reported results.",
+            "sources": [
+              {
+                "name": "Newsletter · May 27"
+              },
+              {
+                "name": "Newsletter · Jun 22"
+              },
+              {
+                "name": "Microsoft results"
+              }
+            ]
+          },
+          {
+            "label": "Alphabet: product strength versus commercial conversion.",
+            "text": "Google's server-payback claim remains management's assertion. Citi sees Gemini Argon supporting Cloud and product demand, but introductory pricing and benchmark strength do not prove profit. The archive also questions deployment and consumer-agent execution; consolidated cash after investment remains distinct from Cloud or AI returns.",
+            "sources": [
+              {
+                "name": "Google Cloud CEO"
+              },
+              {
+                "name": "Citi"
+              },
+              {
+                "name": "Newsletter author with an attributed investor view"
+              }
+            ]
+          },
+          {
+            "label": "Microsoft: growth checks without a cash upgrade.",
+            "text": "Wells expects stronger Azure growth and improving Copilot adoption, partly supported by seat discounts tied to consumption commitments. Its margin and cash-flow outlook barely changed; separate capacity checks had moderated. Microsoft's earlier apparent spending reduction largely reflected accounting, so adoption and capex headlines alone cannot establish payback.",
+            "sources": [
+              {
+                "name": "Microsoft results"
+              },
+              {
+                "name": "M-sci checks"
+              },
+              {
+                "name": "Wells Fargo"
+              }
+            ]
+          },
+          {
+            "label": "Amazon: pricing power and financing costs.",
+            "text": "Wells sees AWS reservation-price increases offsetting inflation, with contracted capacity delaying recognized revenue. The FT reports GPU sale-and-leaseback talks, not a completed transaction. Financing deployed equipment changes funding and future lease obligations; it does not itself improve compute economics or establish incremental AI cash returns.",
+            "sources": [
+              {
+                "name": "Amazon results"
+              },
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Financial Times"
+              }
+            ]
+          },
+          {
+            "label": "Meta: adoption before direct monetization.",
+            "text": "Morgan Stanley expects little direct Muse monetization near term despite usage and enterprise potential. Needham highlights uncommenced leases and other obligations omitted from simple valuation measures. Advertising supports today's business, but serving costs, commercial adoption and commitments determine whether new AI demand earns an adequate return.",
+            "sources": [
+              {
+                "name": "BofA and Benchmark"
+              },
+              {
+                "name": "Morgan Stanley"
+              },
+              {
+                "name": "Needham"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Reported operating and cash evidence",
+        "notes": [
+          {
+            "text": "Quarter ended June 30, 2026 (Microsoft FY26 Q4). Linked figures are reported in the primary filings; “calc.” marks figures calculated from them. Blank means undisclosed, never zero."
+          },
+          {
+            "text": "Reported growth; margins calculated from reported segment figures. Scopes differ."
+          },
+          {
+            "text": "Consolidated measures, not cloud or AI segment cash flows; definitions are not harmonized and are not AI capex."
+          },
+          {
+            "text": "Sources:",
+            "sources": [
+              {
+                "name": "Alphabet Q2 release (Jul 22, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm"
+              },
+              {
+                "name": "Amazon 10-Q (Q2 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm"
+              },
+              {
+                "name": "Amazon Q2 release (Jul 30, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm"
+              },
+              {
+                "name": "Meta Q2 2026 release (Jul 29, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm"
+              },
+              {
+                "name": "Microsoft FY26 Q4 release (Jul 29, 2026)",
+                "href": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q4/press-release-webcast"
+              }
+            ]
+          }
+        ],
+        "tables": [
+          {
+            "title": "Operating segments, quarter ended Jun 30, 2026",
+            "head": [
+              "Business",
+              "Revenue",
+              "Growth y/y",
+              "Operating income",
+              "Operating margin"
+            ],
+            "rows": [
+              [
+                "Google Cloud",
+                "$24.8bn",
+                "82%",
+                "$8.8bn",
+                "35.6% calc."
+              ],
+              [
+                "Azure and other cloud services",
+                "Not disclosed",
+                "43%",
+                "Not disclosed",
+                "Not disclosed"
+              ],
+              [
+                "Microsoft Intelligent Cloud (context)",
+                "$39.3bn",
+                "32%",
+                "$16.0bn",
+                "40.6% calc."
+              ],
+              [
+                "AWS",
+                "$42.2bn",
+                "36.7%",
+                "$16.6bn",
+                "39.4% calc."
+              ],
+              [
+                "Meta advertising",
+                "$59.4bn",
+                "27.5% calc.",
+                "—",
+                "—"
+              ],
+              [
+                "Meta consolidated",
+                "$60.8bn",
+                "28%",
+                "$18.8bn",
+                "30.9% calc."
+              ]
+            ],
+            "notes": [
+              "Google Cloud: Includes Workspace and TPU-system sales; shared AI research is unallocated.",
+              "Azure and other cloud services: Quarterly dollars and margin are not disclosed.",
+              "Microsoft Intelligent Cloud (context): Broader than Azure.",
+              "AWS: Includes $0.6bn of noncash energy-contract gains (10-Q).",
+              "Meta advertising: Advertising-only profit is not disclosed; a platform comparator."
+            ]
+          },
+          {
+            "title": "Consolidated cash, same quarter",
+            "head": [
+              "Business",
+              "Operating cash flow",
+              "Cash PP&E",
+              "Operating cash minus PP&E"
+            ],
+            "rows": [
+              [
+                "Alphabet",
+                "$39.1bn",
+                "$44.9bn",
+                "−$5.9bn calc."
+              ],
+              [
+                "Microsoft",
+                "$55.4bn",
+                "$35.8bn",
+                "$19.6bn calc."
+              ],
+              [
+                "Amazon",
+                "$45.4bn",
+                "$54.2bn",
+                "−$8.8bn calc."
+              ],
+              [
+                "Meta",
+                "$31.9bn",
+                "$30.1bn",
+                "$1.7bn calc."
+              ]
+            ],
+            "notes": [
+              "Microsoft: Additions to property and equipment.",
+              "Amazon: Gross purchases; net of sales and incentives −$7.7bn. Finance-lease principal $0.4bn is separate.",
+              "Meta: Meta's own free-cash-flow definition gives $0.8bn."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What would settle the debate",
+        "items": [
+          {
+            "label": "Recognized revenue and profit",
+            "text": "If paid usage converts into incremental profit after serving costs, strengthen payback confidence; separate ads, cloud consumption, subscriptions and hardware.",
+            "sources": [
+              {
+                "name": "Citi"
+              },
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Morgan Stanley"
+              }
+            ]
+          },
+          {
+            "label": "Cash after commitments",
+            "text": "If cash generation catches up after capex, leases and depreciation differences, funding risk eases; backlog and financing alone would not settle returns.",
+            "sources": [
+              {
+                "name": "Financial Times"
+              },
+              {
+                "name": "Needham"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "text": "Until matched investment and cash-flow cohorts are disclosed, there is no defensible single AI-return winner.",
+            "sources": []
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Jul 10, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "BofA thought Meta could build computing capacity more cheaply.",
+            "sources": [
+              {
+                "name": "Jul 10, 2026 · BofA and Benchmark"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "Benchmark still saw no path to profit. Component inflation meant higher spending did not necessarily buy more capacity.",
+            "sources": [
+              {
+                "name": "Jul 10, 2026 · BofA and Benchmark"
+              },
+              {
+                "name": "May 27, 2026 · Newsletter author"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "Later checks supported Google products, Microsoft demand and AWS pricing, while Meta monetization remained early and financing obligations drew scrutiny.",
+            "sources": [
+              {
+                "name": "Oct 1, 2026 · Citi"
+              },
+              {
+                "name": "Oct 1, 2026 · Wells Fargo"
+              },
+              {
+                "name": "Oct 1, 2026 · Wells Fargo"
+              },
+              {
+                "name": "Oct 1, 2026 · Morgan Stanley"
+              },
+              {
+                "name": "Oct 2, 2026 · Needham"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Will recognized revenue and incremental profit cover investment and lease commitments across all four companies?",
+            "sources": [
+              {
+                "name": "Oct 2, 2026 · Financial Times"
+              },
+              {
+                "name": "Oct 2, 2026 · Needham"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "sndk-rebound",
+    "title": "Memory and storage: shared demand, different supply risks",
+    "tickers": [
+      "SNDK"
+    ],
+    "window": "Jul 1, 2026 – Oct 2, 2026 · Prices: May 1, 2026 – Oct 2, 2026",
+    "summary": "AI connects DRAM/HBM, NAND and HDD demand; contracts, customer budgets and competing capacity separate supplier outcomes.",
+    "watch": "Qualified supply, contract margins and customer budgets across the sector. The chart shows SanDisk only.",
+    "thumb": {
+      "src": "/writing/market-stories/sndk-rebound.webp",
+      "width": 638,
+      "height": 286
+    },
+    "chart": {
+      "src": "/writing/market-stories/sndk-rebound-chart.webp",
+      "width": 916,
+      "height": 515,
+      "alt": "Price chart of SNDK against QQQ, rebased to 100, with numbered turning points: 1. Jul 13, 2026 Evercore raises target; 2. Jul 28, 2026 Korea memory rout; 3. Jul 30, 2026 Liquidation reported; 4. Aug 14, 2026 13F shows June stake; 5. Sep 22, 2026 Recovery noted (source-reported)."
+    },
+    "thesis": "AI workloads connect memory and storage, but supplier economics diverge. SanDisk belongs within a cycle spanning DRAM/HBM, NAND and HDD; contracts, competing capacity and customer budgets matter more than a shared stock rebound.",
+    "thesisSources": [
+      {
+        "name": "Evercore ISI"
+      },
+      {
+        "name": "Bernstein"
+      },
+      {
+        "name": "Nikkei via TrendForce"
+      }
+    ],
+    "chartNote": "Jul 29–Oct 2: SNDK +69.3%, QQQ +13.4%; 55.9 percentage points ahead of QQQ. SanDisk comparison only, not a sector return. Endpoints are chosen in hindsight from the July trough.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "Connected demand, different constraints",
+        "items": [
+          {
+            "label": "One workload, several storage tiers.",
+            "text": "Evercore expects persistent agents to need fast HBM/DRAM, NAND for cached state, and HDDs for logs. This links suppliers without making them interchangeable; Bernstein expects capacity growth and constrained AI budgets eventually to weaken scarcity pricing.",
+            "sources": [
+              {
+                "name": "Evercore ISI"
+              },
+              {
+                "name": "Bernstein"
+              }
+            ]
+          },
+          {
+            "label": "DRAM/HBM: unequal supplier execution.",
+            "text": "Bernstein saw Samsung gaining HBM momentum while SK Hynix faced shipment timing delays. Micron reported NAND-led upside but a weaker margin guide; HBM mix, costs and contract terms complicate the growth story. Cleanroom plans are not immediate wafer output.",
+            "sources": [
+              {
+                "name": "Bernstein"
+              },
+              {
+                "name": "Micron results and management"
+              },
+              {
+                "name": "Micron management"
+              }
+            ]
+          },
+          {
+            "label": "NAND: visibility meets customer budgets.",
+            "text": "SanDisk's CFO described broader contracts and node-driven supply growth. Kioxia's CEO warned that steep NAND increases could damage customers' finite AI budgets. Contracts may cushion the cycle, but neither supplier can assume unlimited pricing power.",
+            "sources": [
+              {
+                "name": "SanDisk CFO at Citi"
+              },
+              {
+                "name": "Kioxia CEO"
+              }
+            ]
+          },
+          {
+            "label": "China: capital is not qualified capacity.",
+            "text": "CXMT's Shanghai listing preceded reported DRAM fab plans and board-approved R&D/testing investment requiring shareholder approval. Limited PC adoption is not HBM qualification. Separately, YMTC's reported NAND IPO ambitions threaten future NAND supply; neither firm's announced spending proves realized output.",
+            "sources": [
+              {
+                "name": "Newsletter author reporting CXMT debut"
+              },
+              {
+                "name": "SSE listing notice (Jul 24, 2026)",
+                "href": "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260724_10826610.shtml"
+              },
+              {
+                "name": "Reuters"
+              }
+            ]
+          },
+          {
+            "label": "HDD: shared demand, different competitive risks.",
+            "text": "Bernstein favored Seagate's HAMR transition over WDC's slower path. Both face Toshiba's reported expansion plan, which challenges durable scarcity but takes time to deliver. HDD capacity and NAND substitution can change the benefits of shared AI demand.",
+            "sources": [
+              {
+                "name": "Bernstein"
+              },
+              {
+                "name": "Nikkei via TrendForce"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What to watch and how to update the view",
+        "items": [
+          {
+            "label": "Contracts and costs",
+            "text": "If realized pricing and margins hold as spot prices slow, contract durability strengthens.",
+            "sources": [
+              {
+                "name": "SanDisk CFO at Citi"
+              },
+              {
+                "name": "Micron management"
+              }
+            ]
+          },
+          {
+            "label": "Supply and qualification",
+            "text": "If new qualified bits or HDD capacity outpace demand, reduce scarcity assumptions; watch HBM qualification and customer approvals.",
+            "sources": [
+              {
+                "name": "WSJ with a Goldman estimate"
+              },
+              {
+                "name": "DigiTimes"
+              },
+              {
+                "name": "Nikkei via TrendForce"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "text": "July's Korean-memory weakness and reported liquidation matter to SanDisk, but the June-end holding disclosure cannot prove a later sale. Shared demand does not imply equal returns.",
+            "sources": [
+              {
+                "name": "Newsletter author (morning edition)"
+              },
+              {
+                "name": "CNBC report"
+              },
+              {
+                "name": "13F information table (as of Jun 30)",
+                "href": "https://www.sec.gov/Archives/edgar/data/2045724/000093583626000418/xslForm13F_X02/form13fInfoTable.xml"
+              },
+              {
+                "name": "13F filing (Aug 14, 2026)",
+                "href": "https://www.sec.gov/Archives/edgar/data/2045724/000093583626000418/0000935836-26-000418-index.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Jul 13, 2026 · Reviewed through Oct 2, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "Evercore expected SanDisk’s contracts to make earnings less dependent on commodity prices.",
+            "sources": [
+              {
+                "name": "Jul 13, 2026 · Evercore ISI"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "Samsung had already disappointed investor expectations despite tight memory supply. Strong industry demand did not guarantee results would clear a high bar.",
+            "sources": [
+              {
+                "name": "Jul 7, 2026 · Samsung preliminary results"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "Later evidence added SanDisk contract claims, Kioxia's pricing restraint, Micron's mixed margin outlook and Toshiba's planned HDD expansion.",
+            "sources": [
+              {
+                "name": "Sep 9, 2026 · SanDisk CFO at Citi"
+              },
+              {
+                "name": "Sep 16, 2026 · Kioxia CEO"
+              },
+              {
+                "name": "Oct 1, 2026 · Micron results and management"
+              },
+              {
+                "name": "Oct 2, 2026 · Nikkei via TrendForce"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Can contract pricing withstand added qualified supply and customer budget limits across distinct DRAM, NAND and HDD markets?",
+            "sources": [
+              {
+                "name": "Sep 29, 2026 · Bernstein"
+              },
+              {
+                "name": "Sep 29, 2026 · DigiTimes"
+              },
+              {
+                "name": "Oct 2, 2026 · Nikkei via TrendForce"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "advertising-reactions",
+    "title": "One session, two ad-tech results, two separate questions",
+    "tickers": [
+      "APP",
+      "U"
+    ],
+    "window": "May 7, 2026 – Aug 6, 2026 · Prices: Aug 5, 2026 – Aug 6, 2026",
+    "summary": "One session, two ad-tech results: AppLovin faced execution questions while Unity’s Grow and Vector progress drew attention.",
+    "watch": "Advertiser sign-ups: more would have supported AppLovin’s expansion; stalled sign-ups would have weakened it.",
+    "thumb": {
+      "src": "/writing/market-stories/advertising-reactions.webp",
+      "width": 638,
+      "height": 200
+    },
+    "chart": {
+      "src": "/writing/market-stories/advertising-reactions-chart.webp",
+      "width": 916,
+      "height": 196,
+      "alt": "Bar chart of one-session returns for APP, U and QQQ."
+    },
+    "thesis": "AppLovin and Unity reported into different expectations. APP’s results raised questions about scaling its e-commerce advertiser push, while Unity’s Grow and Vector growth met earlier checks; the session did not isolate how much advertising drove either move.",
+    "thesisSources": [
+      {
+        "name": "AppLovin Q2 results"
+      },
+      {
+        "name": "Unity Q2 results"
+      }
+    ],
+    "chartNote": "Aug 5–6: APP −19.7%, U +15.1%, QQQ −0.4%; APP 19.3 percentage points behind QQQ, U 15.5 ahead.",
+    "note": "Price moves provide context; they do not establish what caused a return.",
+    "sections": [
+      {
+        "heading": "Evidence contrasts",
+        "items": [
+          {
+            "label": "Jul 13–Aug 6 · APP’s scaling path narrowed",
+            "text": "BofA had cut pixel and advertiser forecasts in July; Q2 showed consumer ad spend, not revenue, up 28% and a shift to partner-led mid-market sales.",
+            "sources": [
+              {
+                "name": "BofA"
+              },
+              {
+                "name": "AppLovin Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "Jul 7–Aug 6 · Unity’s checks were confirmed",
+            "text": "Wells Fargo raised its Vector estimate and a Jefferies survey showed Unity gaining ad-spend share; Q2 showed Strategic Grow up 64%.",
+            "sources": [
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Jefferies"
+              },
+              {
+                "name": "Unity Q2 results"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The strongest case on each side",
+        "items": [
+          {
+            "label": "Support",
+            "text": "Unity’s reported Grow and Vector growth matched the checks that preceded it.",
+            "sources": [
+              {
+                "name": "Wells Fargo"
+              },
+              {
+                "name": "Unity Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "Challenge",
+            "text": "APP’s 28% figure measures ad spend, not revenue, and its self-serve plan gave way to partners; one session cannot separate advertising from other news.",
+            "sources": [
+              {
+                "name": "AppLovin Q2 results"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What would have changed the view then",
+        "items": [
+          {
+            "label": "APP onboarding",
+            "text": "Data showing self-serve advertisers scaling would have eased APP’s execution question; partner-led growth alone would not.",
+            "sources": [
+              {
+                "name": "Citi"
+              },
+              {
+                "name": "AppLovin Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "Unity Grow durability",
+            "text": "A further quarter of Vector gains with a stated revenue contribution would have shown durability; one beat alone could not.",
+            "sources": [
+              {
+                "name": "Unity Q2 results"
+              },
+              {
+                "name": "Unity Q1 results"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Looking back",
+        "notes": [
+          {
+            "text": "Dates show when each source was available; publication times may be unknown."
+          }
+        ],
+        "asof": "Then: Aug 5, 2026 · Reviewed through Aug 6, 2026",
+        "items": [
+          {
+            "label": "The starting view",
+            "text": "Checks pointed to Unity’s Vector gaining advertising business. AppLovin’s outlook depended on adding e-commerce advertisers.",
+            "sources": [
+              {
+                "name": "Jul 7, 2026 · Wells Fargo"
+              },
+              {
+                "name": "Jul 13, 2026 · BofA"
+              }
+            ]
+          },
+          {
+            "label": "What was already known",
+            "text": "BofA had cut AppLovin forecasts as advertiser additions slowed. The companies faced different growth tests despite sharing an AI advertising theme.",
+            "sources": [
+              {
+                "name": "Jul 13, 2026 · BofA"
+              }
+            ]
+          },
+          {
+            "label": "What changed",
+            "text": "August 6 results showed AppLovin shifting sales to partners and Unity delivering Grow progress. Their operating results mattered more than the shared label.",
+            "sources": [
+              {
+                "name": "Aug 6, 2026 · AppLovin Q2 results"
+              },
+              {
+                "name": "Aug 6, 2026 · Unity Q2 results"
+              }
+            ]
+          },
+          {
+            "label": "The open question",
+            "text": "Will AppLovin’s partners bring in advertisers, and will Unity sustain Vector’s growth?",
+            "sources": [
+              {
+                "name": "Aug 6, 2026 · AppLovin Q2 results"
+              },
+              {
+                "name": "Aug 6, 2026 · Unity Q2 results"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

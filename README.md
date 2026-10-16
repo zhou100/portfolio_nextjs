@@ -64,7 +64,6 @@ Stop `npm run dev` before running `npm run build` so the `.next/` cache does not
 - `src/lib/` — all site content
 - `public/profile.jpg` — portrait
 - `public/og.png` — share card, rendered from `tools/og-card.html` (see `tools/README.md`)
-- `public/fixtures/` — public, self-authored evaluation fixtures a reader can check without any private access
 - `DESIGN.md` — tokens, type scale, status conventions, page order. **Read it before any visual change.**
 - `archive/legacy-2026-04-14/` — old generated output, starter assets, unused config
 

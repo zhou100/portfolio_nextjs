@@ -84,10 +84,12 @@ The reader meets the contribution before the method. This ordering is the point 
   caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
   `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
   compare-not-read rule.
-- **Market stories link out.** They are published and kept current by Narrative Atlas, so
-  the site lists them (`getMarketStories()` in `src/lib/writing.ts`) with a one-sentence
-  summary, a what-to-watch line, and a dated chart snapshot, and every entry opens the live
-  story. They are not articles and never get a body or an `articleHref()` here.
+- **Market stories are hosted here.** Seven fixed stories live in
+  `src/content/market-stories.json` and render at `/writing/market-stories/[slug]`
+  (`src/lib/marketStories.ts`). Each states its own price cutoff (`pricesThrough`), never a
+  shared date. Every chart has a full-size link; multi-panel charts scroll sideways at their
+  source size below 760px rather than shrinking past legibility. They carry attributions only — no source excerpts — and link
+  out only to public primary filings. They are not `Article`s and never appear in Published.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -120,6 +122,7 @@ The reader meets the contribution before the method. This ordering is the point 
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → Market stories → In progress (max 3) → Research
+`/writing/market-stories/[slug]` Header (tickers, thesis, window) → Chart → Table of contents → Sections → Price-context note
 `/writing/[slug]` Header → Table of contents → Body → Related work
 
 ## Decisions Log
@@ -147,4 +150,6 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-01 | Four testimonials restored, verbatim, in the hero under the Path timeline | Owner asked for them next to the experience. Quotes are never shortened; compactness comes from type size and the shared four-column grid instead. |
 | 2026-10-15 | Independent builds grid on `/work` moved from three columns to two | A fourth build left one card alone on a row; two columns hold an even count without changing card design. |
 | 2026-10-15 | Selected work leads with an Independent builds showcase with real screenshots | Owner asked to highlight the live products. Three builds a reader can open (El Niño workbench, ChurchMap, Debrief) get screenshots; Narrative Intelligence has no public interface and stays a card. |
-| 2026-10-16 | Narrative Intelligence joins the showcase; market stories listed under Writing | Narrative Atlas is public. Its seven market stories are listed on `/writing` and compactly on the home page, linking to the live stories rather than copying them, since they update daily and sit on licensed sources. |
+| 2026-10-16 | Market stories are hosted copies under `/writing`; the Narrative Atlas showcase and links are removed | Owner decision, superseding the same-day link-out version. The stories stand as writing on this site without pointing to the original project. |
+| 2026-10-16 | Narrative Intelligence removed from the site | Owner decision. The case, its public fixture and the links from planned writing are removed; the market stories stay as standalone writing. |
+| 2026-10-16 | Independent builds grid on `/work` uses three columns when there are exactly three | Removing Narrative Intelligence left three builds; two columns would strand one card, which the 2026-10-15 change was meant to avoid. |

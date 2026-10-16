@@ -7,19 +7,24 @@
 - Selected work now opens with an Independent builds showcase: El Niño and Commodity
   Futures, ChurchMap, and Debrief, each with a tagline, a "try it" link, and three real
   screenshots captured from the live product. Case cards follow under "Case studies".
-- Narrative Intelligence joins the showcase with its public site, Narrative Atlas
-  (https://narrative-graph.onrender.com/); the case now links to it and its limitations say
-  what the public site does and does not show.
 
 ### Writing
 
 - New Market stories section on `/writing` (after Published) and a compact list in the home
-  Writing section: the seven Narrative Atlas stories, each with tickers, a summary, what to
-  watch, and a dated chart snapshot, all linking to the live story.
+  Writing section, plus a page per story at `/writing/market-stories/<slug>`: seven stories
+  with tickers, thesis, price chart, how the view changed, the case on each side, what to
+  watch, and a look back. Each story states its own price cutoff; every chart has a full-size
+  link, and multi-panel charts scroll sideways on phones. Source attributions only.
 
 ### Links
 
 - The El Niño research workbench moved to https://elnino.yujun.net/.
+
+### Removed
+
+- The Narrative Intelligence case, its public evaluation fixture
+  (`public/fixtures/narrative-evaluation-fixture-v1.json`), and the links to it from planned
+  writing.
 
 ### Build
 
