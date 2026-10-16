@@ -94,6 +94,11 @@ The reader meets the contribution before the method. This ordering is the point 
   watch). No subheadings, no tables, abbreviations spelled out. Sources sit on one line at
   the end, attributions only — no source excerpts — and link out only to public primary
   filings. They are not `Article`s and never appear in Published.
+- **Articles use the same essay shape as market stories.** Three takeaways, then plain
+  paragraphs: the pattern, one worked example (a table or answer pairs), the common
+  practice, my view as separate arguments each backed by a cited result or computed
+  number, and what to check next. No subheadings or bullet lists in the body; sources on
+  one line at the end, linking to the paper.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 
@@ -127,7 +132,7 @@ The reader meets the contribution before the method. This ordering is the point 
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → Market stories → In progress (max 3) → Research
 `/writing/market-stories/[slug]` Header (tickers, title, window) → In short (three takeaways) → Lead paragraphs → Chart → Body paragraphs → Sources line → Price-context note
-`/writing/[slug]` Header → Table of contents → Body → Related work
+`/writing/[slug]` Header → In short (three takeaways) → Body (example, then paragraphs; table of contents only if the piece has two or more headings) → Sources line → Related work
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -158,3 +163,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-16 | Narrative Intelligence removed from the site | Owner decision. The case, its public fixture and the links from planned writing are removed; the market stories stay as standalone writing. |
 | 2026-10-16 | Independent builds grid on `/work` uses three columns when there are exactly three | Removing Narrative Intelligence left three builds; two columns would strand one card, which the 2026-10-15 change was meant to avoid. |
 | 2026-10-16 | Market stories rewritten as essays: three takeaways, plain paragraphs, one sources line | Owner decision. As writing samples, the report format (dated turning points, per-section source lists, tables) read as tool output rather than an argument. |
+| 2026-10-16 | Published articles rewritten in the same essay shape | Owner decision. One reading pattern across all writing; each argument now carries outside evidence instead of resting on illustrative examples alone. |

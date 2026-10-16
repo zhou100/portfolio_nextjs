@@ -6,55 +6,8 @@
   margin-top: 14px;
 }
 
-/* Three takeaways before the essay. */
-.story-tldr {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  margin-bottom: 32px;
-  max-width: var(--prose);
-  padding: 22px 24px;
-}
-
-.story-tldr__label {
-  color: var(--clr-muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-@media (max-width: 760px) {
-  .story-tldr {
-    padding: 18px 20px;
-  }
-}
-
 .story-prose p + p {
   margin-top: 18px;
-}
-
-.story-sources {
-  border-top: 1px solid var(--clr-border);
-  color: var(--clr-muted);
-  font-size: 0.88rem;
-  margin-top: 32px;
-  padding-top: 16px;
-}
-
-.story-sources > span:first-child {
-  color: var(--clr-ink);
-  font-weight: 600;
-}
-
-.story-sources a {
-  border-bottom: 1px solid var(--clr-border-strong);
-  color: var(--clr-accent-dark);
-}
-
-.story-sources a:hover {
-  border-color: var(--clr-accent);
 }
 
 /* Charts are wider than the prose measure; small multiples need the room. */

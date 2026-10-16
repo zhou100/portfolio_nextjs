@@ -5,6 +5,7 @@ import { getArticleBySlug, getPublishedSlugs } from '@/lib/writing';
 import { getOgImage } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
 import Blocks from '../../components/Work/Blocks';
+import { InShort, SourcesLine } from '../../components/Writing/Essay';
 import './article.css';
 
 export function generateStaticParams() {
@@ -69,6 +70,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       </header>
 
       <div className="wrap article-page__body">
+        <InShort points={article.tldr} />
+
         {headings.length > 1 && (
           <nav className="toc" aria-label="On this page">
             <p className="toc__label">On this page</p>
@@ -92,6 +95,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <Blocks blocks={[block]} key={index} />
             ),
           )}
+          <SourcesLine sources={article.sources} />
         </div>
 
         <footer className="article-page__footer">
