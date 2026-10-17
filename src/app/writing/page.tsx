@@ -6,7 +6,7 @@ import {
   getPapers,
   getPublishedArticles,
 } from '@/lib/writing';
-import { getSite } from '@/lib/portfolio';
+import { getOgImage, getSite } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
 import MarketStories from '../components/Writing/MarketStories';
 import './writing.css';
@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   description:
     'Notes on evaluating AI systems and measuring product outcomes, plus peer-reviewed research.',
   alternates: { canonical: '/writing' },
+  openGraph: {
+    title: 'Writing',
+    description: 'Notes on evaluating AI systems and measuring product outcomes, plus peer-reviewed research.',
+    url: '/writing',
+    images: [getOgImage()],
+  },
 };
 
 export default function WritingIndex() {

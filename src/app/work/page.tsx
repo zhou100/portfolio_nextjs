@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getOgImage } from '@/lib/portfolio';
 import { getWork } from '@/lib/work';
 import { getPapers } from '@/lib/writing';
 import WorkCard from '../components/Work/WorkCard';
@@ -9,6 +10,12 @@ export const metadata: Metadata = {
   description:
     'Case studies from industry work, products I built, and study designs, each labelled with its status and the evidence behind it.',
   alternates: { canonical: '/work' },
+  openGraph: {
+    title: 'Work',
+    description: 'Case studies from industry work, products I built, and study designs, each labelled with its status and the evidence behind it.',
+    url: '/work',
+    images: [getOgImage()],
+  },
 };
 
 export default function WorkIndex() {

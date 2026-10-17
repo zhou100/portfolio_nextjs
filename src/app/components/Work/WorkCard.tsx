@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { KIND_LABEL, type WorkItem } from '@/lib/work';
+import { EVIDENCE_LABEL, KIND_LABEL, type WorkItem } from '@/lib/work';
 import StatusBadge from './StatusBadge';
 
 /**
@@ -20,6 +20,21 @@ export default function WorkCard({ item, wide = false }: { item: WorkItem; wide?
         </h3>
         <p className="card__body">{item.contribution}</p>
       </div>
+
+      {wide && (
+        <dl className="workcard__meta">
+          <div>
+            <dt>Evidence</dt>
+            <dd>{item.evidenceType.length
+              ? item.evidenceType.map((type) => EVIDENCE_LABEL[type]).join(' · ')
+              : 'None yet — study design'}</dd>
+          </div>
+          <div>
+            <dt>Methods</dt>
+            <dd>{item.methods.join(' · ')}</dd>
+          </div>
+        </dl>
+      )}
 
       <div className="card__foot">
         <span className="card__role">{item.roleLabel}</span>

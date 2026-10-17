@@ -28,6 +28,16 @@ export default function Showcase({ item }: { item: WorkItem }) {
         </h3>
         <p className="showcase__tagline">{showcase.tagline}</p>
         <p className="showcase__contribution">{item.contribution}</p>
+        <dl className="showcase__meta metalist">
+          <div>
+            <dt>Role</dt>
+            <dd>{item.role}</dd>
+          </div>
+          <div>
+            <dt>Methods</dt>
+            <dd>{item.methods.join(' · ')}</dd>
+          </div>
+        </dl>
         <div className="showcase__actions">
           <a className="btn btn--primary" href={live.href} target="_blank" rel="noopener">
             {live.label} ↗
@@ -39,14 +49,14 @@ export default function Showcase({ item }: { item: WorkItem }) {
       </div>
 
       <div className="showcase__gallery">
-        <figure className="shot shot--lead">
+        <figure className={`shot shot--lead${lead.height > lead.width ? ' shot--portrait' : ''}${lead.fit ? ` shot--${lead.fit}` : ''}`}>
           <a href={lead.src} target="_blank" rel="noopener" title="Open full-size screenshot">
             <Image src={lead.src} alt={lead.alt} width={lead.width} height={lead.height} />
           </a>
           <figcaption>{lead.caption}</figcaption>
         </figure>
         {rest.map((shot) => (
-          <figure className={`shot${shot.fit ? ` shot--${shot.fit}` : ''}`} key={shot.src}>
+          <figure className={`shot${shot.height > shot.width ? ' shot--portrait' : ''}${shot.fit ? ` shot--${shot.fit}` : ''}`} key={shot.src}>
             <a href={shot.src} target="_blank" rel="noopener" title="Open full-size screenshot">
               <Image src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} />
             </a>
