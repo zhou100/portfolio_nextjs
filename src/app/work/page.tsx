@@ -7,7 +7,7 @@ import WorkCard from '../components/Work/WorkCard';
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Industry cases, independent builds, and proposed studies — each one labelled with its status and the kind of evidence behind it.',
+    'Case studies from industry work, products I built, and study designs, each labelled with its status and the evidence behind it.',
   alternates: { canonical: '/work' },
 };
 
@@ -26,11 +26,9 @@ export default function WorkIndex() {
       <header className="pagehead">
         <div className="wrap">
           <p className="eyebrow">Work</p>
-          <h1 className="pagehead__title">Decisions. Evidence. Working systems.</h1>
+          <h1 className="pagehead__title">The work behind the claims.</h1>
           <p className="lede pagehead__lede">
-            Each item opens with the problem, my contribution, and what changed. The label on the
-            card says what you are looking at: a case study written from industry work, a working
-            prototype, or a study design with nothing built yet.
+            Every item opens with the problem, what I did, and what changed. The label on the card tells you what the page is: a case study from industry work, a working prototype, or a design with nothing built yet.
           </p>
         </div>
       </header>
@@ -42,8 +40,7 @@ export default function WorkIndex() {
               <p className="eyebrow">Industry cases</p>
               <h2 className="section__title">Measurement work inside a team</h2>
               <p className="section__lede">
-                Written from work I did inside a company. Confidential data and results are
-                omitted — what is here is my contribution and the method.
+                Written from work I did inside a company. The data and results are confidential, so what is here is my contribution and the method.
               </p>
             </div>
           </div>
@@ -63,8 +60,7 @@ export default function WorkIndex() {
               <p className="eyebrow">Independent builds</p>
               <h2 className="section__title">Products I built and then studied</h2>
               <p className="section__lede">
-                Built end to end by me. What varies is how much of each one has been measured rather
-                than shipped.
+                Built end to end by me, and measured to different degrees.
               </p>
             </div>
           </div>
@@ -106,8 +102,7 @@ export default function WorkIndex() {
               <p className="eyebrow">Earlier research</p>
               <h2 className="section__title">Peer-reviewed work</h2>
               <p className="section__lede">
-                Forecasting and policy evaluation from my PhD. The recurring question — whether a
-                model that fits is a model someone can act on — is the same one I work on now.
+                Forecasting and policy evaluation from my PhD. The question then was whether a model that fits is a model someone can act on, which is where I still start.
               </p>
             </div>
             <Link className="arrowlink" href="/writing#research">

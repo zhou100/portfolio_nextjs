@@ -1,7 +1,7 @@
 # Design System - Portfolio
 
 ## Product Context
-- **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist working on experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.
+- **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist who turns product questions into measures a team can move.
 - **Project type:** Editorial case-study site. The unit of content is a case study that carries a status and an evidence type, not a project card with a stack list.
 - **Reading goal:** Position understood in 30 seconds, one case understood in 3 minutes, enough material to interrogate the method in 10.
 
@@ -164,3 +164,5 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-16 | Independent builds grid on `/work` uses three columns when there are exactly three | Removing Narrative Intelligence left three builds; two columns would strand one card, which the 2026-10-15 change was meant to avoid. |
 | 2026-10-16 | Market stories rewritten as essays: three takeaways, plain paragraphs, one sources line | Owner decision. As writing samples, the report format (dated turning points, per-section source lists, tables) read as tool output rather than an argument. |
 | 2026-10-16 | Published articles rewritten in the same essay shape | Owner decision. One reading pattern across all writing; each argument now carries outside evidence instead of resting on illustrative examples alone. |
+| 2026-10-17 | Hero claim, intro, footer blurb and page ledes rewritten; the positioning line in DESIGN.md and README.md updated to match; 14 unpublished excerpts rewritten | The old copy stacked three-item lists ("experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products"), which was the clearest tell on the site. |
+| 2026-10-17 | Prose pass: removed ordinal signposting ("My first point", "Second,", "Third,", "Read down the table") and repeated framing formulas from the essays, the case bodies, the briefs and the market stories; the five-part essay shape, the numbers and the citations are unchanged | Four pieces on different subjects were reading as one template, and the template was the part that felt generated. |

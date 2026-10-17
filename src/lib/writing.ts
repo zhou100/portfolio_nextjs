@@ -52,17 +52,21 @@ const articles: Article[] = [
     publishedAt: '2026-10-16',
     readingTime: '5 min',
     excerpt:
-      'A record El Niño, a popular trade, and a research system whose most frequent answer is “watch.” Split into links that can each be tested, the trade story mostly fails, and saying so is the useful result.',
+      'A record El Niño, a trade everyone knows, and a research system that keeps answering “watch.” Split into three testable links, the story mostly fails, and the failures are the useful part.',
     relatedWork: 'el-nino-commodities',
     tldr: [
-      'With the El Niño index at a record +2.2 in early October 2026, my research system’s weekly answer is still “watch, do not trade.”',
-      'Split into three testable links, the trade story mostly fails. Palm oil prices rose after past peaks, but rainfall did not improve output forecasts, and the effect did not reliably reach US soybean oil futures.',
-      'With twelve events in sixty years, the honest unit is the event, the peak date cannot be used to trade, and “not supported” is a result worth reporting.',
+      'The Pacific index sat near +2.2 in early October 2026, a record for the time of year. The weekly evidence card still says watch, not trade.',
+      'Taken apart into three testable links, the trade story mostly fails: palm oil rose after past peaks, rainfall did not improve output forecasts, and the effect did not reliably carry into US soybean oil futures.',
+      'Twelve events in sixty years. The peak date is only visible afterwards, so it cannot be traded, and “not supported” is a result worth reporting.',
     ],
     body: [
       {
         type: 'p',
-        text: 'In early October 2026 the Pacific’s main El Niño index stood at about +2.2, higher than any recorded event at the same point in the year. The trade that goes with a headline like that is well known. Strong El Niño years dry out Southeast Asia, oil palm yields fall some months later, palm oil gets expensive, and the soybean oil futures a US trader can actually buy follow it up. The research system I built to test that story produces a weekly evidence card, and this week, like most weeks, it says watch, do not trade. The pattern I have learned to trust is that a confident market story is usually a chain of claims, and most of the chain is weaker than the headline.',
+        text: 'A scheduled job rebuilds my El Niño evidence card every Tuesday. On 13 October 2026 it came back the way most of them do: watch, do not trade. The Pacific index stood near +2.2, higher for the time of year than any event in the record. In the latest complete month of rainfall data, Sarawak was in drought; Peninsular Malaysia and Sabah were not.',
+      },
+      {
+        type: 'p',
+        text: 'The trade that goes with a number like that is old and easy to say. A strong El Niño dries out Southeast Asia; oil palm yields fall some months later; palm oil gets expensive; and the soybean oil futures a US trader can actually buy follow it up. I built a research system to test that sentence link by link, because a sentence like that is usually several claims standing in a row, and only some of them are true.',
       },
       {
         type: 'table',
@@ -78,31 +82,31 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Read down the table and the evidence is narrower than the story. Palm oil prices have tended to rise after strong peaks: by 16.7 log points against a metals index six to twelve months later, and in 9 of the 12 events. On palm oil futures the event years averaged +28.3% against −3.5% in other years. But the mechanism I could test, rainfall in the growing regions predicting palm output, beat a plain seasonal forecast at none of four horizons. And the US soybean oil contract that motivated the exercise showed nothing reliable: a +0.5% average that turns negative if you drop one of its three events.',
+        text: 'Palm oil prices did rise after strong peaks. The average was +16.7 log points against a metals index six to twelve months later, and the sign was positive in 9 of the 12 events. On palm oil futures the event years averaged +28.3% against −3.5% in other years. The mechanism is where the story loses its footing. Rainfall in the three growing regions beat a plain seasonal forecast at none of four horizons. And the US soybean oil contract that started the exercise moved +0.5% on average in event years, a number that turns negative if you drop one of the three events.',
       },
       {
         type: 'p',
-        text: 'The usual version of the trade treats all of this as one physical story. Drought cuts yields, lower yields raise prices, and the price spills over into substitutes. Each step sounds obvious, which is part of why the trade is popular. Even the agronomy is looser than that. A study of 4,785 Malaysian estates from 2015 to 2023 linked lower yields to El Niño and La Niña extremes anywhere in the 23 months before harvest, not at one fixed lag. A link that can arrive at any point over two years is hard to trade on a calendar.',
+        text: 'It is tempting to treat the chain as one physical fact, but the agronomy is looser than that. A study of 4,785 Malaysian estates from 2015 to 2023 tied lower yields to El Niño and La Niña extremes anywhere in the 23 months before harvest, not at a fixed lag. A signal that can arrive at any point across two years is hard to put on a calendar.',
       },
       {
         type: 'p',
-        text: 'My first point is that the chain has to be split, because a strong link will otherwise vouch for a weak one. I tested three questions that could each be rejected on their own: does rainfall in the three Malaysian growing regions improve a forecast of palm output, do palm oil prices rise after a strong peak, and does climate information add anything to US soybean oil futures. The results above show why that matters. The price link held while the weather link failed, so the price rise cannot be credited to the drought mechanism I could measure, and rainfall maps turn out to be the wrong thing to watch for this trade. Had I tested the story as one claim, the price result would have carried the rest.',
+        text: 'That is why the chain has to be split. A strong link will otherwise vouch for a weak one. I tested three questions that could each be rejected on their own: does rainfall in the three Malaysian growing regions improve a forecast of palm output, do palm oil prices rise after a strong peak, and does climate information add anything to US soybean oil futures. The price link held while the weather link failed. So the price rise cannot be credited to the drought mechanism I could measure, and rainfall maps turn out to be the wrong thing to watch for this trade. Had I tested the story as one claim, the price result would have carried the rest of it.',
       },
       {
         type: 'p',
-        text: 'Second, the sample is twelve events, not hundreds of rows. There have been twelve moderate-or-stronger El Niño events since 1963. Only three overlap the US soybean oil futures data I could use, and four overlap Chinese palm oil futures. It is easy to make that look bigger: test twenty-two commodities and you have 264 commodity-events; use monthly returns and you have thousands of rows. None of that creates new El Niño events. The commodities move together, and the months inside one event are not independent, so a significance test that treats them as independent measures how many rows you have, not how much you know. Every evaluation therefore holds out a whole event at a time, and every result is reported as “k of n events” next to the average. Four out of four is encouraging. It is also four.',
+        text: 'The sample is the second problem. Twelve moderate-or-stronger El Niño events have occurred since 1963. Three overlap the US soybean oil futures data I could use, and four overlap Chinese palm oil futures. It is easy to make that look larger. Test twenty-two commodities and you have 264 commodity-events; use monthly returns and you have thousands of rows. None of it creates new El Niño events. The commodities move together and the months inside one event are not independent, so a significance test that treats them as independent is measuring the number of rows, not the amount of knowledge. Every evaluation therefore holds out a whole event, and every result is printed as “k of n events” beside the average. Four out of four is encouraging. It is also four.',
       },
       {
         type: 'p',
-        text: 'Third, the date everyone lines events up on is one nobody could have traded. The natural way to study El Niño is to align events on their peak, but you only know where the peak was after it has passed. In a replay that used only the data available each month, the rule that confirms a peak, the index falling half a degree from its high, fired two to three months after the real peak, and entering on that confirmation did clearly worse on the same events than a simple calendar rule. So the system keeps two dates apart: the peak may describe history, and a trading rule may only use the date an event was detectable, with execution after that information was published. Every input carries both its publication time and the time I captured it. The price result in the first row is anchored on the peak, which makes it a description of history, not a rule anyone could have followed. The futures result needs its own caveats said out loud: I knew which years were event years before it ran, and subtracting a broad metals index roughly halves the event-year return, which says part of it was a general commodity rally.',
+        text: 'Then there is the date everyone lines events up on, which nobody could have traded. Studies of El Niño align events on the peak, but the peak is only visible after it has passed. In a replay that used only the data available in each month, the rule that confirms a peak, a half-degree fall from the high, fired two to three months after the real peak, and entering on that confirmation did clearly worse on the same events than a simple calendar rule. The system keeps two dates for that reason. The peak may describe history; a trading rule may only use the date an event was detectable, with execution after that information was published. Every input carries both its publication time and the time I captured it. The price result in the first row is anchored on the peak, which makes it a description of history rather than a rule anyone could have followed. The futures result needs its own caveats said out loud: I knew which years were event years before it ran, and subtracting a broad metals index roughly halves the event-year return, which says part of it was a general commodity rally.',
       },
       {
         type: 'p',
-        text: 'One more safeguard mattered with a sample this small. To keep it from turning into a search, lags, thresholds and feature sets were committed as code and a protocol document before results were pulled, every specification tried went into the report appendix, the 2010–2025 history was frozen after several rounds, and the two later futures tests were each registered in advance and run once.',
+        text: 'With a sample that small, there is one more way to fool yourself: search. Lags, thresholds and feature sets were committed as code and a protocol document before results were pulled. Every specification I tried, including the failures, went into the report appendix. The 2010–2025 history was frozen after several rounds. The two later futures tests were registered in advance and run once each.',
       },
       {
         type: 'p',
-        text: 'What I am watching now is narrow. The evidence card asks for the ocean signal and drought in the growing regions together. The ocean signal is there. In the latest complete month of rainfall data Sarawak is in drought, while Peninsular Malaysia and Sabah are not, so the card says watch. The next scheduled check is in early January, when final rainfall for September through November is published, and what that check is allowed to change was written down in October, before anyone knows the answer. The 2026–27 event will make twelve events thirteen. It will not settle the question, and the system is set up so that nobody, including me, gets to pretend otherwise. The same habits carry over to product experiments: split a feature-to-revenue story into its links, count independent units rather than rows, never let an evaluation use information the decision could not have had, and decide when to stop before you start. A system that often says “watch” is telling you how often the evidence is actually there.',
+        text: 'What I am watching now is narrow. The evidence card asks for the ocean signal and drought in the growing regions together. The ocean signal is there. Only one of the three regions is dry, so the card says watch. The next scheduled check comes in early January, when final rainfall for September through November is published, and what that check is allowed to change was written down in October, before anyone knows the answer. The 2026–27 event will make the count thirteen. It will not settle the question, and the system is arranged so that nobody, including me, gets to pretend otherwise. The habits carry over to product experiments: split a feature-to-revenue story into its links, count independent units rather than rows, never let an evaluation use information the decision could not have had, and decide when to stop before you start. A system that often says “watch” is reporting how often the evidence is actually there.',
       },
     ],
     sources: [
@@ -122,21 +126,21 @@ const articles: Article[] = [
     publishedAt: '2026-09-08',
     readingTime: '6 min',
     excerpt:
-      'A model can improve on the test set and still be the wrong launch. The overall score measures typical traffic; the decision usually turns on a small slice and on failures the logged data cannot show.',
+      'A model can beat the incumbent on the test set and still be the wrong model to ship. The overall score describes typical traffic; the launch usually turns on a thin slice, or on a failure the logs were never built to show.',
     relatedWork: 'recommendation-quality',
     tldr: [
-      'A model can win on the held-out set and still be the wrong launch. In the example below it wins overall by about two points and loses the slice the product cares about by ten.',
-      'The overall number measures typical traffic. Launch decisions usually turn on a small slice, or on failures the logged data cannot show, and the evidence on both is weaker than the headline suggests.',
-      'I accept an offline win only with the slices named in advance, the metric’s blind spots stated, and guardrails that have a threshold and a consequence.',
+      'A candidate wins the held-out set by about two points and loses the slice the product cares about by ten.',
+      'An overall score is an estimate about typical traffic. Launch decisions turn on small slices and on failures the logged data cannot show, and the evidence on both is thinner than the headline.',
+      'Three things have to be true before an offline win counts: slices named in advance, the metric’s blind spots written down, and guardrails with a threshold and a consequence.',
     ],
     body: [
       {
         type: 'p',
-        text: 'A launch review I have sat through many times goes like this. The new model scores 83% on the held-out set against 80% for the one in production. The sample is large, the win is clean, and everyone would like to ship. The pattern I keep seeing is that the number answers a different question from the one the launch is deciding. It tells you how the model does on typical traffic. The launch is usually about something narrower: a group of users the product worries about, or a kind of failure the test set was never built to show.',
+        text: 'The review goes like this. The new model scores 81.35% on the held-out set, the one in production 79.0%. The sample is large, the win is clean, and the room would like to ship. Before I read the score I ask what the sample was drawn from. The number answers a question about typical traffic. The launch is usually deciding something narrower: a group of users the product worries about, or a kind of failure the test set was never built to show.',
       },
       {
         type: 'p',
-        text: 'Here is the same evaluation split into ordinary traffic and the slice the product actually cares about. The numbers are illustrative, chosen so the arithmetic is easy to check.',
+        text: 'Split those two scores by slice and the disagreement becomes arithmetic.',
       },
       {
         type: 'table',
@@ -150,27 +154,27 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The candidate wins overall, 81.35% to 79.0%, because 95% of the population is ordinary traffic where it gains three points. On the high-risk slice, 5% of the population, it drops from 60% to 50%. Both statements come from the same table. Which one should decide the launch depends on what the evaluation is for, and the overall number cannot tell you that.',
+        text: 'The candidate wins overall, 81.35% to 79.0%, because 95% of the population is ordinary traffic and it gains three points there. On the high-risk slice, 5% of the population, it drops from 60% to 50%. Both sentences come from the same table. Which one decides the launch depends on what the evaluation is for, and the overall number cannot tell you that.',
       },
       {
         type: 'p',
-        text: 'The common practice is to treat the held-out score as the launch signal, with a few guardrail metrics on the readout. It is a reasonable default. A sample drawn from typical traffic is the right sample for estimating typical performance, and a large sample makes the overall number precise. The trouble is that precision on the average says little about precision where the decision actually turns.',
+        text: 'Treating the held-out score as the launch signal, with a few guardrails on the readout, is a reasonable default. A sample drawn from typical traffic is the right sample for typical performance, and a large sample makes the average precise. Precision on the average says very little about precision where the decision turns.',
       },
       {
         type: 'p',
-        text: 'My first point is that the sample is built for the average, so it is weakest exactly on the slice that matters. In an evaluation set of 2,000 items, a 5% slice is 100 items. At an accuracy around 55%, the standard error on that slice is about 5 points, so a 95% interval runs roughly 10 points either side, which is wide enough to hide the regression in the table. This is not only a teaching problem. Oakden-Rayner and colleagues called it hidden stratification in medical imaging: models with strong overall scores that failed on clinically important subsets, with performance gaps of more than 20% on some of them. The fix is cheap. Oversample the slice so it supports its own estimate, weight back when you want the population figure, and report both with their intervals.',
+        text: 'The sample is built for the average, so it is weakest exactly where the decision is. In an evaluation set of 2,000 items, a 5% slice holds 100. At an accuracy near 55%, the standard error on that slice is about five points; a 95% interval runs roughly ten points either side, wide enough to hide the regression in the table. This is not only a teaching problem. Oakden-Rayner and colleagues named it hidden stratification in medical imaging: models with strong overall scores that failed on clinically important subsets, with gaps above 20% on some of them. The repair is cheap. Oversample the slice so it supports its own estimate, weight back for the population figure, and report both with their intervals.',
       },
       {
         type: 'p',
-        text: 'Second, some failures cannot be seen offline however you sample, because the offline metric is built from what the old system showed people. Take a recommendation model scored on whether viewers engage with what it shows. A model that leans harder on creators a viewer already likes will score well, and it may also show the same few creators again and again. Engagement per item goes up while the session gets narrower, and the logged data cannot tell the two apart. Chaney, Stewart and Engelhardt showed in simulation that training and evaluating on data shaped by an existing recommender makes behavior more uniform without making it more useful, and that it biases held-out evaluation. Garcin and colleagues found the same gap in a live news recommender at swissinfo.ch: recommending popular stories looked best offline and did worst online, while methods that ranked lower offline raised click-through by up to 35%. So the readout needs separate measures for what the main metric cannot see, such as repetition, how concentrated the supply becomes, and how much effort a viewer spends before finding something worth watching. They are imperfect proxies, but they fail in a different direction from the main metric, which is what makes them useful.',
+        text: 'Some failures cannot be seen offline however you sample, because the offline metric is built from what the old system showed people. A recommendation model scored on engagement will happily lean on creators a viewer already likes. That scores well, and it may show the same few creators all night. Engagement per item rises while the session narrows, and the logs cannot tell the two apart. Chaney, Stewart and Engelhardt showed in simulation that training and evaluating on data shaped by an existing recommender makes behavior more uniform without making it more useful, and that it biases the held-out estimate. Garcin and colleagues found the gap live at swissinfo.ch: popular-story recommendations looked best offline and did worst online, while methods that ranked lower offline lifted click-through by up to 35%. The readout therefore needs separate measures for what the main metric cannot see, such as repetition, concentration of supply, and how much scrolling a viewer does before finding something worth watching. They are proxies. They fail in a different direction from the main metric, which is the only reason to keep them.',
       },
       {
         type: 'p',
-        text: 'Third, a guardrail only works if it can actually stop something. A guardrail that never blocks a launch is not necessarily useless; the risk may simply not have happened, or the design may already have avoided it. What makes it decoration is having no named failure, no threshold and no consequence for crossing it, or being so noisy that it could never move outside its own interval. Kohavi, Tang and Xu treat guardrail metrics the same way in their book on online experiments: they exist to catch harm the main metric misses, and they need enough statistical power to see harm at a size that would change the decision.',
+        text: 'A guardrail only works if it can stop something. One that never blocks a launch is not automatically useless; the risk may not have happened, or the design may already have avoided it. What makes it decoration is having no named failure, no threshold and no consequence, or being so noisy that it could never leave its own interval. Kohavi, Tang and Xu make the same point in their book on online experiments: guardrails exist to catch harm the main metric misses, and they need the power to see harm at a size that would change the decision.',
       },
       {
         type: 'p',
-        text: 'What I ask for before anyone reads the results is short. Name the population and the slices, and how they differ from the people the launch affects. Say what the candidate is compared against, and whether the comparison holds anything fixed that the launch will not. Pick one primary metric with its denominator, and say what it cannot see. Give each guardrail a failure mode, a threshold and what crossing it triggers; “escalate for discussion” is a real consequence, “note it” is not. None of this makes an offline win worthless. It turns the win into a claim about a specific population and a specific outcome, which is the only form in which anyone can check it.',
+        text: 'Before anyone reads the results I ask for four things. Name the population and the slices, and say how they differ from the people the launch affects. Say what the candidate is compared against, and whether the comparison holds fixed something the launch will not. Pick one primary metric with its denominator, and say what it cannot see. Give every guardrail a failure mode, a threshold, and what crossing it triggers. “Escalate for discussion” is a consequence. “Note it” is not. None of this makes an offline win worthless. It makes the win a claim about a specific population and a specific outcome, which is the only form anyone can check.',
       },
     ],
     sources: [
@@ -182,7 +186,7 @@ const articles: Article[] = [
   },
   {
     slug: 'creative-tagging-proving-lift',
-    title: 'Creative Tagging Is Easy. Proving Lift Is Harder.',
+    title: 'A Tag Is Not a Lift',
     topic: 'Measurement',
     status: 'published',
     publishedAt: '2026-09-08',
@@ -191,14 +195,14 @@ const articles: Article[] = [
       'A correct tag, a tag that predicts performance, and an attribute that causes better results are three different claims. Most creative insight is one of the first two, described in the language of the third.',
     relatedWork: 'creative-evidence-lab',
     tldr: [
-      'A creative tool makes three claims that sound like one: the tag is right, the tag predicts performance, and changing the attribute changes the outcome. Each needs its own evidence.',
-      'Most creative “insight” is a correct tag or a prediction, described in the language of cause. In Facebook’s own experiments, observational estimates of ad lift were often off by a factor of three.',
-      'Only a randomized test of two otherwise identical versions shows an effect, and the platform’s built-in split test is not randomized in the way it looks.',
+      'A creative tool makes three claims that sound like one: the tag is right, the tag predicts performance, and changing the attribute changes the outcome.',
+      'Most creative “insight” is a correct tag or a prediction wearing the language of cause. In Facebook’s own experiments, observational estimates of ad lift were often off by a factor of three.',
+      'Only a randomized test of two otherwise identical versions shows an effect, and the platform’s split test is not as random as it looks.',
     ],
     body: [
       {
         type: 'p',
-        text: 'Creative intelligence products are good at telling you what is in an ad. Take a fifteen-second video: the logo appears in a corner at 0:02, a voiceover says the brand name at 0:06, and a call to action appears on screen at 0:12 and is spoken at 0:13. A tool will tag all of that, then tell you which tags go with better results, then suggest you move the brand earlier. Those are three different claims stacked on top of each other. The pattern I see is that the evidence gets weaker at each step while the language gets stronger.',
+        text: 'Here is a fifteen-second ad. The logo appears in a corner at 0:02. A voiceover says the brand name at 0:06. A call to action appears on screen at 0:12 and is spoken at 0:13. A creative tool will tag all of it, tell you which tags go with better results, and suggest you move the brand earlier. That is three claims stacked on one another, and the evidence thins as you climb.',
       },
       {
         type: 'table',
@@ -212,23 +216,23 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Read down the table and each step asks for more. A correct tag says nothing about performance. A tag that predicts performance says nothing about what would happen if you changed it. The common practice skips between them anyway. A dashboard reports tagging accuracy, then a correlation between tags and return on ad spend, then a recommendation, and the recommendation inherits the confidence of the first number.',
+        text: 'Each row asks for more than the one above it. A correct tag says nothing about performance. A tag that predicts performance says nothing about what would happen if you changed it. Dashboards step between them anyway: tagging accuracy, then a correlation with return on ad spend, then a recommendation that inherits the confidence of the first number.',
       },
       {
         type: 'p',
-        text: 'My first point is that tag accuracy is mostly a definition problem, and it has to be measured tag by tag. Ask two annotators for the first brand appearance in the ad above. One says 0:02, reading the corner logo. The other says 0:06, reasoning that a logo small enough to miss is not an appearance the viewer experiences. Both are being careful; the definition failed. The repairs are unglamorous: record visual and spoken brand presence as separate fields, tie every tag to a time range and a frame or transcript reference, and keep “absent” and “not detected” as different values. Then report accuracy per tag. A blended accuracy of 91% is compatible with a call-to-action tag at 99% and a first-brand-appearance tag at 62%, and the second is the one every downstream analysis is about to use. Sample size matters as much: zero errors on a pilot of thirty assets still leaves a 95% upper bound of about 10% on the error rate.',
+        text: 'Tag accuracy is mostly a definition problem, and it has to be measured one tag at a time. Ask two annotators for the first brand appearance in the ad above. One says 0:02, reading the corner logo. The other says 0:06, on the grounds that a logo too small to notice is not an appearance the viewer experiences. Both are being careful. The definition failed, not the people. The repairs are unglamorous: record visual and spoken brand presence as separate fields, tie every tag to a time range and a frame or transcript reference, and keep “absent” and “not detected” as different values. Then report accuracy per tag. A blended accuracy of 91% is compatible with a call-to-action tag at 99% and a first-brand-appearance tag at 62%, and the second is the one every downstream analysis is about to use. Sample size matters as much. Zero errors on a pilot of thirty assets still leaves a 95% upper bound of about 10% on the error rate.',
       },
       {
         type: 'p',
-        text: 'Second, a tag that predicts performance is usually standing in for who made the ad and how it was delivered. Large brands reveal early as house style. They also buy better placements, reach warmer audiences and run stronger offers, and each of those can explain a gap in return on ad spend. This is not a hypothetical worry. Gordon, Zettelmeyer, Bhargava and Chapsky compared observational methods with randomized results across 15 advertising experiments at Facebook, covering 1.6 billion impressions. The observational methods often failed to recover the experimental effect, even with rich data on users, and in half of the studies the estimated lift was off by a factor of about three. So a predictive claim has to beat a ladder of baselines: the advertiser’s historical rate, then a model that knows the delivery context before launch, then that model plus the tags. Only the last step measures what the tags add. Hold out whole creative families and later time periods, or near-copies of the same ad land on both sides of the split, and pick one target, because click-through, conversion rate and return on ad spend have different denominators.',
+        text: 'A tag that predicts performance is usually standing in for who made the ad and how it was delivered. Large brands reveal early as house style. They also buy better placements, reach warmer audiences and run stronger offers, and any of those can explain a return-on-ad-spend gap. Gordon, Zettelmeyer, Bhargava and Chapsky compared observational estimates with randomized results across 15 advertising experiments at Facebook, covering 1.6 billion impressions. The observational methods often failed to recover the experimental effect even with rich data on users, and in half the studies the estimate was off by a factor of about three. A predictive claim therefore has to beat a ladder of baselines: the advertiser’s historical rate, then a model that knows the delivery context before launch, then that model plus the tags. Only the last step measures what the tags add. Hold out whole creative families and later time periods, or near-copies of the same ad land on both sides of the split. Pick one target, because click-through, conversion rate and return on ad spend have different denominators.',
       },
       {
         type: 'p',
-        text: 'Third, only an intervention shows that changing the attribute changes the outcome, and it has to be narrow enough to read. Two versions of the same edit, with the brand mention at 0:06 in one and 0:02 in the other, and the same offer, call to action, length and audio. The trap is the platform’s own split test. Braun and Schwartz showed in the Journal of Marketing that ad platforms deliver each version to a different, optimized mix of users during the test, so the “winner” may simply have reached people more likely to respond. A later study of Meta’s tools found the problem specific to its A/B tests, not to lift tests with a holdout group. If the only real randomization is at the campaign or regional level, that cluster is the unit and the power calculation has to use it. And the outcome should be conversions per assigned unit, not conversion rate among clickers, because the change can alter who clicks in the first place.',
+        text: 'Only an intervention shows that changing the attribute changes the outcome, and it has to be narrow enough to read. Two versions of the same edit, brand at 0:06 in one and 0:02 in the other, with the same offer, call to action, length and audio. The trap is the platform’s own split test. Braun and Schwartz showed in the Journal of Marketing that ad platforms deliver each version to a differently optimized mix of users during the test, so the “winner” may simply have reached people more likely to respond. A later study found the problem in Meta’s A/B tests specifically, not in lift tests with a holdout group. If the only real randomization sits at campaign or regional level, that cluster is the unit and the power calculation has to use it. The outcome should be conversions per assigned unit, not conversion rate among clickers, since the change can alter who clicks in the first place.',
       },
       {
         type: 'p',
-        text: 'Before I repeat a creative finding, I ask which of the three claims it is. If it is a tag, do I know its agreement and sample size? If it is a prediction, does it beat a baseline that already knows the delivery context? If it is a causal claim, is there a recorded random assignment behind it? Saying which one you have is not a hedge. It is the content of the finding.',
+        text: 'Before I repeat a creative finding, I ask which of the three claims it is. A tag: do I know its agreement, and on how many assets? A prediction: does it beat a baseline that already knows the delivery context? A causal claim: is there a recorded random assignment behind it? Saying which one you have is not a hedge. It is the content of the finding.',
       },
     ],
     sources: [
@@ -248,18 +252,18 @@ const articles: Article[] = [
       'An LLM judge that gates a release is a measuring instrument. Two deliberately hard answer pairs show why one score cannot hold grounding and task completion, and how blind human ratings and the disagreements decide what the judge may grade alone.',
     relatedWork: 'enterprise-ai-evaluation',
     tldr: [
-      'An LLM judge that gates a release is a measuring instrument. Checking that it agrees with itself shows it is consistent, not that it is right.',
+      'An LLM judge that gates a release is a measuring instrument. Agreeing with itself shows consistency, not correctness.',
       'Judges have known biases. Swapping the order of two answers let one model beat ChatGPT on 66 of 80 questions, and longer answers get rewarded for their length.',
-      'Score grounding, task completion and unsupported recommendations separately, compare against blind human ratings, and use the disagreements to decide what the judge may grade alone.',
+      'Score grounding, task completion and unsupported recommendations separately, compare against blind human ratings, and let the disagreements decide what the judge may grade alone.',
     ],
     body: [
       {
         type: 'p',
-        text: 'More teams now let a language model grade another model’s answers and use that grade to decide what ships. The pattern I see is that the judge gets less scrutiny than the system it is judging. The usual check is that the judge gives the same score on repeated runs. That shows the judge is consistent. A judge that shares the generator’s blind spots will certify them consistently.',
+        text: 'More teams let a language model grade another model’s answers and use the grade to decide what ships. The judge gets less scrutiny than the system it judges. The standard check is that it gives the same score on repeated runs. That shows the judge is consistent. A judge with the generator’s blind spots will be consistent about them.',
       },
       {
         type: 'p',
-        text: 'Here are two answer pairs written to be hard in the way that matters. Decide which answer in each pair is better before reading on.',
+        text: 'Two answer pairs, both written to be hard in the way that matters. Decide which answer in each pair is better before reading on.',
       },
       {
         type: 'deflist',
@@ -274,27 +278,27 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'In Task A every number in A1 is right, and the recommendation is still wrong, because average return on money already spent does not tell you the return on the next dollar. In Task B, B2 is longer, better organized and more decisive, and it invents its key numbers; B1 is the correct professional response to an underspecified question. A judge that scores grounding will like A1. A judge that is impressed by length and confidence will like B2. Both are the answers a user could not act on.',
+        text: 'In Task A every number is right and the recommendation is still wrong, because return on money already spent says nothing about the return on the next dollar. In Task B, B2 is longer, better organized, more decisive, and it invents its key numbers; B1 is the correct answer to an underspecified question. A judge that scores grounding likes A1. A judge impressed by length and confidence likes B2. Neither answer is one a user could act on.',
       },
       {
         type: 'p',
-        text: 'The common defense of LLM judges is that they agree with people about as often as people agree with each other. Zheng and colleagues found GPT-4’s verdicts matched human experts about 85% of the time on MT-Bench when ties were excluded, against 81% agreement between the humans themselves. I take that result seriously. But it is an average over one benchmark, and later work on when to trust a judge found GPT-4 almost never reached 80% agreement with people on a subset of Chatbot Arena. An average agreement figure is exactly the number that hides cases like the two above.',
+        text: 'The usual defense is that judges agree with people about as often as people agree with each other. Zheng and colleagues found GPT-4 matched human experts about 85% of the time on MT-Bench with ties excluded, against 81% agreement between the humans. I take that result seriously. It is also an average over one benchmark, and later work on when to trust a judge found GPT-4 almost never reaching 80% agreement with people on a subset of Chatbot Arena. An average is exactly the number that hides the two cases above.',
       },
       {
         type: 'p',
-        text: 'My first point is that one quality score cannot hold these answers, because the dimensions move in opposite directions. Score them separately. Grounding asks whether every factual sentence traces to the evidence: both Task A answers pass, and B2 fails. Task completion asks whether the user could act on the answer and get what they came for: A1 and B2 fail. A third check, whether the answer recommends something the evidence does not support, catches A1, which is fully grounded and still draws the wrong inference. There is outside evidence that a blended score drifts toward surface features. When Dubois and colleagues adjusted AlpacaEval’s judge scores for answer length, the benchmark’s rank correlation with Chatbot Arena’s human votes rose from 0.94 to 0.98, which means length had been moving the scores.',
+        text: 'One score cannot hold these answers, because the dimensions move in opposite directions. Grounding asks whether every factual sentence traces to the evidence. Both Task A answers pass; B2 fails. Task completion asks whether the user could act on the answer and get what they came for. A1 and B2 fail. A third check, whether the answer recommends something the evidence does not support, catches A1, which is fully grounded and still draws the wrong inference. There is outside evidence that a blended score drifts toward surface features. When Dubois and colleagues controlled AlpacaEval’s judge scores for answer length, the benchmark’s rank correlation with Chatbot Arena’s human votes rose from 0.94 to 0.98, which means length had been moving the scores.',
       },
       {
         type: 'p',
-        text: 'Second, the procedure matters as much as the rubric, because judges react to things that should not matter. Wang and colleagues found that simply swapping the order of two answers changed the verdict often enough that Vicuna-13B could beat ChatGPT on 66 of 80 questions with ChatGPT as the judge. So I score blind, with no model names in the context; swap the order of answers across items; have humans score on the same rubric before anyone sees the judge’s output, since reading the judge first anchors the people; and report agreement per dimension, never as one blended figure. A judge can track people closely on grounding and barely at all on task completion, which is the case where an average misleads most.',
+        text: 'Procedure matters as much as the rubric, because judges react to things that should not matter. Wang and colleagues found that simply swapping the order of two answers changed verdicts often enough for Vicuna-13B to beat ChatGPT on 66 of 80 questions with ChatGPT as the judge. So I score blind, with no model names in the context; swap the order of answers across items; have humans score on the same rubric before anyone sees the judge’s output, since reading the judge first anchors the people; and report agreement per dimension, never as one blended figure. A judge can track people closely on grounding and barely at all on task completion, which is the case where an average misleads most.',
       },
       {
         type: 'p',
-        text: 'Third, the disagreements are the useful output, and their direction tells you what to do. Where the judge is more generous than people, you are looking at the failures it will let through, usually fluent answers that miss the task. Where it is harsher, the rubric is often underspecified, and two people disagreeing on the same item is a reason to rewrite the rubric, not to average them. The end product is a decision about which kinds of errors the judge may grade alone and which go to a person regardless of score. The “Trust or Escalate” work makes the same move formally: the judge abstains and escalates when its confidence is too low to keep agreement with people above a target. A judge that handles the easy, high-volume cases and escalates the rest is worth having. One trusted everywhere because its overall agreement looked good is a release gate with a hole in it.',
+        text: 'The disagreements are the useful output, and their direction tells you what to fix. Where the judge is more generous than people, you are looking at the failures it will let through, usually fluent answers that miss the task. Where it is harsher, the rubric is often underspecified, and two people disagreeing on one item is a reason to rewrite the rubric, not to average them. What you end up with is a decision about which errors the judge may grade alone and which go to a person regardless of score. The “Trust or Escalate” work does the same thing formally: the judge abstains and escalates when its confidence is too low to hold agreement with people above a target. A judge that handles the easy, high-volume cases and escalates the rest is worth having. One trusted everywhere because its overall agreement looked good is a release gate with a hole in it.',
       },
       {
         type: 'p',
-        text: 'Before I let a judge’s score gate anything, I want to be able to name a failure it is known to miss and say where that failure goes instead; to know the human comparison was collected blind, before the judge’s output was visible; to see agreement per dimension, with the model version, prompt and tie-breaking rule recorded; and, if the judge and the people disagree next quarter, to be able to tell whether the model drifted or the rubric was always ambiguous. The answer pairs here are teaching cases I wrote, and this piece reports no judge scores of my own, because a number I have not computed would undercut the argument. The exercise costs an afternoon and two dozen carefully written items. It tells you which of your quality gates is actually doing the work.',
+        text: 'Before a judge’s score gates anything, I want to name a failure it is known to miss and say where that failure goes instead. I want to know the human comparison was collected blind, before the judge’s output was visible. I want agreement per dimension, with the model version, prompt and tie-breaking rule recorded. And if the judge and the people disagree next quarter, I want to be able to say whether the model drifted or the rubric was ambiguous all along. The answer pairs above are teaching cases I wrote; this piece reports no judge scores of my own, because a number I had not computed would undercut the argument. The exercise costs an afternoon and two dozen carefully written items, and it tells you which of your quality gates is doing the work.',
       },
     ],
     sources: [
@@ -310,7 +314,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'drafting',
     excerpt:
-      'Two claims can mention the same company and still tell different stories. A small set of paired examples shows how to distinguish over-merging from over-splitting, write clearer annotation rules, and evaluate clusters without treating shared vocabulary as shared meaning.',
+      'Two claims can name the same company and still be telling different stories. A set of paired examples shows how to tell over-merging from over-splitting, and how to write an annotation rule that does not confuse shared vocabulary with shared meaning.',
   },
   {
     slug: 'llm-versus-deterministic-rule',
@@ -318,7 +322,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'drafting',
     excerpt:
-      'A rule can be predictable and brittle; a model can be flexible and inconsistent. Using short claims with negation and stance changes, this piece sets out a comparison of rules, a model, and a hybrid — measuring errors, review effort, cost, and latency.',
+      'A rule is predictable and brittle. A model is flexible and inconsistent. The comparison uses short claims full of negation and stance shifts, and counts what each approach costs in errors, review time, money and latency.',
   },
   {
     slug: 'no-errors-is-not-healthy',
@@ -326,7 +330,7 @@ const articles: Article[] = [
     topic: 'Building',
     status: 'drafting',
     excerpt:
-      'Staleness, coverage against a required field set, and progress are the health metrics that catch silent failure. A pipeline with clean logs and no run records is failing quietly.',
+      'Clean logs prove nothing. A pipeline can report no errors while its data goes stale and its coverage quietly retreats, which is why the health check has to be staleness and coverage, not the absence of exceptions.',
     relatedWork: 'churchmap',
   },
   {
@@ -335,7 +339,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'planned',
     excerpt:
-      'A stronger headline is not necessarily new evidence. Comparing reposts, new disclosures, and genuine reversals separates changes in language from changes in the underlying claim.',
+      'A stronger headline is not new evidence. The piece separates a louder repost from a new disclosure and from a genuine reversal, because new disclosures and genuine reversals can change the evidence, while a louder repost may not.',
   },
   {
     slug: 'model-confident-should-product-be',
@@ -343,7 +347,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'planned',
     excerpt:
-      'Self-reported confidence is not a calibrated probability. Calibration, abstention, and the cost of human review decide what an interface is allowed to assert.',
+      'Self-reported confidence is not a calibrated probability. What an interface is allowed to assert depends on how well the score is calibrated and what a human review costs.',
     relatedWork: 'creative-evidence-lab',
   },
   {
@@ -352,7 +356,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'planned',
     excerpt:
-      'Stale memories, contradictions, and corrections matter more than retrieval accuracy, and need a small benchmark that includes all three.',
+      'Stale memories, contradictions and corrections break an assistant more often than a missed retrieval does, and a small benchmark can cover all three.',
     relatedWork: 'debrief',
   },
   {
@@ -361,7 +365,7 @@ const articles: Article[] = [
     topic: 'Building',
     status: 'planned',
     excerpt:
-      'Every metric on a surface should name the action it triggers, shown through a before-and-after task-completion test rather than a redesign screenshot.',
+      'A metric that names no action is decoration. The test is whether the person using the surface finishes the task faster, not whether the redesign looks better.',
   },
   {
     slug: 'cold-start-is-a-scope-decision',
@@ -369,7 +373,7 @@ const articles: Article[] = [
     topic: 'Building',
     status: 'planned',
     excerpt:
-      'Narrowing the initial user, geography, and required field set makes cold start testable — which is a different and more useful claim than solving it.',
+      'Cold start is usually a scoping problem. Narrow the first user and the fields a visit requires, and it becomes something you can test rather than something you have to solve.',
     relatedWork: 'churchmap',
   },
   {
@@ -378,7 +382,7 @@ const articles: Article[] = [
     topic: 'Building',
     status: 'planned',
     excerpt:
-      'Query patterns, update semantics, consistency, and replay requirements force the migration. Volume alone usually does not.',
+      'Volume rarely forces a move off JSON files. Query patterns do, and so do update semantics, consistency and replay.',
   },
   {
     slug: 's3-needs-a-table-layer',
@@ -386,7 +390,7 @@ const articles: Article[] = [
     topic: 'Building',
     status: 'planned',
     excerpt:
-      'Single-row updates, snapshots, and concurrent commits explain the table format better than any scale argument.',
+      'The case for a table format is transactions, not scale. Single-row updates, snapshots and concurrent commits are what S3 cannot do on its own.',
   },
   {
     slug: 'tuesday-boy-is-about-sampling',
@@ -394,7 +398,7 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'planned',
     excerpt:
-      'The disagreement is about the information-generating process, not the arithmetic. A small simulation makes the two readings concrete.',
+      'The Tuesday-boy puzzle is an argument about how the information was generated, not about arithmetic. A small simulation makes both readings concrete.',
   },
   {
     slug: 'testing-a-thesis-without-looking-ahead',
@@ -402,7 +406,7 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'planned',
     excerpt:
-      'Availability time, event confounding, and survivorship decide whether a backtest means anything. A method piece, not a stock list.',
+      'A backtest is only as good as its availability times. Confounding and survivorship decide whether the result means anything; this is a method piece, not a stock list.',
   },
   {
     slug: 'forecasts-to-product-evaluation',
@@ -410,7 +414,7 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'planned',
     excerpt:
-      'Generalization, interpretability, and the cost of a wrong decision are the same three problems in both settings.',
+      'A forecast that fails to generalize costs a program. A model that fails to generalize costs a launch. The piece maps one problem onto the other.',
   },
   {
     slug: 'where-should-the-next-ad-dollar-go',
@@ -418,7 +422,7 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'planned',
     excerpt:
-      'Ranking channels by observed return answers a different question from where the next increment should go. Marginal return, saturation, and a spend-level holdout are what the budget decision actually needs.',
+      'Ranking channels by observed return answers a different question from where the next dollar should go. The budget decision needs marginal return and saturation, tested at the spend level.',
     relatedWork: 'creative-evidence-lab',
   },
 ];

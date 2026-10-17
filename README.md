@@ -1,6 +1,6 @@
 # Yujun Zhou Portfolio
 
-The personal site of Yujun Zhou — a senior data scientist working on experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products. Built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org/), and plain CSS. No UI framework, no CMS.
+The personal site of Yujun Zhou — a senior data scientist who turns product questions into measures a team can move. Built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org/), and plain CSS. No UI framework, no CMS.
 
 ## What the site is organized around
 

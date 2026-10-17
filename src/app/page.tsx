@@ -98,7 +98,7 @@ export default function Home() {
               <div className="subhead">
                 <h3 className="subhead__title">Independent builds</h3>
                 <p className="subhead__lede">
-                  Products I designed, built, and run end to end. Each one is live — try it.
+                  Products I designed, built and still run. Each one is live; you can try it.
                 </p>
               </div>
               {showcase.map((item) => (
@@ -110,8 +110,7 @@ export default function Home() {
           <div className="subhead">
             <h3 className="subhead__title">Case studies</h3>
             <p className="subhead__lede">
-              Measurement and evaluation work, written up with the method and the evidence behind
-              each decision.
+              Measurement and evaluation work, with the method and the evidence behind each decision.
             </p>
           </div>
           <div className={`grid grid--${cases.length >= 3 ? 3 : 2}`}>
@@ -159,7 +158,7 @@ export default function Home() {
             <div className="subhead subhead--stories">
               <h3 className="subhead__title">Market stories</h3>
               <p className="subhead__lede">
-                Short essays on how the view on a stock changed, and what I think of it.{' '}
+                Short essays on a stock or a group of them: what moved, what the analysts said, and what I think.{' '}
                 <Link className="textlink" href="/writing#market-stories">
                   All stories with summaries
                 </Link>
@@ -180,9 +179,7 @@ export default function Home() {
                   <Link href={`/work/${lab.slug}`}>{lab.question}</Link>
                 </h2>
                 <p className="labstrip__body">
-                  A proposed workflow connecting observable creative attributes, performance
-                  hypotheses, and an experiment brief — with label quality, predictive value, and
-                  incremental impact kept as three separate claims.
+                  A proposed workflow that goes from a visible creative attribute to a hypothesis to an experiment brief, keeping label quality, prediction and causation as separate claims.
                 </p>
               </div>
               <Link className="arrowlink" href={`/work/${lab.slug}`}>
