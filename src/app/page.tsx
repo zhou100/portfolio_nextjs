@@ -17,7 +17,7 @@ export default function Home() {
   const showcase = getShowcaseWork();
   const showcased = new Set(showcase.map((item) => item.slug));
   const cases = featured.filter((item) => !showcased.has(item.slug));
-  const articles = getPublishedArticles();
+  const articles = getPublishedArticles().slice(0, 4);
   const lab = getWorkBySlug('creative-evidence-lab');
 
   return (
@@ -118,6 +118,23 @@ export default function Home() {
               <WorkCard item={item} key={item.slug} />
             ))}
           </div>
+
+          {lab && (
+            <article className="labstrip" id="lab">
+              <div>
+                <p className="eyebrow">Creative Evidence Lab · Study design</p>
+                <h3 className="labstrip__title">
+                  <Link href={`/work/${lab.slug}`}>{lab.question}</Link>
+                </h3>
+                <p className="labstrip__body">
+                  A proposed workflow that goes from a visible creative attribute to a hypothesis to an experiment brief, keeping label quality, prediction and causation as separate claims.
+                </p>
+              </div>
+              <Link className="arrowlink" href={`/work/${lab.slug}`}>
+                Read the study design →
+              </Link>
+            </article>
+          )}
         </div>
       </section>
 
@@ -164,28 +181,7 @@ export default function Home() {
                 </Link>
               </p>
             </div>
-            <MarketStories compact />
-          </div>
-        </section>
-      )}
-
-      {lab && (
-        <section className="section section--tight" id="lab">
-          <div className="wrap">
-            <article className="labstrip">
-              <div>
-                <p className="eyebrow">Creative Evidence Lab · Study design</p>
-                <h2 className="labstrip__title">
-                  <Link href={`/work/${lab.slug}`}>{lab.question}</Link>
-                </h2>
-                <p className="labstrip__body">
-                  A proposed workflow that goes from a visible creative attribute to a hypothesis to an experiment brief, keeping label quality, prediction and causation as separate claims.
-                </p>
-              </div>
-              <Link className="arrowlink" href={`/work/${lab.slug}`}>
-                Read the study design →
-              </Link>
-            </article>
+            <MarketStories compact limit={4} />
           </div>
         </section>
       )}

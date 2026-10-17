@@ -49,7 +49,7 @@
 
 .article-page__body {
   padding-bottom: 64px;
-  padding-top: 40px;
+  padding-top: 0;
 }
 
 /* Table of contents, generated from the same headings the body renders. */
@@ -89,6 +89,8 @@
 
 /* Essays (articles and market stories): three takeaways first, sources on one line last. */
 .essay-tldr {
+  position: relative;
+  margin-top: -20px;
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);

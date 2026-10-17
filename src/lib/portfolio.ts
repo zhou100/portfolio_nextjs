@@ -46,7 +46,7 @@ export function getSite(): Site {
     eyebrow: 'Data Scientist and AI builder',
     headline: 'I turn product questions into measures a team can move.',
     intro:
-      'I’m a data scientist with a PhD in economics, and my work often starts with a definition: what are we trying to improve, and what would count as evidence? I turn those questions into metrics and experiments that help teams decide what to build and test whether it works. Lately that has meant AI evaluation: defining what good performance means for a product, and building evaluations that help teams improve.',
+      'I’m a data scientist with a PhD in economics. I build metrics and experiments for product decisions, with a recent focus on defining and evaluating good performance in AI products.',
     pathIntro:
       'Each step moved the work closer to a decision someone had to make.',
     primaryCta: { label: 'Explore selected work', href: '/work' },

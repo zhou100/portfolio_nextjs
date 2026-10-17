@@ -7,8 +7,8 @@ import {
 } from '@/lib/marketStories';
 
 /** Index of the market stories hosted under /writing/market-stories. */
-export default function MarketStories({ compact = false }: { compact?: boolean }) {
-  const stories = getMarketStories();
+export default function MarketStories({ compact = false, limit }: { compact?: boolean; limit?: number }) {
+  const stories = getMarketStories().slice(0, limit);
 
   if (compact) {
     return (

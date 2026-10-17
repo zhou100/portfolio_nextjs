@@ -64,6 +64,8 @@
 /* ---------- 60-second brief ---------- */
 
 .brief {
+  margin-top: -28px;
+  position: relative;
   background: var(--clr-surface);
   max-width: 920px;
   border: 1px solid var(--clr-border-strong);
@@ -110,6 +112,8 @@
 /* ---------- Body ---------- */
 
 .case__body {
+  position: relative;
+  padding-top: 0;
   padding-bottom: 72px;
 }
 
