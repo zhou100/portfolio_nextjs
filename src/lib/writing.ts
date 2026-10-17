@@ -127,6 +127,7 @@ const articles: Article[] = [
     readingTime: '6 min',
     excerpt:
       'A model can beat the incumbent on the test set and still be the wrong model to ship. The overall score describes typical traffic; the launch usually turns on a thin slice, or on a failure the logs were never built to show.',
+    relatedWork: 'recommendation-quality',
     tldr: [
       'A candidate wins the held-out set by two points and loses the slice the product cares about by ten.',
       'An overall score is an estimate about typical traffic. Launch decisions turn on small slices and on failures the logged data cannot show, and the evidence on both is thinner than the headline.',
@@ -192,6 +193,7 @@ const articles: Article[] = [
     readingTime: '6 min',
     excerpt:
       'A correct tag, a tag that predicts performance, and an attribute that causes better results are three different claims. Most creative insight is one of the first two, described in the language of the third.',
+    relatedWork: 'creative-evidence-lab',
     tldr: [
       'A creative tool makes three claims that sound like one: the tag is right, the tag predicts performance, and changing the attribute changes the outcome.',
       'Most creative “insight” is a correct tag or a prediction wearing the language of cause. In Facebook’s own experiments, observational estimates of ad lift were often off by a factor of three.',
@@ -248,6 +250,7 @@ const articles: Article[] = [
     readingTime: '6 min',
     excerpt:
       'A judge that gates a release is a measuring instrument. Two deliberately hard answer pairs show why one score cannot hold grounding and task completion, and how blind human ratings and the disagreements decide what the judge may grade alone.',
+    relatedWork: 'enterprise-ai-evaluation',
     tldr: [
       'A judge that gates a release is a measuring instrument. Agreeing with itself shows consistency, not correctness.',
       'Judges have known biases. Swapping the order of two answers let one model beat ChatGPT on 66 of 80 questions, and longer answers get rewarded for their length.',
@@ -336,7 +339,7 @@ const articles: Article[] = [
     topic: 'AI Evaluation',
     status: 'planned',
     excerpt:
-      'A stronger headline is not new evidence. The piece separates a louder repost from a new disclosure and from a genuine reversal, because only the last one changes what is known.',
+      'A stronger headline is not new evidence. The piece separates a louder repost from a new disclosure and from a genuine reversal, because new disclosures and genuine reversals can change the evidence, while a louder repost may not.',
   },
   {
     slug: 'model-confident-should-product-be',
