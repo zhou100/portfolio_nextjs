@@ -46,7 +46,7 @@ export function getSite(): Site {
     eyebrow: 'Data Scientist and AI builder',
     headline: 'I turn product questions into measures a team can move.',
     intro:
-      'I’m a data scientist with a PhD in economics. My work often starts with a definition: what are we trying to improve, and what would count as evidence? I turn those questions into metrics and experiments that help teams decide what to build and test whether it works. Lately, I’ve been applying that approach to AI evaluation—defining what good performance means for a particular product and building evaluations that help teams improve it.',
+      'I’m a data scientist with a PhD in economics, and my work often starts with a definition: what are we trying to improve, and what would count as evidence? I turn those questions into metrics and experiments that help teams decide what to build and test whether it works. Lately that has meant AI evaluation: defining what good performance means for a product, and building evaluations that help teams improve.',
     pathIntro:
       'Each step moved the work closer to a decision someone had to make.',
     primaryCta: { label: 'Explore selected work', href: '/work' },
@@ -73,7 +73,7 @@ export function getOgImage() {
     url: '/og.png',
     width: 1200,
     height: 630,
-    alt: 'Yujun Zhou — experimentation, measurement, and AI evaluation',
+    alt: 'Yujun Zhou — metric design and evaluation',
   };
 }
 

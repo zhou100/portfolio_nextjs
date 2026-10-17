@@ -56,17 +56,17 @@ const articles: Article[] = [
     relatedWork: 'el-nino-commodities',
     tldr: [
       'The Pacific index sat near +2.2 in early October 2026, a record for the time of year. The weekly evidence card still says watch, not trade.',
-      'Taken apart into three testable links, the trade story mostly fails: palm oil rose after past peaks, rainfall did not improve output forecasts, and the effect did not carry into US soybean oil futures.',
+      'Taken apart into three testable links, the trade story mostly fails: palm oil rose after past peaks, rainfall did not improve output forecasts, and the effect did not reliably carry into US soybean oil futures.',
       'Twelve events in sixty years. The peak date is only visible afterwards, so it cannot be traded, and “not supported” is a result worth reporting.',
     ],
     body: [
       {
         type: 'p',
-        text: 'A scheduled job rebuilds my El Niño evidence card every Tuesday. On 13 October 2026 it came back the way most of them do: watch, do not trade. The Pacific index stood near +2.2, higher for the time of year than any event in the record. Sarawak was in drought. Peninsular Malaysia and Sabah were not.',
+        text: 'A scheduled job rebuilds my El Niño evidence card every Tuesday. On 13 October 2026 it came back the way most of them do: watch, do not trade. The Pacific index stood near +2.2, higher for the time of year than any event in the record. In the latest complete month of rainfall data, Sarawak was in drought; Peninsular Malaysia and Sabah were not.',
       },
       {
         type: 'p',
-        text: 'The trade that goes with a number like that is old and easy to say. A strong El Niño dries out Southeast Asia; oil palm yields fall some months later; palm oil gets expensive; and the soybean oil futures a US trader can actually buy follow it up. I built a research system to test that sentence link by link, because a sentence like that is usually four claims standing in a row, and only some of them are true.',
+        text: 'The trade that goes with a number like that is old and easy to say. A strong El Niño dries out Southeast Asia; oil palm yields fall some months later; palm oil gets expensive; and the soybean oil futures a US trader can actually buy follow it up. I built a research system to test that sentence link by link, because a sentence like that is usually several claims standing in a row, and only some of them are true.',
       },
       {
         type: 'table',
@@ -129,18 +129,18 @@ const articles: Article[] = [
       'A model can beat the incumbent on the test set and still be the wrong model to ship. The overall score describes typical traffic; the launch usually turns on a thin slice, or on a failure the logs were never built to show.',
     relatedWork: 'recommendation-quality',
     tldr: [
-      'A candidate wins the held-out set by two points and loses the slice the product cares about by ten.',
+      'A candidate wins the held-out set by about two points and loses the slice the product cares about by ten.',
       'An overall score is an estimate about typical traffic. Launch decisions turn on small slices and on failures the logged data cannot show, and the evidence on both is thinner than the headline.',
       'Three things have to be true before an offline win counts: slices named in advance, the metric’s blind spots written down, and guardrails with a threshold and a consequence.',
     ],
     body: [
       {
         type: 'p',
-        text: 'The review goes like this. The new model scores 83% on the held-out set, the one in production 80%. The sample is large, the win is clean, and the room would like to ship. Before I read the score I ask what the sample was drawn from. The number answers a question about typical traffic. The launch is usually deciding something narrower: a group of users the product worries about, or a kind of failure the test set was never built to show.',
+        text: 'The review goes like this. The new model scores 81.35% on the held-out set, the one in production 79.0%. The sample is large, the win is clean, and the room would like to ship. Before I read the score I ask what the sample was drawn from. The number answers a question about typical traffic. The launch is usually deciding something narrower: a group of users the product worries about, or a kind of failure the test set was never built to show.',
       },
       {
         type: 'p',
-        text: 'Split the same evaluation in two and the disagreement becomes arithmetic.',
+        text: 'Split those two scores by slice and the disagreement becomes arithmetic.',
       },
       {
         type: 'table',
@@ -249,10 +249,10 @@ const articles: Article[] = [
     publishedAt: '2026-09-08',
     readingTime: '6 min',
     excerpt:
-      'A judge that gates a release is a measuring instrument. Two deliberately hard answer pairs show why one score cannot hold grounding and task completion, and how blind human ratings and the disagreements decide what the judge may grade alone.',
+      'An LLM judge that gates a release is a measuring instrument. Two deliberately hard answer pairs show why one score cannot hold grounding and task completion, and how blind human ratings and the disagreements decide what the judge may grade alone.',
     relatedWork: 'enterprise-ai-evaluation',
     tldr: [
-      'A judge that gates a release is a measuring instrument. Agreeing with itself shows consistency, not correctness.',
+      'An LLM judge that gates a release is a measuring instrument. Agreeing with itself shows consistency, not correctness.',
       'Judges have known biases. Swapping the order of two answers let one model beat ChatGPT on 66 of 80 questions, and longer answers get rewarded for their length.',
       'Score grounding, task completion and unsupported recommendations separately, compare against blind human ratings, and let the disagreements decide what the judge may grade alone.',
     ],

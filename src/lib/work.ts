@@ -1143,7 +1143,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The product is live and has users beyond me. What I cannot yet say is where first-time users find value, how often extraction needs correcting, or what brings anyone back. None of it is instrumented well enough to report, and I would rather say that than publish a number I would not defend.',
+            text: 'The product is live and has early users beyond me. What I cannot yet say is where first-time users find value, how often extraction needs correcting, or what brings anyone back. None of it is instrumented well enough to report, and I would rather say that than publish a number I would not defend.',
           },
           {
             type: 'p',
