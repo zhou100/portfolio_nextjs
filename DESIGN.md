@@ -19,7 +19,7 @@
   - Case section headings: `1.85rem` desktop, `1.6rem` mobile.
   - Body: `1.125rem` (18px) desktop, `1.0625rem` (17px) mobile.
   - Lede: `1.2rem`. Card body and case meta: `1rem`.
-  - Eyebrow and status: `0.78rem`, uppercase, letterspaced.
+  - Eyebrow: `0.74rem`, weight 600, tracking `0.1em`; status: `0.78rem`, uppercase, letterspaced.
 
 ## Color
 - **Approach:** Warm neutral ground, dark ink, one teal accent used sparingly for links, labels, and the primary button.
@@ -70,7 +70,7 @@ The reader meets the contribution before the method. This ordering is the point 
   Limitations. Do not repeat "not re-verified" or "what this licenses me to say" through
   the body — a limitation that does not change how the reader reads the case is cut.
 - **Cards compare, they do not read.** A work card is title + one contribution sentence +
-  role + link. The question and the long summary live on the case page.
+  role + link; wide industry cards also show Evidence and Methods. The question and the long summary live on the case page.
 - **Home hero is an introduction.** Portrait, name, the one-line claim, a short intro, and
   two calls to action, then the career Path timeline. Selected work follows directly, so
   the hero does not repeat links into the cases. Keep the intro to two or three sentences;
@@ -80,7 +80,7 @@ The reader meets the contribution before the method. This ordering is the point 
   "Now" tag beside the name, so color never carries it alone.
 - **Selected work leads with a product showcase.** Independent builds with a live public
   product get a full-width row: status, title, one-sentence tagline, contribution, a
-  primary "try it" button, and three real screenshots (one large, two small, each with a
+  Role / Methods specs, a bottom-aligned primary "try it" button, and three real screenshots (one large, two small, each with a
   caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
   `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
   compare-not-read rule.
@@ -110,12 +110,12 @@ The reader meets the contribution before the method. This ordering is the point 
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
-- **Hero:** Copy left, circular portrait right (340px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
-- **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover is a border color change plus a 2px lift.
+- **Hero:** Copy left, circular portrait right (280px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
+- **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover changes the border color and reveals a 2px teal top rule without moving the card.
 - **Tables:** always inside `.tablewrap` with `overflow-x: auto`. The page body must never scroll horizontally.
 
 ## Motion
-- **Approach:** Minimal-functional. Only 0.18s color, border, and 2px transform transitions.
+- **Approach:** Minimal-functional. Only 0.18s color, border, and opacity transitions.
 - All motion is disabled under `prefers-reduced-motion`.
 
 ## Accessibility
@@ -127,7 +127,7 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies) → Writing (articles → Market stories, compact) → Lab strip → Contact
+`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies → Lab study-design strip) → Writing (up to 4 articles → 4 Market stories, compact) → Contact
 `/work` Industry cases → Independent builds → In the lab → Earlier research
 `/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
 `/writing` Published → Market stories → In progress (max 3) → Research
@@ -166,3 +166,6 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-16 | Published articles rewritten in the same essay shape | Owner decision. One reading pattern across all writing; each argument now carries outside evidence instead of resting on illustrative examples alone. |
 | 2026-10-17 | Hero claim, intro, footer blurb and page ledes rewritten; the positioning line in DESIGN.md and README.md updated to match; 14 unpublished excerpts rewritten | The old copy stacked three-item lists ("experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products"), which was the clearest tell on the site. |
 | 2026-10-17 | Prose pass: removed ordinal signposting ("My first point", "Second,", "Third,", "Read down the table") and repeated framing formulas from the essays, the case bodies, the briefs and the market stories; the five-part essay shape, the numbers and the citations are unchanged | Four pieces on different subjects were reading as one template, and the template was the part that felt generated. |
+| 2026-10-17 | Tightened hero spacing and intro; kept all four colleague quotes verbatim | Bring Selected work into the first desktop viewport at 1440×900; desktop hero uses 32px / 24px padding and a 280px portrait. |
+| 2026-10-17 | Wide case cards show Evidence and Methods; showcases add Role / Methods with bottom-aligned actions and portrait screenshot frames | Improve comparison and fill unused columns while retaining the existing showcase structure. |
+| 2026-10-17 | Brief and In short cards overlap the dark header by 28px and 20px | Connect the header to the reading surface. |

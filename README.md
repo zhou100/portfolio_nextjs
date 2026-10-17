@@ -21,7 +21,7 @@ Employers are named (Facebook AI, Instagram Reels, Omnicom). Internal product na
 
 | Route | Purpose |
 |---|---|
-| `/` | Positioning, three featured cases, writing, what's being scoped |
+| `/` | Intro and Path, independent builds, case studies and study design, selected writing, contact |
 | `/work` | Industry cases, independent builds, in the lab, earlier research |
 | `/work/[slug]` | Case study, statically generated per item |
 | `/writing` | Published articles, at most three in progress, plus peer-reviewed research |

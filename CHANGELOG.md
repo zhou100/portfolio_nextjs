@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased - 2026-10-17
+
+### Changed
+
+- Bring Selected work into the first 1440×900 viewport with a shorter intro, tighter
+  hero spacing, smaller Path markers, and all four colleague quotes kept verbatim.
+- Add Evidence and Methods to wide industry cards, and Role / Methods specs with
+  bottom-aligned actions to independent builds. Phone screenshots use portrait frames.
+- Move the study-design strip after the case cards. Select up to four articles and four
+  market stories for the home page, with larger chart thumbnails; full lists stay on Writing.
+- Connect case briefs and article takeaways to the dark header with overlapping cards.
+  Card hover uses a teal border and top rule without lifting the card.
+
+### Fixed
+
+- Give Work and Writing their own Open Graph titles, descriptions, URLs and share image.
+
 ## Unreleased - 2026-10-15
 
 ### Home
