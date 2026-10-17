@@ -44,11 +44,11 @@ export function getSite(): Site {
     profileImage: '/profile.jpg',
     brand: 'Yujun Zhou',
     eyebrow: 'Data Scientist and AI builder',
-    headline: 'I measure and improve AI products.',
+    headline: 'I turn product questions into measures a team can move.',
     intro:
-      'I’m a data scientist with an economics PhD. I work on experimentation and evaluation for recommendations, advertising, and AI systems — connecting product decisions to evidence, and building the tools to check it when they don’t exist yet.',
+      'I’m a data scientist with a PhD in economics. My work often starts with a definition: what are we trying to improve, and what would count as evidence? I turn those questions into metrics and experiments that help teams decide what to build and test whether it works. Lately, I’ve been applying that approach to AI evaluation—defining what good performance means for a particular product and building evaluations that help teams improve it.',
     pathIntro:
-      'From economics research to product measurement to leading AI evaluation, each move closer to the decision itself',
+      'Each step moved the work closer to a decision someone had to make.',
     primaryCta: { label: 'Explore selected work', href: '/work' },
     // Set this to '/resume.pdf' once the file exists in `public/`. The nav link and
     // the hero's secondary call to action appear automatically when it is set.
@@ -97,7 +97,7 @@ export function getPath(): PathStep[] {
     {
       org: 'Omnicom',
       role: 'Data Science Manager & Tech Lead',
-      detail: 'AI agents orchestration and evaluation',
+      detail: 'AI agent orchestration and evaluation',
       current: true,
     },
   ];

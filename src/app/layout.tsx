@@ -17,7 +17,7 @@ const sourceSans = localFont({
 const site = getSite();
 
 const description =
-  'Experimentation, measurement, and AI evaluation for recommendations, advertising, and AI products.';
+  'Metric design and evaluation for AI products: what the evidence supports, and what it does not.';
 
 const ogImage = getOgImage();
 

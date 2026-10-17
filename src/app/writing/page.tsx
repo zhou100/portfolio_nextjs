@@ -14,7 +14,7 @@ import './writing.css';
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Practical notes on evaluating AI systems, measuring product outcomes, and learning from things I build — plus peer-reviewed research.',
+    'Notes on evaluating AI systems and measuring product outcomes, plus peer-reviewed research.',
   alternates: { canonical: '/writing' },
 };
 
@@ -32,9 +32,7 @@ export default function WritingIndex() {
           <p className="eyebrow">Writing</p>
           <h1 className="pagehead__title">Notes on measurement and AI evaluation.</h1>
           <p className="lede pagehead__lede">
-            Practical notes on evaluating AI systems, measuring product outcomes, and learning from
-            things I build. Each piece supports one claim, with the examples worked through rather
-            than asserted.
+            Notes on evaluating AI systems and measuring product outcomes. Each piece makes one argument, and the examples are worked through rather than asserted.
           </p>
         </div>
       </header>
@@ -89,9 +87,7 @@ export default function WritingIndex() {
               <p className="eyebrow">Market stories</p>
               <h2 className="section__title">How the view on a stock changed, and why</h2>
               <p className="section__lede">
-                Short essays on one company or a group of companies: the pattern I saw, how the
-                price moved against the Nasdaq-100, how analysts read it, what I think and why, and
-                what I&apos;m watching next.
+                Short essays on one company or a group: what moved the price against the Nasdaq-100, how analysts read it, what I made of it, and what would change my mind.
               </p>
             </div>
           </div>

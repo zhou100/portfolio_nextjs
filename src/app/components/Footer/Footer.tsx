@@ -11,8 +11,7 @@ export default function Footer() {
         <div className="footer__col">
           <p className="footer__name">{name}</p>
           <p className="footer__blurb">
-            Senior data scientist working on experimentation, measurement, and AI evaluation for
-            recommendations, advertising, and AI products.
+            Data scientist, economics PhD. Metric design and evaluation for recommendations, advertising and AI products.
           </p>
         </div>
 

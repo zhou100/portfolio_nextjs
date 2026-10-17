@@ -129,7 +129,7 @@ const items: WorkItem[] = [
     title: 'Recommendation Quality Beyond Engagement',
     org: 'Instagram Reels',
     question:
-      'When creator-side engagement improves, how do we confirm that viewers are actually getting better content?',
+      'Creator-side engagement was rising. Was the viewing any better?',
     kind: 'industry-case',
     status: 'published',
     featured: true,
@@ -146,15 +146,15 @@ const items: WorkItem[] = [
       'Internal company work. This public case describes my contribution and the method; confidential definitions, data, and results are omitted.',
     evidenceType: ['reported-experience'],
     contribution:
-      'Defined consumption-side measures of viewer experience and made them part of how the team read a launch.',
+      'Defined measures of what a viewing session was like, and got them read beside the primary goal.',
     brief: {
       problem:
-        'A creator-side engagement goal was moving in the right direction. That number alone could not say whether viewers were getting better content, or the same reliable content more often.',
+        'The creator-side engagement goal was going up. That number also goes up when a feed just serves the reliable creator again, so it could not say whether viewers were getting better content.',
       contribution:
-        'I defined consumption-side measures of the viewer experience, reported them by segment rather than in aggregate, and made the case for reading them next to the primary goal.',
+        'I defined measures of what the viewing session was like, cut them by segment instead of pooling them, and argued they belonged beside the primary goal.',
       outcomeLabel: 'What changed',
       outcome:
-        'The creator-side metric stopped being read on its own. Viewer-experience measures and segment splits became part of the launch read.',
+        'The creator metric stopped being read on its own. The viewer-side measures and the segment splits went into the launch read.',
     },
     limitations: [
       'Repeat exposure and viewing efficiency are proxies for experience. They are not satisfaction, and a viewer who is efficiently served mediocre content still had a mediocre session.',
@@ -171,7 +171,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'A short-form video feed has two sides that are easy to confuse. Creator-side engagement measures how much reaction the content collects. Viewer-side quality is whether the person scrolling got something worth their time. A ranking change can lift the first by leaning harder on what already works — showing the reliable creator again, resurfacing the format this viewer has reacted to before — without the second improving at all.',
+            text: 'A short-form feed has two numbers that get confused. One is creator-side engagement: how much reaction the content collects. The other is whether the person scrolling got something worth their time. A ranking change can lift the first by leaning on what already works, showing the reliable creator again or resurfacing a format the viewer has reacted to before, and leave the second exactly where it was.',
           },
           {
             type: 'p',
@@ -186,7 +186,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'I worked on the consumption side of the problem: measures that describe what the viewing session was actually like, reported in a form a launch review could act on.',
+            text: 'I took the consumption side: measures of what a viewing session was actually like, written so a launch review could act on them.',
           },
           {
             type: 'deflist',
@@ -247,7 +247,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'The point of writing it this way is that each row ends in an action. A guardrail with no stated threshold and no consequence is a chart, and charts do not stop launches.',
+            text: 'Each row ends in an action, which is the only reason it earns a place on the page. A guardrail with no threshold and no consequence is a chart, and a chart does not stop a launch.',
           },
         ],
       },
@@ -258,7 +258,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'These are the conditions I hold this work to. On a surface that changes continuously, an aggregate before-and-after cannot separate "ranking got better" from "ranking got more confident," so the design has to do that work.',
+            text: 'On a surface that changes continuously, an aggregate before-and-after cannot separate “ranking got better” from “ranking got more confident.” The design has to do that work, and these are the conditions I hold it to.',
           },
           {
             type: 'list',
@@ -297,7 +297,7 @@ const items: WorkItem[] = [
     title: 'AI Agents Orchestration and Evaluation',
     org: 'Omnicom',
     question:
-      'How do you stop an assistant that sounds right from failing the task it was built for?',
+      'An assistant can sound right and still fail the task. What catches that before release?',
     kind: 'industry-case',
     status: 'published',
     featured: true,
@@ -315,15 +315,15 @@ const items: WorkItem[] = [
       'Internal enterprise work. No client data, prompts, or transcripts are published here; the failure trace below is a reconstruction written for this page.',
     evidenceType: ['reported-experience'],
     contribution:
-      'Split one answer-quality score into layers that fail differently, then tied release to a stated gate instead of a demo.',
+      'Split one answer-quality score into layers that fail differently, and tied release to a gate rather than a demo.',
     brief: {
       problem:
-        'Answer-quality review kept passing systems that still could not finish the task a strategist actually had. Reviewers were grading prose; the product had to deliver a decision.',
+        'Answer-quality review kept passing systems that still could not finish the task. Reviewers were grading prose, one answer at a time; the product had to deliver a decision.',
       contribution:
-        'I defined the evaluation as four separate layers — retrieval, tool use, unsupported claims, end-to-end task success — built the test set and rubric behind them, and set the release gate.',
+        'I defined four layers (retrieval, tool use, unsupported claims, end-to-end success), built the test set and rubric behind them, and set the release gate.',
       outcomeLabel: 'What changed',
       outcome:
-        'Release stopped depending on demo impressions and started depending on a frozen test set with a threshold stated before the run.',
+        'Release stopped riding on how the demo went. It rode on a frozen test set and a threshold written down before the run.',
     },
     limitations: [
       'The layers have different tasks and different denominators. They do not combine into one accuracy number, and I do not report one.',
@@ -341,7 +341,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The failure mode that started this: a system that reviewed well answer by answer, and still could not complete a task end to end. A reviewer reading one answer at a time is grading fluency, sourcing, and tone. None of those tell you whether the person who asked could then go and do the thing they came to do.',
+            text: 'It started with a system that reviewed well answer by answer and still could not finish a task. A reviewer reading one answer at a time grades fluency, sourcing and tone. None of those tells you whether the person who asked could then go and do what they came for.',
           },
           {
             type: 'p',
@@ -451,7 +451,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'The tension worth stating plainly: tightening an evidence requirement raises factuality and also raises refusals, including refusals on tasks the system could have completed. Coverage and factuality trade against each other, so the gate has to be derived from the cost of each error type rather than set at whatever number looks rigorous.',
+            text: 'There is a tension here that the gate has to absorb. Tightening an evidence requirement raises factuality and also raises refusals, including refusals on tasks the system could have completed. Coverage and factuality trade against each other, so the threshold has to come from the cost of each error type rather than from whatever number looks rigorous.',
           },
         ],
       },
@@ -476,7 +476,7 @@ const items: WorkItem[] = [
     slug: 'el-nino-commodities',
     title: 'El Niño and Commodity Futures',
     question:
-      'Does a very strong El Niño tell a futures trader anything the market has not already priced — and how do you test that honestly with a dozen historical events?',
+      'Does a strong El Niño tell a futures trader anything the market has not priced? And how would you test that with twelve events?',
     kind: 'independent-build',
     status: 'published',
     featured: false,
@@ -495,9 +495,9 @@ const items: WorkItem[] = [
       'Built a point-in-time research system that tests an El Niño trade one link at a time, and reported the links that failed.',
     brief: {
       problem:
-        'A record El Niño is forming in 2026. The popular story says it lifts palm and soybean oil prices. Only twelve comparable events exist since 1963, and only three overlap usable US futures data.',
+        'A record El Niño is forming. The popular story says it lifts palm and soybean oil prices. There are twelve comparable events since 1963, and three of those overlap usable US futures data.',
       contribution:
-        'I split the story into three testable links, wrote each test down before running it, and built a weekly pipeline that only uses data published before each decision date.',
+        'I split the story into three testable links, wrote each test down before running it, and built a weekly pipeline that only sees data published before each decision date.',
       outcomeLabel: 'Current result',
       outcome:
         'Palm oil prices tend to rise after the peak. Rainfall does not improve output forecasts, and the effect does not carry to US soybean oil futures. The current call is watch, not trade.',
@@ -518,7 +518,7 @@ const items: WorkItem[] = [
     },
     showcase: {
       tagline:
-        'A public research workbench that follows one El Niño from ocean heat to palm oil prices, with every test written down before it ran.',
+        'Follows one El Niño from ocean heat to palm oil prices, with every test written down before it ran.',
       shots: [
         {
           src: '/work/el-nino-commodities/overview.webp',
@@ -551,11 +551,11 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The usual argument runs: warm water in the Pacific, drought over the growing regions, lower palm oil output, higher prices — and then a jump to US soybean oil futures, the market a US trader can actually use. Each step can fail on its own. A strong event does not guarantee dry weather in Malaysia, dry weather reaches output only months later, and palm oil is a substitute for soybean oil, not the same contract.',
+            text: 'The argument has four steps. Warm water in the Pacific, drought over the growing regions, lower palm oil output, higher prices, and then a jump to US soybean oil futures, the market a US trader can actually use. Each step can fail alone. A strong event does not guarantee dry weather in Malaysia; dry weather reaches output only months later; and palm oil is a substitute for soybean oil, not the same contract.',
           },
           {
             type: 'p',
-            text: 'The sample is the second problem. There are twelve moderate-or-stronger El Niño events since 1963. Three overlap the US futures data I could use, and four overlap Chinese palm oil futures. A method that turns twelve events into hundreds of observations by counting commodities or months is manufacturing confidence.',
+            text: 'The sample is the other problem. Twelve moderate-or-stronger El Niño events have occurred since 1963. Three overlap the US futures data I could use, four overlap Chinese palm oil futures. A method that turns twelve events into hundreds of observations by counting commodities or months is manufacturing confidence.',
           },
         ],
       },
@@ -566,7 +566,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'I designed and built the system end to end: data ingestion and archive, the event studies and forecast comparisons, a weekly monitoring report, and the research workbench. The rules mattered more than the models.',
+            text: 'I designed and built the system: data ingestion and archive, the event studies and forecast comparisons, a weekly monitoring report, and the research workbench. The rules mattered more than the models.',
           },
           {
             type: 'deflist',
@@ -645,7 +645,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Read across the rows, the evidence says something narrower than the popular story. Palm oil prices have tended to rise after strong El Niño peaks. The mechanism I could test — rainfall predicting output — added no forecasting value, and the price effect does not reliably reach US soybean oil.',
+            text: 'The rows say something narrower than the popular story. Palm oil prices have tended to rise after strong El Niño peaks. The mechanism I could test, rainfall predicting output, added no forecasting value, and the price effect does not reliably reach US soybean oil.',
           },
           {
             type: 'p',
@@ -696,7 +696,7 @@ const items: WorkItem[] = [
     slug: 'creative-evidence-lab',
     title: 'Creative Evidence Lab',
     question:
-      'Can observable creative attributes be connected to performance evidence well enough to produce a change worth testing?',
+      'Can a creative attribute be tied to performance well enough to justify a test?',
     kind: 'independent-build',
     status: 'proposed',
     featured: false,
@@ -712,15 +712,15 @@ const items: WorkItem[] = [
       'Nothing has been built or measured. No licensed creative assets and no aligned delivery logs are confirmed, and this page is a study design.',
     evidenceType: [],
     contribution:
-      'A study design that keeps label quality, predictive value, and incremental impact as three separate claims.',
+      'A study design that keeps three claims apart: the tag is right, the tag predicts, and changing the attribute helps.',
     brief: {
       problem:
-        'Creative intelligence products slide between three different claims: that a tag is accurate, that it predicts performance, and that changing the thing it describes improves the outcome.',
+        'Creative tools slide between three claims: this tag is accurate, it predicts performance, and changing what it describes improves the outcome.',
       contribution:
-        'I designed the study that keeps them apart — an annotation protocol, a predictive evaluation with a fair baseline, and an experiment that intervenes on one attribute.',
+        'I designed the study that keeps them apart: an annotation protocol, a predictive evaluation with a fair baseline, and an experiment that changes one attribute.',
       outcomeLabel: 'Current result',
       outcome:
-        'None. This is a design with stated stop conditions, published so the reasoning can be criticized before any of it is built.',
+        'None yet. This is a design with stop conditions, published so the reasoning can be argued with before anything is built.',
     },
     limitations: [
       'Nothing here has been built or measured. This page is a study design and says so at the top.',
@@ -737,7 +737,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'A creative strategist has to pick what the next batch of assets changes first. The useful output is not a score; it is one hypothesis with the evidence attached, the conditions it holds under, and the test that would kill it.',
+            text: 'A creative strategist has to decide what the next batch of assets changes first. The useful output is not a score. It is one hypothesis with its evidence attached, the conditions it holds under, and the test that would kill it.',
           },
           {
             type: 'deflist',
@@ -761,7 +761,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'note',
-            text: 'A pattern that clears the first two layers is still a hypothesis. The point of separating them is that they have different burdens of proof and are routinely reported as one.',
+            text: 'A pattern that clears the first two layers is still a hypothesis. The layers carry different burdens of proof, and they are routinely reported as one.',
           },
         ],
       },
@@ -804,7 +804,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'One creative format first — a single language, fifteen to thirty second video. Not images, long video, landing pages, and cross-channel attribution in the same version.',
+            text: 'One creative format first: a single language, fifteen to thirty seconds of video. Not images, long video, landing pages and cross-channel attribution in one version.',
           },
           {
             type: 'table',
@@ -861,11 +861,11 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'The data contract is five tables: creative_assets by asset version, creative_tags by asset × tag × model or human version, delivery_outcomes by asset × campaign × audience × placement × day, experiment_assignments by unit × experiment, and experiment_outcomes by unit over a fixed observation window.',
+            text: 'The data contract is five tables. creative_assets is keyed by asset version. creative_tags by asset, tag, and model or human version. delivery_outcomes by asset, campaign, audience, placement and day. experiment_assignments by unit and experiment. experiment_outcomes by unit over a fixed observation window.',
           },
           {
             type: 'note',
-            text: 'Running two ad versions at the same time is not randomization — the platform may move budget and audience toward whichever is already winning. If only campaign- or geo-level randomization is available, the analysis and the power calculation have to use that cluster. And since exposure itself can be affected by treatment, click-conditioned CVR cannot stand in for the ITT result.',
+            text: 'Running two ad versions at the same time is not randomization. The platform may move budget and audience toward whichever version is already winning. If only campaign- or geo-level randomization is available, the analysis and the power calculation have to use that cluster. And since exposure itself can be affected by treatment, click-conditioned CVR cannot stand in for the ITT result.',
           },
         ],
       },
@@ -906,7 +906,7 @@ const items: WorkItem[] = [
           },
           {
             type: 'p',
-            text: 'Route selection comes first: with usable assets and aligned logs this becomes a tagging-then-performance study; with assets only it becomes a tagging benchmark plus an annotation-efficiency trial, which is still a real result; with neither it is shelved rather than stalled on a data cold start.',
+            text: 'The route is chosen before any work starts. With usable assets and aligned logs this becomes a tagging-then-performance study. With assets only it becomes a tagging benchmark plus an annotation-efficiency trial, which is still a real result. With neither, it is shelved rather than left stalled on a data cold start.',
           },
         ],
       },
@@ -916,7 +916,7 @@ const items: WorkItem[] = [
     slug: 'churchmap',
     title: 'ChurchMap',
     question:
-      'What is the minimum a first-time visitor needs to know, and how does missing data break that task?',
+      'What does a first-time visitor need to know, and where does missing data break that?',
     kind: 'independent-build',
     status: 'published',
     featured: false,
@@ -930,9 +930,9 @@ const items: WorkItem[] = [
       'Built a location-first directory, then reframed the problem from crawl volume to which fields a first visit cannot do without.',
     brief: {
       problem:
-        'A directory with thousands of rows can still fail a first-time visitor if the four fields that visit depends on are the missing ones.',
+        'A directory with thousands of rows still fails a first-time visitor if the four fields the visit depends on are missing.',
       contribution:
-        'I built the product end to end — geolocation search over Postgres and pgvector, lazy profile enrichment, and freshness and coverage tracking on the crawl itself.',
+        'I built it end to end: geolocation search over Postgres and pgvector, lazy profile enrichment, and freshness and coverage tracking on the crawl.',
       outcomeLabel: 'Current result',
       outcome:
         'A live site, and a reframing: coverage is measured against a required field set for one user situation rather than by row count.',
@@ -950,7 +950,7 @@ const items: WorkItem[] = [
     },
     showcase: {
       tagline:
-        'Search a city and see what each church says about itself — beliefs, programs, and tone — summarised from its own website, before a first Sunday visit.',
+        'Search a city and see what each church says about itself, summarised from its own website, before a first Sunday visit.',
       shots: [
         {
           src: '/work/churchmap/search-map.webp',
@@ -983,7 +983,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The build is a geolocation-first map with enriched profiles: Supabase Postgres with pgvector, lazy enrichment so a profile is filled in when it is first needed rather than crawled up front, and freshness and coverage tracking on the crawl itself.',
+            text: 'The build is a map first and a directory second: Supabase Postgres with pgvector, profiles enriched lazily when someone first needs one rather than crawled up front, and freshness and coverage tracked on the crawl itself.',
           },
           {
             type: 'p',
@@ -998,11 +998,11 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'Coverage is strongly uneven by city, and the long tail is missing exactly the fields the task depends on. Enrichment fills profiles on demand, which keeps cost sane, but it makes coverage a function of traffic rather than of importance.',
+            text: 'Coverage is uneven by city, and the long tail is missing exactly the fields the task depends on. Filling profiles on demand keeps the cost sane and makes coverage a function of traffic rather than of importance.',
           },
           {
             type: 'p',
-            text: 'The failure that generalizes past this project: a pipeline reporting no errors is not a healthy pipeline. Silent staleness and partial coverage produce clean logs and a broken product.',
+            text: 'The failure generalizes past this project. A pipeline that reports no errors is not a healthy pipeline. Silent staleness and partial coverage produce clean logs and a broken product.',
           },
         ],
       },
@@ -1055,7 +1055,7 @@ const items: WorkItem[] = [
       'Live product with anonymous trial and early users beyond me. Retention and extraction accuracy are not measured yet, so no usage figures appear here.',
     evidenceType: ['observational'],
     contribution:
-      'Built a voice-to-review product, and defined the first honest metric for it rather than adding features.',
+      'Built a voice-to-review product, then worked out what to measure before adding anything else.',
     brief: {
       problem:
         'A voice app can produce a summary quickly and still not produce anything a user trusts enough to keep. The interesting step is the one between those two.',
@@ -1112,7 +1112,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'Debrief turns spoken notes into structured reflections and follow-up actions: anonymous trial, voice capture, transcription and classification, daily and weekly reviews, and open-loop tracking. A user can reach a result without an account, which makes the first-value moment easy to observe and the long-run behaviour harder to see.',
+            text: 'Debrief turns spoken notes into structured reflections and follow-ups: anonymous trial, voice capture, transcription and classification, daily and weekly reviews, open-loop tracking. A user can reach a result without an account, which makes the first-value moment easy to watch and long-run behaviour hard to see.',
           },
           {
             type: 'deflist',
@@ -1143,7 +1143,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'The product is live and has early users beyond me. What I cannot yet say is where first-time users find value, how often extraction needs correcting, or what brings anyone back — none of that is instrumented well enough to report, and I would rather say so than publish a number I would not defend.',
+            text: 'The product is live and has users beyond me. What I cannot yet say is where first-time users find value, how often extraction needs correcting, or what brings anyone back. None of it is instrumented well enough to report, and I would rather say that than publish a number I would not defend.',
           },
           {
             type: 'p',
@@ -1173,7 +1173,7 @@ const items: WorkItem[] = [
     slug: 'analytics-skeptic',
     title: 'Analytics Skeptic',
     question:
-      'Can an AI reviewer find the metric problems that would change a launch decision, rather than just sounding reasonable?',
+      'Can an AI reviewer find the metric problem that would change a launch decision, instead of just sounding reasonable?',
     kind: 'independent-build',
     status: 'proposed',
     featured: false,
@@ -1212,11 +1212,11 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'A prompt and a collection of war stories about analyses that went wrong. The README states the position plainly: no deployment, and the goal is five real users first. That is where it stands.',
+            text: 'A prompt and a collection of war stories about analyses that went wrong. The README is plain about it: no deployment, and five real users first. That is where it stands.',
           },
           {
             type: 'p',
-            text: 'The question is not whether the output reads well. It is whether it surfaces the issue that would have changed the decision — and whether it does that more often than a fixed human checklist.',
+            text: 'The question is whether it surfaces the issue that would have changed the decision, and whether it does that more often than a fixed human checklist. Reading well is the easy part.',
           },
         ],
       },
@@ -1244,7 +1244,7 @@ const items: WorkItem[] = [
         blocks: [
           {
             type: 'p',
-            text: 'Finish the five-user trial. If people reuse it and it beats a plain checklist, build the frozen benchmark and the comparison report. If they do not, it stays a prompt — which is a perfectly good outcome for a prompt.',
+            text: 'Finish the five-user trial. If people reuse it and it beats a plain checklist, build the frozen benchmark and the comparison report. If not, it stays a prompt, which is a perfectly good outcome for a prompt.',
           },
         ],
       },
