@@ -38,7 +38,7 @@ export default function WritingIndex() {
           <p className="eyebrow">Writing</p>
           <h1 className="pagehead__title">Notes on measurement and AI evaluation.</h1>
           <p className="lede pagehead__lede">
-            Notes on evaluating AI systems and measuring product outcomes. Each piece makes one argument, and the examples are worked through rather than asserted.
+            Essays and method notes on evaluating AI systems and measuring product outcomes. Each piece states what the evidence supports; method notes explain a research approach and identify analyses still to be done.
           </p>
         </div>
       </header>
@@ -55,6 +55,7 @@ export default function WritingIndex() {
                   <li className="post" key={article.slug}>
                     <div className="post__meta">
                       <span className="card__org">{article.topic}</span>
+                      {article.format && <span className="card__org">{article.format}</span>}
                       {article.publishedAt && (
                         <span className="card__org">{article.publishedAt}</span>
                       )}
@@ -110,8 +111,8 @@ export default function WritingIndex() {
                 <p className="eyebrow">In progress</p>
                 <h2 className="section__title">What I am writing next</h2>
                 <p className="section__lede">
-                  Listed with the claim each one has to support. They go up when the example work is
-                  done, not on a schedule.
+                  Listed with the question each piece will address. Essays work through their
+                  examples; method notes distinguish proposed checks from completed findings.
                 </p>
               </div>
             </div>

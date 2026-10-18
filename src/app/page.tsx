@@ -159,6 +159,7 @@ export default function Home() {
                   <li className="article" key={article.slug}>
                     <div className="article__meta">
                       <span className="card__org">{article.topic}</span>
+                      {article.format && <span className="card__org">{article.format}</span>}
                       {article.readingTime && (
                         <span className="card__org">{article.readingTime}</span>
                       )}

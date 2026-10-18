@@ -18,6 +18,8 @@ export interface Article {
   slug: string;
   title: string;
   topic: WritingTopic;
+  /** Optional reader-facing format, separate from topic and publication status. */
+  format?: 'Essay' | 'Method note';
   status: WritingStatus;
   /** Reader-facing summary. Used on cards and at the top of the piece. */
   excerpt: string;
@@ -48,6 +50,7 @@ const articles: Article[] = [
     "slug": "more-draws-same-evidence",
     "title": "Drawing Conclusions from a Small History of El Niño Events",
     "topic": "Measurement",
+    "format": "Method note",
     "status": "published",
     "publishedAt": "2026-10-17",
     "readingTime": "11 min",
@@ -199,7 +202,7 @@ const articles: Article[] = [
       },
       {
         "type": "p",
-        "text": "After defining a broader inferential target, I would compare a few understandable estimates. A t interval offers a transparent reference for a mean; its exact finite-sample justification assumes independent normal observations. Skewness, heavy tails, dependence and changing event distributions need assessment. Replacing the bootstrap with a t interval does not settle those questions."
+        "text": "After defining a broader inferential target, I would compare a few understandable estimates. A t interval offers a transparent reference for a mean; its exact finite-sample justification assumes independent observations from a common normal distribution. Skewness, heavy tails, dependence and changing event distributions need assessment. Replacing the bootstrap with a t interval does not settle those questions."
       },
       {
         "type": "p",
@@ -260,7 +263,8 @@ const articles: Article[] = [
     ],
     "sources": [
       {
-        "name": "Earlier project report, as described in the original version of this essay: twelve eligible episodes, six retained for palm kernel oil and eight for US natural gas. Counts have not been re-audited in this revision."
+        "name": "Earlier project report, as described in the original version of this essay: twelve eligible episodes, six retained for palm kernel oil and eight for US natural gas. Counts have not been re-audited in this revision.",
+        "href": "https://github.com/zhou100/portfolio_nextjs/blob/4c2bd04a0244c2dfaf772785a9e0b638044cf71b/src/lib/writing.ts#L62-L66"
       },
       {
         "name": "NOAA CPC, historical ONI episodes: definitions, revisions and the distinction from RONI",
