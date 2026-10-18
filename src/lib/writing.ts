@@ -45,141 +45,248 @@ export interface Paper {
 
 const articles: Article[] = [
   {
-    slug: 'more-draws-same-evidence',
-    title: 'More Draws, Same Evidence',
-    topic: 'Measurement',
-    status: 'published',
-    publishedAt: '2026-10-17',
-    readingTime: '7 min',
-    excerpt:
-      'A bootstrap makes an interval steadier, or an evaluation set larger. It does not add an independent event, a verified label, or a second sample of history.',
-    relatedWork: 'el-nino-commodities',
-    tldr: [
-      'Five thousand resamples of twelve eligible El Niño episodes produce a steadier interval, not a larger sample. The event is the unit, and missing returns leave some intervals with fewer than twelve.',
-      'The block bootstraps follow the same rule: twelve-month blocks keep adjacent months together, and one block carries both the baseline error and the future errors so the ratio is recomputed with its dependence intact.',
-      'ChurchMap borrows the word for a different job: real pages plus model-written candidate labels. Model agreement is a review queue, not a verified benchmark, and at the snapshot I read the pipeline still scored DRAFT cases.',
+    "slug": "more-draws-same-evidence",
+    "title": "Drawing Conclusions from a Small History of El Niño Events",
+    "topic": "Measurement",
+    "status": "published",
+    "publishedAt": "2026-10-17",
+    "readingTime": "11 min",
+    "excerpt": "Defining the target, checking historical coverage, and testing how much a conclusion depends on a few events.",
+    "relatedWork": "el-nino-commodities",
+    "tldr": [
+      "A small event history can describe what happened. Applying its average to other episodes requires explicit assumptions about comparability and coverage.",
+      "Show which episodes each commodity retains, then test dependence on individual events and reasonable research choices. An interval answers only part of the question.",
+      "Prediction needs information available at the decision date and evaluation through time. The coverage and sensitivity checks described here remain work to complete."
     ],
-    body: [
+    "body": [
       {
-        type: 'p',
-        text: 'The number I quote most often from my own bootstrap is 5,000. It is the least informative number in the result. The El Niño event study has twelve eligible moderate-or-stronger episodes since 1963. For each commodity and event-relative window it collects the returns, drops missing values, and requires at least three observations. The retained count is smaller wherever a series is missing: the report’s palm kernel oil interval rests on six episodes, and its US natural gas interval on eight. Then it draws 5,000 resamples of those retained event returns, takes the mean of each, and reports the 5th and 95th percentiles as a nominal 90% interval. The interval answers a narrow question: how much this average would move if those six or eight episodes had come out differently. It does not turn them into 5,000.',
+        "type": "p",
+        "text": "My original El Niño study reported twelve eligible moderate-or-stronger episodes since 1963. That was the largest event count, not the count behind every result: after missing returns were removed, the palm kernel oil interval used six episodes and the US natural gas interval used eight. Those are counts reported in the earlier project, not a newly audited event inventory. They need to be checked against frozen data and inclusion rules before they become the denominator of a revised empirical claim."
       },
       {
-        type: 'p',
-        text: 'The word does two jobs in my work, and the confusion starts there. In the commodities project it is Efron’s procedure: resample the observed units with replacement, recompute the statistic, and read the spread. In ChurchMap it is the older, colloquial sense: build something from what is already at hand. A script runs two models on real church websites, turns their agreements into candidate labels, and puts their disagreements in front of a reviewer. One estimates uncertainty; the other assembles a dataset. Resampling adds no new observations. ChurchMap can add new pages, but model agreement does not turn their candidate labels into verified ground truth. In both, the useful question is what one draw stands for.',
+        "type": "p",
+        "text": "With a history this small, three questions easily collapse into one. What happened during the observed episodes? Does their average describe a broader class of comparable events? Will it help with the next one? Each asks more of the evidence. Before choosing an uncertainty calculation, I need to decide which question the history can support."
       },
       {
-        type: 'p',
-        text: 'Four implementations show what that means in practice.',
+        "type": "note",
+        "text": "This revision explains how I would assess that evidence. It does not report a completed reanalysis: the event coverage audit, individual-event returns and sensitivity calculations are not presented here. Palm kernel oil is the running example because its reported six observations expose the coverage problem, not because it had the strongest result. Palm oil is a different series; its results cannot fill the gaps."
       },
       {
-        type: 'table',
-        caption:
-          'Four uses of one word. Three resample; one builds a dataset. Resampling adds draws, not observations; new pages add cases, not verified labels.',
-        head: ['Implementation', 'One unit', 'Output', 'What it still lacks'],
-        rows: [
-          [
-            'El Niño event study',
-            'One observed episode return for a particular commodity and window',
-            'Nominal 90% interval around the mean event return',
-            'More episodes with observed returns',
-          ],
-          [
-            'Palm production',
-            'One contiguous 12-month block of out-of-sample errors',
-            '80% range for six-month growth',
-            'Model-selection uncertainty',
-          ],
-          [
-            'Strategy Sharpe',
-            'One contiguous 12-month block of net returns',
-            'Nominal 90% interval around annualized Sharpe',
-            'A new strategy, or a longer history',
-          ],
-          [
-            'ChurchMap labels',
-            'One real page and two model outputs',
-            'Candidate label plus a disagreement note',
-            'A verified label',
-          ],
+        "type": "h",
+        "text": "Define the Claim Before Choosing the Method"
+      },
+      {
+        "type": "p",
+        "text": "Suppose the target is the mean palm kernel oil return across every eligible historical episode with an observed price window. Once the event list and return calculation are fixed, that mean describes a finite collection. If I have observed the whole collection, there is no random sampling of episodes from it. A bootstrap interval is not automatically the sampling error of that historical mean. Measurement problems and missing events still matter, but they are different sources of uncertainty."
+      },
+      {
+        "type": "table",
+        "caption": "Four claims that require different evidence.",
+        "head": [
+          "Claim",
+          "What would support it"
         ],
+        "rows": [
+          [
+            "Historical description",
+            "A complete episode inventory, explicit missingness and reproducible returns for fixed dates."
+          ],
+          [
+            "Association beyond that history",
+            "A defined target population, comparable events, a defensible benchmark and assumptions about dependence."
+          ],
+          [
+            "Prediction of the next episode",
+            "Information available at the decision date, frozen rules and evaluation through time."
+          ],
+          [
+            "Causal effect of ENSO",
+            "A separate identification design for the outcome under the climate shock versus a defensible counterfactual."
+          ]
+        ]
       },
       {
-        type: 'p',
-        text: 'Each row names a different unit — an episode, a block of errors, a block of returns, a page with two model outputs — and the unit decides what the interval or the dataset can say. The draw count sits outside the claim.',
+        "type": "p",
+        "text": "Inference beyond the observed history introduces a larger population or a model of how episodes and returns arise. Independence, stability across decades and comparability to the next event then become substantive assumptions. My primary goal would be a historical description and a carefully bounded association. A prediction or causal explanation needs additional evidence of its own."
       },
       {
-        type: 'p',
-        text: 'For the event study, the unit is one observed episode return for a particular commodity and window, and the episode is what makes those returns dependent. Several commodities reacting to the same El Niño are several prices, not several experiments. Treat 22 commodities across 12 eligible events as up to 264 independent observations and the arithmetic will look impressive; none of it is new climate. The procedure is honest about this in one respect, because it resamples events rather than rows. It is less honest in another. The three-observation minimum is a computational guard, not evidence that a 90% interval covers 90% of the time with three observations, and 5,000 draws cannot repair a sample of six.',
+        "type": "h",
+        "text": "Show the Episodes Behind the Average"
       },
       {
-        type: 'p',
-        text: 'The dependence literature reaches the same conclusion from the other direction. Bertrand, Duflo and Mullainathan generated placebo laws in state wage data and found that with about 20 years of data, difference-in-differences called up to 45% of the placebo laws significant at the 5% level when serial correlation was ignored. Cameron, Gelbach and Miller ran the comparison across their Table 4 simulations with 10 clusters: the wild cluster bootstrap-t rejected a true null 4.5% to 6.4% of the time, the cluster-robust standard error 8.2% to 18.3%, and ordinary standard errors 5.4% to 77%. Every one of those calculations had ten clusters. Resampling did not create more of them; the right scheme made ten usable.',
+        "type": "p",
+        "text": "The first research output should be an episode ledger. Each row would identify the start and end of an episode, its classification, the index and threshold used, the duration rule, the data version and the research cutoff. Confirmation dates and final intensity belong in separate columns. A process spanning two calendar years does not become two independent climate repetitions."
       },
       {
-        type: 'p',
-        text: 'The palm production range shows what it means to keep related quantities together. A six-month growth ratio depends on an estimated baseline month and on future production, and the errors in those two pieces are not independent. The routine draws 2,000 blocks of twelve consecutive out-of-sample errors, and within a draw the same block supplies the baseline error and the six future errors. Predicted log growth plus those errors is exponentiated into production quantities, aggregated, and converted into a ratio. The 10th and 90th percentiles form an 80% range. The choice that matters is the shared block, not the 2,000. Resampling the baseline and the future separately would produce a range for a different, easier problem.',
+        "type": "p",
+        "text": "For palm kernel oil, the same row would record the exact price-series identifier, currency, unit, return dates, window length and availability. Missing episodes would stay visible with an exclusion reason. Shared price months across windows would be flagged. A spot-price change and a tradable futures return also need separate labels; the latter requires contract, roll and cost conventions."
       },
       {
-        type: 'p',
-        text: 'The routine propagates saved forecast errors and does not refit the model, so model-selection uncertainty stays outside the interval. Twelve months is a configured block length, not a demonstrated optimum, and a history with exactly twelve residuals offers one block and no choice at all.',
+        "type": "p",
+        "text": "NOAA’s historical ONI page defines warm episodes using thresholds sustained over overlapping seasons and warns that recent values can be revised. It now distinguishes that historical series from RONI, used for official monitoring and prediction. Keeping a frozen legacy ONI definition can be reasonable, but changing indices silently would change the study’s event population. The current NOAA table does not independently verify the project’s count of twelve. The source is NOAA’s historical ONI record, linked below."
       },
       {
-        type: 'p',
-        text: 'The same shape appears in a simpler metric. A click-through rate is total clicks over total impressions, so a user-level bootstrap has to carry each user’s clicks and impressions together and recompute the ratio in every draw. Resample the two columns independently and the covariance disappears; the interval that comes back belongs to a question nobody asked.',
+        "type": "p",
+        "text": "A coverage figure would put episodes in chronological rows and commodities or key windows in columns, with available and missing returns marked. The downloadable ledger would explain each cell. Until those records are reconstructed, the six palm kernel oil observations identify a limitation in the earlier report; they do not establish which kinds of episodes are missing."
       },
       {
-        type: 'p',
-        text: 'The strategy analysis applies the block idea to a ratio that is further from a mean. For each reporting scope and cost variant it samples enough contiguous 12-month blocks of monthly net returns to cover the original series, concatenates them, truncates to the original length, and recomputes mean return divided by sample standard deviation, annualized. Two thousand draws produce the 5th and 95th percentiles of that Sharpe, a nominal 90% interval. The blocks keep some local serial dependence that resampling single months would erase. What the procedure does not do is reselect the strategy. It describes the variability of returns that already exist, conditional on the strategy and the sample, so the interval leaves out part of the uncertainty facing someone who has not yet chosen a strategy. One report rests on three climate episodes and a related one on four; an interval around a Sharpe built on three episodes is still a statement about three episodes.',
+        "type": "h",
+        "text": "Representative of Which Events?"
       },
       {
-        type: 'p',
-        text: 'ChurchMap borrows the word for a different job. The script queries a location API or takes an explicit URL list, fetches each homepage, extracts readable text with trafilatura, and truncates it to the production input limit. It runs the production extraction pipeline twice, once with a stronger reference model, Gemini 2.5 Pro by default, and once with the production model. Both outputs pass through the production normalizer. Four reference fields become expected labels — denomination, theological stance, service languages, and worship style — and empty fields are omitted. A deterministic scorer compares the production output with those labels. Agreement becomes an Example section; disagreement becomes a DRAFT section with the differences written out. Reruns skip known URLs, and the readable file compiles to JSONL.',
+        "type": "p",
+        "text": "There are three collections to compare: all eligible historical episodes, the episodes retained for palm kernel oil, and the events to which I want to apply the result. Future moderate-or-stronger events are one target. Events resembling a particular formation season, intensity and producing-region exposure are another. A sample can overlap one target better than the other."
       },
       {
-        type: 'p',
-        text: 'The design is sound for what it is. Real pages make the cases relevant to the extraction task, the production prompt and normalizer mean the differences are differences in the pipeline rather than in a labeling format, and the disagreement note gives a reviewer a place to start. What the script produces is a candidate benchmark, not a verified one.',
+        "type": "p",
+        "text": "I would start with a few comparisons that have substantive meaning: season, intensity, era and regional exposure. Are missing returns concentrated early in the price record? Does the current situation lie outside the observed range? These questions are more useful here than fitting a high-dimensional matching model to six observations. Failure to detect a difference in such a small sample would not establish representativeness."
       },
       {
-        type: 'p',
-        text: 'At the commit I read, the boundary was not enforced. The compiler accepted both Example and DRAFT headings, and the runner scored every record in the compiled file. The heading recorded a review convention; it did not implement one. Agreement between two models is not truth in any case, since both can share the same misreading of a page, and a field that both omit is never scored. The candidate selection is bounded and ordered rather than random, so it is not a probability sample of churches or website types, and nothing here establishes that it is representative.',
+        "type": "p",
+        "text": "Cross-commodity comparisons need the same care. Palm kernel oil and natural gas may differ partly because they retain different episodes. I would show each available-sample result alongside the result on the episodes shared by that particular comparison, reporting the coverage lost. Taking the intersection of every commodity could discard most of the history without resolving the underlying selection problem."
       },
       {
-        type: 'p',
-        text: 'The outside evidence on model labels is both encouraging and cautionary. Gilardi, Alizadeh and Kubli compared ChatGPT with crowd workers and trained annotators on 6,183 tweets and news articles. ChatGPT’s agreement with itself was 91%, and 97% at a lower temperature; trained annotators agreed 79% of the time. Its accuracy on the two-class relevance tasks still ranged from 59% to 83%. Consistency at that level is a reason to look at the label, not a reason to stop looking.',
+        "type": "p",
+        "text": "Similarity weights would require a stated target and a report of how concentrated the weights become. If nearly all weight lands on one episode, that dependence is part of the conclusion. Weighting cannot supply historical support where no comparable episode exists. Extending the record can help, but only if changes in price definitions, data quality and market structure are examined alongside the extra events."
       },
       {
-        type: 'p',
-        text: 'What I would change follows from the two limits. In commodities, every interval should carry its sample count, seed, interval level, block length and the number of possible blocks, because a range cannot be judged without knowing what was resampled. Short histories, calendar gaps, non-finite values and degenerate draws need explicit checks, and block length should be varied and reported rather than fixed at whatever value looks best. In ChurchMap, review status should be a field rather than a heading, the benchmark should compile from reviewed records only, and the disagreement queue should sit apart from the reviewed set. Some agreement cases need auditing too, and source text and label provenance should be kept. Absence needs its own cases, because a field that is never expected is a field the benchmark never tests.',
+        "type": "h",
+        "text": "Separate the Climate Story from the Return Calculation"
       },
       {
-        type: 'p',
-        text: 'The question I now ask of either pipeline is the same. What does one draw stand for, and how many of those things are there? For the event study the answer is an episode, and the honest count is the number retained for that commodity and window, never more than twelve. For the palm range it is a twelve-month block of errors shared across the calculation. For the Sharpe interval it is a block of returns from one strategy. For ChurchMap it is a page, two model outputs, and a label that still needs a reviewer. Resampling cannot make a small sample larger, and a fetched page cannot make its own label true. A bootstrap can organize the evidence you have and show its range. It cannot make that evidence independent, and it cannot verify what the evidence says. Five thousand draws over a dozen eligible events is not a bigger study; it is a more careful reading of a small one.',
+        "type": "p",
+        "text": "A positive average return during an El Niño window first says that prices rose. It does not establish how unusual that rise was. I would fix the primary return definition, then compare it with a small set of justified references, such as returns over comparable calendar seasons or explicitly defined non-event windows. Each reference needs its own coverage, overlap and contamination checks. A benchmark is a diagnostic comparison; calling it a counterfactual would require more justification."
       },
+      {
+        "type": "p",
+        "text": "For the palm kernel oil example, a proposed mechanism would have to connect ENSO conditions, weather in producing regions, production and inventories, and prices. Each link needs independent observations and support for its timing and direction. The mechanism is a reason to investigate this commodity, not a result established by the event average. Evidence about palm oil cannot simply substitute for measurements of palm kernel oil."
+      },
+      {
+        "type": "p",
+        "text": "Even a verified production response would leave a financial question: how much had prices already anticipated? Background conditions measured before the shock and variables transmitting its effects also play different roles. Controlling for every production and inventory measure could remove part of the pathway being studied rather than isolate its total causal effect."
+      },
+      {
+        "type": "p",
+        "text": "A pre-event window or mechanism-unrelated outcome can probe a particular alternative explanation. Neither is a universal placebo. Prices may move before a formal climate announcement because information arrives earlier. Arbitrarily shuffling historical event labels likewise requires an exchangeability argument; ENSO was not randomly assigned. Such checks can expose weaknesses without proving causality when they pass."
+      },
+      {
+        "type": "h",
+        "text": "Test What the Conclusion Depends On"
+      },
+      {
+        "type": "p",
+        "text": "The main analysis would separate dependence on particular episodes from dependence on research choices. First, show every observed return, the full-sample mean and the mean after dropping each episode in turn. For palm kernel oil’s reported six observations, each deletion removes a substantial part of the available history. I would track changes in direction, magnitude and practical interpretation, rather than only whether an interval crosses zero."
+      },
+      {
+        "type": "p",
+        "text": "An extreme episode should remain unless a verified data error or an eligibility rule justifies its exclusion. Extremes may be central to the phenomenon. If one episode supplies most of the average, the reader should see that fact. A median can describe a typical episode alongside the mean, but changing the target to the median does not repair an unstable estimate of the average."
+      },
+      {
+        "type": "p",
+        "text": "Second, I would freeze a limited set of reasonable alternatives covering event thresholds, return windows, starting era, benchmark and return convention. Every estimate would show its actual event count. Alternatives that change the population or quantity of interest would be grouped separately. Otherwise a change in the question could be mistaken for instability in one answer."
+      },
+      {
+        "type": "p",
+        "text": "Simonsohn, Simmons and Nelson’s specification-curve framework motivates making justified, statistically valid and non-redundant choices visible. Here a compact matrix could show which decisions move the result. Counting positive specifications as votes would be misleading: closely related windows reuse much of the same information. Displaying a sensitivity curve alone also does not supply the framework’s joint statistical inference."
+      },
+      {
+        "type": "p",
+        "text": "The search across commodities and windows belongs in the report. Choosing a main specification after seeing historical results makes it exploratory; freezing that choice now cannot make the original exercise preregistered. It can establish rules for this revision and future evaluation. The eventual finding might be a stable direction with a window-sensitive magnitude, or a pattern driven by one episode. I cannot choose between those descriptions before computing the checks."
+      },
+      {
+        "type": "h",
+        "text": "Use Inference to Express the Remaining Uncertainty"
+      },
+      {
+        "type": "p",
+        "text": "After defining a broader inferential target, I would compare a few understandable estimates. A t interval offers a transparent reference for a mean; its exact finite-sample justification assumes independent normal observations. Skewness, heavy tails, dependence and changing event distributions need assessment. Replacing the bootstrap with a t interval does not settle those questions."
+      },
+      {
+        "type": "p",
+        "text": "An event-level bootstrap can approximate a sampling distribution under assumptions connecting the empirical distribution to the target population. Hesterberg explains why ordinary percentile intervals can have poor small-sample coverage and distinguishes sampling error from simulation error. These are reasons to assess a particular interval, not to reject every resampling method. Resampling must also preserve the dependence relevant to the estimand."
+      },
+      {
+        "type": "note",
+        "text": "The old calculation used B = 5,000 resamples and the 5th and 95th percentiles for a nominal 90% interval. B controls Monte Carlo precision; n counts retained episode returns. Increasing B stabilizes the calculation without adding episodes. Nominal 90% is not verified 90% coverage. The code’s minimum of three observations was a computational guard, not a general threshold for reliable inference."
+      },
+      {
+        "type": "p",
+        "text": "A simple Bayesian model could make external information and structural assumptions explicit, provided prior sensitivity is shown. Precision supplied by those assumptions is not additional climate history. Permutation or randomization tests need a design or exchangeability conditions supporting their reference distribution; historical event labels do not provide that automatically."
+      },
+      {
+        "type": "p",
+        "text": "A mean interval, a next-event prediction interval, the fraction of bootstrap means above zero and a Bayesian posterior probability are different objects. Agreement among methods is useful evidence about method sensitivity, but those methods still share the same observations. None automatically incorporates measurement error, research selection or the risk of applying older episodes to a changed market."
+      },
+      {
+        "type": "h",
+        "text": "Build Evidence for the Next Episode"
+      },
+      {
+        "type": "p",
+        "text": "Prediction starts with a decision date. What event classification, prices and climate releases were available then? Final peak intensity can organize a retrospective description, but it cannot automatically serve as an early-event signal. NOAA’s diagnostic discussion archive provides releases back to 2001; it is a starting point for reconstructing information, not proof that the project possesses every historical information set since 1963."
+      },
+      {
+        "type": "p",
+        "text": "A validation ledger would record each training cutoff, signal time, available data, frozen rule, prediction and eventual outcome. Fitting, preprocessing and model selection must happen within the training information. Cawley and Talbot show how selection itself can bias performance evaluation. Training on later episodes to predict earlier ones also differs from an application that can only use the past."
+      },
+      {
+        "type": "p",
+        "text": "The deletion exercise above is an influence diagnostic. Evaluating a complete algorithm requires repeating its selection and fitting within each training fold. Even a chronological reconstruction remains retrospective when the full history has already influenced the research design. Setting aside familiar episodes afterwards cannot restore an unseen test. Future rules can be frozen and evaluated as genuinely new episodes arrive, with their small count reported honestly."
+      },
+      {
+        "type": "p",
+        "text": "There are other ways to learn while waiting. A longer comparable record can add episodes. Continuous ENSO and weather observations can inform timing and response shapes under additional modeling assumptions. Regional, commodity and monthly observations can illuminate exposure and mechanisms, though they share climate shocks. Independent measurements can verify prices or output without creating another ENSO repetition. External studies can constrain a model if their applicability is defended. These additions supply different kinds of information and reduce different uncertainties."
+      },
+      {
+        "type": "h",
+        "text": "State the Conclusion at the Strength the Evidence Supports"
+      },
+      {
+        "type": "p",
+        "text": "For palm kernel oil, the present evidence boundary is specific: the earlier report gave an interval based on six observed episode returns, while the revised coverage and sensitivity audit remains unfinished. That does not establish a representative sample, a stable effect size or a usable forecast. It also does not establish that ENSO has no relationship with returns."
+      },
+      {
+        "type": "p",
+        "text": "A completed report should name the episodes, exact price series, windows and benchmark; show the full returns and deletion results; and identify which reasonable choices change the interpretation. Its coverage assessment should distinguish directly observed situations from sparsely supported ones and extrapolation. The three central figures would be coverage, individual returns with deletion means, and specification sensitivity. They should contain computed results, not illustrative numbers dressed as findings."
+      },
+      {
+        "type": "p",
+        "text": "If the direction survives those checks but the magnitude does not, I would report a directional clue with an uncertain scale. If one episode drives the result, I would describe that episode’s contribution. If materially different outcomes remain compatible with the evidence, the conclusion is insufficient discrimination, not proof of no effect. A predictive claim would additionally name its decision time, test episodes, benchmark and costs."
+      },
+      {
+        "type": "p",
+        "text": "I would lower confidence if the ledger reveals selective coverage, a defensible window reverses the pattern, or future observations repeatedly contradict a frozen prediction. Small histories can support conditional judgments. The responsibility is to make the conditions and weak points visible, and to say what new evidence would change the judgment."
+      }
     ],
-    sources: [
+    "sources": [
       {
-        name: 'Bertrand, Duflo & Mullainathan, How Much Should We Trust Differences-in-Differences Estimates? (QJE, 2004)',
-        href: 'https://www.nber.org/papers/w8841',
+        "name": "Earlier project report, as described in the original version of this essay: twelve eligible episodes, six retained for palm kernel oil and eight for US natural gas. Counts have not been re-audited in this revision."
       },
       {
-        name: 'Cameron, Gelbach & Miller, Bootstrap-Based Improvements for Inference with Clustered Errors (Review of Economics and Statistics, 2008)',
-        href: 'https://doi.org/10.1162/rest.90.3.414',
+        "name": "NOAA CPC, historical ONI episodes: definitions, revisions and the distinction from RONI",
+        "href": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/oni/v5/"
       },
       {
-        name: 'Gilardi, Alizadeh & Kubli, ChatGPT Outperforms Crowd-Workers for Text-Annotation Tasks (PNAS, 2023)',
-        href: 'https://arxiv.org/abs/2303.15056',
-      },
-      { name: 'Efron & Tibshirani, An Introduction to the Bootstrap (1993)' },
-      {
-        name: 'Project reports: event study, palm production, strategy analysis; ChurchMap evaluation code at a6f189e (read October 2026)',
-        href: 'https://github.com/zhou100/church_map/tree/a6f189e1f1049f739fbc07e5bf2b6b1ab883ca95',
+        "name": "NOAA CPC, ENSO Diagnostic Discussion Archive (directory begins in 2001)",
+        "href": "https://www.cpc.ncep.noaa.gov/products/expert_assessment/ENSO_DD_archive.php"
       },
       {
-        name: 'Public El Niño research workbench',
-        href: 'https://elnino.yujun.net/',
+        "name": "Simonsohn, Simmons & Nelson, Specification Curve Analysis (Nature Human Behaviour, 2020)",
+        "href": "https://faculty.wharton.upenn.edu/wp-content/uploads/2016/11/33-Simonsohn-Simmons-Nelson-2020.pdf"
       },
-    ],
+      {
+        "name": "Hesterberg, What Teachers Should Know About the Bootstrap (2015)",
+        "href": "https://arxiv.org/html/1411.5279v1"
+      },
+      {
+        "name": "Cawley & Talbot, On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation (JMLR, 2010)",
+        "href": "https://jmlr.org/papers/v11/cawley10a.html"
+      },
+      {
+        "name": "Public El Niño research workbench",
+        "href": "https://elnino.yujun.net/"
+      }
+    ]
   },
   {
     slug: 'el-nino-watch-not-trade',

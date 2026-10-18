@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased - 2026-10-18
+
+### Writing
+
+- Rewrite "More Draws, Same Evidence" as "Drawing Conclusions from a Small History
+  of El Niño Events", keeping the existing URL. Focus on the target claim, event
+  coverage, representativeness and sensitivity to events and research choices.
+- Distinguish historical description, association, prediction and causality; mark
+  the proposed coverage audit and sensitivity calculations as unfinished work.
+
 ## Unreleased - 2026-10-17
 
 ### Changed
