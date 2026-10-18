@@ -99,6 +99,9 @@ The reader meets the contribution before the method. This ordering is the point 
   practice, my view as separate arguments each backed by a cited result or computed
   number, and what to check next. No subheadings or bullet lists in the body; sources on
   one line at the end, linking to the paper.
+- **Method notes identify their format** in the article header, Writing index and home
+  writing list using the existing metadata text style. They distinguish proposed
+  analyses from completed findings; section headings may organize the research approach.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
 

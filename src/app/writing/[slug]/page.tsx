@@ -60,6 +60,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
           <div className="article-page__meta">
             <span>{article.topic}</span>
+            {article.format && <span>{article.format}</span>}
             {article.publishedAt && <span>{article.publishedAt}</span>}
             {article.readingTime && <span>{article.readingTime}</span>}
           </div>

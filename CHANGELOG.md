@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased - 2026-10-18
+
+### Writing
+
+- Rewrite "More Draws, Same Evidence" as "Drawing Conclusions from a Small History
+  of El Niño Events", keeping the existing URL. Focus on the target claim, event
+  coverage, representativeness and sensitivity to events and research choices.
+- Distinguish historical description, association, prediction and causality; mark
+  the proposed coverage audit and sensitivity calculations as unfinished work.
+- Link the original sample counts to an immutable version of the earlier essay,
+  specify the common-normal-distribution condition for exact t intervals, and label
+  the piece as a Method note on the home page, Writing index and article header.
+- Update Writing page copy to distinguish method notes from completed examples.
+
 ## Unreleased - 2026-10-17
 
 ### Changed
