@@ -55,18 +55,18 @@ const articles: Article[] = [
       'A bootstrap makes an interval steadier, or an evaluation set larger. It does not add an independent event, a verified label, or a second sample of history.',
     relatedWork: 'el-nino-commodities',
     tldr: [
-      'Five thousand resamples of twelve El Niño events produce a steadier interval, not a larger sample. The event is the unit, and there are still twelve of them.',
+      'Five thousand resamples of twelve eligible El Niño episodes produce a steadier interval, not a larger sample. The event is the unit, and missing returns leave some intervals with fewer than twelve.',
       'The block bootstraps follow the same rule: twelve-month blocks keep adjacent months together, and one block carries both the baseline error and the future errors so the ratio is recomputed with its dependence intact.',
-      'ChurchMap borrows the word for a different job: real pages plus model-written candidate labels. Model agreement is a review queue, not a benchmark, and at the snapshot I read the pipeline still scored DRAFT cases.',
+      'ChurchMap borrows the word for a different job: real pages plus model-written candidate labels. Model agreement is a review queue, not a verified benchmark, and at the snapshot I read the pipeline still scored DRAFT cases.',
     ],
     body: [
       {
         type: 'p',
-        text: 'The number I quote most often from my own bootstrap is 5,000. It is the least informative number in the result. The El Niño event study has twelve moderate-or-stronger episodes since 1963. For each commodity and event-relative window it collects the returns, drops missing values, and requires at least three observations. Then it draws 5,000 resamples of those event returns, takes the mean of each, and reports the 5th and 95th percentiles as a nominal 90% interval. The interval answers a narrow question: how much this average would move if the twelve episodes had come out differently. It does not turn twelve episodes into 5,000.',
+        text: 'The number I quote most often from my own bootstrap is 5,000. It is the least informative number in the result. The El Niño event study has twelve eligible moderate-or-stronger episodes since 1963. For each commodity and event-relative window it collects the returns, drops missing values, and requires at least three observations. The retained count is smaller wherever a series is missing: the report’s palm kernel oil interval rests on six episodes, and its US natural gas interval on eight. Then it draws 5,000 resamples of those retained event returns, takes the mean of each, and reports the 5th and 95th percentiles as a nominal 90% interval. The interval answers a narrow question: how much this average would move if those six or eight episodes had come out differently. It does not turn them into 5,000.',
       },
       {
         type: 'p',
-        text: 'The word does two jobs in my work, and the confusion starts there. In the commodities project it is Efron’s procedure: resample the observed units with replacement, recompute the statistic, and read the spread. In ChurchMap it is the older, colloquial sense: build something from what is already at hand. A script runs two models on real church websites, turns their agreements into candidate labels, and puts their disagreements in front of a reviewer. One estimates uncertainty; the other assembles a dataset. Neither adds independent evidence for the quantity being measured, and in both the useful question is what one draw stands for.',
+        text: 'The word does two jobs in my work, and the confusion starts there. In the commodities project it is Efron’s procedure: resample the observed units with replacement, recompute the statistic, and read the spread. In ChurchMap it is the older, colloquial sense: build something from what is already at hand. A script runs two models on real church websites, turns their agreements into candidate labels, and puts their disagreements in front of a reviewer. One estimates uncertainty; the other assembles a dataset. Resampling adds no new observations. ChurchMap can add new pages, but model agreement does not turn their candidate labels into verified ground truth. In both, the useful question is what one draw stands for.',
       },
       {
         type: 'p',
@@ -75,14 +75,14 @@ const articles: Article[] = [
       {
         type: 'table',
         caption:
-          'Four uses of one word. Three resample; one builds a dataset. Repeating any of them adds draws, blocks or cases, not independent evidence.',
+          'Four uses of one word. Three resample; one builds a dataset. Resampling adds draws, not observations; new pages add cases, not verified labels.',
         head: ['Implementation', 'One unit', 'Output', 'What it still lacks'],
         rows: [
           [
             'El Niño event study',
-            'One historical episode, with every commodity return inside it',
+            'One observed episode return for a particular commodity and window',
             'Nominal 90% interval around the mean event return',
-            'More episodes',
+            'More episodes with observed returns',
           ],
           [
             'Palm production',
@@ -110,11 +110,11 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'For the event study, the unit is the climate episode. Several commodities reacting to the same El Niño are several prices, not several experiments. Treat 22 commodities across 12 events as 264 independent observations and the arithmetic will look impressive; none of it is new climate. The procedure is honest about this in one respect, because it resamples events rather than rows. It is less honest in another. The three-observation minimum is a computational guard, not evidence that a 90% interval covers 90% of the time with three observations, and 5,000 draws cannot repair a sample of twelve.',
+        text: 'For the event study, the unit is one observed episode return for a particular commodity and window, and the episode is what makes those returns dependent. Several commodities reacting to the same El Niño are several prices, not several experiments. Treat 22 commodities across 12 eligible events as up to 264 independent observations and the arithmetic will look impressive; none of it is new climate. The procedure is honest about this in one respect, because it resamples events rather than rows. It is less honest in another. The three-observation minimum is a computational guard, not evidence that a 90% interval covers 90% of the time with three observations, and 5,000 draws cannot repair a sample of six.',
       },
       {
         type: 'p',
-        text: 'The dependence literature reaches the same conclusion from the other direction. Bertrand, Duflo and Mullainathan generated placebo laws in state wage data and found that with about 20 years of data, difference-in-differences called up to 45% of the placebo laws significant at the 5% level when serial correlation was ignored. Cameron, Gelbach and Miller ran the comparison with 10 clusters: across their simulations, the wild cluster bootstrap rejected a true null 4.8% to 6.4% of the time, the cluster-robust standard error 8.2% to 18.3%, and ordinary standard errors 10.6% to 77%. Every one of those calculations had ten clusters. Resampling did not create more of them; the right scheme made ten usable.',
+        text: 'The dependence literature reaches the same conclusion from the other direction. Bertrand, Duflo and Mullainathan generated placebo laws in state wage data and found that with about 20 years of data, difference-in-differences called up to 45% of the placebo laws significant at the 5% level when serial correlation was ignored. Cameron, Gelbach and Miller ran the comparison across their Table 4 simulations with 10 clusters: the wild cluster bootstrap-t rejected a true null 4.5% to 6.4% of the time, the cluster-robust standard error 8.2% to 18.3%, and ordinary standard errors 5.4% to 77%. Every one of those calculations had ten clusters. Resampling did not create more of them; the right scheme made ten usable.',
       },
       {
         type: 'p',
@@ -142,7 +142,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'At the commit I read, the boundary was not enforced. The compiler accepted both Example and DRAFT headings, and the runner scored every record in the compiled file. The heading recorded a review convention; it did not implement one. Agreement between two models is not truth in any case, since both can share the same misreading of a page, and a field that both omit is never scored. The candidate selection is bounded and ordered rather than random, so it is not a sample of churches or website types either.',
+        text: 'At the commit I read, the boundary was not enforced. The compiler accepted both Example and DRAFT headings, and the runner scored every record in the compiled file. The heading recorded a review convention; it did not implement one. Agreement between two models is not truth in any case, since both can share the same misreading of a page, and a field that both omit is never scored. The candidate selection is bounded and ordered rather than random, so it is not a probability sample of churches or website types, and nothing here establishes that it is representative.',
       },
       {
         type: 'p',
@@ -154,7 +154,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The question I now ask of either pipeline is the same. What does one draw stand for, and how many of those things are there? For the event study the answer is an episode, and the honest count is twelve. For the palm range it is a twelve-month block of errors shared across the calculation. For the Sharpe interval it is a block of returns from one strategy. For ChurchMap it is a page, two model outputs, and a reviewer who has not yet looked. A bootstrap is a way of taking the evidence seriously enough to show its range. It is not a way of getting more of it. Five thousand draws over twelve events is not a bigger study; it is a more careful reading of a small one.',
+        text: 'The question I now ask of either pipeline is the same. What does one draw stand for, and how many of those things are there? For the event study the answer is an episode, and the honest count is the number retained for that commodity and window, never more than twelve. For the palm range it is a twelve-month block of errors shared across the calculation. For the Sharpe interval it is a block of returns from one strategy. For ChurchMap it is a page, two model outputs, and a label that still needs a reviewer. Resampling cannot make a small sample larger, and a fetched page cannot make its own label true. A bootstrap can organize the evidence you have and show its range. It cannot make that evidence independent, and it cannot verify what the evidence says. Five thousand draws over a dozen eligible events is not a bigger study; it is a more careful reading of a small one.',
       },
     ],
     sources: [
