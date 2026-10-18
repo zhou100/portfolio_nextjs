@@ -45,6 +45,143 @@ export interface Paper {
 
 const articles: Article[] = [
   {
+    slug: 'more-draws-same-evidence',
+    title: 'More Draws, Same Evidence',
+    topic: 'Measurement',
+    status: 'published',
+    publishedAt: '2026-10-17',
+    readingTime: '7 min',
+    excerpt:
+      'A bootstrap makes an interval steadier, or an evaluation set larger. It does not add an independent event, a verified label, or a second sample of history.',
+    relatedWork: 'el-nino-commodities',
+    tldr: [
+      'Five thousand resamples of twelve El Niño events produce a steadier interval, not a larger sample. The event is the unit, and there are still twelve of them.',
+      'The block bootstraps follow the same rule: twelve-month blocks keep adjacent months together, and one block carries both the baseline error and the future errors so the ratio is recomputed with its dependence intact.',
+      'ChurchMap borrows the word for a different job: real pages plus model-written candidate labels. Model agreement is a review queue, not a benchmark, and at the snapshot I read the pipeline still scored DRAFT cases.',
+    ],
+    body: [
+      {
+        type: 'p',
+        text: 'The number I quote most often from my own bootstrap is 5,000. It is the least informative number in the result. The El Niño event study has twelve moderate-or-stronger episodes since 1963. For each commodity and event-relative window it collects the returns, drops missing values, and requires at least three observations. Then it draws 5,000 resamples of those event returns, takes the mean of each, and reports the 5th and 95th percentiles as a nominal 90% interval. The interval answers a narrow question: how much this average would move if the twelve episodes had come out differently. It does not turn twelve episodes into 5,000.',
+      },
+      {
+        type: 'p',
+        text: 'The word does two jobs in my work, and the confusion starts there. In the commodities project it is Efron’s procedure: resample the observed units with replacement, recompute the statistic, and read the spread. In ChurchMap it is the older, colloquial sense: build something from what is already at hand. A script runs two models on real church websites, turns their agreements into candidate labels, and puts their disagreements in front of a reviewer. One estimates uncertainty; the other assembles a dataset. Neither adds independent evidence for the quantity being measured, and in both the useful question is what one draw stands for.',
+      },
+      {
+        type: 'p',
+        text: 'Four implementations show what that means in practice.',
+      },
+      {
+        type: 'table',
+        caption:
+          'Four uses of one word. Three resample; one builds a dataset. Repeating any of them adds draws, blocks or cases, not independent evidence.',
+        head: ['Implementation', 'One unit', 'Output', 'What it still lacks'],
+        rows: [
+          [
+            'El Niño event study',
+            'One historical episode, with every commodity return inside it',
+            'Nominal 90% interval around the mean event return',
+            'More episodes',
+          ],
+          [
+            'Palm production',
+            'One contiguous 12-month block of out-of-sample errors',
+            '80% range for six-month growth',
+            'Model-selection uncertainty',
+          ],
+          [
+            'Strategy Sharpe',
+            'One contiguous 12-month block of net returns',
+            'Nominal 90% interval around annualized Sharpe',
+            'A new strategy, or a longer history',
+          ],
+          [
+            'ChurchMap labels',
+            'One real page and two model outputs',
+            'Candidate label plus a disagreement note',
+            'A verified label',
+          ],
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Each row names a different unit — an episode, a block of errors, a block of returns, a page with two model outputs — and the unit decides what the interval or the dataset can say. The draw count sits outside the claim.',
+      },
+      {
+        type: 'p',
+        text: 'For the event study, the unit is the climate episode. Several commodities reacting to the same El Niño are several prices, not several experiments. Treat 22 commodities across 12 events as 264 independent observations and the arithmetic will look impressive; none of it is new climate. The procedure is honest about this in one respect, because it resamples events rather than rows. It is less honest in another. The three-observation minimum is a computational guard, not evidence that a 90% interval covers 90% of the time with three observations, and 5,000 draws cannot repair a sample of twelve.',
+      },
+      {
+        type: 'p',
+        text: 'The dependence literature reaches the same conclusion from the other direction. Bertrand, Duflo and Mullainathan generated placebo laws in state wage data and found that with about 20 years of data, difference-in-differences called up to 45% of the placebo laws significant at the 5% level when serial correlation was ignored. Cameron, Gelbach and Miller ran the comparison with 10 clusters: across their simulations, the wild cluster bootstrap rejected a true null 4.8% to 6.4% of the time, the cluster-robust standard error 8.2% to 18.3%, and ordinary standard errors 10.6% to 77%. Every one of those calculations had ten clusters. Resampling did not create more of them; the right scheme made ten usable.',
+      },
+      {
+        type: 'p',
+        text: 'The palm production range shows what it means to keep related quantities together. A six-month growth ratio depends on an estimated baseline month and on future production, and the errors in those two pieces are not independent. The routine draws 2,000 blocks of twelve consecutive out-of-sample errors, and within a draw the same block supplies the baseline error and the six future errors. Predicted log growth plus those errors is exponentiated into production quantities, aggregated, and converted into a ratio. The 10th and 90th percentiles form an 80% range. The choice that matters is the shared block, not the 2,000. Resampling the baseline and the future separately would produce a range for a different, easier problem.',
+      },
+      {
+        type: 'p',
+        text: 'The routine propagates saved forecast errors and does not refit the model, so model-selection uncertainty stays outside the interval. Twelve months is a configured block length, not a demonstrated optimum, and a history with exactly twelve residuals offers one block and no choice at all.',
+      },
+      {
+        type: 'p',
+        text: 'The same shape appears in a simpler metric. A click-through rate is total clicks over total impressions, so a user-level bootstrap has to carry each user’s clicks and impressions together and recompute the ratio in every draw. Resample the two columns independently and the covariance disappears; the interval that comes back belongs to a question nobody asked.',
+      },
+      {
+        type: 'p',
+        text: 'The strategy analysis applies the block idea to a ratio that is further from a mean. For each reporting scope and cost variant it samples enough contiguous 12-month blocks of monthly net returns to cover the original series, concatenates them, truncates to the original length, and recomputes mean return divided by sample standard deviation, annualized. Two thousand draws produce the 5th and 95th percentiles of that Sharpe, a nominal 90% interval. The blocks keep some local serial dependence that resampling single months would erase. What the procedure does not do is reselect the strategy. It describes the variability of returns that already exist, conditional on the strategy and the sample, so the interval leaves out part of the uncertainty facing someone who has not yet chosen a strategy. One report rests on three climate episodes and a related one on four; an interval around a Sharpe built on three episodes is still a statement about three episodes.',
+      },
+      {
+        type: 'p',
+        text: 'ChurchMap borrows the word for a different job. The script queries a location API or takes an explicit URL list, fetches each homepage, extracts readable text with trafilatura, and truncates it to the production input limit. It runs the production extraction pipeline twice, once with a stronger reference model, Gemini 2.5 Pro by default, and once with the production model. Both outputs pass through the production normalizer. Four reference fields become expected labels — denomination, theological stance, service languages, and worship style — and empty fields are omitted. A deterministic scorer compares the production output with those labels. Agreement becomes an Example section; disagreement becomes a DRAFT section with the differences written out. Reruns skip known URLs, and the readable file compiles to JSONL.',
+      },
+      {
+        type: 'p',
+        text: 'The design is sound for what it is. Real pages make the cases relevant to the extraction task, the production prompt and normalizer mean the differences are differences in the pipeline rather than in a labeling format, and the disagreement note gives a reviewer a place to start. What the script produces is a candidate benchmark, not a verified one.',
+      },
+      {
+        type: 'p',
+        text: 'At the commit I read, the boundary was not enforced. The compiler accepted both Example and DRAFT headings, and the runner scored every record in the compiled file. The heading recorded a review convention; it did not implement one. Agreement between two models is not truth in any case, since both can share the same misreading of a page, and a field that both omit is never scored. The candidate selection is bounded and ordered rather than random, so it is not a sample of churches or website types either.',
+      },
+      {
+        type: 'p',
+        text: 'The outside evidence on model labels is both encouraging and cautionary. Gilardi, Alizadeh and Kubli compared ChatGPT with crowd workers and trained annotators on 6,183 tweets and news articles. ChatGPT’s agreement with itself was 91%, and 97% at a lower temperature; trained annotators agreed 79% of the time. Its accuracy on the two-class relevance tasks still ranged from 59% to 83%. Consistency at that level is a reason to look at the label, not a reason to stop looking.',
+      },
+      {
+        type: 'p',
+        text: 'What I would change follows from the two limits. In commodities, every interval should carry its sample count, seed, interval level, block length and the number of possible blocks, because a range cannot be judged without knowing what was resampled. Short histories, calendar gaps, non-finite values and degenerate draws need explicit checks, and block length should be varied and reported rather than fixed at whatever value looks best. In ChurchMap, review status should be a field rather than a heading, the benchmark should compile from reviewed records only, and the disagreement queue should sit apart from the reviewed set. Some agreement cases need auditing too, and source text and label provenance should be kept. Absence needs its own cases, because a field that is never expected is a field the benchmark never tests.',
+      },
+      {
+        type: 'p',
+        text: 'The question I now ask of either pipeline is the same. What does one draw stand for, and how many of those things are there? For the event study the answer is an episode, and the honest count is twelve. For the palm range it is a twelve-month block of errors shared across the calculation. For the Sharpe interval it is a block of returns from one strategy. For ChurchMap it is a page, two model outputs, and a reviewer who has not yet looked. A bootstrap is a way of taking the evidence seriously enough to show its range. It is not a way of getting more of it. Five thousand draws over twelve events is not a bigger study; it is a more careful reading of a small one.',
+      },
+    ],
+    sources: [
+      {
+        name: 'Bertrand, Duflo & Mullainathan, How Much Should We Trust Differences-in-Differences Estimates? (QJE, 2004)',
+        href: 'https://www.nber.org/papers/w8841',
+      },
+      {
+        name: 'Cameron, Gelbach & Miller, Bootstrap-Based Improvements for Inference with Clustered Errors (Review of Economics and Statistics, 2008)',
+        href: 'https://doi.org/10.1162/rest.90.3.414',
+      },
+      {
+        name: 'Gilardi, Alizadeh & Kubli, ChatGPT Outperforms Crowd-Workers for Text-Annotation Tasks (PNAS, 2023)',
+        href: 'https://arxiv.org/abs/2303.15056',
+      },
+      { name: 'Efron & Tibshirani, An Introduction to the Bootstrap (1993)' },
+      {
+        name: 'Project reports: event study, palm production, strategy analysis; ChurchMap evaluation code at a6f189e (read October 2026)',
+        href: 'https://github.com/zhou100/church_map/tree/a6f189e1f1049f739fbc07e5bf2b6b1ab883ca95',
+      },
+      {
+        name: 'Public El Niño research workbench',
+        href: 'https://elnino.yujun.net/',
+      },
+    ],
+  },
+  {
     slug: 'el-nino-watch-not-trade',
     title: 'Why My El Niño Research Mostly Says Don’t Trade',
     topic: 'Measurement',
