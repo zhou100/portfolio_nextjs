@@ -57,19 +57,19 @@ const articles: Article[] = [
     topic: 'Measurement',
     status: 'published',
     publishedAt: '2026-10-19',
-    readingTime: '6 min',
+    readingTime: '2 min',
     excerpt:
       'Twelve El Niño episodes since 1963 is a small sample, but it is more than one average. What the twelve carry for palm oil, and where they stop.',
     relatedWork: 'el-nino-commodities',
     tldr: [
-      'Palm oil beat a metals index six to twelve months after the peak in 9 of 12 episodes, by 16.7 log points (about 18%) on average. No single episode and no reasonable interval puts the average below zero; its size could be anywhere from about +4 to +34.',
-      'Most of the extra information comes from outside the twelve: 39 years without an El Niño show what an ordinary year looks like, and every month since 1960 shows how prices move with the index.',
-      'Above the threshold, a stronger El Niño did not bring a bigger rally, and related oils count once. I ran most of these checks after seeing the main result, so they describe the sample rather than confirm it.',
+      'Palm oil beat a metals index six to twelve months after the peak in 9 of 12 El Niño episodes, by about 18% on average. No single episode reverses the direction; the size is uncertain.',
+      'The strongest evidence comes from the 39 years without an El Niño, which show what an ordinary year looks like.',
+      'Stronger episodes did not bring bigger rallies, related oils count once, and most checks were run after the main result was known.',
     ],
     body: [
       {
         type: 'p',
-        text: 'Since 1963 there have been twelve El Niño episodes of moderate strength or more, and for palm oil that is the whole sample. I count an episode when the Oceanic Niño Index (ONI), the three-month average sea-surface temperature anomaly in the central equatorial Pacific, stays at +0.5°C or above for at least five overlapping seasons, and I keep it among the twelve when its peak reaches +1.0°C. Palm oil beat a broad metals index in the six to twelve months after the peak in nine of the twelve, by 16.7 log points on average, about 18%. It is tempting to stop there and argue about whether twelve is enough. I would rather ask what else twelve can be asked. Each episode has a size, a strength, a calendar month, a path before and after, and a set of surrounding years in which nothing happened. Read that way, twelve episodes carry much more than one average.',
+        text: 'Since 1963 there have been twelve El Niño episodes of moderate strength or more: the Oceanic Niño Index (ONI) stayed at +0.5°C or above for five overlapping seasons and peaked at +1.0°C or higher. In the six to twelve months after the peak, palm oil beat a broad metals index in nine of them, by 16.7 log points (about 18%) on average. Twelve is small, but each episode carries more than its return.',
       },
       {
         type: 'table',
@@ -91,31 +91,19 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Three of the twelve were falls, none larger than 12 log points. Eight of the nine rises run from +4.8 to +35.2; the ninth, 1982–83, sits far outside them at +76.5, and it is why the median, +13.1, sits below the mean. Dropping it lowers the average to +11.3. Dropping any other single episode leaves the average between +15.1 and +19.3. The direction does not depend on any one episode, and the size leans heavily on one.',
+        text: 'Three episodes were falls, none larger than 12 log points. One rise, 1982–83 at +76.5, carries much of the size: without it the average drops to +11.3, while dropping any other episode leaves it between +15.1 and +19.3. The direction rests on no single episode; the size leans on one.',
       },
       {
         type: 'p',
-        text: 'The largest source of extra information is the years in which nothing happened. Of the 65 years from 1960 to 2024, 39 had no El Niño conditions at all, weak ones included, from June through the following April. I measured palm oil over the same window, from the same calendar month, in each of those years. Ten of the twelve episodes beat the median ordinary year, and the typical episode sat at about the 75th percentile of them. The project’s placebo test asks the same question of the mean, swapping each episode for a random ordinary year thousands of times, and an average as large as +16.7 turns up about once in a thousand draws. Because the ordinary years share the calendar, the comparison also removes the seasonal pattern in palm oil prices, which a rally six to twelve months after a November peak might otherwise be.',
+        text: 'The best comparison comes from outside the twelve. In 39 of the 65 years from 1960 to 2024 there were no El Niño conditions from June to April, and ten of the twelve episodes beat the median of those ordinary years over the same calendar window. Swapping each episode for a random ordinary year, an average as large as +16.7 turns up about once in a thousand draws. Small-sample tests agree on direction, not size: one-sided sign and Wilcoxon tests give 0.073 and 0.010, and 90% intervals run from about +4 to +34 by method. Five thousand bootstrap resamples make that interval reproducible, not the sample larger.',
       },
       {
         type: 'p',
-        text: 'Whether +16.7 is unusual is one question. How precisely twelve episodes pin it down is another, and with twelve numbers the choice of method decides how much of each number gets used. A sign test counts only directions: nine rises in twelve would happen by chance with a one-sided probability of 0.073. The Wilcoxon signed-rank test also uses the order of the sizes, and because the three falls are small, its one-sided probability is 0.010. For the size of the average, a 90% t interval runs from +4.5 to +29.0, the percentile bootstrap in the project’s event study from +6.7 to +28.4, and a bootstrap-t interval from +6.9 to +34.4. The percentile bootstrap is the narrowest because it makes no allowance for the spread itself being estimated from twelve values; the bootstrap-t stretches upward because 1982–83 skews the sample. All three keep the lower end above zero and disagree about the upper end, and the disagreement describes the shape of the sample. The 5,000 resamples behind the project’s interval change none of this. They make the interval reproducible, not the sample larger.',
+        text: 'Strength and timing add more. Among the twelve, peak ONI and the return are uncorrelated, and seven weak episodes outside them averaged +1.8: crossing the threshold mattered, more strength did not. In eight episodes the rise reversed over the following six months. Soybean, coconut and palm kernel oil rose too, but within each episode they move with palm oil, at correlations up to 0.98, so they count once.',
       },
       {
         type: 'p',
-        text: 'Each episode also carries more than its return. If El Niño drives the rally, stronger episodes might be expected to produce larger ones. Among the twelve, the rank correlation between peak ONI and the return is 0.004, and with twelve points that is compatible with a modest relationship in either direction. The strongest episode, 2015–16, was followed by a fall; the weakest, 2018–19, by a rise of 33.8. Seven weak episodes outside the twelve, peaking between +0.5 and +1.0°C, averaged +1.8. Crossing the threshold mattered; above it, more strength did not mean more return. The paths add timing. In eight of the twelve the rise was followed by a fall in the six months after that window, averaging −11.0, so the pattern is a temporary rise that repeats its shape. A regression on the ONI across every month since 1960, with standard errors that allow for the overlapping windows, gives +12.8 per degree twelve months ahead and a t-statistic of 2.5: the same sign, from a different construction. It assumes the response is linear, and in October 2026 the index stood above anything in the record for the time of year, so the line has no history where someone would now want to use it.',
-      },
-      {
-        type: 'p',
-        text: 'The related oils look like corroboration. Soybean oil rose after nine of the twelve peaks, coconut oil after eight, and palm kernel oil after all six episodes its price record covers. Within the same episodes, though, palm kernel oil’s return correlates with palm oil’s at 0.98, soybean oil’s at 0.85 and coconut oil’s at 0.58. Palm kernel oil’s six of six is palm oil’s result restated at a larger amplitude. Agreement across the oils shows that the shock reached vegetable oils broadly. It does not add episodes: four oils moving together in 1982–83 are one observation of 1982–83.',
-      },
-      {
-        type: 'p',
-        text: 'All of this lines the episodes up on the peak, and the peak is only visible afterwards. In a replay that used only the data available each month, the rule that confirms a peak fired two to three months late, and entering on it did worse than a simple calendar rule. The futures records cover four episodes on Chinese palm oil and three on US soybean oil. Rainfall in the Malaysian growing regions did not improve a forecast of palm output at any horizon I tested, so the drought I could measure does not explain the price pattern. And I ran most of the calculations here after the event study’s main result was known. They describe a sample I had already examined; they do not confirm it. The 2026–27 episode will be the next fresh observation.',
-      },
-      {
-        type: 'p',
-        text: 'What twelve episodes support, then, is narrow. Palm oil beat metals six to twelve months after a moderate or stronger El Niño in most episodes, and by more than in ordinary years, and no single episode or reasonable interval reverses that. Even a skeptical prior centered on no effect leaves the direction positive, while the size stays mostly the prior’s choice: anywhere from about +4 to +34 log points, with one episode doing much of the work at the top. Weak episodes do not produce the rise, stronger ones do not produce more of it, and it tends to reverse within six months. None of it is a trading rule, because the date it is measured from arrives late. The same reading applies to any decision that rests on a dozen launches, campaigns or incidents: print every case, find the ordinary periods to compare against, count related metrics once, and say which part of the answer one case carries. Twelve is a small number. It is not one number.',
+        text: 'The twelve stop at the peak date, which is only visible afterwards; a rule that waited for confirmation entered two to three months late and did worse. Futures records cover four episodes or fewer, and regional rainfall did not improve palm output forecasts, so the drought I could measure does not explain the move. I ran most checks after seeing the main result; they describe the sample rather than confirm it. The same reading works for a dozen launches or incidents: print every case, compare against ordinary periods, count related metrics once. Twelve is a small number. It is not one number.',
       },
     ],
     sources: [
