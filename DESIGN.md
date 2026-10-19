@@ -104,6 +104,8 @@ The reader meets the contribution before the method. This ordering is the point 
   analyses from completed findings; section headings may organize the research approach.
 - **A writing link exists only where a body exists.** `articleHref()` is the single source
   for that, on the home page, the writing index, and case pages alike.
+- **An unlisted article (`listed: false`) still publishes** but stays off the home page,
+  the Writing index and case pages; other pieces reach it through their sources line.
 
 ## Spacing
 - **Density:** Roomy between sections, tight inside cards.
@@ -172,3 +174,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-17 | Tightened hero spacing and intro; kept all four colleague quotes verbatim | Bring Selected work into the first desktop viewport at 1440×900; desktop hero uses 32px / 24px padding and a 280px portrait. |
 | 2026-10-17 | Wide case cards show Evidence and Methods; showcases add Role / Methods with bottom-aligned actions and portrait screenshot frames | Improve comparison and fill unused columns while retaining the existing showcase structure. |
 | 2026-10-17 | Brief and In short cards overlap the dark header by 28px and 20px | Connect the header to the reading surface. |
+| 2026-10-19 | "Why My El Niño Research Mostly Says Don’t Trade" unlisted; reachable only from the twelve-episodes essay's sources line | Owner decision. Two essays on one project shared most of their numbers and took two of the four home-page writing slots. |

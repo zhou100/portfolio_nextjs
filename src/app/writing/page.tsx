@@ -4,7 +4,7 @@ import {
   articleHref,
   getDraftingArticles,
   getPapers,
-  getPublishedArticles,
+  getListedArticles,
 } from '@/lib/writing';
 import { getOgImage, getSite } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function WritingIndex() {
   const site = getSite();
-  const published = getPublishedArticles();
+  const published = getListedArticles();
   // At most three. A list of promises is not a body of work.
   const next = getDraftingArticles().slice(0, 3);
   const papers = getPapers();

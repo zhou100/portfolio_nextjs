@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPath, getSite, getTestimonials } from '@/lib/portfolio';
 import { getFeaturedWork, getShowcaseWork, getWorkBySlug } from '@/lib/work';
-import { articleHref, getPublishedArticles } from '@/lib/writing';
+import { articleHref, getListedArticles } from '@/lib/writing';
 import CareerPath from './components/CareerPath/CareerPath';
 import Showcase from './components/Work/Showcase';
 import MarketStories from './components/Writing/MarketStories';
@@ -17,7 +17,7 @@ export default function Home() {
   const showcase = getShowcaseWork();
   const showcased = new Set(showcase.map((item) => item.slug));
   const cases = featured.filter((item) => !showcased.has(item.slug));
-  const articles = getPublishedArticles().slice(0, 4);
+  const articles = getListedArticles().slice(0, 4);
   const lab = getWorkBySlug('creative-evidence-lab');
 
   return (
