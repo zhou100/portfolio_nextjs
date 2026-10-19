@@ -5,14 +5,15 @@
 ### Writing
 
 - Rewrite the El Niño essay as "More Draws, Same Evidence", keeping the existing URL.
-  Seven paragraphs and one table on what a twelve-episode sample can carry: no
+  Eight paragraphs and one table on what a twelve-episode sample can carry: no
   headings, no takeaway lists in the body, no method-note label.
 - Remove the revision apparatus: what the piece no longer reports, what a later audit
   would check, and the history of the earlier calculation. The argument stands on the
   numbers already in the reports.
 - The commodity example is palm oil, the same series as the companion essay; the palm
   kernel oil asides are gone.
-- Update Writing page copy to distinguish method notes from completed examples.
+- Drop the method-note language from the Writing page copy; no piece carries that
+  label now.
 
 ## Unreleased - 2026-10-17
 
