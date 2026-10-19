@@ -68,7 +68,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The sample size shows up first as coverage. Palm oil prices exist for all twelve episodes, and against a metals index the return after the peak is positive in nine of them. The US soybean oil futures contract covers three. Twenty-two commodities across twelve events is 264 commodity-events, and monthly returns make thousands of rows, none of which is new climate: several prices responding to one El Niño are several prices, not several experiments. The count that belongs beside every result is therefore k of n. The palm oil futures result is positive in four event years out of four, which is encouraging. It is also four.',
+        text: 'The sample size shows up first as coverage. Palm oil spot prices exist for all twelve episodes, and against a metals index the return after the peak is positive in nine of them. The US soybean oil futures contract covers three. Twenty-two commodities across twelve events is at most 264 commodity-events, and monthly returns make thousands of rows, none of which is new climate: several prices responding to one El Niño are several prices, not several experiments. The count that belongs beside every result is therefore k of n. Chinese palm oil futures, a separate series from the spot price, overlap four event years, and the result is positive in all four, which is encouraging. It is also four.',
       },
       {
         type: 'table',
@@ -82,7 +82,7 @@ const articles: Article[] = [
           ],
           [
             'Twelve episodes, twenty-two commodities',
-            'Coverage across markets, and 264 commodity-events',
+            'Coverage across markets, and up to 264 commodity-events',
             'More than twelve climate events',
           ],
           [
@@ -112,11 +112,11 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The strategy analysis applies the same construction to a ratio further from a mean, block-resampling monthly net returns until they cover the original series and recomputing mean over standard deviation in every draw; it describes the variability of returns that already exist, so a Sharpe built on three episodes is a statement about three episodes, and a nominal 90% interval over three of them is not a 90% interval in any verified sense.',
+        text: 'The strategy analysis applies the same construction to a ratio further from a mean. It block-resamples monthly net returns until they cover the original series and recomputes mean over standard deviation in every draw. That describes the variability of returns that already exist, so a Sharpe built on three episodes is a statement about three episodes. A nominal 90% interval over three of them is not a 90% interval in any verified sense.',
       },
       {
         type: 'p',
-        text: 'The rest is discipline about what gets printed. Every average carries its event count and every event’s own return, with the mean without each episode in turn beside it, because an average that one episode supplies most of is something the reader should see rather than something to smooth away. An extreme episode stays in unless there is a data error; the extremes are often the phenomenon. Lags, thresholds and feature sets went into code and a protocol document before any results were pulled, every specification including the failures went into the report appendix, the 2010–2025 history was frozen after several rounds, and the two later futures tests were registered in advance and run once each. That is what keeps the number I quote from being the best of twenty I happened to compute. The code’s minimum of three observations is a guard against empty draws, not evidence that three is enough.',
+        text: 'The rest is discipline about what gets printed. Every average carries its event count and every event’s own return, with the mean without each episode in turn beside it, because an average that one episode supplies most of is something the reader should see rather than something to smooth away. An extreme episode stays in unless there is a data error; the extremes are often the phenomenon. Lags, thresholds and feature sets went into code and a protocol document before any results were pulled, and every specification, including the failures, went into the report appendix. That limits the search without undoing it. The 2010–2025 history was frozen only after several rounds, so the event-study averages still come out of a search across commodities and windows. Only the two later futures tests were registered in advance and run once each. The code’s minimum of three observations is a guard against empty draws, not evidence that three is enough.',
       },
       {
         type: 'p',
@@ -135,10 +135,6 @@ const articles: Article[] = [
       {
         name: 'Cameron, Gelbach & Miller, Bootstrap-Based Improvements for Inference with Clustered Errors (Review of Economics and Statistics, 2008)',
         href: 'https://doi.org/10.1162/rest.90.3.414',
-      },
-      {
-        name: 'Hesterberg, What Teachers Should Know About the Bootstrap (2015)',
-        href: 'https://arxiv.org/html/1411.5279v1',
       },
       {
         name: 'NOAA CPC, historical ONI episodes',
