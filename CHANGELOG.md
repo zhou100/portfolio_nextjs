@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased - 2026-10-19
+
+### Writing
+
+- Rewrite the El Niño essay as "What Twelve El Niño Episodes Can Tell Us About Commodity
+  Returns", keeping the existing URL. The piece now shows how much the twelve episodes
+  carry for palm oil instead of arguing that resampling adds none.
+- Show all twelve episode returns with leave-one-out means; compare sign, Wilcoxon, t,
+  percentile bootstrap and bootstrap-t results; read each episode against 39 years
+  without an El Niño; check strength, path shape, the all-months local projection,
+  within-event correlation of related oils and a skeptical prior.
+- Label the added calculations as post-hoc description of the frozen event study, and
+  keep the limits: the after-the-fact peak date, short futures records and the failed
+  rainfall link.
+
 ## Unreleased - 2026-10-18
 
 ### Writing
