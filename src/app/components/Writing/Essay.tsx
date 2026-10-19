@@ -21,7 +21,7 @@ export function InShort({ points }: { points?: string[] }) {
   );
 }
 
-/** One line at the end. Only sources with an `href` link out. */
+/** One line at the end. Only sources with an `href` link; site paths open in place. */
 export function SourcesLine({ sources }: { sources?: EssaySource[] }) {
   if (!sources?.length) return null;
 
@@ -31,7 +31,9 @@ export function SourcesLine({ sources }: { sources?: EssaySource[] }) {
       {sources.map((source, index) => (
         <span key={`${source.name}-${index}`}>
           {index > 0 && ' · '}
-          {source.href ? (
+          {source.href?.startsWith('/') ? (
+            <a href={source.href}>{source.name}</a>
+          ) : source.href ? (
             <a href={source.href} target="_blank" rel="noopener noreferrer">
               {source.name}
             </a>

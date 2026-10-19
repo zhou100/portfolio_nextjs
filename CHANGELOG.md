@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased - 2026-10-19
+
+### Writing
+
+- Rewrite the El Niño essay as "Twelve El Niño Episodes Are More Than One Average",
+  keeping the existing URL and dating it 2026-10-19. The piece shows how much the twelve
+  episodes carry for palm oil instead of arguing that resampling adds none.
+- Eight paragraphs and one twelve-row table of episode returns and leave-one-out means;
+  no headings, notes or lists. The selection rule (ONI, thresholds, duration) is stated
+  once, and log points and ONI are defined.
+- Compare the episodes with 39 years without an El Niño before the tests; report the sign
+  and Wilcoxon tests as one-sided; read peak strength, path shape, the all-months
+  regression with overlap-robust errors and the within-event correlation of related oils.
+- Say in the first person, and in the takeaways, that most of the added calculations were
+  run after the main result was known.
+- Unlist "Why My El Niño Research Mostly Says Don’t Trade": it leaves the home page, the
+  Writing index and the case page, and is linked from the new essay's sources line.
+  Sources that point inside the site open in the same tab.
+
 ## Unreleased - 2026-10-18
 
 ### Writing

@@ -10,7 +10,7 @@ import {
   type WorkItem,
 } from '@/lib/work';
 import { getOgImage } from '@/lib/portfolio';
-import { articleHref, getPublishedArticles } from '@/lib/writing';
+import { articleHref, getListedArticles } from '@/lib/writing';
 import Blocks from '../../components/Work/Blocks';
 import StatusBadge from '../../components/Work/StatusBadge';
 import './case.css';
@@ -63,7 +63,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const item = getWorkBySlug(params.slug);
   if (!item) notFound();
 
-  const related = getPublishedArticles().filter((article) => article.relatedWork === item.slug);
+  const related = getListedArticles().filter((article) => article.relatedWork === item.slug);
   const links = item.links;
 
   // Where the reader should land first differs by content type. The brief sits
