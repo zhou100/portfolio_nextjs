@@ -4,15 +4,16 @@
 
 ### Writing
 
-- Rewrite "More Draws, Same Evidence" as "Drawing Conclusions from a Small History
-  of El Niño Events", keeping the existing URL. Focus on the target claim, event
-  coverage, representativeness and sensitivity to events and research choices.
-- Distinguish historical description, association, prediction and causality; mark
-  the proposed coverage audit and sensitivity calculations as unfinished work.
-- Link the original sample counts to an immutable version of the earlier essay,
-  specify the common-normal-distribution condition for exact t intervals, and label
-  the piece as a Method note on the home page, Writing index and article header.
-- Update Writing page copy to distinguish method notes from completed examples.
+- Rewrite the El Niño essay as "More Draws, Same Evidence", keeping the existing URL.
+  Eight paragraphs and one table on what a twelve-episode sample can carry: no
+  headings, no takeaway lists in the body, no method-note label.
+- Remove the revision apparatus: what the piece no longer reports, what a later audit
+  would check, and the history of the earlier calculation. The argument stands on the
+  numbers already in the reports.
+- The commodity example is palm oil, the same series as the companion essay; the palm
+  kernel oil asides are gone.
+- Drop the method-note language from the Writing page copy; no piece carries that
+  label now.
 
 ## Unreleased - 2026-10-17
 
