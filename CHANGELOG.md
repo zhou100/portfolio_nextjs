@@ -4,6 +4,9 @@
 
 ### Writing
 
+- Cut "Twelve El Niño Episodes Are More Than One Average" to about 400 words: five
+  paragraphs around the same twelve-row table, shorter takeaways, a 2 min reading time.
+  The all-months regression and the skeptical-prior sentence are dropped.
 - Rewrite the El Niño essay as "Twelve El Niño Episodes Are More Than One Average",
   keeping the existing URL and dating it 2026-10-19. The piece shows how much the twelve
   episodes carry for palm oil instead of arguing that resampling adds none.
