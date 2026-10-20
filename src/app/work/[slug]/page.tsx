@@ -88,8 +88,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </p>
 
           <div className="case__top">
-            <StatusBadge status={item.status} onDark />
-            <span className="case__org">{item.org ?? KIND_LABEL[item.kind]}</span>
+            <StatusBadge status={item.status} />
+            <span className="label">{item.org ?? KIND_LABEL[item.kind]}</span>
           </div>
 
           <h1 className="case__title">{item.title}</h1>
@@ -98,15 +98,15 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <p className="case__databoundary">{item.dataNote}</p>
 
           {hasActions && (
-            <div className="case__actions">
+            <div className="actions case__actions">
               {showPrimaryAnchor && (
-                <a className="btn btn--on-dark" href={primaryAnchor.href}>
+                <a className="act act--primary" href={primaryAnchor.href}>
                   {primaryAnchor.label}
                 </a>
               )}
               {links?.artifact && (
                 <a
-                  className="btn btn--on-dark"
+                  className="act"
                   href={links.artifact.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -116,7 +116,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               )}
               {links?.demo && (
                 <a
-                  className="btn btn--on-dark"
+                  className="act"
                   href={links.demo}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -126,7 +126,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               )}
               {links?.code && (
                 <a
-                  className="btn btn--on-dark"
+                  className="act"
                   href={links.code}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -140,32 +140,34 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       </header>
 
       <div className="wrap case__body">
-        <Brief item={item} />
+        <div className="row case__lead">
+          <Brief item={item} />
 
-        <dl className="casemeta">
-          <div>
-            <dt>My role</dt>
-            <dd>{item.role}</dd>
-          </div>
-          <div>
-            <dt>Methods</dt>
-            <dd>{item.methods.join(' · ')}</dd>
-          </div>
-          <div>
-            <dt>Evidence</dt>
-            <dd>
-              {item.evidenceType.length
-                ? item.evidenceType.map((type) => EVIDENCE_LABEL[type]).join(' · ')
-                : 'None yet — this is a study design.'}
-            </dd>
-          </div>
-          {item.alias && (
+          <dl className="side casemeta">
             <div>
-              <dt>Also known as</dt>
-              <dd>{item.alias}</dd>
+              <dt>My role</dt>
+              <dd>{item.role}</dd>
             </div>
-          )}
-        </dl>
+            <div>
+              <dt>Methods</dt>
+              <dd>{item.methods.join(' · ')}</dd>
+            </div>
+            <div>
+              <dt>Evidence</dt>
+              <dd>
+                {item.evidenceType.length
+                  ? item.evidenceType.map((type) => EVIDENCE_LABEL[type]).join(' · ')
+                  : 'None yet — this is a study design.'}
+              </dd>
+            </div>
+            {item.alias && (
+              <div>
+                <dt>Also known as</dt>
+                <dd>{item.alias}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
 
         {item.sections.map((section, index) => (
           <section className="case__section" id={section.id} key={section.id}>

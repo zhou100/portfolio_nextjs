@@ -1,195 +1,70 @@
-.topics {
-  display: grid;
-  gap: 40px;
-}
-
-.topic__name {
-  border-bottom: 1px solid var(--clr-border);
-  font-size: 1.05rem;
-  letter-spacing: 0.06em;
-  padding-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.topic__item {
-  border-bottom: 1px solid var(--clr-border);
-  display: grid;
-  gap: 6px 40px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  padding: 20px 0;
-}
-
-.topic__title {
-  font-size: 1.08rem;
-  font-weight: 700;
-}
-
-.topic__argument {
-  color: var(--clr-muted);
-  font-size: 0.98rem;
-}
-
-@media (max-width: 780px) {
-  .topic__item {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ---------- Published list ---------- */
-
-.postlist {
-  border-top: 1px solid var(--clr-border);
-}
-
-.post {
-  border-bottom: 1px solid var(--clr-border);
-  padding: 28px 0;
-}
-
-.post__meta {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin-bottom: 10px;
-}
-
-.post__title {
-  font-size: 1.5rem;
-  max-width: 32ch;
-}
-
-.post__excerpt {
-  color: var(--clr-muted);
-  margin-top: 10px;
-  max-width: var(--prose);
-}
-
-.post__foot {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  margin-top: 16px;
-}
-
-.post__related {
-  font-size: 0.95rem;
-}
-
-/* ---------- In progress ---------- */
-
-.queue {
-  border-top: 1px solid var(--clr-border);
-}
-
-.queue__item {
-  border-bottom: 1px solid var(--clr-border);
-  padding: 20px 0;
-}
-
-.queue__title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 8px;
-}
-
-.queue__excerpt {
-  color: var(--clr-muted);
-  font-size: 1rem;
-  margin-top: 6px;
-  max-width: var(--prose);
-}
-
-@media (max-width: 640px) {
-  .post__title {
-    font-size: 1.3rem;
-    max-width: none;
-  }
-}
-
-/* ---------- Market stories ---------- */
+/* ---------- Market stories (full list as cards) ---------- */
 
 /* The chart frame uses the charts' own ground so a short chart letterboxes cleanly
    instead of being cropped. */
-.stories {
+.storycards {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-.story {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
+.storycard {
+  border: 1px solid var(--clr-border-strong);
   display: flex;
   flex-direction: column;
-  padding: 20px;
-}
-
-.story__chart {
-  aspect-ratio: 638 / 300;
-  background: #f3eee5;
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  display: block;
-  margin-bottom: 16px;
-  overflow: hidden;
   transition: border-color 0.18s ease;
 }
 
-.story__chart:hover {
-  border-color: var(--clr-accent);
+.storycard:hover {
+  border-color: var(--clr-ink);
 }
 
-.story__chart img {
+.storycard__chart {
+  aspect-ratio: 638 / 300;
+  background: #f3eee5;
+  border-bottom: 1px solid var(--clr-border);
+  display: block;
+  overflow: hidden;
+}
+
+.storycard__chart img {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.story__meta {
+.storycard__body {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin-bottom: 8px;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 14px 14px;
 }
 
-.story__title {
-  font-size: 1.25rem;
+.storycard__title {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin: 4px 0 6px;
 }
 
-.story__summary {
-  color: var(--clr-ink);
-  font-size: 1rem;
-  margin-top: 8px;
+.storycard__title a:hover {
+  color: var(--clr-accent-dark);
 }
 
-.story__watch {
-  color: var(--clr-muted);
-  font-size: 0.95rem;
-  margin: 10px 0 16px;
+.storycard__summary {
+  color: var(--clr-ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 10px;
 }
 
-.story__watch span {
-  color: var(--clr-ink);
-  font-weight: 700;
-}
-
-.story__link {
+.storycard__window {
   margin-top: auto;
 }
 
 .stories__note {
   color: var(--clr-muted);
-  font-size: 0.92rem;
-  margin-top: 20px;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 16px;
   max-width: var(--prose);
-}
-
-@media (max-width: 780px) {
-  .stories {
-    grid-template-columns: 1fr;
-  }
 }

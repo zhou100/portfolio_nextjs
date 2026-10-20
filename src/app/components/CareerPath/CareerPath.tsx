@@ -2,7 +2,6 @@ import type { PathStep } from '@/lib/portfolio';
 import './CareerPath.css';
 
 interface Props {
-  intro: string;
   steps: PathStep[];
 }
 
@@ -10,14 +9,13 @@ interface Props {
  * Horizontal career timeline for the dark hero. A dot per step on one rule; the
  * current step is filled and labelled in text as well, so color never carries it alone.
  */
-export default function CareerPath({ intro, steps }: Props) {
+export default function CareerPath({ steps }: Props) {
   return (
     <section className="path" aria-labelledby="path-label">
       <div className="path__head">
         <h2 className="path__label" id="path-label">
           Path
         </h2>
-        <p className="path__intro">{intro}</p>
       </div>
 
       <ol className="path__list">

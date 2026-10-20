@@ -1,39 +1,43 @@
 # Design System - Portfolio
 
 ## Product Context
-- **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist who turns product questions into measures a team can move.
+- **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist who makes product progress measurable.
 - **Project type:** Editorial case-study site. The unit of content is a case study that carries a status and an evidence type, not a project card with a stack list.
 - **Reading goal:** Position understood in 30 seconds, one case understood in 3 minutes, enough material to interrogate the method in 10.
 
 ## Aesthetic Direction
-- **Direction:** Editorial, evidence-first. Dark hero over a warm off-white body, with one restrained teal accent.
+- **Direction:** A typeset paper. Serif text on warm paper, mono labels, a margin column for notes and outcomes, live builds set as numbered figures. The home page keeps one dark hero in the original sans design as its cover; every other surface is paper.
 - **Mood:** Calm, exact, and unhurried. It should read like a researcher's notebook that someone bothered to typeset, not a product landing page.
 - **Rule:** Nothing decorative competes with the text. No fabricated product screenshots, no stock imagery, no motion that is not a state change. Real screenshots captured from a live, publicly reachable product are allowed in the Selected work showcase.
 
 ## Typography
-- **Family:** Source Sans 3 throughout, weights 400 / 600 / 700 / 800.
-- **Rationale:** One family keeps a text-dense site coherent. Weight and size carry the hierarchy.
+- **Families** (all self-hosted from Fontsource, OFL, in `src/app/fonts/`):
+  - **Source Serif 4** (variable weight and optical size) — body, headings, everything below the home hero.
+  - **IBM Plex Mono** 400 / 500 — labels: eyebrows, dates, orgs, status, dt terms, figure numbers, nav, action links. Always small and uppercase.
+  - **Source Sans 3** — the home hero only (eyebrow, name, claim, intro, buttons, Path, colleague quotes). `.hero` locks the family so the serif body does not leak in.
+- **Rationale:** Serif reads as a paper and carries long prose; mono marks what is metadata, so the reader can skip it. Source Serif and Source Sans are a designed pair, which keeps the hero and the body from fighting.
+- **Weights:** H1 and H2 are 400 (size carries them); H3 and H4 are 600. Hero name and Path employers stay Source Sans 800.
 - **Scale:**
-  - Hero / page H1: `3.6rem` desktop, `2.8rem` tablet, `2.35rem` mobile.
-  - Section headings: `2.1rem` desktop, `1.85rem` tablet, `1.6rem` mobile.
-  - Case section headings: `1.85rem` desktop, `1.6rem` mobile.
+  - Page H1: `3rem` desktop, `2.5rem` tablet, `2.1rem` mobile. Hero name keeps `3.6rem` / `2.8rem` / `2.35rem`.
+  - Section headings: `2rem` desktop, `1.8rem` tablet, `1.6rem` mobile.
+  - Case section headings: `1.85rem` desktop, `1.55rem` mobile.
   - Body: `1.125rem` (18px) desktop, `1.0625rem` (17px) mobile.
-  - Lede: `1.2rem`. Card body and case meta: `1rem`.
-  - Eyebrow: `0.74rem`, weight 600, tracking `0.1em`; status: `0.78rem`, uppercase, letterspaced.
+  - Lede: `1.2rem`. Case question and article excerpt: `1.25–1.3rem` italic.
+  - Mono label: `0.72–0.78rem`, uppercase, tracking `0.04–0.06em`.
 
 ## Color
-- **Approach:** Warm neutral ground, dark ink, one teal accent used sparingly for links, labels, and the primary button.
-- **Background:** `#f6f5f1`
-- **Surface (cards):** `#ffffff`
-- **Panel (table headers, chips):** `#efece4`
-- **Ink:** `#132a35`
-- **Muted text:** `#5a6b73`
-- **Accent:** `#147d76`
-- **Accent dark (small text, links):** `#0f5f5a`
-- **Border:** `#ded9cf` · **Border strong:** `#c6bfb2`
+- **Approach:** Warm paper, near-black ink, one teal accent across the whole site — links, figure numbers, outcome rules, brief labels, the hero's primary button. No second accent.
+- **Background (paper):** `#fbf9f4`
+- **Surface (screenshot frames):** `#ffffff`
+- **Panel:** `#f2efe7`
+- **Ink:** `#1d1c1a` (16:1) · **Ink soft (secondary body):** `#3b3934` (11:1)
+- **Muted text:** `#67635b` (5.7:1)
+- **Accent:** `#147d76` — rules, bullets and the hero button only; at 4.7:1 it is not used for small text.
+- **Accent dark (text, links):** `#0f5f5a` (7.1:1)
+- **Border:** `#e2ddd2` · **Border strong:** `#cbc4b6`. Section-opening rules use ink.
 - **Dark hero:** `#102832`, ink `#f1f5f4`, muted `#9fb3b5`, border `#2a4149`, panel `#16323d`
 - **Accent on dark:** `#45b3a8` — the light accent is required on dark; `#147d76` does not clear 4.5:1 there.
-- **Status:** live `#0f5f5a`, in progress `#8a5a10`, proposed/archived `#4a5b64`
+- **Status:** live `#0f5f5a`, in progress `#8a5a10`, proposed/archived `#5b5f66`
 
 ## Naming Convention
 Employers are named: *Facebook AI*, *Instagram Reels*, *Omnicom*. Independent work is
@@ -69,21 +73,31 @@ The reader meets the contribution before the method. This ordering is the point 
 - **One sentence of data boundary** sits in the case header. Longer qualifications go in
   Limitations. Do not repeat "not re-verified" or "what this licenses me to say" through
   the body — a limitation that does not change how the reader reads the case is cut.
-- **Cards compare, they do not read.** A work card is title + one contribution sentence +
-  role + link; wide industry cards also show Evidence and Methods. The question and the long summary live on the case page.
-- **Home hero is an introduction.** Portrait, name, the one-line claim, a short intro, and
-  two calls to action, then the career Path timeline. Selected work follows directly, so
-  the hero does not repeat links into the cases. Keep the intro to two or three sentences;
-  trim copy and vertical rhythm before body size.
+- **Lists compare, they do not read.** Work appears in two shapes only, on the home page
+  and `/work` alike: build cards (`Showcase`) for live products, and the case ledger
+  (`CaseLedger`) for industry cases and study designs. Role, methods, evidence and the long
+  summary live on the case page.
+- **Home hero is an introduction, and the only dark surface.** Portrait, name, the one-line
+  claim, a short intro, and two calls to action, then the career Path timeline. The Path
+  has no intro sentence; each step is employer, role, and a detail of two or three words. Selected work follows directly, so
+  the hero does not repeat links into the cases. The owner's four-sentence intro (2026-10-20)
+  is the current copy; trim vertical rhythm before body size.
 - **The Path timeline** is one horizontal rule with a dot per step (vertical below 760px).
   Steps name the employer. The current step has a filled light-accent dot and a
   "Now" tag beside the name, so color never carries it alone.
-- **Selected work leads with a product showcase.** Independent builds with a live public
-  product get a full-width row: status, title, one-sentence tagline, contribution, a
-  Role / Methods specs, a bottom-aligned primary "try it" button, and three real screenshots (one large, two small, each with a
-  caption and opening full size). Data lives in `WorkItem.showcase`; screenshots sit in
-  `public/work/<slug>/` as WebP. Case cards follow under "Case studies" and keep the
-  compare-not-read rule.
+- **Selected work is compact, in the ledger layout.** Independent builds with a live public
+  product are cards in one row — three columns for three builds, four (`.builds--4`, meta
+  terms stacked) for four; two below 1100px or 980px, one below 640px — with the lead real
+  screenshot (opens full size), status, title, one-sentence tagline, Target users / Methods
+  rows (`showcase.audience`; no Role row — "independent" already says it),
+  and a split footer — "Try it ↗" in teal, "Read the case". The visible labels are short;
+  the full link text is in `aria-label`. Only the first of `showcase.shots` is shown. Data lives in `WorkItem.showcase`; screenshots sit in
+  `public/work/<slug>/` as WebP. Case studies follow as a ledger (`CaseLedger`):
+  case and org · status | question (italic) | outcome with its own label (What changed /
+  Current result) | Read →. The Creative Evidence Lab study design is its last row. It is
+  a grid, not a `<table>`, so below 780px each row stacks and the column names repeat in
+  the cells instead of scrolling sideways. Item titles are h4 on the home page (under a
+  section and a subhead) and h3 on `/work` (where the subhead is the h2): pass `heading`.
 - **Market stories are hosted here.** Seven fixed stories live in
   `src/content/market-stories.json` and render at `/writing/market-stories/[slug]`
   (`src/lib/marketStories.ts`). Each states its own price cutoff (`pricesThrough`), never a
@@ -108,16 +122,20 @@ The reader meets the contribution before the method. This ordering is the point 
   the Writing index and case pages; other pieces reach it through their sources line.
 
 ## Spacing
-- **Density:** Roomy between sections, tight inside cards.
-- **Sections:** `72px` desktop vertical padding, `48px` for tight sections, `52px` mobile.
-- **Cards:** `24px` padding desktop, `20px` mobile.
+- **Density:** Roomy between sections, rules instead of boxes inside them.
+- **Sections:** `64px` desktop vertical padding, `48px` for tight sections, `52px` mobile. Consecutive sections are separated by a 1px rule.
+- **Rows:** `28px` vertical, separated by a 1px rule. Index rows (writing, papers): `18–20px`.
 - **Case sections:** `48px` vertical, separated by a 1px rule.
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
+- **Margin column:** `.row` is a main column plus a `280px` margin (`--margin`) with a `56px` gutter. The margin holds outcomes, figure copy and case meta. Below 980px it stacks under the main column.
 - **Hero:** Copy left, circular portrait right (280px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
-- **Cards:** 4px radius, 1px border, no drop shadow at rest. Hover changes the border color and reveals a 2px teal top rule without moving the card.
-- **Tables:** always inside `.tablewrap` with `overflow-x: auto`. The page body must never scroll horizontally.
+- **Cards only where there is a picture.** Build cards and market-story cards (screenshot or chart on top) use a 1px border-strong frame, no radius, no shadow; hover darkens the border to ink. Everything else — the case ledger, writing, papers — is rows on rules. Groups open with an ink rule and a mono label (`.subhead`); consecutive groups on `/work` and `/writing` (`.section--grouped`) share one gap and no extra rule.
+- **Index rows:** date or tickers in a `112px` mono column, title and excerpt, metadata right-aligned. One column below 780px.
+- **Page headers** (`/work`, `/writing`, case, article, market story) are paper, not dark: back link, mono meta, serif H1, italic question or excerpt.
+- **Actions** below the hero are underlined mono links (`.act`, `.act--primary` in teal), not buttons. `.btn` exists for the hero only.
+- **Tables:** always inside `.tablewrap` with `overflow-x: auto`, ink top rule, mono column heads, no fill. The page body must never scroll horizontally.
 
 ## Motion
 - **Approach:** Minimal-functional. Only 0.18s color, border, and opacity transitions.
@@ -132,10 +150,10 @@ The reader meets the contribution before the method. This ordering is the point 
 - Section anchors and article headings use `scroll-margin-top: 96px` so the sticky nav does not cover a jumped-to heading.
 
 ## Page Order
-`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent builds showcase → Case studies → Lab study-design strip) → Writing (up to 4 articles → 4 Market stories, compact) → Contact
-`/work` Industry cases → Independent builds → In the lab → Earlier research
-`/work/[slug]` Header (question, status, data boundary) → Brief → Case meta → per-item sections → Limitations → Related writing
-`/writing` Published → Market stories → In progress (max 3) → Research
+`/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent build cards → Case ledger, Lab study design as its last row) → Writing (up to 4 articles → 4 Market stories, compact index → Published research: year, title, journal) → Contact
+`/work` Compact header → Industry cases (ledger) → Independent builds (cards) → In the lab (ledger). Papers live only under Writing.
+`/work/[slug]` Header (status, title, question, data boundary, actions) → Brief with case meta in the margin → per-item sections → Limitations → Related writing
+`/writing` Compact header → Published (dated index) → Market stories (chart cards: tickers, title, summary, window) → In progress (max 3) → Research (full papers with authors and links)
 `/writing/market-stories/[slug]` Header (tickers, title, window) → In short (three takeaways) → Lead paragraphs → Chart → Body paragraphs → Sources line → Price-context note
 `/writing/[slug]` Header → In short (three takeaways) → Body (example, then paragraphs; table of contents only if the piece has two or more headings) → Sources line → Related work
 
@@ -175,3 +193,13 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-17 | Wide case cards show Evidence and Methods; showcases add Role / Methods with bottom-aligned actions and portrait screenshot frames | Improve comparison and fill unused columns while retaining the existing showcase structure. |
 | 2026-10-17 | Brief and In short cards overlap the dark header by 28px and 20px | Connect the header to the reading surface. |
 | 2026-10-19 | "Why My El Niño Research Mostly Says Don’t Trade" unlisted; reachable only from the twelve-episodes essay's sources line | Owner decision. Two essays on one project shared most of their numbers and took two of the four home-page writing slots. |
+| 2026-10-20 | Everything below the home hero redesigned as a typeset paper (direction "A · Paper"): Source Serif 4 body, IBM Plex Mono labels, warm paper `#fbf9f4`, margin column, live builds as numbered figures, rows instead of cards, writing as a dated index, light page headers on every inner page, light footer | Owner chose direction A from three mockups. The card grid read as a generic portfolio; the paper treatment matches the site's argument that the evidence is the product. |
+| 2026-10-20 | Home hero and Path keep their original dark, Source Sans design; only the copy changed | Owner decision. The hero works as an introduction; the Path intro sentence ("Each step moved the work closer…") was cut and step details shortened. |
+| 2026-10-20 | One teal accent site-wide; the annotation red from the mockup was not adopted | Owner decision. Two accents (teal hero, red body) would split the site in two. |
+| 2026-10-20 | Selected work compacted to the ledger layout: three build cards with one screenshot each, case studies as a question → outcome ledger; serif/mono type, teal accent and hero unchanged | Owner decision. The figure rows took about 3,000px at 1440 wide; the section is now about 1,450px. |
+| 2026-10-20 | Hero claim "I make product progress measurable." and a four-sentence intro, supplied by the owner; positioning line in DESIGN.md and README.md updated to match | Owner copy. Supersedes the two-to-three-sentence intro rule. |
+| 2026-10-20 | Build cards show Target users instead of Role | Owner decision. "Independent" already states the role; who the product is for says more. |
+| 2026-10-20 | Compact Published research moved above Selected work on the home page; the contact block no longer links to it | Owner decision. Peer-reviewed work is the quickest credibility signal; titles and journals only, authors stay on `/writing#research`. |
+| 2026-10-20 | `/work` and `/writing` compacted the same way as the home page: ledger and build cards on `/work`, dated index and market-story chart cards on `/writing`, compact page headers; the row-with-margin work card was removed | Owner decision. Supersedes the 2026-10-17 wide cards with Evidence and Methods; those stay on the case page. |
+| 2026-10-20 | Published research moved again: from above Selected work to the end of the home Writing section, under Market stories; removed from `/work` | Owner decision, superseding the same-day placement. Papers are writing; `/writing#research` has the full list. |
+| 2026-10-20 | Narrative Atlas returns as an independent build (Working prototype), placed before Debrief, linking to the public static atlas; no Code link because the repository is private | Owner decision, superseding the 2026-10-16 removal. The case covers the pipeline, the duplicate audit and the evaluation gaps, and does not repeat the market stories. Screenshots are of the stock, narratives and library pages, not the market-story landing page. |

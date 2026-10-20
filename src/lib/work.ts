@@ -65,6 +65,8 @@ export interface Shot {
 export interface Showcase {
   /** One sentence on what the product does for its user. */
   tagline: string;
+  /** Who it is for, in a few words. Shown as "Target users" on the card. */
+  audience: string;
   /** First shot is the large one. */
   shots: Shot[];
 }
@@ -519,6 +521,7 @@ const items: WorkItem[] = [
     showcase: {
       tagline:
         'Follows one El Niño from ocean heat to palm oil prices, with every test written down before it ran.',
+      audience: 'Commodity traders and researchers',
       shots: [
         {
           src: '/work/el-nino-commodities/overview.webp',
@@ -951,6 +954,7 @@ const items: WorkItem[] = [
     showcase: {
       tagline:
         'Search a city and see what each church says about itself, summarised from its own website, before a first Sunday visit.',
+      audience: 'First-time church visitors',
       shots: [
         {
           src: '/work/churchmap/search-map.webp',
@@ -1040,6 +1044,221 @@ const items: WorkItem[] = [
     ],
   },
   {
+    slug: 'narrative-atlas',
+    title: 'Narrative Atlas',
+    question:
+      'When analysts keep restating a view, how do you tell a real change in the story from the same story told again?',
+    kind: 'independent-build',
+    status: 'in-progress',
+    featured: false,
+    role: 'Sole author. Ingest, extraction, narrative clustering, the stage engine, price alignment, the static site, and the evaluation fixtures.',
+    roleLabel: 'Independent builder',
+    methods: [
+      'Claim extraction',
+      'Narrative clustering',
+      'Change detection with hysteresis',
+      'Point-in-time alignment',
+      'Golden-set evaluation',
+    ],
+    dataNote:
+      'The sources are a paid daily newsletter, so the code and the original documents stay private. The atlas itself is public and shows the derived narratives, propositions and prices.',
+    evidenceType: ['observational'],
+    contribution:
+      'Built a pipeline that turns a daily stream of analyst commentary into narratives with lifecycle stages, with every change traceable to a dated source.',
+    brief: {
+      problem:
+        'Analyst commentary arrives every day, repeats itself, and now and then reverses. Read as a stream, it is hard to see whether a view changed or was only restated, and easy to read the story backwards from the price.',
+      contribution:
+        'I built it end to end: ingest, claim and narrative extraction, clustering with an audit for duplicates, a stage engine one edition cannot flip, price episodes dated against the evidence, and a public static atlas.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'Live, with more than 220 editions since June 2025 grouped into 45 narratives across five sectors. The duplicate audit is scored on a small hand-labelled set; extraction fidelity is not measured yet.',
+    },
+    limitations: [
+      'The sources are a paid newsletter, so the code and the original documents stay private. What is public is the atlas: derived narratives, propositions and prices.',
+      'The duplicate-audit fixture is small (15 scored pairs) and I labelled it while building the classifier. A perfect score there shows the rules do what I intended, not that they generalize.',
+      'Extraction fidelity, whether a stance or claim matches its source, has not been scored against independent human labels.',
+      'Price episodes are retrospective and descriptive. The benchmark is context, not a causal control, and price is never used as a label for whether a claim was extracted correctly.',
+    ],
+    updatedAt: '2026-10-20',
+    links: {
+      caseStudy: '/work/narrative-atlas',
+      demo: 'https://narrative-atlas-static.pages.dev/',
+    },
+    showcase: {
+      tagline:
+        'Follow how analyst narratives about a stock form, strengthen and reverse, with every change dated to its source.',
+      audience: 'Investors tracking analyst views',
+      shots: [
+        {
+          src: '/work/narrative-atlas/stock-episode.webp',
+          alt: 'Narrative Atlas page for NVDA: price, research window, and a price and evidence episode chart comparing NVDA with a semiconductor ETF.',
+          caption: 'One stock: a proposition, its dated evidence, and the price',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/narrative-atlas/narratives.webp',
+          alt: 'Narrative Atlas narratives index: 45 narratives across 5 sectors, each with tickers, evidence state and last source date.',
+          caption: 'Forty-five narratives, nested by sector',
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: '/work/narrative-atlas/library.webp',
+          alt: 'Narrative Atlas library: research editions by date with the tickers each one covers and a link to the extracted evidence.',
+          caption: 'Every edition, with the tickers it covers',
+          width: 1440,
+          height: 900,
+        },
+      ],
+    },
+    sections: [
+      {
+        id: 'task',
+        heading: 'The task',
+        prompt: 'What does the system do?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Each edition of a daily markets newsletter is converted to text and read twice: once for what it says about each ticker, once for the larger theses it advances. The theses are clustered into narratives, each narrative gets a lifecycle stage, and each stock gets a dated record of the propositions about it next to its price.',
+          },
+          {
+            type: 'deflist',
+            items: [
+              {
+                term: 'Narrative',
+                detail:
+                  'A thesis that recurs across editions and tickers, such as AI infrastructure demand. Forty-five are live, nested in five sectors.',
+              },
+              {
+                term: 'Stage',
+                detail:
+                  'Candidate, forming, building, crowded, contested, cooling, dormant or revived, computed from mention counts, distinct editions, ticker breadth, sentiment mix and source dates. Hysteresis means a single edition cannot flip it.',
+              },
+              {
+                term: 'Price and evidence episode',
+                detail:
+                  'For one proposition about one stock, the price path over a window with each dated piece of evidence marked on it, beside a sector benchmark on the same dates.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'example',
+        heading: 'A worked example',
+        prompt: 'What does a real change look like, and what does a false one look like?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Two narratives can share most of their tickers and still be different theses. AI data-center power and cooling shares 33 tickers with AI infrastructure capex, and an audit that keyed on ticker overlap would have proposed merging them. The table shows how the current audit decides.',
+          },
+          {
+            type: 'table',
+            caption:
+              'Pairs from the audit fixture and the October registry. Nothing merges automatically; every proposal waits for a person.',
+            head: ['Pair', 'Evidence', 'Decision'],
+            rows: [
+              [
+                'Digital advertising platform monetization, minted twice',
+                'The same raw label in both clusters',
+                'Duplicate: a merge is proposed for review',
+              ],
+              [
+                'AI data-center power and cooling, and AI infrastructure capex',
+                'Related labels below the duplicate bar; 33 shared tickers',
+                'Related but distinct: no merge',
+              ],
+              [
+                'Two AI baskets with no label in common',
+                'Ticker overlap only',
+                'Watch list: never a merge proposal',
+              ],
+            ],
+          },
+          {
+            type: 'p',
+            text: 'The stock pages apply the same discipline to time. The NVDA episode for "data-center GPU demand and revenue keep growing" runs from January 20 to September 11, 2026: the stock rose 22.9% while the semiconductor ETF rose 45.6% on the same dates, with each dated source event marked on the line. The page labels itself a retrospective review, not real-time detection.',
+          },
+        ],
+      },
+      {
+        id: 'observed',
+        heading: 'What the build has taught me',
+        prompt: 'What goes wrong, and how do I know?',
+        blocks: [
+          {
+            type: 'p',
+            text: 'The first duplicate audit flagged a pair when either the labels or the tickers overlapped. On the July registry every one of its eight candidates fired on ticker overlap alone, and it missed at least six real duplicates, three of them pairs where an identical raw label had been mapped to two clusters. Shared baskets are not shared theses.',
+          },
+          {
+            type: 'p',
+            text: 'Time causes a quieter error. If the source publishes nothing for a week, a naive stage engine lets every narrative cool. Silence now ages the evidence but cannot on its own move a narrative into cooling or dormant; only comparable source dates can.',
+          },
+          {
+            type: 'p',
+            text: 'Hindsight is the hardest. Once a stock has fallen, the earlier evidence reads like a warning. Episodes record when a pattern first qualified on the source dates, and say so plainly when the system’s actual detection time is unknown for historical material.',
+          },
+        ],
+      },
+      {
+        id: 'evaluation',
+        heading: 'Evaluation',
+        prompt: 'What is measured, and what is not?',
+        blocks: [
+          {
+            type: 'table',
+            caption:
+              'About a thousand automated tests guard these contracts on every change. They measure behaviour, not truth.',
+            head: ['Layer', 'Status', 'What must not be conflated'],
+            rows: [
+              [
+                'Duplicate audit',
+                '18 hand-labelled pairs, 15 scored and 3 marked ambiguous. Precision and recall 1.00, against 0.20 and 0.14 for the old rule.',
+                'A perfect score on a fixture I labelled is a regression test, not a claim that the rules generalize.',
+              ],
+              [
+                'Stage and stance contracts',
+                'A frozen set of cases checked against seven written contracts, among them unchanged input, publication gaps, real flips, conflicting claims and repeated commentary. Labels proposed with an AI assistant, not independently adjudicated.',
+                'Passing a contract shows a rule is applied, not that the stance was read correctly.',
+              ],
+              [
+                'Extraction fidelity',
+                'Not measured.',
+                'A fluent summary is not a faithful extraction.',
+              ],
+              [
+                'Price alignment',
+                'Descriptive only.',
+                'Price is an outcome, not a label for extraction quality.',
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next',
+        heading: 'Next',
+        prompt: 'What happens next, and what would stop it?',
+        blocks: [
+          {
+            type: 'list',
+            items: [
+              'Label a sample of extracted stances and claims against their sources with a second annotator, and publish the agreement rate.',
+              'Add duplicates with no shared vocabulary to the audit fixture; the deterministic audit cannot see them yet.',
+              'Record when each pattern first qualifies from now on, so detection time stops being unknown.',
+            ],
+          },
+          {
+            type: 'p',
+            text: 'Stop condition: if two annotators cannot agree on stance for most sampled claims, the stance schema changes before any model is tuned against it.',
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: 'debrief',
     title: 'Debrief',
     alias: 'Published from the repository brief-voice-memo',
@@ -1079,6 +1298,7 @@ const items: WorkItem[] = [
     showcase: {
       tagline:
         'Talk through your day for half a minute and get back a summary, key points, and todos. No sign-in needed to try it.',
+      audience: 'People who review their day by voice',
       shots: [
         {
           src: '/work/debrief/home.webp',
@@ -1262,7 +1482,7 @@ export function getFeaturedWork(): WorkItem[] {
 
 /** Builds a reader can open and try, in home-page order. */
 export function getShowcaseWork(): WorkItem[] {
-  const order = ['el-nino-commodities', 'churchmap', 'debrief'];
+  const order = ['el-nino-commodities', 'churchmap', 'narrative-atlas', 'debrief'];
   return order
     .map((slug) => items.find((item) => item.slug === slug))
     .filter((item): item is WorkItem => !!item?.showcase);
