@@ -1,68 +1,71 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { KIND_LABEL, type WorkItem } from '@/lib/work';
+import type { WorkItem } from '@/lib/work';
 import StatusBadge from './StatusBadge';
 
 /**
- * A live product on the home page: what it does, where to try it, and real screenshots.
+ * A live product on the home page, as one card in a row of three: the lead screenshot,
+ * what it does, role and methods, and where to try it. Only the first shot is shown.
  * Renders nothing for an item without a showcase or a public link.
  */
-export default function Showcase({ item }: { item: WorkItem }) {
+export default function Showcase({
+  item,
+  heading: Heading = 'h4',
+}: {
+  item: WorkItem;
+  /** h4 under a section and a subhead (home); h3 where the subhead is the h2 (/work). */
+  heading?: 'h3' | 'h4';
+}) {
   const showcase = item.showcase;
+  // Short labels fit half a card; screen readers get the full one.
   const live = item.links?.demo
-    ? { href: item.links.demo, label: 'Try the product' }
-    : item.links?.artifact;
+    ? { href: item.links.demo, label: 'Try it', full: `Try ${item.title}` }
+    : item.links?.artifact && {
+        href: item.links.artifact.href,
+        label: 'Open it',
+        full: item.links.artifact.label,
+      };
   if (!showcase || !live) return null;
 
-  const [lead, ...rest] = showcase.shots;
+  const [lead] = showcase.shots;
 
   return (
-    <article className="showcase">
-      <div className="showcase__copy">
-        <div className="card__top">
-          <StatusBadge status={item.status} />
-          <span className="card__org">{KIND_LABEL[item.kind]}</span>
-        </div>
-        <h3 className="showcase__title">
+    <article className="build">
+      <a
+        className="build__shot"
+        href={lead.src}
+        target="_blank"
+        rel="noopener"
+        title="Open full-size screenshot"
+      >
+        <Image src={lead.src} alt={lead.alt} width={lead.width} height={lead.height} />
+      </a>
+
+      <div className="build__body">
+        <StatusBadge status={item.status} />
+        <Heading className="build__title">
           <Link href={`/work/${item.slug}`}>{item.title}</Link>
-        </h3>
-        <p className="showcase__tagline">{showcase.tagline}</p>
-        <p className="showcase__contribution">{item.contribution}</p>
-        <dl className="showcase__meta metalist">
+        </Heading>
+        <p className="build__tagline">{showcase.tagline}</p>
+        <dl className="build__meta">
           <div>
-            <dt>Role</dt>
-            <dd>{item.role}</dd>
+            <dt>Target users</dt>
+            <dd>{showcase.audience}</dd>
           </div>
           <div>
             <dt>Methods</dt>
             <dd>{item.methods.join(' · ')}</dd>
           </div>
         </dl>
-        <div className="showcase__actions">
-          <a className="btn btn--primary" href={live.href} target="_blank" rel="noopener">
-            {live.label} ↗
-          </a>
-          <Link className="arrowlink" href={`/work/${item.slug}`}>
-            Read the case →
-          </Link>
-        </div>
       </div>
 
-      <div className="showcase__gallery">
-        <figure className={`shot shot--lead${lead.height > lead.width ? ' shot--portrait' : ''}${lead.fit ? ` shot--${lead.fit}` : ''}`}>
-          <a href={lead.src} target="_blank" rel="noopener" title="Open full-size screenshot">
-            <Image src={lead.src} alt={lead.alt} width={lead.width} height={lead.height} />
-          </a>
-          <figcaption>{lead.caption}</figcaption>
-        </figure>
-        {rest.map((shot) => (
-          <figure className={`shot${shot.height > shot.width ? ' shot--portrait' : ''}${shot.fit ? ` shot--${shot.fit}` : ''}`} key={shot.src}>
-            <a href={shot.src} target="_blank" rel="noopener" title="Open full-size screenshot">
-              <Image src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} />
-            </a>
-            <figcaption>{shot.caption}</figcaption>
-          </figure>
-        ))}
+      <div className="build__acts">
+        <a href={live.href} target="_blank" rel="noopener" aria-label={live.full}>
+          {live.label} ↗
+        </a>
+        <Link href={`/work/${item.slug}`} aria-label={`Read the case: ${item.title}`}>
+          Read the case
+        </Link>
       </div>
     </article>
   );

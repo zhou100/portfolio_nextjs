@@ -1,9 +1,11 @@
 /* ---------- Market story page (extends article.css) ---------- */
 
 .story-page__window {
-  color: var(--clr-dark-muted);
-  font-size: 0.9rem;
-  margin-top: 14px;
+  color: var(--clr-muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  margin-top: 16px;
 }
 
 .story-prose p + p {
@@ -17,8 +19,7 @@
 
 .story-figure__frame {
   background: #f3eee5;
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
+  border: 1px solid var(--clr-border-strong);
 }
 
 .story-figure img {
@@ -31,7 +32,7 @@
 }
 
 .story-figure__open {
-  font-size: 0.95rem;
+  font-style: normal;
   justify-self: start;
   margin-top: 4px;
 }
@@ -53,12 +54,20 @@
   color: var(--clr-muted);
   display: grid;
   font-size: 0.92rem;
+  font-style: italic;
   gap: 4px;
   margin-top: 10px;
   max-width: var(--prose);
 }
 
-/* "Next story: <title>" is long; let it wrap on narrow screens. */
+/* "Next story: <title>" is long; let it wrap, and keep the title out of capitals. */
 .story-page .article-page__foot .arrowlink {
   white-space: normal;
+}
+
+.story-page .article-page__foot .arrowlink:first-child {
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
 }

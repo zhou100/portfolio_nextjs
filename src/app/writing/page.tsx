@@ -3,12 +3,12 @@ import Link from 'next/link';
 import {
   articleHref,
   getDraftingArticles,
-  getPapers,
   getListedArticles,
 } from '@/lib/writing';
 import { getOgImage, getSite } from '@/lib/portfolio';
 import { getWorkBySlug } from '@/lib/work';
 import MarketStories from '../components/Writing/MarketStories';
+import Papers from '../components/Writing/Papers';
 import './writing.css';
 
 export const metadata: Metadata = {
@@ -29,11 +29,10 @@ export default function WritingIndex() {
   const published = getListedArticles();
   // At most three. A list of promises is not a body of work.
   const next = getDraftingArticles().slice(0, 3);
-  const papers = getPapers();
 
   return (
     <>
-      <header className="pagehead">
+      <header className="pagehead pagehead--compact">
         <div className="wrap">
           <p className="eyebrow">Writing</p>
           <h1 className="pagehead__title">Notes on measurement and AI evaluation.</h1>
@@ -44,41 +43,40 @@ export default function WritingIndex() {
       </header>
 
       {!!published.length && (
-        <section className="section" id="published">
+        <section className="section section--tight section--grouped" id="published">
           <div className="wrap">
-            <ul className="postlist">
+            <div className="subhead">
+              <h2 className="subhead__title">Published</h2>
+            </div>
+            <ul className="index">
               {published.map((article) => {
                 const href = articleHref(article);
                 const work = article.relatedWork ? getWorkBySlug(article.relatedWork) : undefined;
 
                 return (
-                  <li className="post" key={article.slug}>
-                    <div className="post__meta">
-                      <span className="card__org">{article.topic}</span>
-                      {article.format && <span className="card__org">{article.format}</span>}
-                      {article.publishedAt && (
-                        <span className="card__org">{article.publishedAt}</span>
-                      )}
-                      {article.readingTime && (
-                        <span className="card__org">{article.readingTime}</span>
-                      )}
+                  <li className="index__row" key={article.slug}>
+                    <span className="label">{article.publishedAt}</span>
+                    <div>
+                      <h3 className="index__title">
+                        {href ? <Link href={href}>{article.title}</Link> : article.title}
+                      </h3>
+                      <p className="index__excerpt">
+                        {article.excerpt}
+                        {work && (
+                          <>
+                            {' '}
+                            <Link className="textlink" href={`/work/${work.slug}`}>
+                              Draws on {work.title}
+                            </Link>
+                          </>
+                        )}
+                      </p>
                     </div>
-                    <h2 className="post__title">
-                      {href ? <Link href={href}>{article.title}</Link> : article.title}
-                    </h2>
-                    <p className="post__excerpt">{article.excerpt}</p>
-                    <div className="post__foot">
-                      {href && (
-                        <Link className="arrowlink" href={href}>
-                          Read article →
-                        </Link>
-                      )}
-                      {work && (
-                        <Link className="textlink post__related" href={`/work/${work.slug}`}>
-                          Draws on {work.title}
-                        </Link>
-                      )}
-                    </div>
+                    <span className="label index__meta">
+                      {[article.topic, article.format, article.readingTime]
+                        .filter(Boolean)
+                        .join(' · ')}
+                    </span>
                   </li>
                 );
               })}
@@ -87,42 +85,35 @@ export default function WritingIndex() {
         </section>
       )}
 
-      <section className="section section--tight" id="market-stories">
+      <section className="section section--tight section--grouped" id="market-stories">
         <div className="wrap">
-          <div className="section__head">
-            <div>
-              <p className="eyebrow">Market stories</p>
-              <h2 className="section__title">How the view on a stock changed, and why</h2>
-              <p className="section__lede">
-                Short essays on one company or a group: what moved the price against the Nasdaq-100, how analysts read it, what I made of it, and what would change my mind.
-              </p>
-            </div>
+          <div className="subhead">
+            <h2 className="subhead__title">Market stories</h2>
+            <p className="subhead__lede">
+              Short essays on one company or a group: what moved the price against the Nasdaq-100, how analysts read it, what I made of it, and what would change my mind.
+            </p>
           </div>
-
           <MarketStories />
         </div>
       </section>
 
       {!!next.length && (
-        <section className="section section--tight" id="next">
+        <section className="section section--tight section--grouped" id="next">
           <div className="wrap">
-            <div className="section__head">
-              <div>
-                <p className="eyebrow">In progress</p>
-                <h2 className="section__title">What I am writing next</h2>
-                <p className="section__lede">
-                  Listed with the question each piece will address. They go up when the example
-                  work is done, not on a schedule.
-                </p>
-              </div>
+            <div className="subhead">
+              <h2 className="subhead__title">In progress</h2>
+              <p className="subhead__lede">
+                Listed with the question each piece will address. They go up when the example work is done, not on a schedule.
+              </p>
             </div>
-
-            <ul className="queue">
+            <ul className="index">
               {next.map((article) => (
-                <li className="queue__item" key={article.slug}>
-                  <span className="card__org">{article.topic}</span>
-                  <p className="queue__title">{article.title}</p>
-                  <p className="queue__excerpt">{article.excerpt}</p>
+                <li className="index__row index__row--two" key={article.slug}>
+                  <span className="label">{article.topic}</span>
+                  <div>
+                    <h3 className="index__title">{article.title}</h3>
+                    <p className="index__excerpt">{article.excerpt}</p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -130,13 +121,10 @@ export default function WritingIndex() {
         </section>
       )}
 
-      <section className="section section--tight" id="research">
+      <section className="section section--tight section--grouped" id="research">
         <div className="wrap">
-          <div className="section__head">
-            <div>
-              <p className="eyebrow">Research</p>
-              <h2 className="section__title">Peer-reviewed publications</h2>
-            </div>
+          <div className="subhead subhead--split">
+            <h2 className="subhead__title">Research</h2>
             {site.social.googleScholar && (
               <a
                 className="arrowlink"
@@ -148,46 +136,7 @@ export default function WritingIndex() {
               </a>
             )}
           </div>
-
-          <ul className="papers">
-            {papers.map((paper) => (
-              <li className="paper" key={paper.href}>
-                <span className="paper__year">{paper.year}</span>
-                <div>
-                  <h3 className="paper__title">
-                    <a href={paper.href} target="_blank" rel="noopener noreferrer">
-                      {paper.title}
-                    </a>
-                  </h3>
-                  <p className="paper__authors">{paper.authors}</p>
-                  <p className="paper__pub">
-                    {paper.publication}
-                    {paper.details ? `, ${paper.details}` : ''}
-                  </p>
-                  <div className="outlinks paper__links">
-                    <a
-                      className="outlink"
-                      href={paper.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Paper
-                    </a>
-                    {paper.sourceCode && (
-                      <a
-                        className="outlink"
-                        href={paper.sourceCode}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Code
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Papers />
         </div>
       </section>
     </>

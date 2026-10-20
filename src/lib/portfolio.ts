@@ -17,7 +17,6 @@ export interface Site {
   eyebrow: string;
   headline: string;
   intro: string;
-  pathIntro: string;
   primaryCta: Cta;
   /** Rendered only when `resume` is a real, downloadable file. */
   resume?: string;
@@ -44,11 +43,9 @@ export function getSite(): Site {
     profileImage: '/profile.jpg',
     brand: 'Yujun Zhou',
     eyebrow: 'Data Scientist and AI builder',
-    headline: 'I turn product questions into measures a team can move.',
+    headline: 'I make product progress measurable.',
     intro:
-      'I’m a data scientist with a PhD in economics. I build metrics and experiments for product decisions, with a recent focus on defining and evaluating good performance in AI products.',
-    pathIntro:
-      'Each step moved the work closer to a decision someone had to make.',
+      'I’m a data scientist with a PhD in economics. I help teams define success, design experiments, and use the results to decide what to build next. My work spans recommendation systems, product experimentation, and AI applications. Lately, I’ve focused on AI evaluation: defining what “better” means for a specific product and turning that definition into evaluations engineers can use.',
     primaryCta: { label: 'Explore selected work', href: '/work' },
     // Set this to '/resume.pdf' once the file exists in `public/`. The nav link and
     // the hero's secondary call to action appear automatically when it is set.
@@ -82,12 +79,12 @@ export function getPath(): PathStep[] {
     {
       org: 'University of Illinois',
       role: 'PhD, Applied Economics',
-      detail: 'Causal inference and forecasting',
+      detail: 'Causal inference, forecasting',
     },
     {
       org: 'Facebook AI',
       role: 'Data Scientist',
-      detail: 'Fake accounts and integrity measurement',
+      detail: 'Fake-account measurement',
     },
     {
       org: 'Instagram Reels',
@@ -97,7 +94,7 @@ export function getPath(): PathStep[] {
     {
       org: 'Omnicom',
       role: 'Data Science Manager & Tech Lead',
-      detail: 'AI agent orchestration and evaluation',
+      detail: 'AI agent evaluation',
       current: true,
     },
   ];

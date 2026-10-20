@@ -1,15 +1,7 @@
 /* ---------- Article page ---------- */
 
 .article-page__back {
-  margin-bottom: 28px;
-}
-
-.article-page__back .arrowlink {
-  color: var(--clr-dark-muted);
-}
-
-.article-page__back .arrowlink:hover {
-  color: var(--clr-dark-ink);
+  margin-bottom: 36px;
 }
 
 .article-page__meta {
@@ -20,31 +12,30 @@
 }
 
 .article-page__meta span {
-  color: var(--clr-accent-on-dark);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  color: var(--clr-muted);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .article-page__header {
-  background: var(--clr-dark);
-  color: var(--clr-dark-ink);
-  padding: 40px 0 48px;
+  padding: 56px 0 40px;
 }
 
 .article-page__title {
-  color: var(--clr-dark-ink);
   font-size: 2.9rem;
-  margin-top: 16px;
+  margin-top: 14px;
   max-width: 22ch;
 }
 
 .article-page__excerpt {
-  color: var(--clr-dark-muted);
-  font-size: 1.15rem;
+  color: var(--clr-ink-soft);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.45;
   margin-top: 18px;
-  max-width: 62ch;
+  max-width: 52ch;
 }
 
 .article-page__body {
@@ -62,9 +53,9 @@
 
 .toc__label {
   color: var(--clr-muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -89,29 +80,20 @@
 
 /* Essays (articles and market stories): three takeaways first, sources on one line last. */
 .essay-tldr {
-  position: relative;
-  margin-top: -20px;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  margin-bottom: 32px;
+  border-left: 2px solid var(--clr-accent);
+  margin-bottom: 40px;
   max-width: var(--prose);
-  padding: 22px 24px;
+  padding: 2px 0 2px 20px;
 }
 
 .essay-tldr__label {
-  color: var(--clr-muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  color: var(--clr-accent-dark);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
   text-transform: uppercase;
-}
-
-@media (max-width: 760px) {
-  .essay-tldr {
-    padding: 18px 20px;
-  }
 }
 
 .essay-sources {
@@ -124,16 +106,21 @@
 
 .essay-sources > span:first-child {
   color: var(--clr-ink);
-  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .essay-sources a {
-  border-bottom: 1px solid var(--clr-border-strong);
   color: var(--clr-accent-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--clr-border-strong);
+  text-underline-offset: 3px;
 }
 
 .essay-sources a:hover {
-  border-color: var(--clr-accent);
+  text-decoration-color: var(--clr-accent);
 }
 
 .article-page__prose {
@@ -170,12 +157,16 @@
 }
 
 @media (max-width: 640px) {
+  .article-page__header {
+    padding: 40px 0 32px;
+  }
+
   .article-page__title {
     font-size: 2rem;
   }
 
   .article-page__excerpt {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
 }
 

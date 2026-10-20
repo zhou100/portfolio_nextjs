@@ -4,7 +4,15 @@ import {
   analysisWindow,
   getMarketStories,
   marketStoryHref,
+  pricesThrough,
 } from '@/lib/marketStories';
+
+/** A long ticker list would wrap down the narrow date column; name three and count the rest. */
+function shortTickers(tickers: string[]): string {
+  return tickers.length > 3
+    ? `${tickers.slice(0, 3).join(' · ')} +${tickers.length - 3}`
+    : tickers.join(' · ');
+}
 
 /** Index of the market stories hosted under /writing/market-stories. */
 export default function MarketStories({ compact = false, limit }: { compact?: boolean; limit?: number }) {
@@ -12,23 +20,14 @@ export default function MarketStories({ compact = false, limit }: { compact?: bo
 
   if (compact) {
     return (
-      <ul className="storylist">
+      <ul className="index">
         {stories.map((story) => (
-          <li key={story.slug}>
-            <Link className="storyrow" href={marketStoryHref(story)}>
-              <span className="storyrow__chart">
-                <Image
-                  src={story.thumb.src}
-                  alt=""
-                  width={story.thumb.width}
-                  height={story.thumb.height}
-                />
-              </span>
-              <span>
-                <span className="storyrow__tickers">{story.tickers.join(' · ')}</span>
-                <span className="storyrow__title">{story.title}</span>
-              </span>
-            </Link>
+          <li className="index__row" key={story.slug}>
+            <span className="label">{shortTickers(story.tickers)}</span>
+            <h4 className="index__title">
+              <Link href={marketStoryHref(story)}>{story.title}</Link>
+            </h4>
+            <span className="label index__meta">Prices to {pricesThrough(story)}</span>
           </li>
         ))}
       </ul>
@@ -37,13 +36,13 @@ export default function MarketStories({ compact = false, limit }: { compact?: bo
 
   return (
     <>
-      <ul className="stories">
+      <ul className="storycards">
         {stories.map((story) => {
           const href = marketStoryHref(story);
 
           return (
-            <li className="story" key={story.slug}>
-              <Link className="story__chart" href={href} tabIndex={-1} aria-hidden="true">
+            <li className="storycard" key={story.slug}>
+              <Link className="storycard__chart" href={href} tabIndex={-1} aria-hidden="true">
                 <Image
                   src={story.thumb.src}
                   alt=""
@@ -51,20 +50,14 @@ export default function MarketStories({ compact = false, limit }: { compact?: bo
                   height={story.thumb.height}
                 />
               </Link>
-              <div className="story__meta">
-                <span className="card__org">{story.tickers.join(' · ')}</span>
-                <span className="card__org">{analysisWindow(story)}</span>
+              <div className="storycard__body">
+                <span className="label">{shortTickers(story.tickers)}</span>
+                <h3 className="storycard__title">
+                  <Link href={href}>{story.title}</Link>
+                </h3>
+                <p className="storycard__summary">{story.summary}</p>
+                <span className="label storycard__window">{analysisWindow(story)}</span>
               </div>
-              <h3 className="story__title">
-                <Link href={href}>{story.title}</Link>
-              </h3>
-              <p className="story__summary">{story.summary}</p>
-              <p className="story__watch">
-                <span>What to watch</span> {story.watch}
-              </p>
-              <Link className="arrowlink story__link" href={href}>
-                Read the story →
-              </Link>
             </li>
           );
         })}

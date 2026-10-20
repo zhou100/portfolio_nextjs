@@ -10,7 +10,7 @@ export default function NotFound() {
           The work index is the best place to start.
         </p>
         <p style={{ marginTop: 28 }}>
-          <Link className="btn btn--primary" href="/work">
+          <Link className="act act--primary" href="/work">
             Go to all work
           </Link>
         </p>

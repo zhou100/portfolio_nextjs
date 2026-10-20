@@ -4,9 +4,10 @@ import { getPath, getSite, getTestimonials } from '@/lib/portfolio';
 import { getFeaturedWork, getShowcaseWork, getWorkBySlug } from '@/lib/work';
 import { articleHref, getListedArticles } from '@/lib/writing';
 import CareerPath from './components/CareerPath/CareerPath';
+import CaseLedger from './components/Work/CaseLedger';
 import Showcase from './components/Work/Showcase';
 import MarketStories from './components/Writing/MarketStories';
-import WorkCard from './components/Work/WorkCard';
+import Papers from './components/Writing/Papers';
 import './home.css';
 
 export default function Home() {
@@ -57,7 +58,7 @@ export default function Home() {
             />
           </div>
 
-          <CareerPath intro={site.pathIntro} steps={path} />
+          <CareerPath steps={path} />
 
           {!!testimonials.length && (
             <section className="kudos" aria-labelledby="kudos-label">
@@ -94,17 +95,19 @@ export default function Home() {
           </div>
 
           {!!showcase.length && (
-            <div className="showcases">
+            <>
               <div className="subhead">
                 <h3 className="subhead__title">Independent builds</h3>
                 <p className="subhead__lede">
                   Products I designed, built and still run. Each one is live; you can try it.
                 </p>
               </div>
-              {showcase.map((item) => (
-                <Showcase item={item} key={item.slug} />
-              ))}
-            </div>
+              <div className={`builds builds--${showcase.length}`}>
+                {showcase.map((item) => (
+                  <Showcase item={item} key={item.slug} />
+                ))}
+              </div>
+            </>
           )}
 
           <div className="subhead">
@@ -113,33 +116,12 @@ export default function Home() {
               Measurement and evaluation work, with the method and the evidence behind each decision.
             </p>
           </div>
-          <div className={`grid grid--${cases.length >= 3 ? 3 : 2}`}>
-            {cases.map((item) => (
-              <WorkCard item={item} key={item.slug} />
-            ))}
-          </div>
-
-          {lab && (
-            <article className="labstrip" id="lab">
-              <div>
-                <p className="eyebrow">Creative Evidence Lab · Study design</p>
-                <h3 className="labstrip__title">
-                  <Link href={`/work/${lab.slug}`}>{lab.question}</Link>
-                </h3>
-                <p className="labstrip__body">
-                  A proposed workflow that goes from a visible creative attribute to a hypothesis to an experiment brief, keeping label quality, prediction and causation as separate claims.
-                </p>
-              </div>
-              <Link className="arrowlink" href={`/work/${lab.slug}`}>
-                Read the study design →
-              </Link>
-            </article>
-          )}
+          <CaseLedger items={lab ? [...cases, lab] : cases} />
         </div>
       </section>
 
       {!!articles.length && (
-        <section className="section section--tight" id="writing">
+        <section className="section" id="writing">
           <div className="wrap">
             <div className="section__head">
               <div>
@@ -151,23 +133,24 @@ export default function Home() {
               </Link>
             </div>
 
-            <ul className="articles">
+            <ul className="index">
               {articles.map((article) => {
                 const href = articleHref(article);
 
                 return (
-                  <li className="article" key={article.slug}>
-                    <div className="article__meta">
-                      <span className="card__org">{article.topic}</span>
-                      {article.format && <span className="card__org">{article.format}</span>}
-                      {article.readingTime && (
-                        <span className="card__org">{article.readingTime}</span>
-                      )}
+                  <li className="index__row" key={article.slug}>
+                    <span className="label">{article.publishedAt}</span>
+                    <div>
+                      <h3 className="index__title">
+                        {href ? <Link href={href}>{article.title}</Link> : article.title}
+                      </h3>
+                      <p className="index__excerpt">{article.excerpt}</p>
                     </div>
-                    <h3 className="article__title">
-                      {href ? <Link href={href}>{article.title}</Link> : article.title}
-                    </h3>
-                    <p className="article__argument">{article.excerpt}</p>
+                    <span className="label index__meta">
+                      {[article.topic, article.format, article.readingTime]
+                        .filter(Boolean)
+                        .join(' · ')}
+                    </span>
                   </li>
                 );
               })}
@@ -183,31 +166,39 @@ export default function Home() {
               </p>
             </div>
             <MarketStories compact limit={4} />
+
+            <div className="subhead subhead--split subhead--stories" id="research">
+              <h3 className="subhead__title">Published research</h3>
+              {site.social.googleScholar && (
+                <a
+                  className="arrowlink"
+                  href={site.social.googleScholar}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Scholar →
+                </a>
+              )}
+            </div>
+            <Papers compact heading="h4" />
           </div>
         </section>
       )}
 
-      <section className="section">
+      <section className="section" id="contact">
         <div className="wrap">
           <div className="closer">
-            <div>
-              <p className="eyebrow">Contact</p>
-              <h2 className="section__title">
-                Let’s talk about product measurement and AI evaluation.
-              </h2>
-              <p className="section__lede">
-                I’m interested in teams turning experimentation and evaluation into better product
-                decisions.
-              </p>
-            </div>
-            <div className="closer__actions">
-              <a className="btn btn--primary" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-              <Link className="btn btn--ghost" href="/writing#research">
-                Published research
-              </Link>
-            </div>
+            <p className="eyebrow">Contact</p>
+            <h2 className="section__title closer__title">
+              Let’s talk about product measurement and AI evaluation.
+            </h2>
+            <p className="section__lede">
+              I’m interested in teams turning experimentation and evaluation into better product
+              decisions.
+            </p>
+            <a className="closer__mail" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
           </div>
         </div>
       </section>

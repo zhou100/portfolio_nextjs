@@ -22,11 +22,6 @@
   letter-spacing: 0.04em;
 }
 
-.path__intro {
-  color: var(--clr-dark-muted);
-  font-size: 0.95rem;
-}
-
 .path__list {
   display: grid;
   gap: 0 32px;
