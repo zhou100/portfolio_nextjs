@@ -39,7 +39,7 @@ export default function WorkIndex() {
           <div className="subhead">
             <h2 className="subhead__title">Industry cases</h2>
             <p className="subhead__lede">
-              Written from work I did inside a company. The data and results are confidential, so what is here is my contribution and the method.
+              The data and results are confidential, so what is here is my contribution and the method.
             </p>
           </div>
           <CaseLedger items={industry} heading="h3" />
@@ -63,6 +63,9 @@ export default function WorkIndex() {
         <div className="wrap">
           <div className="subhead">
             <h2 className="subhead__title">In the lab</h2>
+            <p className="subhead__lede">
+              Study designs with stated stop conditions. Nothing here has results.
+            </p>
           </div>
           <CaseLedger items={lab} heading="h3" />
         </div>

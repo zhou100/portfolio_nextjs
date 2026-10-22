@@ -172,10 +172,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         {item.sections.map((section) => (
           <section className="case__section" id={section.id} key={section.id}>
             <div className="case__sectionhead">
-              <div>
-                <h2 className="case__h2">{section.heading}</h2>
-                <p className="case__prompt">{section.prompt}</p>
-              </div>
+              <h2 className="case__h2">{section.heading}</h2>
+              <p className="case__prompt">{section.prompt}</p>
             </div>
             <Blocks blocks={section.blocks} />
           </section>
@@ -183,9 +181,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
         <section className="case__section" id="limitations">
           <div className="case__sectionhead">
-            <div>
-              <h2 className="case__h2">Limitations</h2>
-            </div>
+            <h2 className="case__h2">Limitations</h2>
+            <p className="case__prompt">What this case does not establish.</p>
           </div>
           <ul className="bullets">
             {item.limitations.map((limitation) => (

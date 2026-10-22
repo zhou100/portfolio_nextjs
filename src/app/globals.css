@@ -885,22 +885,14 @@ td {
   max-width: 20ch;
 }
 
-.pagehead__lede {
-  max-width: 62ch;
-}
-
 .pagehead--compact {
   padding: 48px 0 36px;
 }
 
 .pagehead--compact .pagehead__title {
   font-size: 2.4rem;
-  margin: 10px 0 12px;
+  margin: 0;
   max-width: none;
-}
-
-.pagehead--compact .pagehead__lede {
-  font-size: 1.05rem;
 }
 
 /* ---------- Publication list (shared by /work and /writing) ---------- */

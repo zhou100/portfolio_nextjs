@@ -128,7 +128,7 @@ The reader meets the contribution before the method. This ordering is the point 
 ## Spacing
 - **Density:** Roomy between sections, rules instead of boxes inside them.
 - **Sections:** `64px` desktop vertical padding, `48px` for tight sections, `52px` mobile. Consecutive sections are separated by a 1px rule.
-- **Rows:** `28px` vertical, separated by a 1px rule. Index rows (writing, papers): `18–20px`.
+- **Rows:** `24px` vertical, separated by a 1px rule. Index rows (writing, papers): `18–20px`.
 - **Case sections:** `48px` vertical, separated by a 1px rule.
 
 ## Layout
@@ -137,7 +137,7 @@ The reader meets the contribution before the method. This ordering is the point 
 - **Hero:** Copy left, circular portrait right (280px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
 - **Cards only where there is a picture.** Build cards and market-story cards (screenshot or chart on top) use a 1px border-strong frame, no radius, no shadow; hover darkens the border to ink. Everything else — the case ledger, writing, papers — is rows on rules. Groups open with an ink rule and a mono label (`.subhead`); consecutive groups on `/work` and `/writing` (`.section--grouped`) share one gap and no extra rule.
 - **Index rows:** date or tickers in a `112px` mono column, title and excerpt, metadata right-aligned. One column below 780px.
-- **Page headers** (`/work`, `/writing`, case, article, market story) are paper, not dark: back link, mono meta, serif H1, italic question or excerpt.
+- **Page headers** are paper, not dark. `/work` and `/writing` (`.pagehead--compact`) are the serif H1 alone; case, article and market story have back link, mono meta, serif H1, italic question or excerpt.
 - **Actions** below the hero are underlined mono links (`.act`, `.act--primary` in teal), not buttons. `.btn` exists for the hero only.
 - **Tables:** always inside `.tablewrap` with `overflow-x: auto`, ink top rule, mono column heads, no fill. The page body must never scroll horizontally.
 
@@ -207,5 +207,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-20 | `/work` and `/writing` compacted the same way as the home page: ledger and build cards on `/work`, dated index and market-story chart cards on `/writing`, compact page headers; the row-with-margin work card was removed | Owner decision. Supersedes the 2026-10-17 wide cards with Evidence and Methods; those stay on the case page. |
 | 2026-10-20 | Published research moved again: from above Selected work to the end of the home Writing section, under Market stories; removed from `/work` | Owner decision, superseding the same-day placement. Papers are writing; `/writing#research` has the full list. |
 | 2026-10-20 | Narrative Atlas returns as an independent build (Working prototype), placed before Debrief, linking to the public static atlas; no Code link because the repository is private | Owner decision, superseding the 2026-10-16 removal. The case covers the pipeline, the duplicate audit and the evaluation gaps, and does not repeat the market stories. Screenshots are of the stock, narratives and library pages, not the market-story landing page. |
-
-| 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |
+| 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers. `/work` and `/writing` headers are the H1 alone. Group ledes stay only where they state an evidence boundary (Industry cases: confidential data; In the lab: no results), as does the Limitations prompt. Spacing retuned: ledger rows 24px, subhead gap 20px, build title `10px 0 8px` | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |
