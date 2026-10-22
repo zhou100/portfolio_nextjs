@@ -60,6 +60,10 @@ Evidence type is shown in the case meta block and defined in `EVIDENCE_MEANING` 
 resource exists and is reachable without private access.
 
 ## Content Hierarchy
+
+Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
+Section titles name their content directly; do not pair them with a second title or instructions for reading the interface. Preserve status, evidence boundaries, dates, target users, source attribution, and meaningful accessibility labels. Methods stay on the case page rather than repeating on every build card.
+
 The reader meets the contribution before the method. This ordering is the point of the
 2026-09-08 revision and should not be reverted to a single research-report template.
 
@@ -88,8 +92,8 @@ The reader meets the contribution before the method. This ordering is the point 
 - **Selected work is compact, in the ledger layout.** Independent builds with a live public
   product are cards in one row — three columns for three builds, four (`.builds--4`, meta
   terms stacked) for four; two below 1100px or 980px, one below 640px — with the lead real
-  screenshot (opens full size), status, title, one-sentence tagline, Target users / Methods
-  rows (`showcase.audience`; no Role row — "independent" already says it),
+  screenshot (opens full size), status, title, one-sentence tagline, a Target users
+  row (`showcase.audience`; no Role row — "independent" already says it),
   and a split footer — "Try it ↗" in teal, "Read the case". The visible labels are short;
   the full link text is in `aria-label`. Only the first of `showcase.shots` is shown. Data lives in `WorkItem.showcase`; screenshots sit in
   `public/work/<slug>/` as WebP. Case studies follow as a ledger (`CaseLedger`):
@@ -203,3 +207,5 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-20 | `/work` and `/writing` compacted the same way as the home page: ledger and build cards on `/work`, dated index and market-story chart cards on `/writing`, compact page headers; the row-with-margin work card was removed | Owner decision. Supersedes the 2026-10-17 wide cards with Evidence and Methods; those stay on the case page. |
 | 2026-10-20 | Published research moved again: from above Selected work to the end of the home Writing section, under Market stories; removed from `/work` | Owner decision, superseding the same-day placement. Papers are writing; `/writing#research` has the full list. |
 | 2026-10-20 | Narrative Atlas returns as an independent build (Working prototype), placed before Debrief, linking to the public static atlas; no Code link because the repository is private | Owner decision, superseding the 2026-10-16 removal. The case covers the pipeline, the duplicate audit and the evaluation gaps, and does not repeat the market stories. Screenshots are of the stock, narratives and library pages, not the market-story landing page. |
+
+| 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |

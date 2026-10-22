@@ -30,11 +30,7 @@ export default function WorkIndex() {
     <>
       <header className="pagehead pagehead--compact">
         <div className="wrap">
-          <p className="eyebrow">Work</p>
-          <h1 className="pagehead__title">The work behind the claims.</h1>
-          <p className="lede pagehead__lede">
-            Every item opens with the problem, what I did, and what changed. The label on the card tells you what the page is: a case study from industry work, a working prototype, or a design with nothing built yet.
-          </p>
+          <h1 className="pagehead__title">Work</h1>
         </div>
       </header>
 
@@ -54,9 +50,6 @@ export default function WorkIndex() {
         <div className="wrap">
           <div className="subhead">
             <h2 className="subhead__title">Independent builds</h2>
-            <p className="subhead__lede">
-              Built end to end by me, and measured to different degrees.
-            </p>
           </div>
           <div className={`builds builds--${builds.length}`}>
             {builds.map((item) => (
@@ -70,10 +63,6 @@ export default function WorkIndex() {
         <div className="wrap">
           <div className="subhead">
             <h2 className="subhead__title">In the lab</h2>
-            <p className="subhead__lede">
-              Study designs with stated stop conditions. Nothing here has results, and the pages
-              say so at the top rather than in a footnote.
-            </p>
           </div>
           <CaseLedger items={lab} heading="h3" />
         </div>

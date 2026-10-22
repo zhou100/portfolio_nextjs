@@ -169,10 +169,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </dl>
         </div>
 
-        {item.sections.map((section, index) => (
+        {item.sections.map((section) => (
           <section className="case__section" id={section.id} key={section.id}>
             <div className="case__sectionhead">
-              <span className="case__step">{String(index + 1).padStart(2, '0')}</span>
               <div>
                 <h2 className="case__h2">{section.heading}</h2>
                 <p className="case__prompt">{section.prompt}</p>
@@ -184,10 +183,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
         <section className="case__section" id="limitations">
           <div className="case__sectionhead">
-            <span className="case__step">{String(item.sections.length + 1).padStart(2, '0')}</span>
             <div>
               <h2 className="case__h2">Limitations</h2>
-              <p className="case__prompt">What this case does not establish.</p>
             </div>
           </div>
           <ul className="bullets">

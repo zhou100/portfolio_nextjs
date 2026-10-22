@@ -5,7 +5,7 @@ import StatusBadge from './StatusBadge';
 
 /**
  * A live product on the home page, as one card in a row of three: the lead screenshot,
- * what it does, role and methods, and where to try it. Only the first shot is shown.
+ * what it does, who it is for, and where to try it. Only the first shot is shown.
  * Renders nothing for an item without a showcase or a public link.
  */
 export default function Showcase({
@@ -51,10 +51,6 @@ export default function Showcase({
           <div>
             <dt>Target users</dt>
             <dd>{showcase.audience}</dd>
-          </div>
-          <div>
-            <dt>Methods</dt>
-            <dd>{item.methods.join(' · ')}</dd>
           </div>
         </dl>
       </div>

@@ -208,7 +208,7 @@ h4 {
 }
 
 .section__title {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .section__lede {
@@ -221,7 +221,7 @@ h4 {
 /* A labelled group inside a section: "Independent builds", "Market stories". */
 .subhead {
   border-top: 1px solid var(--clr-ink);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   padding-top: 12px;
 }
 
@@ -473,7 +473,7 @@ h4 {
 
 .build__title {
   font-size: 1.25rem;
-  margin: 6px 0 6px;
+  margin: 10px 0 8px;
 }
 
 .build__title a:hover {
@@ -568,7 +568,7 @@ h4 {
 
 .ledger__row {
   align-items: start;
-  padding: 18px 0;
+  padding: 24px 0;
 }
 
 .ledger__row + .ledger__row {
