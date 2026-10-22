@@ -99,16 +99,6 @@
   max-width: var(--prose);
 }
 
-.case__step {
-  color: var(--clr-accent-dark);
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-
 .case__h2 {
   font-size: 1.85rem;
 }

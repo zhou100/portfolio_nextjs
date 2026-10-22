@@ -34,11 +34,7 @@ export default function WritingIndex() {
     <>
       <header className="pagehead pagehead--compact">
         <div className="wrap">
-          <p className="eyebrow">Writing</p>
-          <h1 className="pagehead__title">Notes on measurement and AI evaluation.</h1>
-          <p className="lede pagehead__lede">
-            Notes on evaluating AI systems and measuring product outcomes. Each piece makes one argument, and the examples are worked through rather than asserted.
-          </p>
+          <h1 className="pagehead__title">Writing</h1>
         </div>
       </header>
 
@@ -89,9 +85,6 @@ export default function WritingIndex() {
         <div className="wrap">
           <div className="subhead">
             <h2 className="subhead__title">Market stories</h2>
-            <p className="subhead__lede">
-              Short essays on one company or a group: what moved the price against the Nasdaq-100, how analysts read it, what I made of it, and what would change my mind.
-            </p>
           </div>
           <MarketStories />
         </div>
@@ -102,9 +95,6 @@ export default function WritingIndex() {
           <div className="wrap">
             <div className="subhead">
               <h2 className="subhead__title">In progress</h2>
-              <p className="subhead__lede">
-                Listed with the question each piece will address. They go up when the example work is done, not on a schedule.
-              </p>
             </div>
             <ul className="index">
               {next.map((article) => (

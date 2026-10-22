@@ -208,7 +208,7 @@ h4 {
 }
 
 .section__title {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .section__lede {
@@ -221,7 +221,7 @@ h4 {
 /* A labelled group inside a section: "Independent builds", "Market stories". */
 .subhead {
   border-top: 1px solid var(--clr-ink);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   padding-top: 12px;
 }
 
@@ -473,7 +473,7 @@ h4 {
 
 .build__title {
   font-size: 1.25rem;
-  margin: 6px 0 6px;
+  margin: 10px 0 8px;
 }
 
 .build__title a:hover {
@@ -568,7 +568,7 @@ h4 {
 
 .ledger__row {
   align-items: start;
-  padding: 18px 0;
+  padding: 24px 0;
 }
 
 .ledger__row + .ledger__row {
@@ -885,22 +885,14 @@ td {
   max-width: 20ch;
 }
 
-.pagehead__lede {
-  max-width: 62ch;
-}
-
 .pagehead--compact {
   padding: 48px 0 36px;
 }
 
 .pagehead--compact .pagehead__title {
   font-size: 2.4rem;
-  margin: 10px 0 12px;
+  margin: 0;
   max-width: none;
-}
-
-.pagehead--compact .pagehead__lede {
-  font-size: 1.05rem;
 }
 
 /* ---------- Publication list (shared by /work and /writing) ---------- */

@@ -10,13 +10,9 @@ export default function Footer() {
       <div className="wrap footer__inner">
         <div className="footer__col">
           <p className="footer__name">{name}</p>
-          <p className="footer__blurb">
-            Data scientist, economics PhD. I design measures and evaluations for product teams.
-          </p>
         </div>
 
-        <div className="footer__col">
-          <p className="footer__label">Site</p>
+        <nav className="footer__col" aria-label="Footer navigation">
           <ul className="footer__links">
             <li>
               <Link href="/work">Work</Link>
@@ -30,10 +26,9 @@ export default function Footer() {
               </li>
             )}
           </ul>
-        </div>
+        </nav>
 
         <div className="footer__col">
-          <p className="footer__label">Elsewhere</p>
           <ul className="footer__links">
             <li>
               <a href={`mailto:${email}`}>{email}</a>

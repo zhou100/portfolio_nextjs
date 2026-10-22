@@ -85,10 +85,7 @@ export default function Home() {
       <section className="section section--lead" id="selected-work">
         <div className="wrap">
           <div className="section__head">
-            <div>
-              <p className="eyebrow">Selected work</p>
-              <h2 className="section__title">Decisions, and the evidence behind them</h2>
-            </div>
+            <h2 className="section__title">Selected work</h2>
             <Link className="arrowlink" href="/work">
               All work →
             </Link>
@@ -98,9 +95,6 @@ export default function Home() {
             <>
               <div className="subhead">
                 <h3 className="subhead__title">Independent builds</h3>
-                <p className="subhead__lede">
-                  Products I designed, built and still run. Each one is live; you can try it.
-                </p>
               </div>
               <div className={`builds builds--${showcase.length}`}>
                 {showcase.map((item) => (
@@ -112,9 +106,6 @@ export default function Home() {
 
           <div className="subhead">
             <h3 className="subhead__title">Case studies</h3>
-            <p className="subhead__lede">
-              Measurement and evaluation work, with the method and the evidence behind each decision.
-            </p>
           </div>
           <CaseLedger items={lab ? [...cases, lab] : cases} />
         </div>
@@ -124,10 +115,7 @@ export default function Home() {
         <section className="section" id="writing">
           <div className="wrap">
             <div className="section__head">
-              <div>
-                <p className="eyebrow">Writing</p>
-                <h2 className="section__title">Notes on measurement and AI evaluation</h2>
-              </div>
+              <h2 className="section__title">Writing</h2>
               <Link className="arrowlink" href="/writing">
                 All writing →
               </Link>
@@ -156,14 +144,9 @@ export default function Home() {
               })}
             </ul>
 
-            <div className="subhead subhead--stories">
+            <div className="subhead subhead--split subhead--stories">
               <h3 className="subhead__title">Market stories</h3>
-              <p className="subhead__lede">
-                Short essays on a stock or a group of them: what moved, what the analysts said, and what I think.{' '}
-                <Link className="textlink" href="/writing#market-stories">
-                  All stories with summaries
-                </Link>
-              </p>
+              <Link className="arrowlink" href="/writing#market-stories">All stories →</Link>
             </div>
             <MarketStories compact limit={4} />
 
@@ -188,10 +171,7 @@ export default function Home() {
       <section className="section" id="contact">
         <div className="wrap">
           <div className="closer">
-            <p className="eyebrow">Contact</p>
-            <h2 className="section__title closer__title">
-              Let’s talk about product measurement and AI evaluation.
-            </h2>
+            <h2 className="section__title closer__title">Let’s talk.</h2>
             <p className="section__lede">
               I’m interested in teams turning experimentation and evaluation into better product
               decisions.
