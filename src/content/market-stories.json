@@ -17,20 +17,16 @@
       "A memory stock does not need prices to rise forever to be worth owning. It needs the price paid for the stock to make sense against the profits the business can retain when conditions weaken. That was the useful turn in BofA’s Micron research: by August 2026 it was willing to assume a downturn and still make a Buy case. The argument was more demanding than saying that AI would keep demand strong."
     ],
     "body": [
-      "BofA had changed its view on December 18, 2025, upgrading Micron to Buy. In TMTB’s account, the analyst reconsidered the durability of the memory cycle and the quality of the balance sheet. High-bandwidth memory was sold out through calendar 2026, and customers were entering multiyear agreements. BofA raised its fiscal 2026, 2027 and 2028 earnings estimates by 62%, 80% and 42%. Those were revisions to forecasts, not annual earnings growth rates.",
+      "BofA had changed its view on December 18, 2025, upgrading Micron to Buy. The analyst reconsidered the durability of the memory cycle and the quality of the balance sheet. High-bandwidth memory was sold out through calendar 2026, and customers were entering multiyear agreements. BofA raised its fiscal 2026, 2027 and 2028 earnings estimates by 62%, 80% and 42%. Those were revisions to forecasts, not annual earnings growth rates.",
       "The first chart window starts at the next trading day’s adjusted close, December 19. Over the following 20 trading sessions MU gained 46.39%, beating QQQ, the Nasdaq-100 fund, by 46.38 percentage points. The same next-session convention applies to every window here. The price supported the direction of the upgrade; it did not establish the long-term earnings case. Nor should the more detailed argument BofA made eight months later be credited to the December call.",
       "On August 4, BofA accepted that memory pricing could normalize from mid-2027. Its base case put calendar 2028 earnings near $150 a share. Under a severe downturn, with average selling prices for DRAM and NAND falling 30% and 40%, it still modeled about $100. Earnings would fall by roughly a third between the two cases. This was not a claim that memory had stopped being cyclical. It was a claim that a weaker cycle could leave a different level of profit.",
-      "I find that distinction more useful than the price target. If the market is applying an old-cycle discount to a business with a different earnings base, a slowdown can be real and the discount can still be too large. BofA pointed to long-term agreements, the competitive position of high-bandwidth memory and continued AI infrastructure spending. But the newsletter does not contain the full cost model or the price sensitivities needed to reproduce the $100 estimate. It gives us a testable scenario, not a guaranteed earnings floor or a floor under the share price.",
+      "I find that distinction more useful than the price target. If the market is applying an old-cycle discount to a business with a different earnings base, a slowdown can be real and the discount can still be too large. BofA pointed to long-term agreements, the competitive position of high-bandwidth memory and continued AI infrastructure spending. Without the full cost model or the price sensitivities behind the $100 estimate, it is a testable scenario, not a guaranteed earnings floor or a floor under the share price.",
       "MU rose 7.04% over the 20 sessions after the August 4 note, against a 1.12% fall in QQQ. That was a favorable price response. It was not uniquely BofA’s opportunity. Morgan Stanley also described the memory pullback as a tactical re-entry on August 7, arguing that longer contracts could improve visibility without eliminating cyclicality. MU gained 16.17% in the window following that note. The windows overlap heavily, so their difference cannot establish which analyst was better.",
-      "The later record also matters. BofA reiterated Buy on August 17 while discussing a longer-term valuation framework, but MU fell 1.51% over the next 20 sessions, slightly less than QQQ. I have not used the historical peak-earnings comparisons in those August summaries: they quote incompatible figures whose definitions cannot be reconciled from the available text. The useful part of the case survives without them.",
+      "The later record also matters. BofA reiterated Buy on August 17 while discussing a longer-term valuation framework, but MU fell 1.51% over the next 20 sessions, slightly less than QQQ. I have not used the historical peak-earnings comparisons in the August notes: the figures are incompatible and the definitions cannot be reconciled. The useful part of the case survives without them.",
       "BofA’s question differs from the ones Morgan Stanley and Wells Fargo asked in the companion cases. Morgan Stanley separated a local efficiency improvement from the outlook for total memory demand. Wells Fargo separated Dell’s growth into orders, selling prices and the timing of several businesses. BofA asked whether a positive view could survive an unfavorable assumption. These are complementary research habits, not a ranking built from different stocks and dates.",
-      "What I would watch is the protection those agreements actually provide, the pace of price normalization and the margins Micron retains as the mix changes. A model that keeps $100 of earnings after a large price decline needs those mechanisms to hold. The stock’s earlier rise makes the call worth studying; the operating evidence will decide whether the earnings argument was right.",
-      "These are selected historical cases based on newsletter paraphrases, not the original analyst reports. The price calculations use archived Yahoo Finance data from one provider; they exclude trading costs and do not test the analysts’ original forecast horizons."
+      "What I would watch is the protection those agreements actually provide, the pace of price normalization and the margins Micron retains as the mix changes. A model that keeps $100 of earnings after a large price decline needs those mechanisms to hold. The stock’s earlier rise makes the call worth studying; the operating evidence will decide whether the earnings argument was right."
     ],
     "sources": [
-      {
-        "name": "TMTB summaries of BofA (Dec 18, 2025; Aug 4 and 17, 2026) and Morgan Stanley (Aug 7, 2026)"
-      },
       {
         "name": "Archived Yahoo Finance adjusted closes; author calculations"
       }
@@ -66,20 +62,16 @@
       "An efficiency gain can be real while the market’s conclusion about it is too broad. In March 2026, Morgan Stanley applied that distinction to a sell-off in memory stocks around Google’s TurboQuant. A month later it took the argument beyond defending demand: if AI was making more computing necessary, which part of the supply chain offered the more attractive stock? Together, the two notes make a useful case in moving from a technical claim to an investment judgment."
     ],
     "body": [
-      "TMTB’s March 26 summary described Morgan Stanley maintaining Overweight on Micron and SanDisk. The firm argued that memory was becoming a constraint on AI demand, not simply a beneficiary of it. AI was absorbing DRAM supply that might otherwise go to PCs and smartphones, cloud customers were paying for expedited delivery, and the complexity of newer high-bandwidth memory would absorb additional capacity. These were specific reasons to question whether an efficiency improvement would quickly remove the shortage.",
+      "On March 26, Morgan Stanley maintained Overweight on Micron and SanDisk. The firm argued that memory was becoming a constraint on AI demand, not simply a beneficiary of it. AI was absorbing DRAM supply that might otherwise go to PCs and smartphones, cloud customers were paying for expedited delivery, and the complexity of newer high-bandwidth memory would absorb additional capacity. These were specific reasons to question whether an efficiency improvement would quickly remove the shortage.",
       "The disputed number needed a denominator. Morgan Stanley said the reported sixfold improvement applied to the key-value cache, the stored information an AI model uses while generating its response, rather than to all memory. A reduction in one component’s resource requirements cannot by itself establish a proportional reduction across workloads and memory types. I am describing the analyst’s interpretation of the technology, not independently verifying its benchmark.",
       "That is the strongest part of the March call. It did not require denying the improvement or assuming that AI demand could never disappoint. It required checking what the improvement covered and whether it outweighed the other demands on supply. The next observations to examine were total demand, delivery conditions and pricing, not the headline efficiency multiple alone.",
       "By April 20, Morgan Stanley was making a relative choice. It expected Intel and AMD to benefit from CPU demand associated with AI agents, but favored Micron and SanDisk as ways to express that demand. It raised its Intel target while retaining concerns about execution and market share. AMD had the stronger server position in its account, but a more balanced stock upside. Memory offered tighter supply, pricing power and a clearer path from additional AI demand to earnings.",
       "The direct beneficiary of a trend is not necessarily the most attractive stock. Competition, available supply, the amount of profit retained and the price already paid for the shares all sit between a growing market and an investment return. Morgan Stanley’s April note made that distinction concrete. It was a comparison across several companies, not a newly verified upgrade of Micron on its own.",
-      "The chart shows MU and QQQ, the Nasdaq-100 fund, from the first trading close after each newsletter date. From March 27 through April 27, MU rose 46.91%, against 18.07% for QQQ. From April 21 through May 19, it rose 55.49%, against 8.88%. Those are strong outcomes for the positive direction of the views. The windows overlap in late April, so the returns cannot be added or treated as two independent experiments. I have not compared Intel and AMD returns here, so this does not verify the full relative-stock recommendation.",
-      "These calls also change how I read the earlier institutional scorecard. They were present in the source material but absent from the structured event subset used for the ranking. A lower score for Morgan Stanley in that subset cannot erase them. Equally, adding just these successful observations to its hit rate would be selective. A revised ranking would need the same inclusion rules applied across institutions.",
-      "The research lesson is distinct from BofA’s later Micron downside case and Wells Fargo’s Dell work. BofA asked what earnings would survive lower prices; Wells Fargo traced the routes from demand to revenue. Morgan Stanley first checked whether the demand concern had been extended beyond the evidence, then compared where supply constraints could turn demand into profit. What I would watch next is whether those constraints persist as capacity arrives, whether delivery premiums fade and whether efficiency begins to change aggregate demand. A higher share price alone cannot answer those questions.",
-      "These are selected historical cases based on newsletter paraphrases, not the original analyst reports. The price calculations use archived Yahoo Finance data from one provider; they exclude trading costs and do not test the analysts’ original forecast horizons."
+      "The chart shows MU and QQQ, the Nasdaq-100 fund, from the first trading close after each note. From March 27 through April 27, MU rose 46.91%, against 18.07% for QQQ. From April 21 through May 19, it rose 55.49%, against 8.88%. Those are strong outcomes for the positive direction of the views. The windows overlap in late April, so the returns cannot be added or treated as two independent experiments. I have not compared Intel and AMD returns here, so this does not verify the full relative-stock recommendation.",
+      "These calls also change how I read the earlier institutional scorecard. They were absent from the structured event subset used for the ranking. A lower score for Morgan Stanley in that subset cannot erase them. Equally, adding just these successful observations to its hit rate would be selective. A revised ranking would need the same inclusion rules applied across institutions.",
+      "The research lesson is distinct from BofA’s later Micron downside case and Wells Fargo’s Dell work. BofA asked what earnings would survive lower prices; Wells Fargo traced the routes from demand to revenue. Morgan Stanley first checked whether the demand concern had been extended beyond the evidence, then compared where supply constraints could turn demand into profit. What I would watch next is whether those constraints persist as capacity arrives, whether delivery premiums fade and whether efficiency begins to change aggregate demand. A higher share price alone cannot answer those questions."
     ],
     "sources": [
-      {
-        "name": "TMTB summaries of Morgan Stanley (Mar 26 and Apr 20, 2026)"
-      },
       {
         "name": "Archived Yahoo Finance adjusted closes; author calculations"
       }
@@ -115,20 +107,16 @@
       "AI spending was the headline in Dell’s story, but it was not a sufficient revenue model. Wells Fargo’s May 2026 argument was useful because it broke the opportunity into parts: orders from cloud customers, higher selling prices, replacements of conventional servers and a storage business with its own obstacles. The question was not simply whether AI spending would grow. It was which part of Dell could turn that spending into revenue, and when."
     ],
     "body": [
-      "On May 22, TMTB reported Wells Fargo raising its Dell target from $180 to $270 and increasing estimates for fiscal 2027 through 2029. The firm thought Dell’s $50 billion fiscal 2027 AI server revenue target was conservative. Stronger demand from cloud service providers and newer AI cloud operators, together with higher average selling prices, could support $60–65 billion. That was an analyst upside scenario, 20–30% above the company target, not an announced increase in company guidance or realized revenue.",
-      "The difference matters because it makes the positive view inspectable. A forecast above guidance needs additional orders, better delivery, higher prices or a different product mix. Wells Fargo named demand and pricing as drivers, but the summary does not allocate a contribution to each. It is enough to identify what needs checking, not enough to reproduce a complete financial model.",
+      "On May 22, Wells Fargo raised its Dell target from $180 to $270 and increased estimates for fiscal 2027 through 2029. The firm thought Dell’s $50 billion fiscal 2027 AI server revenue target was conservative. Stronger demand from cloud service providers and newer AI cloud operators, together with higher average selling prices, could support $60–65 billion. That was an analyst upside scenario, 20–30% above the company target, not an announced increase in company guidance or realized revenue.",
+      "The difference matters because it makes the positive view inspectable. A forecast above guidance needs additional orders, better delivery, higher prices or a different product mix. Wells Fargo named demand and pricing as drivers without allocating a contribution to each. That is enough to identify what needs checking, not enough to reproduce a complete financial model.",
       "There were two other routes. Wells Fargo highlighted improving conventional server demand and faster Intel and AMD CPU replacement cycles. It also saw an underappreciated opportunity in AI-oriented storage as VMware VxRail headwinds eased in the second half of fiscal 2027. That storage argument combined new demand with a reduction in an existing obstacle. It should be followed separately from the large AI server orders rather than assumed to move on the same timetable.",
       "In the August 14 follow-up, the firm retained Overweight and raised its target from $505 to $545. Conventional servers had become more prominent in the argument, supported by enterprise replacements and AI-agent demand. It saw fiscal 2027 AI server revenue potentially approaching $60 billion against roughly $56.5 billion modeled. Total remaining performance obligations were about $97 billion, up roughly 98% from a year earlier, while its fiscal 2027 and 2028 earnings forecasts rose 7% and 11%.",
-      "Those quantities are not interchangeable. Total remaining performance obligations are neither all AI server orders nor revenue already earned. The earnings changes are forecast revisions, not annual growth rates. And May’s $60–65 billion upside case and August’s figure near $60 billion do not establish a sequence of rising forecasts: the summaries use different comparison bases and omit the intervening research. What persists is the method of connecting business conditions to revenue, not a tidy line of ever-higher targets.",
+      "Those quantities are not interchangeable. Total remaining performance obligations are neither all AI server orders nor revenue already earned. The earnings changes are forecast revisions, not annual growth rates. And May’s $60–65 billion upside case and August’s figure near $60 billion do not establish a sequence of rising forecasts: the two notes use different comparison bases and leave out the research in between. What persists is the method of connecting business conditions to revenue, not a tidy line of ever-higher targets.",
       "The chart starts each window at the first trading close after the note and compares adjusted closes with QQQ, the Nasdaq-100 fund. From May 26 through June 24, Dell gained 42.28% while QQQ fell 2.59%, a gap of 44.86 percentage points. Much of Dell’s move was already present after five sessions, when it was up 42.69%. The August call had a different path: down 9.72% after five sessions, then up 13.28% after 20, beating QQQ by 16.75 percentage points. A successful endpoint should not hide the early loss.",
-      "BofA had also argued in April that AI exposure across servers, storage and PCs supported stronger growth and a higher valuation. Dell rose strongly in the window after that note too. Wells Fargo did not uniquely discover the theme. Its distinctive contribution in these summaries was a more explicit gap between company guidance and an upside case, alongside separate operating changes and dates for the other businesses. Neither the price gain nor that extra detail proves its revenue scenario has been realized.",
-      "I would read this alongside Morgan Stanley’s Micron demand argument and BofA’s Micron downside case. Morgan Stanley checked whether a technical efficiency claim justified a broad demand conclusion. Wells Fargo asked where demand would show up in the company’s sales. BofA asked what profit could remain if conditions worsened. These are useful questions in sequence, not permanent labels for the firms or a contest between different return windows. For Dell, the next checks are order conversion, selling prices and mix, the breadth of enterprise replacements, and whether storage improves when expected. Those results will tell us more than another target increase.",
-      "These are selected historical cases based on newsletter paraphrases, not the original analyst reports. The price calculations use archived Yahoo Finance data from one provider; they exclude trading costs and do not test the analysts’ original forecast horizons."
+      "BofA had also argued in April that AI exposure across servers, storage and PCs supported stronger growth and a higher valuation. Dell rose strongly in the window after that note too. Wells Fargo did not uniquely discover the theme. Its distinctive contribution was a more explicit gap between company guidance and an upside case, alongside separate operating changes and dates for the other businesses. Neither the price gain nor that extra detail proves its revenue scenario has been realized.",
+      "I would read this alongside Morgan Stanley’s Micron demand argument and BofA’s Micron downside case. Morgan Stanley checked whether a technical efficiency claim justified a broad demand conclusion. Wells Fargo asked where demand would show up in the company’s sales. BofA asked what profit could remain if conditions worsened. These are useful questions in sequence, not permanent labels for the firms or a contest between different return windows. For Dell, the next checks are order conversion, selling prices and mix, the breadth of enterprise replacements, and whether storage improves when expected. Those results will tell us more than another target increase."
     ],
     "sources": [
-      {
-        "name": "TMTB summaries of Wells Fargo (May 22 and Aug 14, 2026) and BofA (Apr 27, 2026)"
-      },
       {
         "name": "Archived Yahoo Finance adjusted closes; author calculations"
       }
@@ -328,9 +316,6 @@
       },
       {
         "name": "Financial Times"
-      },
-      {
-        "name": "a daily markets newsletter"
       }
     ]
   },
@@ -420,9 +405,6 @@
       },
       {
         "name": "Bloomberg"
-      },
-      {
-        "name": "a daily markets newsletter"
       }
     ]
   },
@@ -496,9 +478,6 @@
       },
       {
         "name": "The Verge"
-      },
-      {
-        "name": "a daily markets newsletter"
       }
     ]
   },
@@ -586,9 +565,6 @@
       },
       {
         "name": "Financial Times"
-      },
-      {
-        "name": "a daily markets newsletter"
       }
     ]
   },
@@ -688,9 +664,6 @@
         "name": "Korean press reports"
       },
       {
-        "name": "a daily markets newsletter"
-      },
-      {
         "name": "prices: Yahoo Finance adjusted close"
       }
     ]
@@ -761,9 +734,6 @@
       },
       {
         "name": "Deutsche Bank"
-      },
-      {
-        "name": "a daily markets newsletter"
       }
     ]
   }
