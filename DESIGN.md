@@ -71,6 +71,10 @@ Section titles name their content directly; do not pair them with a second title
   Paragraphs may use bold, italic, and inline code. A limitation that does not change
   how the reader reads the case is cut; the evidence boundary is said once, in the
   metadata line and the prose, not in a second box.
+- **Independent builds end with their system architecture.** One generated SVG after the
+  essay, full content width, no heading. Its caption is the one-sentence summary plus a
+  full-size link; no legend or reading instructions. Below 900px it keeps a readable
+  width and scrolls sideways in its frame. Regenerate with `npm run diagrams`.
 - **The ledger keeps the outcome.** Home and `/work` still show the question and
   What changed / Current result from `brief`. Build cards keep `showcase.tagline`
   and Target users.
@@ -152,7 +156,7 @@ Section titles name their content directly; do not pair them with a second title
 ## Page Order
 `/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent build cards → Case ledger, Lab study design as its last row) → Writing (up to 4 articles → 4 Market stories, compact index → Published research: year, title, journal) → Contact
 `/work` Compact header → Industry cases (ledger) → Independent builds (cards) → In the lab (ledger). Papers live only under Writing.
-`/work/[slug]` Header (back link, title, italic question, one metadata line) → essay (three or four paragraphs, at most one table) → related writing → updated date
+`/work/[slug]` Header (back link, title, italic question, one metadata line) → essay (three or four paragraphs, at most one table) → system architecture figure (independent builds only) → related writing → updated date
 `/writing` Compact header → Published (dated index) → Market stories (chart cards: tickers, title, summary, window) → In progress (max 3) → Research (full papers with authors and links)
 `/writing/market-stories/[slug]` Header (tickers, title, window) → In short (three takeaways) → Lead paragraphs → Chart → Body paragraphs → Sources line → Price-context note
 `/writing/[slug]` Header → In short (three takeaways) → Body (example, then paragraphs; table of contents only if the piece has two or more headings) → Sources line → Related work
@@ -205,3 +209,4 @@ Section titles name their content directly; do not pair them with a second title
 | 2026-10-20 | Narrative Atlas returns as an independent build (Working prototype), placed before Debrief, linking to the public static atlas; no Code link because the repository is private | Owner decision, superseding the 2026-10-16 removal. The case covers the pipeline, the duplicate audit and the evaluation gaps, and does not repeat the market stories. Screenshots are of the stock, narratives and library pages, not the market-story landing page. |
 | 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers. `/work` and `/writing` headers are the H1 alone. Group ledes stay only where they state an evidence boundary (Industry cases: confidential data; In the lab: no results), as does the Limitations prompt. Spacing retuned: ledger rows 24px, subhead gap 20px, build title `10px 0 8px` | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |
 | 2026-10-26 | Case pages read as essays: title, question, one metadata line, three or four paragraphs, at most one table. The brief grid, section prompts, and repeated evidence boxes are gone. Ledger outcomes and build-card taglines stay. | The nine-block template restated the same points and made the cases read as a form. Supersedes the 2026-09-08 brief-and-sections template on `/work/[slug]` only. |
+| 2026-10-26 | The four independent builds (El Niño, ChurchMap, Narrative Atlas, Debrief) end with a generated system architecture figure, placed after the essay rather than before it | Owner decision combining PR #23's diagrams with PR #24's essay layout. The contribution still comes first; the diagram answers "how is it built" for readers who keep going. |

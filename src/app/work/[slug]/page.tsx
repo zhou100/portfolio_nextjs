@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getWorkBySlug, getWorkSlugs, type WorkItem } from '@/lib/work';
 import { getOgImage } from '@/lib/portfolio';
 import { articleHref, getListedArticles } from '@/lib/writing';
+import ArchitectureOverview from '../../components/Work/ArchitectureOverview';
 import Blocks from '../../components/Work/Blocks';
 import StatusBadge from '../../components/Work/StatusBadge';
 import './case.css';
@@ -103,6 +104,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <div className="case__prose">
           <Blocks blocks={item.body} rich />
         </div>
+
+        <ArchitectureOverview slug={item.slug} />
 
         {!!related.length && (
           <p className="case__related">

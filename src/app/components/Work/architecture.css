@@ -1,0 +1,63 @@
+/* System diagram after a build's essay. Spans the full content width: the generated
+   SVGs are about 2,000px wide, and at prose width their labels would not be legible. */
+.architecture {
+  margin: 48px 0 8px;
+  scroll-margin-top: 96px;
+}
+
+.architecture__frame {
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border-strong);
+}
+
+.architecture__frame:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
+}
+
+.architecture img {
+  display: block;
+  height: auto;
+  max-width: none;
+  width: 100%;
+}
+
+/* Components and connections, for screen readers only. */
+.architecture__description {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.architecture figcaption {
+  color: var(--clr-muted);
+  display: grid;
+  font-size: 0.92rem;
+  font-style: italic;
+  gap: 4px;
+  margin-top: 10px;
+  max-width: var(--prose);
+}
+
+.architecture__open {
+  font-style: normal;
+  justify-self: start;
+  margin-top: 4px;
+}
+
+/* Below 900px the diagram keeps a readable width and scrolls sideways in its frame;
+   the page itself never scrolls horizontally. */
+@media (max-width: 900px) {
+  .architecture__frame {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .architecture img {
+    min-width: 1100px;
+  }
+}
