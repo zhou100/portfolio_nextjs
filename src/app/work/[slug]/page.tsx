@@ -13,6 +13,7 @@ import { getOgImage } from '@/lib/portfolio';
 import { articleHref, getListedArticles } from '@/lib/writing';
 import Blocks from '../../components/Work/Blocks';
 import StatusBadge from '../../components/Work/StatusBadge';
+import ArchitectureOverview from '../../components/Work/ArchitectureOverview';
 import './case.css';
 
 export function generateStaticParams() {
@@ -168,6 +169,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             )}
           </dl>
         </div>
+
+        <ArchitectureOverview slug={item.slug} />
 
         {item.sections.map((section) => (
           <section className="case__section" id={section.id} key={section.id}>

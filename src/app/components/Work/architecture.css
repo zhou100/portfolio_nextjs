@@ -1,0 +1,64 @@
+.architecture__summary {
+  max-width: var(--prose);
+  margin: 12px 0 28px;
+  color: var(--clr-ink-soft);
+}
+
+.architecture__flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.architecture__stage { min-width: 0; position: relative; }
+
+.architecture__node {
+  height: 100%;
+  min-height: 190px;
+  margin-right: 32px;
+  padding: 20px;
+  border: 1px solid var(--clr-border-strong);
+  border-top: 3px solid var(--clr-accent);
+  background: var(--clr-panel);
+}
+
+.architecture__stage:last-child .architecture__node {
+  margin-right: 0;
+  background: var(--clr-accent-soft);
+}
+
+.architecture__number {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--clr-accent-dark);
+}
+
+.architecture__node h3 { font-size: 1.18rem; line-height: 1.3; margin-bottom: 10px; }
+.architecture__node p { font-size: 1rem; line-height: 1.5; color: var(--clr-ink-soft); }
+
+.architecture__connection {
+  color: var(--clr-accent-dark);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.architecture__connection svg { position: absolute; top: 82px; right: 2px; width: 28px; height: 24px; }
+.architecture__connection span { display: block; position: absolute; top: calc(100% + 12px); left: 0; right: 24px; }
+.architecture__connection path { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.architecture__note { margin-top: 64px; max-width: var(--prose); color: var(--clr-muted); font-size: 1rem; }
+
+@media (max-width: 980px) {
+  .architecture__flow { grid-template-columns: 1fr; max-width: var(--prose); }
+  .architecture__node { margin-right: 0; min-height: 0; height: auto; padding: 18px 20px; }
+  .architecture__number { float: left; margin: 3px 16px 0 0; }
+  .architecture__node h3, .architecture__node p { margin-left: 34px; }
+  .architecture__connection { display: flex; align-items: center; gap: 8px; padding-left: 16px; height: 56px; }
+  .architecture__connection svg { position: static; width: 44px; flex-shrink: 0; transform: rotate(90deg); }
+  .architecture__connection span { position: static; }
+  .architecture__note { margin-top: 24px; }
+}
