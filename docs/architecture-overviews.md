@@ -49,6 +49,9 @@ semantics, independent of color and decorative arrows.
 - [Directory routes](https://github.com/zhou100/church_map/blob/main/backend/routers/churches.py),
   reviewed blob `ad6785590683a8b809eefb9f20275ed93fc1e957`: SQL repository/pool,
   location/name filters and on-demand enrichment. No semantic vector-search claim.
+- `backend/enrichment.py` (blob `cfa903ef7b3bd0ab62a169f7bca34e0d94c06aad`)
+  writes and commits Places results using the backend's psycopg connection.
+  Google Places returns to the Directory API; it does not write Postgres directly.
 - `.github/workflows/crawl.yml`: Actions calls the protected backend fetch,
   extract and tag endpoints; scraping does not run on the scheduler runner.
 
@@ -71,6 +74,10 @@ semantics, independent of color and decorative arrows.
 - [Anonymous endpoints](https://github.com/zhou100/brief-voice-memo/blob/main/backend/app/routes/public_demo.py),
   blob `58191a01ca3606085a88b4dfb3e7411fe5282f6f`: Turnstile gate, API presign,
   direct browser PUT to object storage, submit, status polling and account claim.
+- `backend/app/routes/v1/claim.py` (blob
+  `b20b6a4eebbf360361cf2c70dbbb97a596994c4e`): the frontend exchanges a session
+  with Supabase Auth and then POSTs its claim token under the user's JWT. Auth
+  does not initiate the claim request to FastAPI.
 - [Queue](https://github.com/zhou100/brief-voice-memo/blob/main/backend/app/services/queue.py),
   blob `50cd57c7331664ad6236e585d31bcbdbb4a83c9a`: PostgreSQL jobs and SKIP LOCKED;
   no Redis/Celery broker.

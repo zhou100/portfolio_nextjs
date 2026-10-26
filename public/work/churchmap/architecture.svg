@@ -21,7 +21,7 @@
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_2</title>
-<path fill="#fbf9f4" stroke="#cbc4b6" stroke-dasharray="5,2" d="M20,-312.56C20,-312.56 627,-312.56 627,-312.56 633,-312.56 639,-318.56 639,-324.56 639,-324.56 639,-499.63 639,-499.63 639,-505.63 633,-511.63 627,-511.63 627,-511.63 20,-511.63 20,-511.63 14,-511.63 8,-505.63 8,-499.63 8,-499.63 8,-324.56 8,-324.56 8,-318.56 14,-312.56 20,-312.56"/>
+<path fill="#fbf9f4" stroke="#cbc4b6" stroke-dasharray="5,2" d="M20,-312.56C20,-312.56 518,-312.56 518,-312.56 524,-312.56 530,-318.56 530,-324.56 530,-324.56 530,-499.63 530,-499.63 530,-505.63 524,-511.63 518,-511.63 518,-511.63 20,-511.63 20,-511.63 14,-511.63 8,-505.63 8,-499.63 8,-499.63 8,-324.56 8,-324.56 8,-318.56 14,-312.56 20,-312.56"/>
 <text xml:space="preserve" text-anchor="middle" x="128.54" y="-491.43" font-family="Georgia" font-size="18.00" fill="#0f5f5a">03 / Database &amp; enrichment</text>
 </g>
 <g id="clust4" class="cluster">
@@ -139,36 +139,36 @@
 <!-- db -->
 <g id="node10" class="node">
 <title>db</title>
-<path fill="#f2efe7" stroke="#67635b" stroke-width="1.2" d="M619.16,-450.26C619.16,-456.75 572.92,-462.03 516,-462.03 459.08,-462.03 412.84,-456.75 412.84,-450.26 412.84,-450.26 412.84,-344.33 412.84,-344.33 412.84,-337.84 459.08,-332.56 516,-332.56 572.92,-332.56 619.16,-337.84 619.16,-344.33 619.16,-344.33 619.16,-450.26 619.16,-450.26"/>
-<path fill="none" stroke="#67635b" stroke-width="1.2" d="M619.16,-450.26C619.16,-443.77 572.92,-438.49 516,-438.49 459.08,-438.49 412.84,-443.77 412.84,-450.26"/>
-<text xml:space="preserve" text-anchor="start" x="487.13" y="-425.4" font-family="Georgia" font-size="11.00" fill="#67635b">DATABASE</text>
-<text xml:space="preserve" text-anchor="start" x="432.29" y="-407.2" font-family="Georgia" font-weight="bold" font-size="19.00" fill="#1d1c1a">Church directory</text>
-<text xml:space="preserve" text-anchor="start" x="458.65" y="-392.7" font-family="Georgia" font-size="14.00" fill="#0f5f5a">Supabase Postgres</text>
-<text xml:space="preserve" text-anchor="start" x="424.36" y="-377.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">Churches, tags, reviews and</text>
-<text xml:space="preserve" text-anchor="start" x="480.43" y="-362.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">crawl state</text>
+<path fill="#f2efe7" stroke="#67635b" stroke-width="1.2" d="M510.16,-450.26C510.16,-456.75 463.92,-462.03 407,-462.03 350.08,-462.03 303.84,-456.75 303.84,-450.26 303.84,-450.26 303.84,-344.33 303.84,-344.33 303.84,-337.84 350.08,-332.56 407,-332.56 463.92,-332.56 510.16,-337.84 510.16,-344.33 510.16,-344.33 510.16,-450.26 510.16,-450.26"/>
+<path fill="none" stroke="#67635b" stroke-width="1.2" d="M510.16,-450.26C510.16,-443.77 463.92,-438.49 407,-438.49 350.08,-438.49 303.84,-443.77 303.84,-450.26"/>
+<text xml:space="preserve" text-anchor="start" x="378.13" y="-425.4" font-family="Georgia" font-size="11.00" fill="#67635b">DATABASE</text>
+<text xml:space="preserve" text-anchor="start" x="323.29" y="-407.2" font-family="Georgia" font-weight="bold" font-size="19.00" fill="#1d1c1a">Church directory</text>
+<text xml:space="preserve" text-anchor="start" x="349.65" y="-392.7" font-family="Georgia" font-size="14.00" fill="#0f5f5a">Supabase Postgres</text>
+<text xml:space="preserve" text-anchor="start" x="315.36" y="-377.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">Churches, tags, reviews and</text>
+<text xml:space="preserve" text-anchor="start" x="371.43" y="-362.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">crawl state</text>
 </g>
 <!-- extract&#45;&gt;db -->
 <g id="edge9" class="edge">
 <title>extract&#45;&gt;db</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M657.64,-658C630.43,-608.12 586.89,-528.28 555.26,-470.28"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="557.45,-469.17 551.94,-464.2 553.14,-471.52 557.45,-469.17"/>
-<text xml:space="preserve" text-anchor="middle" x="677.32" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">attributes + snippets</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M641.08,-658C595.69,-607.64 522.75,-526.72 470.36,-468.59"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="472.43,-467.23 465.93,-463.67 468.79,-470.51 472.43,-467.23"/>
+<text xml:space="preserve" text-anchor="middle" x="631.87" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">attributes + snippets</text>
 </g>
 <!-- tags&#45;&gt;db -->
 <g id="edge11" class="edge">
 <title>tags&#45;&gt;db</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M406.29,-657.91C397.96,-621.64 387.8,-577.43 387.8,-577.43 387.8,-577.43 387.8,-560.63 387.8,-560.63 387.8,-560.63 425.52,-512.86 460.04,-469.15"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="461.79,-470.89 464.2,-463.88 457.94,-467.85 461.79,-470.89"/>
-<text xml:space="preserve" text-anchor="middle" x="417.9" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">write tags</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M389.42,-657.91C367.96,-621.64 341.8,-577.43 341.8,-577.43 341.8,-577.43 341.8,-560.63 341.8,-560.63 341.8,-560.63 360.59,-513.84 378,-470.49"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="380.22,-471.55 380.55,-464.14 375.67,-469.72 380.22,-471.55"/>
+<text xml:space="preserve" text-anchor="middle" x="371.9" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">write tags</text>
 </g>
 <!-- anchor_3 -->
 <!-- anchor_2&#45;&gt;anchor_3 -->
 <!-- db&#45;&gt;tags -->
 <g id="edge10" class="edge">
 <title>db&#45;&gt;tags</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M495.21,-462.61C477.27,-518.09 451.65,-597.34 434.68,-649.82"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="432.42,-648.86 432.59,-656.27 437.08,-650.37 432.42,-648.86"/>
-<text xml:space="preserve" text-anchor="middle" x="508.74" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">read attributes</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M409.1,-462.61C410.91,-517.97 413.49,-597.01 415.2,-649.49"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="412.74,-649.27 415.42,-656.19 417.64,-649.11 412.74,-649.27"/>
+<text xml:space="preserve" text-anchor="middle" x="458.37" y="-564.83" font-family="Georgia" font-size="14.00" fill="#0f5f5a">read attributes</text>
 </g>
 <!-- api -->
 <g id="node13" class="node">
@@ -182,9 +182,9 @@
 <!-- db&#45;&gt;api -->
 <g id="edge13" class="edge">
 <title>db&#45;&gt;api</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M440.7,-334.07C393.23,-294.85 340.85,-251.56 340.85,-251.56 340.85,-251.56 269.19,-178.33 220.37,-128.42"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="222.15,-126.74 215.5,-123.45 218.65,-130.17 222.15,-126.74"/>
-<text xml:space="preserve" text-anchor="middle" x="380.92" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">query results</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M444.33,-331.97C466.77,-293.31 491,-251.56 491,-251.56 491,-251.56 491,-234.76 491,-234.76 491,-234.76 388,-193.76 388,-193.76 388,-193.76 343,-185.76 343,-185.76 343,-185.76 292.37,-154.63 246.86,-126.65"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="248.41,-124.72 241.16,-123.14 245.84,-128.9 248.41,-124.72"/>
+<text xml:space="preserve" text-anchor="middle" x="531.08" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">query results</text>
 </g>
 <!-- places -->
 <g id="node11" class="node">
@@ -196,26 +196,26 @@
 <text xml:space="preserve" text-anchor="start" x="79.9" y="-377.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">Photos, hours and contact</text>
 <text xml:space="preserve" text-anchor="start" x="144.12" y="-362.8" font-family="Georgia" font-size="15.00" fill="#1d1c1a">details</text>
 </g>
-<!-- places&#45;&gt;db -->
+<!-- places&#45;&gt;api -->
 <g id="edge18" class="edge">
-<title>places&#45;&gt;db</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M263.96,-397.3C307.37,-397.3 358.69,-397.3 403.65,-397.3"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="403.44,-399.75 410.44,-397.3 403.44,-394.85 403.44,-399.75"/>
-<text xml:space="preserve" text-anchor="middle" x="338.23" y="-404.49" font-family="Georgia" font-size="14.00" fill="#0f5f5a">cache enrichment</text>
+<title>places&#45;&gt;api</title>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M167.49,-349.74C169.36,-290.9 172.58,-190.15 174.48,-130.78"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="176.93,-130.86 174.7,-123.78 172.03,-130.7 176.93,-130.86"/>
+<text xml:space="preserve" text-anchor="middle" x="236.2" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">enrichment response</text>
 </g>
 <!-- api&#45;&gt;db -->
 <g id="edge14" class="edge">
 <title>api&#45;&gt;db</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M239.61,-122.19C286.81,-151.21 343,-185.76 343,-185.76 343,-185.76 427,-234.76 427,-234.76 427,-234.76 452.59,-281.2 476.32,-324.28"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="474.17,-325.45 479.69,-330.4 478.46,-323.08 474.17,-325.45"/>
-<text xml:space="preserve" text-anchor="middle" x="473.96" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">SQL queries</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" d="M210.77,-122.14C250.77,-167.08 311,-234.76 311,-234.76 311,-234.76 338.71,-281.39 364.36,-324.54"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="362.17,-325.66 367.85,-330.43 366.38,-323.16 362.17,-325.66"/>
+<text xml:space="preserve" text-anchor="middle" x="383.22" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">query / cache writes</text>
 </g>
 <!-- api&#45;&gt;places -->
 <g id="edge17" class="edge">
 <title>api&#45;&gt;places</title>
-<path fill="none" stroke="#0f5f5a" stroke-width="1.2" stroke-dasharray="5,2" d="M239.61,-122.19C286.81,-151.21 343,-185.76 343,-185.76 343,-185.76 502,-193.76 502,-193.76 502,-193.76 556,-234.76 556,-234.76 556,-234.76 556,-251.56 556,-251.56 556,-251.56 387.86,-313.96 272.38,-356.82"/>
-<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="271.57,-354.5 265.86,-359.23 273.28,-359.1 271.57,-354.5"/>
-<text xml:space="preserve" text-anchor="middle" x="616.49" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">on&#45;demand request</text>
+<path fill="none" stroke="#0f5f5a" stroke-width="1.2" stroke-dasharray="5,2" d="M239.61,-122.19C286.81,-151.21 343,-185.76 343,-185.76 343,-185.76 592,-193.76 592,-193.76 592,-193.76 651,-234.76 651,-234.76 651,-234.76 651,-251.56 651,-251.56 651,-251.56 284,-312.56 284,-312.56 284,-312.56 262.88,-327.55 238.5,-344.85"/>
+<polygon fill="#0f5f5a" stroke="#0f5f5a" stroke-width="1.2" points="237.33,-342.67 233.04,-348.72 240.16,-346.67 237.33,-342.67"/>
+<text xml:space="preserve" text-anchor="middle" x="711.49" y="-238.96" font-family="Georgia" font-size="14.00" fill="#0f5f5a">on&#45;demand request</text>
 </g>
 <!-- web -->
 <g id="node14" class="node">

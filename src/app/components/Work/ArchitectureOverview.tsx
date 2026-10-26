@@ -24,7 +24,7 @@ function Components({ overview, prefix }: { overview: ArchitectureOverview; pref
                         <li key={`${edge.to}-${edge.label}`}>
                           <span aria-hidden="true">{edge.bidirectional ? '↔' : edge.control ? '⇢' : '→'} </span>
                           <a href={`#${prefix}-${edge.from === node.id ? edge.to : edge.from}`}>{nodes.find((target) => target.id === (edge.from === node.id ? edge.to : edge.from))?.title}</a>
-                          <span>: {edge.label}{edge.control ? ' (control)' : edge.bidirectional ? ' (two-way)' : ''}</span>
+                          <span>: {edge.label}{edge.control ? ' (control)' : ''}{edge.bidirectional ? ' (two-way)' : ''}</span>
                         </li>
                       ))}
                     </ul>
