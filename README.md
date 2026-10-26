@@ -8,10 +8,9 @@ The unit of content is a **case study**, not a project card. Every work item car
 
 - a **status** rendered as what the reader is looking at — Case study / Working prototype / Study design — never as a claim that a business result was proven;
 - an **evidence type** (`reported-experience`, `observational`, `offline-benchmark`, `randomized-experiment`, `synthetic-demo`), each with a stated meaning of what it does and does not license;
-- a **brief** — Problem, My contribution, What changed (or Current result) — under 100 words, read before anything else;
-- explicit **limitations**, and a one-sentence data boundary.
+- a **ledger outcome** — What changed, or Current result — used on the home page and `/work`, not repeated as a form on the case page.
 
-Sections are ordered per item rather than forced into one template: an industry case runs Problem → My contribution → Worked example → Method, while a study design runs Decision → Example → Design → Status → Next. Demo, code, and artifact links render only when the resource actually exists.
+Each case page is an essay: title, italic question, one metadata line (context, role, status, evidence boundary, and a live link when one exists), then three or four paragraphs with at most one table. Demo, code, and artifact links render in that line only when the resource actually exists.
 
 ### Naming
 

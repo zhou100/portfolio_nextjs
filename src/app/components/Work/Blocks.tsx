@@ -1,11 +1,31 @@
+import { Fragment } from 'react';
 import type { Block } from '@/lib/work';
 
-function BlockView({ block }: { block: Block }) {
+/** **bold**, *italic*, and `code` inside a paragraph. Everything else is text. */
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*)/g);
+
+  return parts.map((part, index) => {
+    if (!part) return null;
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return <code key={index}>{part.slice(1, -1)}</code>;
+    }
+    if (part.startsWith('*') && part.endsWith('*')) {
+      return <em key={index}>{part.slice(1, -1)}</em>;
+    }
+    return <Fragment key={index}>{part}</Fragment>;
+  });
+}
+
+function BlockView({ block, rich }: { block: Block; rich: boolean }) {
   switch (block.type) {
     case 'p':
       return (
         <div className="block">
-          <p>{block.text}</p>
+          <p>{rich ? <RichText text={block.text} /> : block.text}</p>
         </div>
       );
 
@@ -102,11 +122,11 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-export default function Blocks({ blocks }: { blocks: Block[] }) {
+export default function Blocks({ blocks, rich = false }: { blocks: Block[]; rich?: boolean }) {
   return (
     <>
       {blocks.map((block, index) => (
-        <BlockView block={block} key={index} />
+        <BlockView block={block} rich={rich} key={index} />
       ))}
     </>
   );
