@@ -162,7 +162,7 @@ h4 {
   max-width: var(--prose);
 }
 
-/* Main column plus a margin column (case brief and meta). */
+/* Main column plus a margin column, for a note beside a figure. */
 .row {
   display: grid;
   gap: 20px var(--gutter);
@@ -720,6 +720,15 @@ h4 {
   max-width: var(--prose);
 }
 
+.block strong {
+  font-weight: 600;
+}
+
+.block code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+}
+
 .block--list li,
 .bullets li {
   color: var(--clr-ink);
@@ -854,23 +863,6 @@ td {
 
 .template__text {
   font-size: 1rem;
-}
-
-/* ---------- Meta label list (case header) ---------- */
-
-.casemeta dt {
-  color: var(--clr-muted);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  margin-bottom: 3px;
-  text-transform: uppercase;
-}
-
-.casemeta dd {
-  color: var(--clr-ink);
-  font-size: 0.97rem;
 }
 
 /* ---------- Page headers (/work, /writing, 404) ---------- */

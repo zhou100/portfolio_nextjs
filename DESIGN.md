@@ -55,32 +55,28 @@ The label says what the reader is looking at, not how mature the work is.
 | `in-progress` | Working prototype | Built and running, quality not yet measured | That measurement is underway right now |
 | `proposed` | Study design | Design only, nothing built | That a prototype exists |
 
-Evidence type is shown in the case meta block and defined in `EVIDENCE_MEANING` in
-`src/lib/work.ts`. A link (Try the product, Code, an artifact) renders only when the
+Evidence type is named in the case metadata line and defined in `EVIDENCE_MEANING` in
+`src/lib/work.ts`. A live or code link renders in that same line only when the
 resource exists and is reachable without private access.
 
 ## Content Hierarchy
 
 Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
-Section titles name their content directly; do not pair them with a second title or instructions for reading the interface. Preserve status, evidence boundaries, dates, target users, source attribution, and meaningful accessibility labels. Methods stay on the case page rather than repeating on every build card.
+Section titles name their content directly; do not pair them with a second title or instructions for reading the interface. Preserve status, evidence boundaries, dates, target users, source attribution, and meaningful accessibility labels. Methods stay inside the case essay rather than repeating on every build card.
 
-The reader meets the contribution before the method. This ordering is the point of the
-2026-09-08 revision and should not be reverted to a single research-report template.
-
-- **Every case opens with a brief** — Problem / My contribution / What changed (or
-  Current result where no outcome is confirmed) — under 100 words, above the fold of
-  the body. Everything after it is optional for a scanning reader.
-- **Sections are per item, not per template.** `WorkItem.sections` is an ordered array.
-  Industry case: Problem → My contribution → Worked example → Method → What to ask me.
-  Working prototype: Task → Example → What it taught me → Evaluation → Next.
-  Study design: Decision → Example → Design and data → Status → Next.
-- **One sentence of data boundary** sits in the case header. Longer qualifications go in
-  Limitations. Do not repeat "not re-verified" or "what this licenses me to say" through
-  the body — a limitation that does not change how the reader reads the case is cut.
+- **`/work/[slug]` is a memo.** Title, italic question, then one metadata line
+  (status as word and color, context, role, evidence boundary, and a live link when
+  one exists). The body is three or four paragraphs. At most one table sits between
+  them. No section headings, prompt subheads, brief grid, or repeated disclaimer.
+  Paragraphs may use bold, italic, and inline code. A limitation that does not change
+  how the reader reads the case is cut; the evidence boundary is said once, in the
+  metadata line and the prose, not in a second box.
+- **The ledger keeps the outcome.** Home and `/work` still show the question and
+  What changed / Current result from `brief`. Build cards keep `showcase.tagline`
+  and Target users.
 - **Lists compare, they do not read.** Work appears in two shapes only, on the home page
   and `/work` alike: build cards (`Showcase`) for live products, and the case ledger
-  (`CaseLedger`) for industry cases and study designs. Role, methods, evidence and the long
-  summary live on the case page.
+  (`CaseLedger`) for industry cases and study designs.
 - **Home hero is an introduction, and the only dark surface.** Portrait, name, the one-line
   claim, a short intro, and two calls to action, then the career Path timeline. The Path
   has no intro sentence; each step is employer, role, and a detail of two or three words. Selected work follows directly, so
@@ -129,11 +125,11 @@ The reader meets the contribution before the method. This ordering is the point 
 - **Density:** Roomy between sections, rules instead of boxes inside them.
 - **Sections:** `64px` desktop vertical padding, `48px` for tight sections, `52px` mobile. Consecutive sections are separated by a 1px rule.
 - **Rows:** `24px` vertical, separated by a 1px rule. Index rows (writing, papers): `18–20px`.
-- **Case sections:** `48px` vertical, separated by a 1px rule.
+- **Case essays:** `28px` between paragraphs; `36px` above a table. No rules between paragraphs.
 
 ## Layout
 - **Max content width:** `1180px` (`--wrap`). **Prose measure:** `720px` (`--prose`) — body copy, notes, and definition lists are capped at it.
-- **Margin column:** `.row` is a main column plus a `280px` margin (`--margin`) with a `56px` gutter. The margin holds outcomes, figure copy and case meta. Below 980px it stacks under the main column.
+- **Margin column:** `.row` is a main column plus a `280px` margin (`--margin`) with a `56px` gutter, for a note beside a figure. Case essays are a single prose column. Below 980px the margin stacks under the main column.
 - **Hero:** Copy left, circular portrait right (280px desktop, 240px tablet); below 640px the portrait (160px) stacks above the copy. Path timeline sits under both, separated by a dark-border rule.
 - **Cards only where there is a picture.** Build cards and market-story cards (screenshot or chart on top) use a 1px border-strong frame, no radius, no shadow; hover darkens the border to ink. Everything else — the case ledger, writing, papers — is rows on rules. Groups open with an ink rule and a mono label (`.subhead`); consecutive groups on `/work` and `/writing` (`.section--grouped`) share one gap and no extra rule.
 - **Index rows:** date or tickers in a `112px` mono column, title and excerpt, metadata right-aligned. One column below 780px.
@@ -156,7 +152,7 @@ The reader meets the contribution before the method. This ordering is the point 
 ## Page Order
 `/` Hero (portrait + intro, Path timeline, colleague quotes) → Selected work (Independent build cards → Case ledger, Lab study design as its last row) → Writing (up to 4 articles → 4 Market stories, compact index → Published research: year, title, journal) → Contact
 `/work` Compact header → Industry cases (ledger) → Independent builds (cards) → In the lab (ledger). Papers live only under Writing.
-`/work/[slug]` Header (status, title, question, data boundary, actions) → Brief with case meta in the margin → per-item sections → Limitations → Related writing
+`/work/[slug]` Header (back link, title, italic question, one metadata line) → essay (three or four paragraphs, at most one table) → related writing → updated date
 `/writing` Compact header → Published (dated index) → Market stories (chart cards: tickers, title, summary, window) → In progress (max 3) → Research (full papers with authors and links)
 `/writing/market-stories/[slug]` Header (tickers, title, window) → In short (three takeaways) → Lead paragraphs → Chart → Body paragraphs → Sources line → Price-context note
 `/writing/[slug]` Header → In short (three takeaways) → Body (example, then paragraphs; table of contents only if the piece has two or more headings) → Sources line → Related work
@@ -208,3 +204,4 @@ The reader meets the contribution before the method. This ordering is the point 
 | 2026-10-20 | Published research moved again: from above Selected work to the end of the home Writing section, under Market stories; removed from `/work` | Owner decision, superseding the same-day placement. Papers are writing; `/writing#research` has the full list. |
 | 2026-10-20 | Narrative Atlas returns as an independent build (Working prototype), placed before Debrief, linking to the public static atlas; no Code link because the repository is private | Owner decision, superseding the 2026-10-16 removal. The case covers the pipeline, the duplicate audit and the evaluation gaps, and does not repeat the market stories. Screenshots are of the stock, narratives and library pages, not the market-story landing page. |
 | 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers. `/work` and `/writing` headers are the H1 alone. Group ledes stay only where they state an evidence boundary (Industry cases: confidential data; In the lab: no results), as does the Limitations prompt. Spacing retuned: ledger rows 24px, subhead gap 20px, build title `10px 0 8px` | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |
+| 2026-10-26 | Case pages read as essays: title, question, one metadata line, three or four paragraphs, at most one table. The brief grid, section prompts, and repeated evidence boxes are gone. Ledger outcomes and build-card taglines stay. | The nine-block template restated the same points and made the cases read as a form. Supersedes the 2026-09-08 brief-and-sections template on `/work/[slug]` only. |

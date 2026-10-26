@@ -1,17 +1,9 @@
 .case__header {
-  padding: 56px 0 44px;
+  padding: 56px 0 12px;
 }
 
 .case__back {
   margin-bottom: 36px;
-}
-
-.case__top {
-  align-items: baseline;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  margin-bottom: 16px;
 }
 
 .case__title {
@@ -27,92 +19,76 @@
   max-width: 52ch;
 }
 
-/* One sentence of data boundary in the header. The rest is in Limitations. */
-.case__databoundary {
+/* One metadata line: status, context, role, boundary, live link. */
+.case__meta {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin-top: 22px;
+}
+
+.case__metatext,
+.case__metasep,
+.case__metalink {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.case__metatext,
+.case__metasep {
+  color: var(--clr-muted);
+}
+
+.case__metalink {
+  color: var(--clr-accent-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--clr-border-strong);
+  text-underline-offset: 3px;
+}
+
+.case__metalink:hover {
+  text-decoration-color: var(--clr-accent);
+}
+
+/* ---------- Essay ---------- */
+
+.case__body {
+  padding-bottom: 72px;
+  padding-top: 36px;
+}
+
+.case__prose .block + .block {
+  margin-top: 28px;
+}
+
+.case__prose .block:has(.tablewrap) {
+  margin-bottom: 8px;
+  margin-top: 36px;
+}
+
+.case__prose .block:has(.tablewrap) + .block {
+  margin-top: 28px;
+}
+
+.case__related {
   border-top: 1px solid var(--clr-border);
   color: var(--clr-muted);
   font-size: 0.98rem;
-  margin-top: 28px;
+  margin-top: 40px;
   max-width: var(--prose);
   padding-top: 16px;
 }
 
-.case__actions {
-  margin-top: 24px;
-}
-
-/* ---------- 60-second brief, with role and methods in the margin ---------- */
-
-.case__lead {
-  align-items: start;
-  padding-bottom: 8px;
-}
-
-.brief {
-  border-top: 1px solid var(--clr-ink);
-  max-width: var(--prose);
-  padding-top: 4px;
-}
-
-.brief__row {
-  border-bottom: 1px solid var(--clr-border);
-  padding: 16px 0;
-}
-
-.brief__row dt {
-  color: var(--clr-accent-dark);
+.case__related > span:first-child {
+  color: var(--clr-ink);
   font-family: var(--mono);
   font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
   text-transform: uppercase;
-}
-
-.brief__row dd {
-  font-size: 1.1rem;
-  margin-top: 4px;
-}
-
-.casemeta {
-  display: grid;
-  gap: 16px;
-  padding-top: 20px;
-}
-
-/* ---------- Body ---------- */
-
-.case__body {
-  padding-bottom: 72px;
-}
-
-.case__section {
-  border-top: 1px solid var(--clr-border);
-  padding: 48px 0;
-}
-
-.case__lead + .case__section {
-  border-top: 0;
-}
-
-.case__sectionhead {
-  margin-bottom: 24px;
-  max-width: var(--prose);
-}
-
-.case__h2 {
-  font-size: 1.85rem;
-}
-
-.case__h3 {
-  font-size: 1.35rem;
-  margin-bottom: 20px;
-}
-
-.case__prompt {
-  color: var(--clr-muted);
-  font-size: 1.05rem;
-  font-style: italic;
-  margin-top: 6px;
 }
 
 .case__footer {
@@ -123,23 +99,14 @@
   flex-wrap: wrap;
   gap: 16px;
   justify-content: space-between;
+  margin-top: 36px;
+  max-width: var(--prose);
   padding-top: 24px;
-}
-
-/* Sticky nav must not cover a heading a reader jumped to. */
-.case__section,
-.brief {
-  scroll-margin-top: 96px;
-}
-
-.block__h {
-  font-size: 1.25rem;
-  margin-top: 12px;
 }
 
 @media (max-width: 780px) {
   .case__header {
-    padding: 40px 0 32px;
+    padding: 40px 0 8px;
   }
 
   .case__title {
@@ -148,13 +115,5 @@
 
   .case__question {
     font-size: 1.12rem;
-  }
-
-  .case__h2 {
-    font-size: 1.55rem;
-  }
-
-  .casemeta {
-    padding-top: 0;
   }
 }
