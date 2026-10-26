@@ -49,7 +49,7 @@ async function main() {
     const svg = viz.renderString(dot.join('\n'), {format:'svg',engine:'dot'});
     const destination = path.join(__dirname, '..', 'public', 'work', slug, 'architecture.svg');
     if (process.argv.includes('--check')) {
-      if (!fs.existsSync(destination) || fs.readFileSync(destination, 'utf8') !== svg) {
+      if (!fs.existsSync(destination) || fs.readFileSync(destination, 'utf8').replace(/\r\n/g, '\n') !== svg.replace(/\r\n/g, '\n')) {
         throw new Error(`${slug}: SVG is stale; run npm run diagrams`);
       }
     } else fs.writeFileSync(destination, svg);
