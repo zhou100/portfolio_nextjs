@@ -11,7 +11,6 @@ export type ArchitectureOverview = {
   summary: string;
   groups: { title: string; nodes: ArchitectureNode[] }[];
   edges: { from: string; to: string; label: string; control: boolean; bidirectional?: boolean }[];
-  note: string;
 };
 
 export const architectureOverviews = data as Record<string, ArchitectureOverview>;

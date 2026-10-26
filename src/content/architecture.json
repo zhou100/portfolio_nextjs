@@ -9,14 +9,14 @@
             "id": "sources",
             "title": "Climate & crop sources",
             "technology": "NOAA · CHIRPS · MPOB · World Bank",
-            "detail": "Climate, rainfall, supply and prices",
+            "detail": "",
             "kind": "external"
           },
           {
             "id": "actions",
             "title": "GitHub Actions",
             "technology": "Weekly scheduler",
-            "detail": "Starts the weekly pipeline",
+            "detail": "",
             "kind": "external"
           }
         ]
@@ -28,21 +28,21 @@
             "id": "ingest",
             "title": "climcomm fetchers",
             "technology": "Python",
-            "detail": "Fetch and timestamp source releases",
+            "detail": "",
             "kind": "process"
           },
           {
             "id": "archive",
             "title": "Local archive",
             "technology": "Files + manifest.jsonl",
-            "detail": "SHA-256, issued_at, ingested_at",
+            "detail": "SHA-256 · issued_at · ingested_at",
             "kind": "files"
           },
           {
             "id": "r2",
             "title": "Private archive backup",
             "technology": "Cloudflare R2 · S3 API",
-            "detail": "Whitelisted, hash-verified sync",
+            "detail": "",
             "kind": "object"
           }
         ]
@@ -54,21 +54,21 @@
             "id": "research",
             "title": "Frozen research",
             "technology": "Python · point-in-time selection",
-            "detail": "Historical tests and whole-event holdouts",
+            "detail": "Point-in-time historical tests",
             "kind": "process"
           },
           {
             "id": "monitor",
             "title": "Weekly monitoring",
             "technology": "Python · forward evidence",
-            "detail": "New observations; append-only log",
+            "detail": "Append-only observations",
             "kind": "process"
           },
           {
             "id": "reports",
             "title": "Committed outputs",
             "technology": "Reports + display snapshots",
-            "detail": "Frozen results and weekly reports",
+            "detail": "",
             "kind": "files"
           }
         ]
@@ -80,14 +80,14 @@
             "id": "export",
             "title": "Static export",
             "technology": "Python build + safety scan",
-            "detail": "Exclude raw files and vendor quotes",
+            "detail": "Build + safety scan",
             "kind": "process"
           },
           {
             "id": "web",
             "title": "Research workbench",
             "technology": "HTML / JavaScript · Cloudflare Pages",
-            "detail": "Browser reads exported evidence",
+            "detail": "",
             "kind": "frontend"
           }
         ]
@@ -154,8 +154,7 @@
         "label": "static assets",
         "control": false
       }
-    ],
-    "note": "The archive is file-based, not a SQL database. R2 preserves private raw data; the browser has no live research API and does not rerun models."
+    ]
   },
   "churchmap": {
     "summary": "A scheduled website-enrichment pipeline feeds Postgres; a FastAPI service powers the React map.",
@@ -167,21 +166,21 @@
             "id": "sites",
             "title": "Church websites",
             "technology": "Public source pages",
-            "detail": "Roster provides website URLs",
+            "detail": "",
             "kind": "external"
           },
           {
             "id": "actions",
             "title": "GitHub Actions",
             "technology": "Crawl scheduler",
-            "detail": "Calls protected crawl endpoints",
+            "detail": "",
             "kind": "external"
           },
           {
             "id": "r2",
             "title": "HTML captures",
             "technology": "Cloudflare R2",
-            "detail": "Dated, content-hashed raw pages",
+            "detail": "",
             "kind": "object"
           }
         ]
@@ -193,21 +192,21 @@
             "id": "fetch",
             "title": "Website fetcher",
             "technology": "/api/admin/crawl/fetch",
-            "detail": "Capture HTML and crawl metadata",
+            "detail": "Capture HTML",
             "kind": "process"
           },
           {
             "id": "extract",
             "title": "Attribute extraction",
             "technology": "LLM · /crawl/extract",
-            "detail": "Fields, confidence and source snippets",
+            "detail": "Fields + source snippets",
             "kind": "process"
           },
           {
             "id": "tags",
             "title": "Deterministic tagging",
             "technology": "Python · /crawl/tag",
-            "detail": "Rules over extracted attributes",
+            "detail": "Rules over attributes",
             "kind": "process"
           }
         ]
@@ -219,14 +218,14 @@
             "id": "db",
             "title": "Church directory",
             "technology": "Supabase Postgres",
-            "detail": "Churches, tags, reviews and crawl state",
+            "detail": "",
             "kind": "database"
           },
           {
             "id": "places",
             "title": "Google Places",
             "technology": "On-demand enrichment",
-            "detail": "Photos, hours and contact details",
+            "detail": "",
             "kind": "external"
           }
         ]
@@ -238,14 +237,14 @@
             "id": "api",
             "title": "Directory API",
             "technology": "FastAPI · psycopg 3 pool",
-            "detail": "GET /api/churches and /{id}",
+            "detail": "GET /api/churches /{id}",
             "kind": "service"
           },
           {
             "id": "web",
             "title": "ChurchMap UI",
             "technology": "React / Vite / Leaflet · Vercel",
-            "detail": "Location search, map and profiles",
+            "detail": "",
             "kind": "frontend"
           }
         ]
@@ -315,7 +314,7 @@
       {
         "from": "api",
         "to": "db",
-          "label": "query / cache writes",
+        "label": "query / cache writes",
         "control": false
       },
       {
@@ -337,13 +336,12 @@
         "control": true
       },
       {
-          "from": "places",
-          "to": "api",
-          "label": "enrichment response",
+        "from": "places",
+        "to": "api",
+        "label": "enrichment response",
         "control": false
       }
-    ],
-    "note": "Crawl stages execute in the backend; Actions schedules the calls. Google Places is a separate, on-demand enrichment path. No semantic vector-search service is implied."
+    ]
   },
   "narrative-atlas": {
     "summary": "Document ingestion and two analysis branches produce versioned JSON artifacts for a Flask reader.",
@@ -355,21 +353,21 @@
             "id": "r2",
             "title": "Source documents",
             "technology": "Cloudflare R2",
-            "detail": "PDFs and images",
+            "detail": "",
             "kind": "object"
           },
           {
             "id": "ingest",
             "title": "Ingest workflow",
             "technology": "GitHub Actions · Python",
-            "detail": "Download; PDF / image → Markdown",
+            "detail": "PDF / image → Markdown",
             "kind": "process"
           },
           {
             "id": "markdown",
             "title": "Source editions",
             "technology": "Markdown files",
-            "detail": "Dated, attributed source text",
+            "detail": "",
             "kind": "files"
           }
         ]
@@ -381,21 +379,21 @@
             "id": "tickers",
             "title": "Ticker analysis",
             "technology": "LLM + Python",
-            "detail": "Extract → resolve entities → timeline / synthesis",
+            "detail": "Extract → resolve → synthesize",
             "kind": "process"
           },
           {
             "id": "narratives",
             "title": "Narrative analysis",
             "technology": "LLM + deterministic rules",
-            "detail": "Extract → cluster → lifecycle state",
+            "detail": "Extract → cluster → lifecycle",
             "kind": "process"
           },
           {
             "id": "refresh",
             "title": "Analysis refresh",
             "technology": "Separate GitHub Actions job",
-            "detail": "Processes derived backlog; no PDF download",
+            "detail": "",
             "kind": "external"
           }
         ]
@@ -407,40 +405,66 @@
             "id": "artifacts",
             "title": "Analysis artifacts",
             "technology": "Committed JSON / JSONL",
-            "detail": "Timelines, clusters, states and synthesis",
+            "detail": "",
             "kind": "files"
           },
           {
             "id": "validate",
             "title": "Artifact validation",
             "technology": "Hashes · revisions · freshness",
-            "detail": "Manifest checks and partial-state handling",
+            "detail": "Manifest checks",
             "kind": "process"
           },
           {
             "id": "prices",
             "title": "Price context",
             "technology": "Bounded price-refresh artifacts",
-            "detail": "Independent dated market series",
+            "detail": "",
             "kind": "files"
           }
         ]
       },
       {
-        "title": "04 / Reader & delivery",
+        "title": "04 / Independent research",
+        "nodes": [
+          {
+            "id": "historical_prices",
+            "title": "Subsequent price paths",
+            "technology": "Archived adjusted closes + QQQ",
+            "detail": "",
+            "kind": "files"
+          },
+          {
+            "id": "case_research",
+            "title": "Independent case research",
+            "technology": "Independent editorial analysis",
+            "detail": "Thesis checks + event windows",
+            "kind": "process"
+          },
+          {
+            "id": "stories",
+            "title": "Market Stories",
+            "technology": "Authored JSON + WebP charts",
+            "detail": "",
+            "kind": "frontend"
+          }
+        ]
+      },
+      {
+        "title": "05 / Reader & delivery",
         "nodes": [
           {
             "id": "reader",
             "title": "Atlas reader",
             "technology": "Flask / Jinja",
-            "detail": "Company and narrative pages",
+            "detail": "",
             "kind": "service"
           },
           {
             "id": "static",
             "title": "Static snapshot",
             "technology": "HTML / JavaScript",
-            "detail": "Exported reader delivery",
+            "detail": "",
             "kind": "frontend"
           }
         ]
@@ -518,9 +542,32 @@
         "to": "static",
         "label": "export snapshot",
         "control": false
+      },
+      {
+        "from": "markdown",
+        "to": "case_research",
+        "label": "reviewed narrative evidence",
+        "control": true
+      },
+      {
+        "from": "historical_prices",
+        "to": "case_research",
+        "label": "later price evidence",
+        "control": true
+      },
+      {
+        "from": "case_research",
+        "to": "stories",
+        "label": "essays + charts",
+        "control": false
+      },
+      {
+        "from": "stories",
+        "to": "reader",
+        "label": "/market-stories/<slug>",
+        "control": false
       }
-    ],
-    "note": "The reader uses files, not a relational database. Price context does not drive narrative lifecycle states. Static delivery is shown without claiming automatic publication is enabled."
+    ]
   },
   "debrief": {
     "summary": "Direct browser-to-R2 audio upload, a Postgres job queue and an embedded FastAPI worker drive the voice pipeline.",
@@ -532,21 +579,21 @@
             "id": "web",
             "title": "Debrief PWA",
             "technology": "React / TypeScript · Cloudflare Pages",
-            "detail": "Record; poll results; daily / weekly reviews",
+            "detail": "",
             "kind": "frontend"
           },
           {
             "id": "auth",
             "title": "Supabase Auth",
             "technology": "Google OAuth / email code",
-            "detail": "Issue the frontend session JWT",
+            "detail": "",
             "kind": "external"
           },
           {
             "id": "turnstile",
             "title": "Cloudflare Turnstile",
             "technology": "Anonymous trial gate",
-            "detail": "Verified before upload permission",
+            "detail": "",
             "kind": "external"
           }
         ]
@@ -558,14 +605,14 @@
             "id": "api",
             "title": "HTTP API",
             "technology": "FastAPI",
-            "detail": "Presign, submit, status and account APIs",
+            "detail": "",
             "kind": "service"
           },
           {
             "id": "worker",
             "title": "Embedded worker",
             "technology": "asyncio task · Postgres queue",
-            "detail": "Claim job → Whisper → GPT → save",
+            "detail": "Claim → transcribe → extract → save",
             "kind": "process"
           }
         ]
@@ -577,14 +624,14 @@
             "id": "db",
             "title": "Application database",
             "technology": "PostgreSQL · SQLAlchemy / asyncpg",
-            "detail": "Entries, classifications, jobs and audits",
+            "detail": "Entries + jobs + classifications",
             "kind": "database"
           },
           {
             "id": "r2",
             "title": "Audio objects",
             "technology": "Cloudflare R2 · S3 API",
-            "detail": "Presigned browser PUT; MinIO in local dev",
+            "detail": "",
             "kind": "object"
           }
         ]
@@ -596,14 +643,14 @@
             "id": "whisper",
             "title": "Transcription",
             "technology": "OpenAI Whisper",
-            "detail": "Audio → transcript",
+            "detail": "",
             "kind": "external"
           },
           {
             "id": "gpt",
             "title": "Structured extraction",
             "technology": "OpenAI GPT",
-            "detail": "Transcript → categories / todos",
+            "detail": "",
             "kind": "external"
           }
         ]
@@ -670,7 +717,6 @@
         "control": false,
         "bidirectional": true
       }
-    ],
-    "note": "FastAPI starts the worker and an hourly TTL sweep in the same process. The Postgres queue uses SELECT FOR UPDATE SKIP LOCKED; there is no broker. Anonymous clients poll status and audio expires after 24 hours; signed-in notifications use Supabase Realtime."
+    ]
   }
 }

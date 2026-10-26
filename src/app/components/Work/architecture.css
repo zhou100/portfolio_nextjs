@@ -1,35 +1,19 @@
-.architecture__summary { max-width: var(--prose); margin: 12px 0 28px; color: var(--clr-ink-soft); }
-.architecture__diagram { border: 1px solid var(--clr-border-strong); border-radius: 8px; padding: 16px; background: var(--clr-bg); }
-.architecture__diagram img { width: 100%; height: auto; }
-.architecture__diagram figcaption, .architecture__key { margin: 16px 0 0; color: var(--clr-muted); font-size: 0.95rem; }
-.architecture__text { margin-top: 20px; }
-.architecture__text summary { cursor: pointer; color: var(--clr-accent-dark); text-decoration: underline; text-underline-offset: 3px; }
-.architecture__layers { margin-top: 24px; }
-.architecture__layer { margin: 0 0 24px; padding: 20px; border: 1px dashed var(--clr-border-strong); border-radius: 8px; }
-.architecture__layer > h3 { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; line-height: 1.6; margin-bottom: 20px; text-transform: uppercase; color: var(--clr-accent-dark); }
-.architecture__components { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
-.architecture__component { padding: 20px; background: var(--clr-panel); border: 1px solid var(--clr-border-strong); border-radius: 8px; scroll-margin-top: 100px; min-width: 0; }
-.architecture__component--database { border-radius: 50% / 16px; border-top: 4px double var(--clr-accent-dark); border-bottom: 4px double var(--clr-accent-dark); }
-.architecture__component--object { border-radius: 8px 8px 24px 24px; border-top: 4px double var(--clr-accent-dark); }
-.architecture__component--files { border-radius: 0 16px 0 0; border-right: 4px double var(--clr-border-strong); }
-.architecture__component--frontend { background: var(--clr-accent-soft); }
-.architecture__component--external { border-style: dashed; }
-.architecture__component:target { outline: 2px solid var(--clr-accent); outline-offset: 3px; }
-.architecture__kind { display: block; font: 0.7rem var(--mono); text-transform: uppercase; color: var(--clr-muted); margin-bottom: 8px; }
-.architecture__component h4 { font-size: 1.15rem; line-height: 1.35; margin-bottom: 8px; }
-.architecture__component p { font-size: 1rem; line-height: 1.5; }
-.architecture__component .architecture__technology { font-family: var(--mono); font-size: 0.8rem; line-height: 1.6; color: var(--clr-accent-dark); margin-bottom: 8px; overflow-wrap: anywhere; }
-.architecture__connections { list-style: none; padding: 12px 0 0; margin: 12px 0 0; border-top: 1px solid var(--clr-border-strong); }
-.architecture__connections li { font-size: 0.95rem; line-height: 1.5; margin: 0 0 8px; overflow-wrap: anywhere; }
-.architecture__connections a { color: var(--clr-accent-dark); text-decoration: underline; text-underline-offset: 3px; }
-.architecture__note { margin-top: 24px; max-width: var(--prose); color: var(--clr-muted); font-size: 1rem; }
-.architecture__mobile { display: none; }
-@media (max-width: 1200px) {
-  .architecture__diagram, .architecture__text { display: none; }
-  .architecture__mobile { display: block; }
-  .architecture__key { margin-top: 0; }
-  .architecture__layer { padding: 16px; }
-  .architecture__components { grid-template-columns: 1fr; }
-  .architecture__component { padding: 18px; }
-  .architecture__full { font-size: 1rem; }
+.architecture { border-top: 1px solid var(--clr-border); padding: 48px 0; scroll-margin-top: 96px; min-width: 0; }
+.architecture__heading { font-size: 1.85rem; font-weight: 400; margin: 0 0 28px; }
+.architecture__diagram { margin: 0; border: 1px solid var(--clr-border-strong); border-radius: 8px; padding: 16px; background: var(--clr-bg); }
+.architecture__viewport { overflow-x: auto; overscroll-behavior-x: contain; }
+.architecture__viewport:focus-visible { outline: 2px solid var(--clr-ink-soft); outline-offset: 4px; }
+.architecture__diagram img { display: block; width: 100%; height: auto; max-width: none; }
+.architecture__diagram figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 16px; color: var(--clr-muted); font-size: 0.9rem; }
+.architecture__diagram a { color: var(--clr-ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+  .architecture { padding: 32px 0; }
+  .architecture__heading { font-size: 1.55rem; margin-bottom: 20px; }
+  .architecture__diagram { padding: 12px; }
+}
+
+@media (max-width: 900px) {
+  .architecture__viewport { max-height: 70vh; overflow: auto; }
+  .architecture__diagram img { min-width: 1100px; }
+  .architecture__diagram figcaption::before { content: 'Scroll to explore'; flex-basis: 100%; }
 }

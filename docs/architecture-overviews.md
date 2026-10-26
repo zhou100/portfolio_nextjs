@@ -7,7 +7,7 @@ API boundaries and clients rather than a linear product journey.
 ## Editing and generation
 
 - `src/content/architecture.json` is the single source for typed components,
-  groups, directional edges and concise architecture notes.
+  groups and directional edges.
 - `src/lib/architecture.ts` provides the TypeScript contract.
 - `tools/generate-architecture.cjs` validates IDs and endpoints, then uses pinned
   development-only `@viz-js/viz` / Graphviz to generate the four committed SVGs.
@@ -15,18 +15,18 @@ API boundaries and clients rather than a linear product journey.
   stale SVGs without writing; the production build includes this check.
 - No graph engine, model call or network dependency runs in the browser.
 
-Graphviz uses layered placement, reserved cluster boundaries and labelled edges.
-Database/object stores use cylinders with explicit kind labels; files use folders;
-frontend tabs and service/process boxes remain distinct. Solid arrows represent
-data or API traffic; dashed arrows represent scheduling/authentication/control.
-Double-ended arrows represent the request/response or read/write labels shown.
+Graphviz uses layered placement, cluster boundaries and labelled edges. Component
+names and essential processing steps sit inside neutral boxes; technology labels
+sit below each shape in muted gray. Database/object stores retain cylinders.
+Solid arrows represent data/API traffic; dashed arrows represent control.
+Double-ended arrows preserve request/response and read/write semantics.
 
-Above 1200px the SVG is visible with a full-size link and an expandable HTML
-component/connection equivalent. At 1200px and below, the same graph renders as
-stacked layers with readable text and named, keyboard-accessible destination
-links. Mobile does not discard any components or connections. Hidden desktop and
-mobile copies use distinct IDs. The text equivalent also states two-way/control
-semantics, independent of color and decorative arrows.
+The same main diagram is shown on desktop and mobile. A focusable horizontal
+scroll region preserves readable text on narrow screens; a full-size SVG link
+supports separate inspection. The image alternative includes every component,
+technology and directional connection. There is no duplicate visible component
+list or explanatory caveat section. Component spacing and heading styles are
+self-contained and do not depend on case-page section classes.
 
 ## Evidence reviewed on 2026-10-26
 
@@ -66,6 +66,20 @@ semantics, independent of color and decorative arrows.
 - Price context goes only to the reader, not the lifecycle engine. The static
   delivery node makes no claim that an automated publisher is enabled.
 
+- The independent Market Stories branch is supported by pipeline
+  `web/content/README.md`, `web/market_essays.py` and
+  `web/content/market_essays.json`: authored historical essays use TMTB narrative
+  evidence and archived Yahoo adjusted-close prices. JSON plus WebP charts feed
+  Flask `/market-stories/<slug>` pages and static export. These essays are
+  independent of live narrative generation and of living-stories projections.
+  Reviewed pipeline head: `967c95154fe291e1755da7b381e870bbe81cf0c6`.
+  Research-input arrows are dashed editorial inputs, not runtime extraction from
+  narrative JSON. Flask routes are in `web/server.py` (6723-6742); static export
+  enumerates essays in `tools/pages_migration/runtime_recipe/full_site.py` (243-248).
+  The portfolio also hosts the research in `src/content/market-stories.json` and
+  `src/app/writing/market-stories/[slug]/page.tsx`. No price edge enters lifecycle
+  analysis, and no automated essay-generation pipeline is implied.
+
 ### Debrief
 
 - [API lifecycle](https://github.com/zhou100/brief-voice-memo/blob/main/backend/app/main.py),
@@ -87,7 +101,7 @@ semantics, independent of color and decorative arrows.
 - [Worker](https://github.com/zhou100/brief-voice-memo/blob/main/backend/app/services/worker.py),
   blob `d0cfe47514333cf0f80ef83e4df60ae596c3bfa6`: read audio, Whisper, GPT
   categorization, database writes and authenticated Supabase Realtime notifications.
-  The latter and TTL behavior are notes to keep the core graph readable.
+  Notification and TTL details are outside the visible core diagram.
 
 Keep diagram scope at components and interfaces. Do not add unverified deployment
 automation, model versions, databases, queues or roadmap features.
