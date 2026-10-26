@@ -1,0 +1,675 @@
+{
+  "el-nino-commodities": {
+    "summary": "Python research pipelines, timestamped file storage and a static HTML/JS workbench.",
+    "groups": [
+      {
+        "title": "01 / Sources & scheduling",
+        "nodes": [
+          {
+            "id": "sources",
+            "title": "Climate & crop sources",
+            "technology": "NOAA · CHIRPS · MPOB · World Bank",
+            "detail": "Climate, rainfall, supply and prices",
+            "kind": "external"
+          },
+          {
+            "id": "actions",
+            "title": "GitHub Actions",
+            "technology": "Weekly scheduler",
+            "detail": "Starts the weekly pipeline",
+            "kind": "external"
+          }
+        ]
+      },
+      {
+        "title": "02 / Ingestion & persistence",
+        "nodes": [
+          {
+            "id": "ingest",
+            "title": "climcomm fetchers",
+            "technology": "Python",
+            "detail": "Fetch and timestamp source releases",
+            "kind": "process"
+          },
+          {
+            "id": "archive",
+            "title": "Local archive",
+            "technology": "Files + manifest.jsonl",
+            "detail": "SHA-256, issued_at, ingested_at",
+            "kind": "files"
+          },
+          {
+            "id": "r2",
+            "title": "Private archive backup",
+            "technology": "Cloudflare R2 · S3 API",
+            "detail": "Whitelisted, hash-verified sync",
+            "kind": "object"
+          }
+        ]
+      },
+      {
+        "title": "03 / Research & monitoring",
+        "nodes": [
+          {
+            "id": "research",
+            "title": "Frozen research",
+            "technology": "Python · point-in-time selection",
+            "detail": "Historical tests and whole-event holdouts",
+            "kind": "process"
+          },
+          {
+            "id": "monitor",
+            "title": "Weekly monitoring",
+            "technology": "Python · forward evidence",
+            "detail": "New observations; append-only log",
+            "kind": "process"
+          },
+          {
+            "id": "reports",
+            "title": "Committed outputs",
+            "technology": "Reports + display snapshots",
+            "detail": "Frozen results and weekly reports",
+            "kind": "files"
+          }
+        ]
+      },
+      {
+        "title": "04 / Publication & frontend",
+        "nodes": [
+          {
+            "id": "export",
+            "title": "Static export",
+            "technology": "Python build + safety scan",
+            "detail": "Exclude raw files and vendor quotes",
+            "kind": "process"
+          },
+          {
+            "id": "web",
+            "title": "Research workbench",
+            "technology": "HTML / JavaScript · Cloudflare Pages",
+            "detail": "Browser reads exported evidence",
+            "kind": "frontend"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "sources",
+        "to": "ingest",
+        "label": "fetch",
+        "control": false
+      },
+      {
+        "from": "actions",
+        "to": "ingest",
+        "label": "weekly trigger",
+        "control": true
+      },
+      {
+        "from": "ingest",
+        "to": "archive",
+        "label": "append versions",
+        "control": false
+      },
+      {
+        "from": "archive",
+        "to": "r2",
+        "label": "sync approved files",
+        "control": false
+      },
+      {
+        "from": "archive",
+        "to": "research",
+        "label": "as-of inputs",
+        "control": false
+      },
+      {
+        "from": "archive",
+        "to": "monitor",
+        "label": "latest observations",
+        "control": false
+      },
+      {
+        "from": "research",
+        "to": "reports",
+        "label": "frozen results",
+        "control": false
+      },
+      {
+        "from": "monitor",
+        "to": "reports",
+        "label": "weekly reports",
+        "control": false
+      },
+      {
+        "from": "reports",
+        "to": "export",
+        "label": "read committed outputs",
+        "control": false
+      },
+      {
+        "from": "export",
+        "to": "web",
+        "label": "static assets",
+        "control": false
+      }
+    ],
+    "note": "The archive is file-based, not a SQL database. R2 preserves private raw data; the browser has no live research API and does not rerun models."
+  },
+  "churchmap": {
+    "summary": "A scheduled website-enrichment pipeline feeds Postgres; a FastAPI service powers the React map.",
+    "groups": [
+      {
+        "title": "01 / Acquisition",
+        "nodes": [
+          {
+            "id": "sites",
+            "title": "Church websites",
+            "technology": "Public source pages",
+            "detail": "Roster provides website URLs",
+            "kind": "external"
+          },
+          {
+            "id": "actions",
+            "title": "GitHub Actions",
+            "technology": "Crawl scheduler",
+            "detail": "Calls protected crawl endpoints",
+            "kind": "external"
+          },
+          {
+            "id": "r2",
+            "title": "HTML captures",
+            "technology": "Cloudflare R2",
+            "detail": "Dated, content-hashed raw pages",
+            "kind": "object"
+          }
+        ]
+      },
+      {
+        "title": "02 / FastAPI backend · Render",
+        "nodes": [
+          {
+            "id": "fetch",
+            "title": "Website fetcher",
+            "technology": "/api/admin/crawl/fetch",
+            "detail": "Capture HTML and crawl metadata",
+            "kind": "process"
+          },
+          {
+            "id": "extract",
+            "title": "Attribute extraction",
+            "technology": "LLM · /crawl/extract",
+            "detail": "Fields, confidence and source snippets",
+            "kind": "process"
+          },
+          {
+            "id": "tags",
+            "title": "Deterministic tagging",
+            "technology": "Python · /crawl/tag",
+            "detail": "Rules over extracted attributes",
+            "kind": "process"
+          }
+        ]
+      },
+      {
+        "title": "03 / Database & enrichment",
+        "nodes": [
+          {
+            "id": "db",
+            "title": "Church directory",
+            "technology": "Supabase Postgres",
+            "detail": "Churches, tags, reviews and crawl state",
+            "kind": "database"
+          },
+          {
+            "id": "places",
+            "title": "Google Places",
+            "technology": "On-demand enrichment",
+            "detail": "Photos, hours and contact details",
+            "kind": "external"
+          }
+        ]
+      },
+      {
+        "title": "04 / API & frontend",
+        "nodes": [
+          {
+            "id": "api",
+            "title": "Directory API",
+            "technology": "FastAPI · psycopg 3 pool",
+            "detail": "GET /api/churches and /{id}",
+            "kind": "service"
+          },
+          {
+            "id": "web",
+            "title": "ChurchMap UI",
+            "technology": "React / Vite / Leaflet · Vercel",
+            "detail": "Location search, map and profiles",
+            "kind": "frontend"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "actions",
+        "to": "fetch",
+        "label": "POST fetch",
+        "control": true
+      },
+      {
+        "from": "sites",
+        "to": "fetch",
+        "label": "HTML",
+        "control": false
+      },
+      {
+        "from": "fetch",
+        "to": "r2",
+        "label": "store captures",
+        "control": false
+      },
+      {
+        "from": "r2",
+        "to": "extract",
+        "label": "read HTML",
+        "control": false
+      },
+      {
+        "from": "actions",
+        "to": "extract",
+        "label": "POST extract",
+        "control": true
+      },
+      {
+        "from": "extract",
+        "to": "db",
+        "label": "attributes + snippets",
+        "control": false
+      },
+      {
+        "from": "db",
+        "to": "tags",
+        "label": "read attributes",
+        "control": false
+      },
+      {
+        "from": "tags",
+        "to": "db",
+        "label": "write tags",
+        "control": false
+      },
+      {
+        "from": "actions",
+        "to": "tags",
+        "label": "POST tag",
+        "control": true
+      },
+      {
+        "from": "db",
+        "to": "api",
+        "label": "query results",
+        "control": false
+      },
+      {
+        "from": "api",
+        "to": "db",
+        "label": "SQL queries",
+        "control": false
+      },
+      {
+        "from": "web",
+        "to": "api",
+        "label": "GET search / detail",
+        "control": false
+      },
+      {
+        "from": "api",
+        "to": "web",
+        "label": "JSON",
+        "control": false
+      },
+      {
+        "from": "api",
+        "to": "places",
+        "label": "on-demand request",
+        "control": true
+      },
+      {
+        "from": "places",
+        "to": "db",
+        "label": "cache enrichment",
+        "control": false
+      }
+    ],
+    "note": "Crawl stages execute in the backend; Actions schedules the calls. Google Places is a separate, on-demand enrichment path. No semantic vector-search service is implied."
+  },
+  "narrative-atlas": {
+    "summary": "Document ingestion and two analysis branches produce versioned JSON artifacts for a Flask reader.",
+    "groups": [
+      {
+        "title": "01 / Ingestion",
+        "nodes": [
+          {
+            "id": "r2",
+            "title": "Source documents",
+            "technology": "Cloudflare R2",
+            "detail": "PDFs and images",
+            "kind": "object"
+          },
+          {
+            "id": "ingest",
+            "title": "Ingest workflow",
+            "technology": "GitHub Actions · Python",
+            "detail": "Download; PDF / image → Markdown",
+            "kind": "process"
+          },
+          {
+            "id": "markdown",
+            "title": "Source editions",
+            "technology": "Markdown files",
+            "detail": "Dated, attributed source text",
+            "kind": "files"
+          }
+        ]
+      },
+      {
+        "title": "02 / Analysis branches",
+        "nodes": [
+          {
+            "id": "tickers",
+            "title": "Ticker analysis",
+            "technology": "LLM + Python",
+            "detail": "Extract → resolve entities → timeline / synthesis",
+            "kind": "process"
+          },
+          {
+            "id": "narratives",
+            "title": "Narrative analysis",
+            "technology": "LLM + deterministic rules",
+            "detail": "Extract → cluster → lifecycle state",
+            "kind": "process"
+          },
+          {
+            "id": "refresh",
+            "title": "Analysis refresh",
+            "technology": "Separate GitHub Actions job",
+            "detail": "Processes derived backlog; no PDF download",
+            "kind": "external"
+          }
+        ]
+      },
+      {
+        "title": "03 / Versioned artifacts",
+        "nodes": [
+          {
+            "id": "artifacts",
+            "title": "Analysis artifacts",
+            "technology": "Committed JSON / JSONL",
+            "detail": "Timelines, clusters, states and synthesis",
+            "kind": "files"
+          },
+          {
+            "id": "validate",
+            "title": "Artifact validation",
+            "technology": "Hashes · revisions · freshness",
+            "detail": "Manifest checks and partial-state handling",
+            "kind": "process"
+          },
+          {
+            "id": "prices",
+            "title": "Price context",
+            "technology": "Bounded price-refresh artifacts",
+            "detail": "Independent dated market series",
+            "kind": "files"
+          }
+        ]
+      },
+      {
+        "title": "04 / Reader & delivery",
+        "nodes": [
+          {
+            "id": "reader",
+            "title": "Atlas reader",
+            "technology": "Flask / Jinja",
+            "detail": "Company and narrative pages",
+            "kind": "service"
+          },
+          {
+            "id": "static",
+            "title": "Static snapshot",
+            "technology": "HTML / JavaScript",
+            "detail": "Exported reader delivery",
+            "kind": "frontend"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "r2",
+        "to": "ingest",
+        "label": "download",
+        "control": false
+      },
+      {
+        "from": "ingest",
+        "to": "markdown",
+        "label": "convert",
+        "control": false
+      },
+      {
+        "from": "markdown",
+        "to": "tickers",
+        "label": "source text",
+        "control": false
+      },
+      {
+        "from": "markdown",
+        "to": "narratives",
+        "label": "source text",
+        "control": false
+      },
+      {
+        "from": "refresh",
+        "to": "tickers",
+        "label": "refresh derived work",
+        "control": true
+      },
+      {
+        "from": "refresh",
+        "to": "narratives",
+        "label": "refresh derived work",
+        "control": true
+      },
+      {
+        "from": "tickers",
+        "to": "artifacts",
+        "label": "write JSONL",
+        "control": false
+      },
+      {
+        "from": "narratives",
+        "to": "artifacts",
+        "label": "write JSONL",
+        "control": false
+      },
+      {
+        "from": "artifacts",
+        "to": "validate",
+        "label": "verify manifest",
+        "control": false
+      },
+      {
+        "from": "validate",
+        "to": "reader",
+        "label": "coherent snapshot",
+        "control": false
+      },
+      {
+        "from": "prices",
+        "to": "reader",
+        "label": "display context only",
+        "control": false
+      },
+      {
+        "from": "reader",
+        "to": "static",
+        "label": "export snapshot",
+        "control": false
+      }
+    ],
+    "note": "The reader uses files, not a relational database. Price context does not drive narrative lifecycle states. Static delivery is shown without claiming automatic publication is enabled."
+  },
+  "debrief": {
+    "summary": "Direct browser-to-R2 audio upload, a Postgres job queue and an embedded FastAPI worker drive the voice pipeline.",
+    "groups": [
+      {
+        "title": "01 / Browser & identity",
+        "nodes": [
+          {
+            "id": "web",
+            "title": "Debrief PWA",
+            "technology": "React / TypeScript · Cloudflare Pages",
+            "detail": "Record; poll results; daily / weekly reviews",
+            "kind": "frontend"
+          },
+          {
+            "id": "auth",
+            "title": "Supabase Auth",
+            "technology": "Google OAuth / email code",
+            "detail": "Account identity and demo claim",
+            "kind": "external"
+          },
+          {
+            "id": "turnstile",
+            "title": "Cloudflare Turnstile",
+            "technology": "Anonymous trial gate",
+            "detail": "Verified before upload permission",
+            "kind": "external"
+          }
+        ]
+      },
+      {
+        "title": "02 / FastAPI service · Render · one process",
+        "nodes": [
+          {
+            "id": "api",
+            "title": "HTTP API",
+            "technology": "FastAPI",
+            "detail": "Presign, submit, status and account APIs",
+            "kind": "service"
+          },
+          {
+            "id": "worker",
+            "title": "Embedded worker",
+            "technology": "asyncio task · Postgres queue",
+            "detail": "Claim job → Whisper → GPT → save",
+            "kind": "process"
+          }
+        ]
+      },
+      {
+        "title": "03 / Persistent storage",
+        "nodes": [
+          {
+            "id": "db",
+            "title": "Application database",
+            "technology": "PostgreSQL · SQLAlchemy / asyncpg",
+            "detail": "Entries, classifications, jobs and audits",
+            "kind": "database"
+          },
+          {
+            "id": "r2",
+            "title": "Audio objects",
+            "technology": "Cloudflare R2 · S3 API",
+            "detail": "Presigned browser PUT; MinIO in local dev",
+            "kind": "object"
+          }
+        ]
+      },
+      {
+        "title": "04 / External model APIs",
+        "nodes": [
+          {
+            "id": "whisper",
+            "title": "Transcription",
+            "technology": "OpenAI Whisper",
+            "detail": "Audio → transcript",
+            "kind": "external"
+          },
+          {
+            "id": "gpt",
+            "title": "Structured extraction",
+            "technology": "OpenAI GPT",
+            "detail": "Transcript → categories / todos",
+            "kind": "external"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "web",
+        "to": "api",
+        "label": "presign / submit / poll",
+        "control": false,
+        "bidirectional": true
+      },
+      {
+        "from": "web",
+        "to": "r2",
+        "label": "direct signed PUT",
+        "control": false
+      },
+      {
+        "from": "auth",
+        "to": "api",
+        "label": "JWT / claim demo",
+        "control": true
+      },
+      {
+        "from": "api",
+        "to": "turnstile",
+        "label": "verify trial",
+        "control": true
+      },
+      {
+        "from": "api",
+        "to": "db",
+        "label": "entries / jobs / status",
+        "control": false,
+        "bidirectional": true
+      },
+      {
+        "from": "worker",
+        "to": "db",
+        "label": "claim jobs / save results",
+        "control": false,
+        "bidirectional": true
+      },
+      {
+        "from": "r2",
+        "to": "worker",
+        "label": "read audio",
+        "control": false
+      },
+      {
+        "from": "worker",
+        "to": "whisper",
+        "label": "audio / transcript",
+        "control": false,
+        "bidirectional": true
+      },
+      {
+        "from": "worker",
+        "to": "gpt",
+        "label": "transcript / classifications",
+        "control": false,
+        "bidirectional": true
+      }
+    ],
+    "note": "FastAPI starts the worker and an hourly TTL sweep in the same process. The Postgres queue uses SELECT FOR UPDATE SKIP LOCKED; there is no broker. Anonymous clients poll status and audio expires after 24 hours; signed-in notifications use Supabase Realtime."
+  }
+}
