@@ -7,13 +7,6 @@ export type EvidenceType =
   | 'randomized-experiment'
   | 'synthetic-demo';
 
-export const STATUS_LABEL: Record<WorkStatus, string> = {
-  proposed: 'Study design',
-  'in-progress': 'Working prototype',
-  published: 'Case study',
-  archived: 'Archived',
-};
-
 /** What the reader is looking at, independent of how mature the underlying work is. */
 export const KIND_LABEL: Record<WorkKind, string> = {
   'industry-case': 'Industry case',
@@ -265,7 +258,7 @@ const items: WorkItem[] = [
       outcome:
         'Palm oil prices tend to rise after the peak. Rainfall does not improve output forecasts, and the effect does not carry to US soybean oil futures. The current call is watch, not trade.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-10-28',
     links: {
       caseStudy: '/work/el-nino-commodities',
       artifact: {
@@ -350,7 +343,7 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'The evidence says something much narrower than the market lore. Palm oil spot prices rose in nine of twelve events (+16.7 log points on average over a metals benchmark), and Chinese palm oil futures rose in all four overlapping events, though that futures run was not blind and excess returns halve against a broad metals index. Meanwhile, adding regional rainfall failed to beat a seasonal output baseline at every horizon, and the price effect did not carry over to US soybean oil futures. Once the 2010–2025 history had been tested, I froze the specification — no new models, no threshold searches — leaving the 2026–27 episode as a single forward out-of-sample observation. Because the Pacific index is currently elevated while the three Malaysian growing regions are not simultaneously in drought, the Tuesday automated report outputs *"watch, do not trade"* — which is what an honest system should say most of the time.',
+        text: '**Quality here means reproducible tests, inputs available by the decision date, and predictive value beyond a fixed baseline on held-out events.** A positive historical return alone does not meet that standard. The evidence says something much narrower than the market lore. Palm oil spot prices rose in nine of twelve events (+16.7 log points on average over a metals benchmark), and Chinese palm oil futures rose in all four overlapping events, though that futures run was not blind and excess returns halve against a broad metals index. Meanwhile, adding regional rainfall failed to beat a seasonal output baseline at every horizon, and the price effect did not carry over to US soybean oil futures. Once the 2010–2025 history had been tested, I froze the specification — no new models, no threshold searches — leaving the 2026–27 episode as a single forward out-of-sample observation. Because the Pacific index is currently elevated while the three Malaysian growing regions are not simultaneously in drought, the Tuesday automated report outputs *"watch, do not trade"* — which is what an honest system should say most of the time.',
       },
     ],
   },
@@ -433,7 +426,7 @@ const items: WorkItem[] = [
       outcome:
         'A live site, and a reframing: coverage is measured against a required field set for one user situation rather than by row count.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-10-28',
     links: {
       caseStudy: '/work/churchmap',
       demo: 'https://churchmap.vercel.app/',
@@ -478,7 +471,7 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'Instead of chasing national row counts or claiming product-market fit where none exists, I rebuilt the health metric around task-success coverage for one city and one user situation at a time: defining the minimum required field set before inspecting the database, seeding missing fields by hand where automated crawls fall short, and tracking field-level freshness so expansion only happens after a narrow geography can reliably complete a visit.',
+        text: '**Quality here means a first-time visitor can plan a visit using complete, accurate, current information.** The coverage measure is the share of listings in a defined city with all four required fields, rather than an average that lets extra metadata hide a missing service time. I reframed the pipeline around that required field set, manual filling of gaps, and field-level freshness. Accuracy still needs checking against current source information, and usability needs observing whether visitors can complete the task. This case reports the measurement approach; it does not yet report measured coverage, accuracy, or user task-success rates.',
       },
     ],
   },
@@ -501,7 +494,7 @@ const items: WorkItem[] = [
       outcome:
         'Live, with more than 220 editions since June 2025 grouped into 45 narratives across five sectors. The duplicate audit is scored on a small hand-labelled set; extraction fidelity is not measured yet.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-10-28',
     links: {
       caseStudy: '/work/narrative-atlas',
       demo: 'https://narrative-atlas-static.pages.dev/',
@@ -571,7 +564,7 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'Around a thousand automated tests enforce stage and stance contracts across every change, and the redesigned duplicate audit now reaches 1.00 precision and recall on the 15-pair scored fixture (up from 0.20 and 0.14). Even so, a perfect score on a small fixture I labelled while building the classifier is a regression test, not proof of generalization, and extraction fidelity against the raw newsletter text has not yet been double-annotated. The immediate next step is scoring a sample of extracted claims with a second human annotator — with a hard stop rule that if two people cannot agree on stance for most sampled claims, the stance schema gets rewritten before any model is tuned against it.',
+        text: '**Quality here means claims faithfully reflect their sources, distinct theses stay distinct, and narrative changes follow dated evidence.** Around a thousand automated tests enforce stage and stance contracts across every change, and the redesigned duplicate audit now reaches 1.00 precision and recall on the 15-pair scored fixture (up from 0.20 and 0.14). Even so, a perfect score on a small fixture I labelled while building the classifier is a regression test, not proof of generalization, and extraction fidelity against the raw newsletter text has not yet been double-annotated. The immediate next step is scoring a sample of extracted claims with a second human annotator — with a hard stop rule that if two people cannot agree on stance for most sampled claims, the stance schema gets rewritten before any model is tuned against it.',
       },
     ],
   },
@@ -594,7 +587,7 @@ const items: WorkItem[] = [
       outcome:
         'Live, with early users beyond me. The next step is understanding where first-time users find value, where extraction needs correction, and what brings them back.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-10-28',
     links: {
       caseStudy: '/work/debrief',
       demo: 'https://time.yujun.net/',
@@ -636,7 +629,7 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'Letting users reach the first result without an account makes initial friction easy to observe, and my own daily use keeps the interface honest, but personal dogfooding is a design signal rather than retention evidence. Shipping the voice pipeline came first; instrumenting the funnel comes next. Rather than publish vanity usage counts, the measurement design focuses on three numbers that actually diagnose product quality: **time to value** (latency from recording to a readable summary), **extraction error rate** (separating ASR transcription mistakes from LLM task-extraction hallucinations on a hand-labelled recording set, since the two require completely different fixes), and **anonymous-to-saved conversion** — the exact moment a first-time user decides the extracted tasks are accurate enough to claim an account and keep.',
+        text: '**Quality here means a user gets a timely summary that preserves what they said and extracts tasks without inventing or omitting them.** Letting users reach the first result without an account makes initial friction easy to observe, and my own daily use keeps the interface honest, but personal dogfooding is a design signal rather than retention evidence. Shipping the voice pipeline came first; instrumenting the funnel comes next. Rather than publish vanity usage counts, the measurement design focuses on three numbers that actually diagnose product quality: **time to value** (latency from recording to a readable summary), **extraction error rate** (separating ASR transcription mistakes from LLM task-extraction hallucinations on a hand-labelled recording set, since the two require completely different fixes), and **anonymous-to-saved conversion** — whether a first-time user chooses to claim an account and keep the result. Conversion is a signal of perceived value, not a direct measure of extraction accuracy. These are planned measurements; this case does not yet report measured latency, extraction accuracy, conversion, or retention.',
       },
     ],
   },
@@ -686,7 +679,7 @@ export function getFeaturedWork(): WorkItem[] {
 
 /** Builds a reader can open and try, in home-page order. */
 export function getShowcaseWork(): WorkItem[] {
-  const order = ['el-nino-commodities', 'churchmap', 'narrative-atlas', 'debrief'];
+  const order = ['narrative-atlas', 'churchmap', 'el-nino-commodities', 'debrief'];
   return order
     .map((slug) => items.find((item) => item.slug === slug))
     .filter((item): item is WorkItem => !!item?.showcase);

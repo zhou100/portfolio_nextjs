@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import { getOgImage } from '@/lib/portfolio';
-import { getWork } from '@/lib/work';
+import { getShowcaseWork, getWork } from '@/lib/work';
 import CaseLedger from '../components/Work/CaseLedger';
 import Showcase from '../components/Work/Showcase';
 
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Case studies from industry work, products I built, and study designs, each labelled with its status and the evidence behind it.',
+    'Case studies from industry work, products I built, and study designs, with quality criteria and evidence explained in each case.',
   alternates: { canonical: '/work' },
   openGraph: {
     title: 'Work',
-    description: 'Case studies from industry work, products I built, and study designs, each labelled with its status and the evidence behind it.',
+    description: 'Case studies from industry work, products I built, and study designs, with quality criteria and evidence explained in each case.',
     url: '/work',
     images: [getOgImage()],
   },
@@ -21,9 +21,7 @@ export default function WorkIndex() {
   const work = getWork();
 
   const industry = work.filter((item) => item.kind === 'industry-case');
-  const builds = work.filter(
-    (item) => item.kind === 'independent-build' && item.status !== 'proposed',
-  );
+  const builds = getShowcaseWork();
   const lab = work.filter((item) => item.status === 'proposed');
 
   return (

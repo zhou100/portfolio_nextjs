@@ -2,7 +2,7 @@
 
 ## Product Context
 - **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist who makes product progress measurable.
-- **Project type:** Editorial case-study site. The unit of content is a case study that carries a status and an evidence type, not a project card with a stack list.
+- **Project type:** Editorial case-study site. The unit of content is a case study with an evidence type and explicit quality criteria, not a project card with a stack list.
 - **Reading goal:** Position understood in 30 seconds, one case understood in 3 minutes, enough material to interrogate the method in 10.
 
 ## Aesthetic Direction
@@ -46,14 +46,10 @@ are never published — describe the problem, not the internal system. Case slug
 the problem, not a product.
 
 ## Status Convention
-Every work item shows a status as **both a word and a color**. Color alone never carries the meaning.
-The label says what the reader is looking at, not how mature the work is.
-
-| Status | Label shown | Means | Never means |
-|---|---|---|---|
-| `published` | Case study | The case is written and readable | That a business result has been proven |
-| `in-progress` | Working prototype | Built and running, quality not yet measured | That measurement is underway right now |
-| `proposed` | Study design | Design only, nothing built | That a prototype exists |
+Public status badges are omitted from cards, ledgers, and case metadata. Internal status
+values remain available for grouping study designs. Independent-build essays define
+what quality means for that project, what has been evaluated, and what remains
+unmeasured; a published case is not evidence of completed validation.
 
 Evidence type is named in the case metadata line and defined in `EVIDENCE_MEANING` in
 `src/lib/work.ts`. A live or code link renders in that same line only when the
@@ -62,10 +58,10 @@ resource exists and is reachable without private access.
 ## Content Hierarchy
 
 Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
-Section titles name their content directly; do not pair them with a second title or instructions for reading the interface. Preserve status, evidence boundaries, dates, target users, source attribution, and meaningful accessibility labels. Methods stay inside the case essay rather than repeating on every build card.
+Section titles name their content directly; do not pair them with a second title or instructions for reading the interface. Preserve evidence boundaries, dates, target users, source attribution, and meaningful accessibility labels. Methods stay inside the case essay rather than repeating on every build card.
 
 - **`/work/[slug]` is a memo.** Title, italic question, then one metadata line
-  (status as word and color, context, role, evidence boundary, and a live link when
+  (context, role, evidence boundary, and a live link when
   one exists). The body is three or four paragraphs. At most one table sits between
   them. No section headings, prompt subheads, brief grid, or repeated disclaimer.
   Paragraphs may use bold, italic, and inline code. A limitation that does not change
@@ -210,3 +206,4 @@ Section titles name their content directly; do not pair them with a second title
 | 2026-10-22 | Removed redundant index introductions, paired section titles, footer labels and bio, build-card method lists, and case section numbers. `/work` and `/writing` headers are the H1 alone. Group ledes stay only where they state an evidence boundary (Industry cases: confidential data; In the lab: no results), as does the Limitations prompt. Spacing retuned: ledger rows 24px, subhead gap 20px, build title `10px 0 8px` | Owner principle: let hierarchy, spacing, and grouping explain the interface. Status, audience, case methods, evidence boundaries, and substantive content remain. |
 | 2026-10-26 | Case pages read as essays: title, question, one metadata line, three or four paragraphs, at most one table. The brief grid, section prompts, and repeated evidence boxes are gone. Ledger outcomes and build-card taglines stay. | The nine-block template restated the same points and made the cases read as a form. Supersedes the 2026-09-08 brief-and-sections template on `/work/[slug]` only. |
 | 2026-10-26 | The four independent builds (El Niño, ChurchMap, Narrative Atlas, Debrief) end with a generated system architecture figure, placed after the essay rather than before it | Owner decision combining PR #23's diagrams with PR #24's essay layout. The contribution still comes first; the diagram answers "how is it built" for readers who keep going. |
+| 2026-10-28 | Remove public work status badges; define quality and evaluation limits within independent-build essays. Showcase order is Narrative Atlas, ChurchMap, El Niño, Debrief. | Owner decision. |

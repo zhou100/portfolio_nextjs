@@ -6,7 +6,6 @@ import { getOgImage } from '@/lib/portfolio';
 import { articleHref, getListedArticles } from '@/lib/writing';
 import ArchitectureOverview from '../../components/Work/ArchitectureOverview';
 import Blocks from '../../components/Work/Blocks';
-import StatusBadge from '../../components/Work/StatusBadge';
 import './case.css';
 
 export function generateStaticParams() {
@@ -39,7 +38,7 @@ function hostOf(href: string): string {
   }
 }
 
-/** One line: status, context, role, evidence boundary, and any public link. */
+/** One line: context, role, evidence boundary, and any public link. */
 function CaseMeta({ item }: { item: WorkItem }) {
   const live = item.links?.demo ?? item.links?.artifact?.href;
   const code = item.links?.code;
@@ -49,10 +48,6 @@ function CaseMeta({ item }: { item: WorkItem }) {
 
   return (
     <p className="case__meta">
-      <StatusBadge status={item.status} />
-      <span className="case__metasep" aria-hidden="true">
-        ·
-      </span>
       <span className="case__metatext">{item.meta}</span>
       {live && (
         <>
