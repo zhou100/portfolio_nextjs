@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { KIND_LABEL, type WorkItem } from '@/lib/work';
-import StatusBadge from './StatusBadge';
 
 /**
  * Case studies as one ledger (home, /work): case, question, outcome, link.
@@ -32,7 +31,6 @@ export default function CaseLedger({
               </Heading>
               <div className="ledger__by">
                 <span className="label">{item.org ?? KIND_LABEL[item.kind]}</span>
-                <StatusBadge status={item.status} />
               </div>
             </div>
             <p className="ledger__question">

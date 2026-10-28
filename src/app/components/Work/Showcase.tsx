@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { WorkItem } from '@/lib/work';
-import StatusBadge from './StatusBadge';
 
 /**
  * A live product on the home page, as one card in a row of three: the lead screenshot,
@@ -42,7 +41,6 @@ export default function Showcase({
       </a>
 
       <div className="build__body">
-        <StatusBadge status={item.status} />
         <Heading className="build__title">
           <Link href={`/work/${item.slug}`}>{item.title}</Link>
         </Heading>
