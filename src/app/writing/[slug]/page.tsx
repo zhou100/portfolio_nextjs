@@ -49,7 +49,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     .map((block) => ({ id: slugify(block.text), text: block.text }));
 
   return (
-    <article className="article-page">
+    <article className="article-page" lang={article.language}>
       <header className="article-page__header">
         <div className="wrap">
           <p className="article-page__back">
