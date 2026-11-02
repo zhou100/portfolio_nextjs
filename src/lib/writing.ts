@@ -29,6 +29,10 @@ export interface Article {
   listed?: boolean;
   /** Reader-facing summary. Used on cards and at the top of the piece. */
   excerpt: string;
+  /** Optional linked opening phrase on the article page; summaries stay plain text. */
+  excerptLink?: { text: string; href: string };
+  /** Download shown immediately after the takeaways. */
+  download?: { href: string; filename: string };
   /** Slug in `work.ts` that supplies the evidence, when there is one. */
   relatedWork?: string;
   publishedAt?: string;
@@ -62,6 +66,8 @@ const articles: Article[] = [
     readingTime: '3 min',
     excerpt:
       'An AGENTS.md template drawn from my projects: define the outcome, respect the evidence, and make the work checkable.',
+    excerptLink: { text: 'An AGENTS.md template', href: '/templates/AGENTS.md' },
+    download: { href: '/templates/AGENTS.md', filename: 'AGENTS.md' },
     tldr: [
       'Write down what could go wrong and how to catch it, alongside what you want the AI to do.',
       'Adapt the ten principles to your project: name the source files, required checks, and operational boundaries.',
@@ -104,9 +110,6 @@ const articles: Article[] = [
           'If a release passes locally but fails on direct links, include opening those links on the deployed site in the release checklist.',
         ],
       },
-    ],
-    sources: [
-      { name: 'Reusable AGENTS.md template', href: '/templates/AGENTS.md' },
     ],
   },
   {

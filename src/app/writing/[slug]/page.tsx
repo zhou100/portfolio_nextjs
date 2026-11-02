@@ -66,12 +66,30 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
 
           <h1 className="article-page__title">{article.title}</h1>
-          <p className="article-page__excerpt">{article.excerpt}</p>
+          <p className="article-page__excerpt">
+            {article.excerptLink && article.excerpt.startsWith(article.excerptLink.text) ? (
+              <>
+                <a className="textlink" href={article.excerptLink.href}>{article.excerptLink.text}</a>
+                {article.excerpt.slice(article.excerptLink.text.length)}
+              </>
+            ) : article.excerpt}
+          </p>
         </div>
       </header>
 
       <div className="wrap article-page__body">
         <InShort points={article.tldr} />
+
+        {article.download && (
+          <a
+            className="article-page__download"
+            href={article.download.href}
+            download={article.download.filename}
+            aria-label={`Download ${article.download.filename}`}
+          >
+            Download
+          </a>
+        )}
 
         {headings.length > 1 && (
           <nav className="toc" aria-label="On this page">

@@ -177,3 +177,23 @@
   gap: 12px 24px;
   justify-content: space-between;
 }
+
+/* The template download is an explicit article action. */
+.article-page__download {
+  border: 1px solid var(--clr-accent-dark);
+  color: var(--clr-accent-dark);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.article-page__download:hover {
+  background: var(--clr-panel);
+}
