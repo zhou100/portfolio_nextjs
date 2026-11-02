@@ -164,7 +164,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The twelve stop at the peak date, which is only visible afterwards; a rule that waited for confirmation entered two to three months late and did worse. Futures records cover four episodes or fewer, and regional rainfall did not improve palm output forecasts, so the drought I could measure does not explain the move. I ran most checks after seeing the main result; they describe the sample rather than confirm it. The same reading works for a dozen launches or incidents: print every case, compare against ordinary periods, count related metrics once. Twelve is a small number. It is not one number.',
+        text: 'The twelve stop at the peak date, which is only visible afterwards; a rule that waited for confirmation entered two to three months late and did worse. Futures records cover four episodes or fewer, and regional rainfall did not improve palm output forecasts, so the drought I could measure does not explain the move. I ran most checks after seeing the main result; they describe the sample rather than confirm it. Twelve is a small number. It is not one number.',
       },
     ],
     sources: [
@@ -219,7 +219,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Palm oil prices did rise after strong peaks. The average was +16.7 log points against a metals index six to twelve months later, and the sign was positive in 9 of the 12 events. On palm oil futures the event years averaged +28.3% against −3.5% in other years. The mechanism is where the story loses its footing. Rainfall in the three growing regions beat a plain seasonal forecast at none of four horizons. And the US soybean oil contract that started the exercise moved +0.5% on average in event years, a number that turns negative if you drop one of the three events.',
+        text: 'The price results do not establish the weather mechanism or a reliable trade in US soybean oil futures. In the latter test, removing one of the three events turns the average return negative.',
       },
       {
         type: 'p',
@@ -243,7 +243,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'What I am watching now is narrow. The evidence card asks for the ocean signal and drought in the growing regions together. The ocean signal is there. Only one of the three regions is dry, so the card says watch. The next scheduled check comes in early January, when final rainfall for September through November is published, and what that check is allowed to change was written down in October, before anyone knows the answer. The 2026–27 event will make the count thirteen. It will not settle the question, and the system is arranged so that nobody, including me, gets to pretend otherwise. The habits carry over to product experiments: split a feature-to-revenue story into its links, count independent units rather than rows, never let an evaluation use information the decision could not have had, and decide when to stop before you start. A system that often says “watch” is reporting how often the evidence is actually there.',
+        text: 'What I am watching now is narrow. The evidence card asks for the ocean signal and drought in the growing regions together. The ocean signal is there. Only one of the three regions is dry, so the card says watch. The next scheduled check comes in early January, when final rainfall for September through November is published, and what that check is allowed to change was written down in October, before anyone knows the answer. The 2026–27 event will make the count thirteen. It will not settle the question, and the system is arranged so that nobody, including me, gets to pretend otherwise.',
       },
     ],
     sources: [
@@ -295,11 +295,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Treating the held-out score as the launch signal, with a few guardrails on the readout, is a reasonable default. A sample drawn from typical traffic is the right sample for typical performance, and a large sample makes the average precise. Precision on the average says very little about precision where the decision turns.',
-      },
-      {
-        type: 'p',
-        text: 'The sample is built for the average, so it is weakest exactly where the decision is. In an evaluation set of 2,000 items, a 5% slice holds 100. At an accuracy near 55%, the standard error on that slice is about five points; a 95% interval runs roughly ten points either side, wide enough to hide the regression in the table. This is not only a teaching problem. Oakden-Rayner and colleagues named it hidden stratification in medical imaging: models with strong overall scores that failed on clinically important subsets, with gaps above 20% on some of them. The repair is cheap. Oversample the slice so it supports its own estimate, weight back for the population figure, and report both with their intervals.',
+        text: 'A precise overall score can conceal an uncertain estimate for a small slice. In an evaluation set of 2,000 items, a 5% slice holds 100. At an accuracy near 55%, the standard error on that slice is about five points; a 95% interval runs roughly ten points either side, wide enough to hide the regression in the table. This is not only a teaching problem. Oakden-Rayner and colleagues named it hidden stratification in medical imaging: models with strong overall scores that failed on clinically important subsets, with gaps above 20% on some of them. The repair is cheap. Oversample the slice so it supports its own estimate, weight back for the population figure, and report both with their intervals.',
       },
       {
         type: 'p',
@@ -353,7 +349,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'A correct tag says nothing about performance. A tag that predicts performance does not establish what would happen if you changed it. Each claim needs its own evidence. Dashboards step between them anyway: tagging accuracy, then a correlation with return on ad spend, then a recommendation that inherits the confidence of the first number.',
+        text: 'Dashboards can blur these evidence boundaries: tagging accuracy, then a correlation with return on ad spend, then a recommendation that inherits the confidence of the first number.',
       },
       {
         type: 'p',
@@ -369,7 +365,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Before I repeat a creative finding, I ask which of the three claims it is. A tag: do I know its agreement, and on how many assets? A prediction: does it beat a baseline that already knows the delivery context? A causal claim: is there a recorded random assignment behind it? Saying which one you have is not a hedge. It is the content of the finding.',
+        text: 'Before I repeat a creative finding, I ask which of the three claims it is. A tag: do I know its agreement, and on how many assets? A prediction: does it beat a baseline that already knows the delivery context? A causal claim: is there a recorded random assignment behind it?',
       },
     ],
     sources: [
@@ -415,7 +411,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'In Task A every number is right and the recommendation is still wrong, because return on money already spent says nothing about the return on the next dollar. In Task B, B2 is longer, better organized, more decisive, and it invents its key numbers; B1 is the correct answer to an underspecified question. A judge that scores grounding likes A1. A judge impressed by length and confidence likes B2. Neither answer is one a user could act on.',
+        text: 'The pairs separate grounding, supported recommendations, and task completion. Both Task A answers use grounded figures, but A1 recommends a budget change that past return on ad spend cannot justify. A2 proposes a way to resolve that uncertainty. In Task B, B2 invents the margin figures needed for its recommendation; B1 asks for the missing data. A1 and B2 offer decisions the evidence cannot support. A single score can hide these differences, especially when length and confidence make an answer look more complete.',
       },
       {
         type: 'p',
@@ -423,7 +419,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'One score cannot hold these answers, because the dimensions move in opposite directions. Grounding asks whether every factual sentence traces to the evidence. Both Task A answers pass; B2 fails. Task completion asks whether the user could act on the answer and get what they came for. A1 and B2 fail. A third check, whether the answer recommends something the evidence does not support, catches A1, which is fully grounded and still draws the wrong inference. There is outside evidence that a blended score drifts toward surface features. When Dubois and colleagues controlled AlpacaEval’s judge scores for answer length, the benchmark’s rank correlation with Chatbot Arena’s human votes rose from 0.94 to 0.98, which means length had been moving the scores.',
+        text: 'Length can affect a judge’s score independently of answer quality. When Dubois and colleagues controlled AlpacaEval’s judge scores for answer length, the benchmark’s rank correlation with Chatbot Arena’s human votes rose from 0.94 to 0.98. That result gives a reason to check whether a judge rewards the longer answer in Task B, rather than assuming it will notice the invented figures.',
       },
       {
         type: 'p',
