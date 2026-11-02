@@ -73,10 +73,6 @@ const articles: Article[] = [
         text: 'I distilled the working agreements from my projects into ten principles and an AGENTS.md template. They apply to coding, analysis, and product maintenance. Each asks what success means, what could go wrong, and how to check.',
       },
       {
-        type: 'p',
-        text: 'Consider “show the top ten eligible results.” Suppose twenty results qualify, but only two are in the overall top ten. Taking ten before filtering returns two; filtering first returns ten. Both implementations run. Choosing between them requires a clear statement of the intended behavior. That is principle seven in practice, and why principle one comes first.',
-      },
-      {
         type: 'table',
         head: ['Principle', 'In practice'],
         rows: [
@@ -94,15 +90,19 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'I recommend the template because it makes “check carefully” concrete. A historical analysis must establish when its data became available. A website release needs a check of the deployed page. A passing test or successful build proves only its part of the job. These are working requirements, not measured productivity gains.',
+        text: 'I recommend the template as a starting point for making expectations explicit. To use it, name the project’s goal, source files, required checks, and design references. Replace general instructions with checks someone can actually run.',
       },
       {
         type: 'p',
-        text: 'To use it, copy the template below and fill in the project anchors: the goal, implementation, generated files, required checks, and authoritative design or decision documents. Then make the relevant principles specific. This site, for example, requires each market story to keep its own price cutoff and only gives an article a public link when it has a body.',
+        text: 'Add a lasting rule when a problem is likely to recur and the instruction would help prevent it. Keep it specific to the project. For example:',
       },
       {
-        type: 'p',
-        text: 'Small edits need no ceremony. When something fails, first add a local check that can reproduce it. Update the shared agreement when the lesson is reusable. Keep the rules that help catch the next mistake.',
+        type: 'list',
+        items: [
+          'If regenerating a file keeps overwriting manual fixes, name the source file to edit and the command to regenerate it.',
+          'If an analysis repeatedly mixes incompatible units, require unit checks before combining the data.',
+          'If a release passes locally but fails on direct links, include opening those links on the deployed site in the release checklist.',
+        ],
       },
     ],
     sources: [
