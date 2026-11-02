@@ -157,7 +157,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Strength and timing add more. Among the twelve, peak ONI and the return are uncorrelated, and seven weak episodes outside them averaged +1.8: crossing the threshold mattered, more strength did not. In eight episodes the rise reversed over the following six months. Soybean, coconut and palm kernel oil rose too, but within each episode they move with palm oil, at correlations up to 0.98, so they count once.',
+        text: 'Strength and timing complicate the picture. Among the twelve, peak ONI and the return are uncorrelated; seven weak episodes outside them averaged +1.8. In this sample, the threshold distinguishes the groups, but stronger peaks did not bring larger returns. In eight episodes the rise reversed over the following six months. Soybean, coconut and palm kernel oil rose too, but within each episode they move with palm oil, at correlations up to 0.98, so they count once.',
       },
       {
         type: 'p',
@@ -288,7 +288,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'The candidate wins overall, 81.35% to 79.0%, because 95% of the population is ordinary traffic and it gains three points there. On the high-risk slice, 5% of the population, it drops from 60% to 50%. Both sentences come from the same table. Which one decides the launch depends on what the evaluation is for, and the overall number cannot tell you that.',
+        text: 'The candidate wins overall, 81.35% to 79.0%, because it gains three points on ordinary traffic, 95% of the population. On the high-risk slice, it drops from 60% to 50%. The same table supports both results; the launch decision depends on how much the high-risk regression matters.',
       },
       {
         type: 'p',
@@ -350,7 +350,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Each row asks for more than the one above it. A correct tag says nothing about performance. A tag that predicts performance says nothing about what would happen if you changed it. Dashboards step between them anyway: tagging accuracy, then a correlation with return on ad spend, then a recommendation that inherits the confidence of the first number.',
+        text: 'A correct tag says nothing about performance. A tag that predicts performance does not establish what would happen if you changed it. Each claim needs its own evidence. Dashboards step between them anyway: tagging accuracy, then a correlation with return on ad spend, then a recommendation that inherits the confidence of the first number.',
       },
       {
         type: 'p',
@@ -393,7 +393,7 @@ const articles: Article[] = [
     body: [
       {
         type: 'p',
-        text: 'More teams let a language model grade another model’s answers and use the grade to decide what ships. The judge gets less scrutiny than the system it judges. The standard check is that it gives the same score on repeated runs. That shows the judge is consistent. A judge with the generator’s blind spots will be consistent about them.',
+        text: 'A language model that grades answers for a release decision needs its own evaluation. Giving the same score on repeated runs shows consistency, but a judge can consistently miss the same failures as the model it grades.',
       },
       {
         type: 'p',
@@ -432,7 +432,7 @@ const articles: Article[] = [
       },
       {
         type: 'p',
-        text: 'Before a judge’s score gates anything, I want to name a failure it is known to miss and say where that failure goes instead. I want to know the human comparison was collected blind, before the judge’s output was visible. I want agreement per dimension, with the model version, prompt and tie-breaking rule recorded. And if the judge and the people disagree next quarter, I want to be able to say whether the model drifted or the rubric was ambiguous all along. The answer pairs above are teaching cases I wrote; this piece reports no judge scores of my own, because a number I had not computed would undercut the argument. The exercise costs an afternoon and two dozen carefully written items, and it tells you which of your quality gates is doing the work.',
+        text: 'Before a judge’s score gates anything, I want to name a failure it is known to miss and say where that failure goes instead. I want to know the human comparison was collected blind, before the judge’s output was visible. I want agreement per dimension, with the model version, prompt and tie-breaking rule recorded. And if the judge and the people disagree next quarter, I want to be able to say whether the model drifted or the rubric was ambiguous all along. The answer pairs above are teaching cases I wrote; this piece reports no judge scores of my own, because a number I had not computed would undercut the argument. Even a small set of carefully written items can reveal disagreements worth investigating; it does not establish the judge’s overall performance.',
       },
     ],
     sources: [
