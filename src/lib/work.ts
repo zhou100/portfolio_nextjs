@@ -497,7 +497,7 @@ const items: WorkItem[] = [
     updatedAt: '2026-10-28',
     links: {
       caseStudy: '/work/narrative-atlas',
-      demo: 'https://narrative-atlas-static.pages.dev/',
+      demo: 'https://stock.yujun.net/',
     },
     showcase: {
       tagline:
