@@ -477,51 +477,37 @@ const items: WorkItem[] = [
   },
   {
     slug: 'narrative-atlas',
-    title: 'Narrative Atlas',
+    title: 'Narrative Edge',
     question:
-      'When analysts keep restating a view, how do you tell a real change in the story from the same story told again?',
+      'How can changes in market narratives become stock recommendations whose subsequent performance can be reviewed?',
     kind: 'independent-build',
     status: 'in-progress',
     featured: false,
     evidenceType: ['observational'],
-    meta: 'Independent Build · Claim Extraction, Hysteresis Clustering & Golden-Set Audit · Observational',
+    meta: 'Independent Build · Narrative Signals, Stock Recommendations & Performance Review · Observational',
     brief: {
       problem:
-        'Analyst commentary arrives every day, repeats itself, and now and then reverses. Read as a stream, it is hard to see whether a view changed or was only restated, and easy to read the story backwards from the price.',
+        'Changes in market narratives can suggest stocks to investigate. The challenge is turning those changes into consistent recommendations and reviewing their subsequent performance without confusing hindsight with a live track record.',
       contribution:
-        'I built it end to end: ingest, claim and narrative extraction, clustering with an audit for duplicates, a stage engine one edition cannot flip, price episodes dated against the evidence, and a public static atlas.',
+        'I built the research pipeline and rule-based recommendation board: extract dated analyst views, track narrative changes, select stocks, and review their performance against QQQ.',
       outcomeLabel: 'Current result',
       outcome:
-        'Live, with more than 220 editions since June 2025 grouped into 45 narratives across five sectors. The duplicate audit is scored on a small hand-labelled set; extraction fidelity is not measured yet.',
+        'The public board shows new long and short signals, continuation and watch lists, and retrospective performance against QQQ. The research-date simulation stays separate from the recorded issuance ledger; it does not establish live investment performance.',
     },
-    updatedAt: '2026-10-28',
+    updatedAt: '2026-11-05',
     links: {
       caseStudy: '/work/narrative-atlas',
-      demo: 'https://narrative-atlas-static.pages.dev/',
+      demo: 'https://stock.yujun.net/',
     },
     showcase: {
       tagline:
-        'Follow how analyst narratives about a stock form, strengthen and reverse, with every change dated to its source.',
-      audience: 'Investors tracking analyst views',
+        'Stock recommendations from changing market narratives, with retrospective performance review against QQQ.',
+      audience: 'Investors researching narrative-driven stock ideas',
       shots: [
         {
-          src: '/work/narrative-atlas/stock-episode.webp',
-          alt: 'Narrative Atlas page for NVDA: price, research window, and a price and evidence episode chart comparing NVDA with a semiconductor ETF.',
-          caption: 'One stock: a proposition, its dated evidence, and the price',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-atlas/narratives.webp',
-          alt: 'Narrative Atlas narratives index: 45 narratives across 5 sectors, each with tickers, evidence state and last source date.',
-          caption: 'Forty-five narratives, nested by sector',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-atlas/library.webp',
-          alt: 'Narrative Atlas library: research editions by date with the tickers each one covers and a link to the extracted evidence.',
-          caption: 'Every edition, with the tickers it covers',
+          src: '/work/narrative-atlas/recommendations.png',
+          alt: 'Narrative Edge recommendation board: retrospective research-date simulation, new long and short signals, position status, and performance against QQQ.',
+          caption: 'Narrative-driven stock ideas and retrospective performance, captured November 5, 2026',
           width: 1440,
           height: 900,
         },
@@ -530,7 +516,11 @@ const items: WorkItem[] = [
     body: [
       {
         type: 'p',
-        text: 'Daily market commentary repeats itself for weeks and then quietly reverses. Read as a stream, it is hard to tell whether an analyst thesis actually changed or was merely restated louder, and even easier to read the story backwards once a stock has moved. I built Narrative Atlas to turn over 220 editions of a paid daily markets newsletter (since June 2025) into a structured, point-in-time record: each edition is parsed twice — once for ticker-level propositions and once for broader theses — clustering them into 45 live narratives across five sectors and aligning every dated claim against the stock\'s price path and sector benchmark.',
+        text: 'Narrative Edge recommends stocks from changes in market narratives and lets readers review how those ideas performed against QQQ. I built the pipeline from analyst research notes to the public board: a language model extracts dated bullish and bearish views, then fixed rules select new long or short signals when consensus reverses, continuation ideas supported by bullish narratives, and a separate watch list of stocks whose prices have lagged. Each row connects the idea to its research date, position status, supporting view and subsequent price path.',
+      },
+      {
+        type: 'p',
+        text: 'The default board is a **retrospective research-date simulation**, with entry and exit dates, closed positions and returns relative to QQQ. It reviews selected recorded signals, not every historical opportunity or a strategy known at the time. Where publication timestamps are unverified, source-session dates are explicit assumptions. The recorded issuance ledger remains separate, and simulated results do not count toward live validation.',
       },
       {
         type: 'p',

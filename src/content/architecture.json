@@ -346,7 +346,7 @@
     ]
   },
   "narrative-atlas": {
-    "summary": "Document ingestion and two analysis branches produce versioned JSON artifacts for a Flask reader.",
+    "summary": "Narrative Edge turns research into stock lists and retrospective performance views, supported by versioned analysis and price artifacts.",
     "mobileStart": 0.41,
     "groups": [
       {
@@ -458,7 +458,7 @@
         "nodes": [
           {
             "id": "reader",
-            "title": "Atlas reader",
+            "title": "Narrative Edge",
             "technology": "Flask / Jinja",
             "detail": "",
             "kind": "service"
