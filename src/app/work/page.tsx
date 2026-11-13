@@ -22,11 +22,7 @@ export default function WorkIndex() {
 
   const industry = work.filter((item) => item.kind === 'industry-case');
   const builds = getShowcaseWork();
-  const lab = work.filter(
-    (item) =>
-      item.status === 'proposed' ||
-      (item.kind === 'independent-build' && item.status === 'in-progress' && !item.showcase),
-  );
+  const lab = work.filter((item) => item.status === 'proposed');
 
   return (
     <>
@@ -66,7 +62,7 @@ export default function WorkIndex() {
           <div className="subhead">
             <h2 className="subhead__title">In the lab</h2>
             <p className="subhead__lede">
-              Study designs and running evaluations, each with a stop condition. None has met it yet.
+              Study designs with stated stop conditions. Nothing here has results.
             </p>
           </div>
           <CaseLedger items={lab} heading="h3" />

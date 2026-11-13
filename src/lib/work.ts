@@ -556,51 +556,37 @@ const items: WorkItem[] = [
   },
   {
     slug: 'narrative-atlas',
-    title: 'Narrative Atlas',
+    title: 'Narrative Edge',
     question:
-      'When analysts keep restating a view, how do you tell a real change in the story from the same story told again?',
+      'How can changes in market narratives become stock recommendations whose subsequent performance can be reviewed?',
     kind: 'independent-build',
     status: 'in-progress',
     featured: false,
     evidenceType: ['observational'],
-    meta: 'Independent Build · Claim Extraction, Hysteresis Clustering & Golden-Set Audit · Observational',
+    meta: 'Independent Build · Narrative Signals, Stock Recommendations & Performance Review · Observational',
     brief: {
       problem:
-        'Analyst commentary arrives every day, repeats itself, and now and then reverses. Read as a stream, it is hard to see whether a view changed or was only restated, and easy to read the story backwards from the price.',
+        'Changes in market narratives can suggest stocks to investigate. The challenge is turning those changes into consistent recommendations and reviewing their subsequent performance without confusing hindsight with a live track record.',
       contribution:
-        'I built it end to end: ingest, claim and narrative extraction, clustering with an audit for duplicates, a stage engine one edition cannot flip, price episodes dated against the evidence, and a public static atlas.',
+        'I built the research pipeline and rule-based recommendation board: extract dated analyst views, track narrative changes, select stocks, and review their performance against QQQ.',
       outcomeLabel: 'Current result',
       outcome:
-        'Live, with more than 220 editions since June 2025 grouped into 45 narratives across five sectors. The duplicate audit is scored on a small hand-labelled set; extraction fidelity is not measured yet.',
+        'The public board shows new long and short signals, continuation and watch lists, and retrospective performance against QQQ. The research-date simulation stays separate from the recorded issuance ledger; it does not establish live investment performance. With research through 6 November 2026 the recorded ledger had two closures, both behind QQQ, against a bar of 30 per list.',
     },
-    updatedAt: '2026-10-28',
+    updatedAt: '2026-11-05',
     links: {
       caseStudy: '/work/narrative-atlas',
-      demo: 'https://narrative-atlas-static.pages.dev/',
+      demo: 'https://stock.yujun.net/',
     },
     showcase: {
       tagline:
-        'Follow how analyst narratives about a stock form, strengthen and reverse, with every change dated to its source.',
-      audience: 'Investors tracking analyst views',
+        'Stock recommendations from changing market narratives, with retrospective performance review against QQQ.',
+      audience: 'Investors researching narrative-driven stock ideas',
       shots: [
         {
-          src: '/work/narrative-atlas/stock-episode.webp',
-          alt: 'Narrative Atlas page for NVDA: price, research window, and a price and evidence episode chart comparing NVDA with a semiconductor ETF.',
-          caption: 'One stock: a proposition, its dated evidence, and the price',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-atlas/narratives.webp',
-          alt: 'Narrative Atlas narratives index: 45 narratives across 5 sectors, each with tickers, evidence state and last source date.',
-          caption: 'Forty-five narratives, nested by sector',
-          width: 1440,
-          height: 900,
-        },
-        {
-          src: '/work/narrative-atlas/library.webp',
-          alt: 'Narrative Atlas library: research editions by date with the tickers each one covers and a link to the extracted evidence.',
-          caption: 'Every edition, with the tickers it covers',
+          src: '/work/narrative-atlas/recommendations.png',
+          alt: 'Narrative Edge recommendation board: retrospective research-date simulation, new long and short signals, position status, and performance against QQQ.',
+          caption: 'Narrative-driven stock ideas and retrospective performance, captured November 5, 2026',
           width: 1440,
           height: 900,
         },
@@ -609,7 +595,11 @@ const items: WorkItem[] = [
     body: [
       {
         type: 'p',
-        text: 'Daily market commentary repeats itself for weeks and then quietly reverses. Read as a stream, it is hard to tell whether an analyst thesis actually changed or was merely restated louder, and even easier to read the story backwards once a stock has moved. I built Narrative Atlas to turn over 220 editions of a paid daily markets newsletter (since June 2025) into a structured, point-in-time record: each edition is parsed twice — once for ticker-level propositions and once for broader theses — clustering them into 45 live narratives across five sectors and aligning every dated claim against the stock\'s price path and sector benchmark.',
+        text: 'Narrative Edge recommends stocks from changes in market narratives and lets readers review how those ideas performed against QQQ. I built the pipeline from analyst research notes to the public board: a language model extracts dated bullish and bearish views, then fixed rules select new long or short signals when consensus reverses, continuation ideas supported by bullish narratives, and a separate watch list of stocks whose prices have lagged. Each row connects the idea to its research date, position status, supporting view and subsequent price path.',
+      },
+      {
+        type: 'p',
+        text: 'The default board is a **retrospective research-date simulation**, with entry and exit dates, closed positions and returns relative to QQQ. It reviews selected recorded signals, not every historical opportunity or a strategy known at the time. Where publication timestamps are unverified, source-session dates are explicit assumptions. The recorded issuance ledger remains separate, and simulated results do not count toward live validation. That ledger enters at the first final close after both the report date and the day the rules ran, writes each close once, and is the only record that counts: the rules stay in validation until new signals and continuation each have 30 closed recorded positions. With research through 6 November 2026 it had two, one continuation and one watch position, both behind QQQ, and no closed new signals, which is no evidence either way.',
       },
       {
         type: 'p',
@@ -644,67 +634,6 @@ const items: WorkItem[] = [
       {
         type: 'p',
         text: '**Quality here means claims faithfully reflect their sources, distinct theses stay distinct, and narrative changes follow dated evidence.** Around a thousand automated tests enforce stage and stance contracts across every change, and the redesigned duplicate audit now reaches 1.00 precision and recall on the 15-pair scored fixture (up from 0.20 and 0.14). Even so, a perfect score on a small fixture I labelled while building the classifier is a regression test, not proof of generalization, and extraction fidelity against the raw newsletter text has not yet been double-annotated. The immediate next step is scoring a sample of extracted claims with a second human annotator — with a hard stop rule that if two people cannot agree on stance for most sampled claims, the stance schema gets rewritten before any model is tuned against it.',
-      },
-    ],
-  },
-  {
-    slug: 'narrative-edge',
-    title: 'Narrative Edge',
-    question:
-      'When analyst consensus on a stock flips, is that a signal, or a story that only looks early once the price has moved?',
-    kind: 'independent-build',
-    status: 'in-progress',
-    featured: false,
-    evidenceType: ['observational'],
-    meta: 'Independent Build · Rule-Based Signals, Separate Simulation and Issuance Ledgers & Forward Validation · Observational (in validation)',
-    brief: {
-      problem:
-        'Narrative reversals look predictive when read backwards from a chart. A board of stock calls built on them needs a record that a later price move cannot rewrite.',
-      contribution:
-        'I built the signal layer on the Narrative Atlas pipeline: fixed selection, entry and exit rules, a research-date simulation kept apart from the recorded issuance ledger, and a stop rule for when the record counts.',
-      outcomeLabel: 'Current result',
-      outcome:
-        'In validation. With research through 6 November 2026 the recorded ledger had two closed positions, both behind QQQ, and no closed new signals. The rules need 30 closures per list.',
-    },
-    updatedAt: '2026-11-12',
-    links: {
-      caseStudy: '/work/narrative-edge',
-      demo: 'https://stock.yujun.net/',
-    },
-    body: [
-      {
-        type: 'p',
-        text: 'Narrative Edge turns changes in analyst views into a board of stock calls. It reuses the Narrative Atlas extraction, where a language model records a dated bull or bear stance per stock from each research note, and fixed rules do the rest. A consensus needs at least two report days on one side within fourteen days and twice the other side; a new signal is a consensus that has just reversed, with exactly two report days on the new side; continuation and watch lists follow intact bullish narratives. Every call is measured against the same baseline, QQQ: the stock\'s return minus the index\'s over the same window, signed in the direction of the call. The trap is that a narrative read backwards from a chart will always look as if it was early.',
-      },
-      {
-        type: 'p',
-        text: 'The evaluation is built to keep hindsight out. The rules are versioned (`reco_v2`) and nobody edits the lists by hand. Two records stay separate. The research-date simulation re-enters selected recorded signals at the first final close after the research date, the most favourable reading, and is labelled retrospective. The recorded issuance ledger enters at the first final close after both the report date and the day the rules ran; a report that arrives more than five weekdays late opens nothing, and entry and exit closes are written once and never revised. A position exits on an opposite reversal, after twenty sessions, or when no listed narrative still supports it. Only recorded closures count toward validation, hit rates stay hidden until a list has ten, and the rules remain in validation until new signals and continuation each have thirty.',
-      },
-      {
-        type: 'table',
-        head: ['Record', 'What it can show', 'Status, research through 6 November 2026'],
-        rows: [
-          [
-            'Research-date simulation',
-            'How the fixed rules read selected recorded signals',
-            '36 recorded signals reviewed, one withheld. Retrospective; closures do not count toward validation.',
-          ],
-          [
-            'Recorded issuance ledger',
-            'What the rules issued, at prices available when they ran',
-            'Two closed: one continuation at −6.4 pp and one watch at −31.9 pp against QQQ. No new-signal closures.',
-          ],
-          [
-            'Validation bar',
-            'Whether the calls beat QQQ out of sample',
-            '30 closed recorded positions each for new signals and continuation. Not reached.',
-          ],
-        ],
-        caption: 'Figures from the public board at stock.yujun.net, read 12 November 2026.',
-      },
-      {
-        type: 'p',
-        text: 'So the honest result is no result yet. Both recorded closures lagged QQQ, and two closures in a window when QQQ fell say nothing either way about whether the rules work. Some limits will outlast a larger sample. Every view comes from one research source, consensus counts report days rather than independent analysts, so a view repeated in a later note counts again, and the rules were chosen from a replay of past research. Publication timestamps are unverified, so source-session dates are explicit assumptions. What the build already shows is an evaluation that cannot flatter itself: the generous simulation kept apart from the issuance record, prices frozen once, and the number of closures needed to call the rules working decided before the first one. These are research views tracked against QQQ, not investment advice.',
       },
     ],
   },

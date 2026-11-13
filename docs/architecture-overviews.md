@@ -55,13 +55,17 @@ self-contained and do not depend on case-page section classes.
 - `.github/workflows/crawl.yml`: Actions calls the protected backend fetch,
   extract and tag endpoints; scraping does not run on the scheduler runner.
 
-### Narrative Atlas
+### Narrative Edge
 
 - Private pipeline README and `web/server.py` (reviewed blob
   `6ef24ceee1d2a5c4583c628b6b95c6c763801f6b`) verify R2 ingestion, Markdown,
   separate ticker/narrative branches, JSON/JSONL artifacts, manifest checks and
   Flask/Jinja rendering. `plans/analysis-refresh.md` covers derived-work refresh.
-- Public context: [portfolio case](https://yujun.net/work/narrative-atlas).
+- Public context: [portfolio case](https://yujun.net/work/narrative-atlas) and
+  [production site](https://stock.yujun.net/). The existing case slug is retained.
+  The production board and `/how-it-works`, checked on 2026-11-05, show stock
+  recommendations and retrospective research-date performance against QQQ;
+  the recorded issuance ledger is separate from this simulation.
   Do not publish private repository links or source editions.
 - Price context goes only to the reader, not the lifecycle engine. The static
   delivery node makes no claim that an automated publisher is enabled.

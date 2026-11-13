@@ -31,8 +31,8 @@
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_4</title>
-<path fill="#fbf9f4" stroke="#cbc4b6" stroke-dasharray="5,2" d="M859,-8C859,-8 1433,-8 1433,-8 1439,-8 1445,-14 1445,-20 1445,-20 1445,-196 1445,-196 1445,-202 1439,-208 1433,-208 1433,-208 859,-208 859,-208 853,-208 847,-202 847,-196 847,-196 847,-20 847,-20 847,-14 853,-8 859,-8"/>
-<text xml:space="preserve" text-anchor="middle" x="944.65" y="-187.8" font-family="Georgia" font-size="18.00" fill="#514d46">05 / Reader &amp; delivery</text>
+<path fill="#fbf9f4" stroke="#cbc4b6" stroke-dasharray="5,2" d="M827,-8C827,-8 1433,-8 1433,-8 1439,-8 1445,-14 1445,-20 1445,-20 1445,-196 1445,-196 1445,-202 1439,-208 1433,-208 1433,-208 827,-208 827,-208 821,-208 815,-202 815,-196 815,-196 815,-20 815,-20 815,-14 821,-8 827,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="912.65" y="-187.8" font-family="Georgia" font-size="18.00" fill="#514d46">05 / Reader &amp; delivery</text>
 </g>
 <!-- anchor_0 -->
 <!-- anchor_1 -->
@@ -191,17 +191,17 @@
 <!-- reader -->
 <g id="node18" class="node">
 <title>reader</title>
-<polygon fill="#f2efe7" stroke="none" points="866.65,-68.4 866.65,-128.8 1039.35,-128.8 1039.35,-68.4 866.65,-68.4"/>
-<polygon fill="none" stroke="#777168" points="866.65,-68.4 866.65,-128.8 1039.35,-128.8 1039.35,-68.4 866.65,-68.4"/>
-<text xml:space="preserve" text-anchor="start" x="883.65" y="-93" font-family="Georgia" font-weight="bold" font-size="22.00" fill="#24221e">Atlas reader</text>
-<text xml:space="preserve" text-anchor="start" x="906.2" y="-41.4" font-family="Georgia" font-size="17.00" fill="#625e57">Flask / Jinja</text>
+<polygon fill="#f2efe7" stroke="none" points="834.78,-68.4 834.78,-128.8 1039.22,-128.8 1039.22,-68.4 834.78,-68.4"/>
+<polygon fill="none" stroke="#777168" points="834.78,-68.4 834.78,-128.8 1039.22,-128.8 1039.22,-68.4 834.78,-68.4"/>
+<text xml:space="preserve" text-anchor="start" x="851.78" y="-93" font-family="Georgia" font-weight="bold" font-size="22.00" fill="#24221e">Narrative Edge</text>
+<text xml:space="preserve" text-anchor="start" x="890.2" y="-41.4" font-family="Georgia" font-size="17.00" fill="#625e57">Flask / Jinja</text>
 </g>
 <!-- validate&#45;&gt;reader -->
 <g id="edge14" class="edge">
 <title>validate&#45;&gt;reader</title>
-<path fill="none" stroke="#777168" stroke-width="1.2" d="M852.06,-759.15C863.44,-720.48 876,-677.8 876,-677.8 876,-677.8 876,-677.8 876,-322.2 876,-322.2 912.08,-208.42 934.85,-136.64"/>
-<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="937.09,-137.68 936.87,-130.27 932.42,-136.2 937.09,-137.68"/>
-<text xml:space="preserve" text-anchor="middle" x="932.88" y="-528.9" font-family="Georgia" font-size="14.00" fill="#514d46">coherent snapshot</text>
+<path fill="none" stroke="#777168" stroke-width="1.2" d="M850.34,-759.15C860.64,-720.48 872,-677.8 872,-677.8 872,-677.8 872,-677.8 872,-322.2 872,-322.2 902.46,-208.42 921.68,-136.64"/>
+<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="923.93,-137.68 923.38,-130.29 919.2,-136.42 923.93,-137.68"/>
+<text xml:space="preserve" text-anchor="middle" x="928.88" y="-528.9" font-family="Georgia" font-size="14.00" fill="#514d46">coherent snapshot</text>
 </g>
 <!-- prices -->
 <g id="node12" class="node">
@@ -214,8 +214,8 @@
 <!-- prices&#45;&gt;reader -->
 <g id="edge15" class="edge">
 <title>prices&#45;&gt;reader</title>
-<path fill="none" stroke="#777168" stroke-width="1.2" d="M568.78,-771.39C589.61,-730.11 616,-677.8 616,-677.8 616,-677.8 616,-677.8 616,-322.2 616,-322.2 778.44,-205.17 877.76,-133.61"/>
-<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="879.08,-135.68 883.33,-129.6 876.22,-131.7 879.08,-135.68"/>
+<path fill="none" stroke="#777168" stroke-width="1.2" d="M568.78,-771.39C589.61,-730.11 616,-677.8 616,-677.8 616,-677.8 616,-677.8 616,-322.2 616,-322.2 770.42,-205.4 865.05,-133.82"/>
+<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="866.49,-135.81 870.59,-129.63 863.53,-131.9 866.49,-135.81"/>
 <text xml:space="preserve" text-anchor="middle" x="677.64" y="-528.9" font-family="Georgia" font-size="14.00" fill="#514d46">display context only</text>
 </g>
 <!-- anchor_4 -->
@@ -253,9 +253,9 @@
 <!-- stories&#45;&gt;reader -->
 <g id="edge20" class="edge">
 <title>stories&#45;&gt;reader</title>
-<path fill="none" stroke="#777168" stroke-width="1.2" d="M1137.25,-273.07C1099.13,-233 1045.3,-176.42 1005.66,-134.76"/>
-<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="1007.53,-133.16 1000.93,-129.78 1003.98,-136.54 1007.53,-133.16"/>
-<text xml:space="preserve" text-anchor="middle" x="1169.44" y="-220.2" font-family="Georgia" font-size="14.00" fill="#514d46">/market&#45;stories/&lt;slug&gt;</text>
+<path fill="none" stroke="#777168" stroke-width="1.2" d="M1134.02,-273.07C1093.17,-232.92 1035.46,-176.18 993.05,-134.5"/>
+<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="994.91,-132.89 988.21,-129.73 991.48,-136.39 994.91,-132.89"/>
+<text xml:space="preserve" text-anchor="middle" x="1163.34" y="-220.2" font-family="Georgia" font-size="14.00" fill="#514d46">/market&#45;stories/&lt;slug&gt;</text>
 </g>
 <!-- static -->
 <g id="node19" class="node">
@@ -268,9 +268,9 @@
 <!-- reader&#45;&gt;static -->
 <g id="edge16" class="edge">
 <title>reader&#45;&gt;static</title>
-<path fill="none" stroke="#777168" stroke-width="1.2" d="M1039.18,-78.4C1078.87,-78.4 1126.47,-78.4 1168.9,-78.4"/>
-<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="1168.78,-80.85 1175.78,-78.4 1168.78,-75.95 1168.78,-80.85"/>
-<text xml:space="preserve" text-anchor="middle" x="1108.45" y="-85.6" font-family="Georgia" font-size="14.00" fill="#514d46">export snapshot</text>
+<path fill="none" stroke="#777168" stroke-width="1.2" d="M1038.82,-78.4C1079.78,-78.4 1127.15,-78.4 1169.08,-78.4"/>
+<polygon fill="#777168" stroke="#777168" stroke-width="1.2" points="1168.84,-80.85 1175.84,-78.4 1168.84,-75.95 1168.84,-80.85"/>
+<text xml:space="preserve" text-anchor="middle" x="1108.38" y="-85.6" font-family="Georgia" font-size="14.00" fill="#514d46">export snapshot</text>
 </g>
 </g>
 </svg>

@@ -18,9 +18,9 @@
   launch threshold. Reported experience.
 - ChurchMap reports measured coverage from its public `/api/stats` endpoint (generated
   2026-11-13 05:35 UTC) and states that field accuracy and the four-field share are unmeasured.
-- New Narrative Edge case (live, in validation): two recorded closures, both behind QQQ, against
-  a bar of 30 per list. New Knowledge Workbench study design: proposed gates, no results.
-- "In the lab" on `/work` also lists in-progress builds without a showcase.
+- Narrative Edge (`/work/narrative-atlas`) states its validation bar of 30 recorded closures per
+  list and the two recorded closures so far, both behind QQQ. New Knowledge Workbench study
+  design: proposed gates, no results.
 
 ## Unreleased - 2026-10-19
 
