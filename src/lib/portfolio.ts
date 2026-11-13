@@ -42,8 +42,8 @@ export function getSite(): Site {
     name: 'Yujun Zhou',
     profileImage: '/profile.jpg',
     brand: 'Yujun Zhou',
-    eyebrow: 'Data Scientist and AI builder',
-    headline: 'I make product progress measurable.',
+    eyebrow: 'Product Data Scientist',
+    headline: 'I turn complex AI systems into measurable, reliable products.',
     intro:
       'I’m a data scientist with a PhD in economics. I help teams define success, design experiments, and use the results to decide what to build next. My work spans recommendation systems, product experimentation, and AI applications. Lately, I’ve focused on AI evaluation: defining what “better” means for a specific product and turning that definition into evaluations engineers can use.',
     primaryCta: { label: 'Explore selected work', href: '/work' },
@@ -84,7 +84,7 @@ export function getPath(): PathStep[] {
     {
       org: 'Facebook AI',
       role: 'Data Scientist',
-      detail: 'Fake-account measurement',
+      detail: 'Integrity model evaluation',
     },
     {
       org: 'Instagram Reels',
@@ -94,7 +94,7 @@ export function getPath(): PathStep[] {
     {
       org: 'Omnicom',
       role: 'Data Science Manager & Tech Lead',
-      detail: 'AI agent evaluation',
+      detail: 'GenAI product evaluation',
       current: true,
     },
   ];

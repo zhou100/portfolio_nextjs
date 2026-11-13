@@ -1,7 +1,7 @@
 # Design System - Portfolio
 
 ## Product Context
-- **What this is:** The personal site of Yujun Zhou, positioned as a senior data scientist who makes product progress measurable.
+- **What this is:** The personal site of Yujun Zhou, positioned as a product data scientist who turns complex AI systems into measurable, reliable products, connecting evidence, experimentation and product decisions.
 - **Project type:** Editorial case-study site. The unit of content is a case study with an evidence type and explicit quality criteria, not a project card with a stack list.
 - **Reading goal:** Position understood in 30 seconds, one case understood in 3 minutes, enough material to interrogate the method in 10.
 
@@ -207,3 +207,6 @@ Section titles name their content directly; do not pair them with a second title
 | 2026-10-26 | Case pages read as essays: title, question, one metadata line, three or four paragraphs, at most one table. The brief grid, section prompts, and repeated evidence boxes are gone. Ledger outcomes and build-card taglines stay. | The nine-block template restated the same points and made the cases read as a form. Supersedes the 2026-09-08 brief-and-sections template on `/work/[slug]` only. |
 | 2026-10-26 | The four independent builds (El Niño, ChurchMap, Narrative Atlas, Debrief) end with a generated system architecture figure, placed after the essay rather than before it | Owner decision combining PR #23's diagrams with PR #24's essay layout. The contribution still comes first; the diagram answers "how is it built" for readers who keep going. |
 | 2026-10-28 | Remove public work status badges; define quality and evaluation limits within independent-build essays. Showcase order is Narrative Atlas, ChurchMap, El Niño, Debrief. | Owner decision. |
+| 2026-11-12 | Hero claim "I turn complex AI systems into measurable, reliable products." and eyebrow "Product Data Scientist"; Path details for Facebook AI and Omnicom renamed to the evaluation work; intro unchanged | Owner positioning brief: product analytics, experimentation, LLM evaluation and AI systems, not a generic agent-builder portfolio. |
+| 2026-11-12 | Case essays carry problem, baseline, intervention, evaluation, result, limit and lesson inside the existing three-or-four-paragraph shape; no section headings or new evidence box. A Facebook AI case on offline evaluation sampling joins the industry ledger | Owner brief to make the reasoning inspectable without breaking the essay contract. |
+| 2026-11-12 | "In the lab" also lists independent builds whose evaluation is still running and that have no showcase (Narrative Edge); Knowledge Workbench joins as a study design. Lede: "Study designs and running evaluations, each with a stop condition. None has met it yet." | A live product in validation is neither a finished build card nor a result; the lab ledger is where unmet stop conditions already live. |
