@@ -124,26 +124,26 @@ const items: WorkItem[] = [
     status: 'published',
     featured: true,
     evidenceType: ['reported-experience'],
-    meta: 'Instagram Reels · Measurement, Experiment Design & Launch Gate · Reported experience (internal figures omitted)',
+    meta: 'Instagram Reels · Metric Design, Segment-Level Experiment Reads & Launch Governance · Reported experience (internal figures omitted)',
     brief: {
       problem:
         'The creator-side engagement goal was going up. That number also goes up when a feed just serves the reliable creator again, so it could not say whether viewers were getting better content.',
       contribution:
-        'I defined measures of what the viewing session was like, cut them by segment instead of pooling them, and argued they belonged beside the primary goal.',
+        'I traced part of a session decline to repetitive content, defined measures of what the viewing session was like, read every experiment by segment instead of pooled, and argued the measures belonged beside the primary goal.',
       outcomeLabel: 'What changed',
       outcome:
-        'The creator metric stopped being read on its own. The viewer-side measures and the segment splits went into the launch read.',
+        'The viewer-side measures became launch-tracking and ranking-guardrail standards across Reels, and segment splits went into every launch read.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-11-12',
     links: { caseStudy: '/work/recommendation-quality' },
     body: [
       {
         type: 'p',
-        text: 'In a short-form feed, a ranking experiment can look like a clean win while quietly degrading the product. When a candidate model leans harder on what already works — showing a reliable creator again or recycling a format the viewer reacted to yesterday — creator-side engagement climbs. On an aggregate scorecard, that reads as progress even if the person scrolling spent more effort finding anything new. Whenever an experiment moved our primary goal, the real question at launch review was never whether the metric moved; it was whether the model had learned to match viewers with better content, or simply cashed in on a narrower slice of supply.',
+        text: 'In a short-form feed, a ranking experiment can look like a clean win while quietly degrading the product. The baseline launch read was the primary goal, pooled across viewers. When a candidate model leans harder on what already works — a reliable creator again, a format the viewer reacted to yesterday — creator-side engagement climbs and the scorecard calls it progress, even if the person scrolling spends more effort finding anything new. Sessions were softening at the same time, and once I traced part of that decline to viewers seeing too much repetitive content, the launch question changed: had a model learned to match viewers with better content, or had it cashed in on a narrower slice of supply?',
       },
       {
         type: 'p',
-        text: 'To make that tradeoff visible before a model shipped, I built consumption-side counter-metrics around the failure modes the primary goal rewarded, matched the experimental unit to how the surface allocated content across sessions, and named the segment splits before results were read. The first measure tracked **repeat exposure** — how often a viewer encountered near-duplicate or same-creator content within a session and across consecutive days, where getting the deduplication key and session boundary right determines whether the signal has enough statistical power under repeated observations per viewer. The second measured **viewing efficiency** — watch time relative to the scrolling effort required to find something worth watching. Because a positive population average dominated by heavy users can easily hide degradation for light viewers or emerging creators, every read was stratified across fixed viewer and creator tiers rather than pooled.',
+        text: 'To make that tradeoff visible before a model shipped, I built consumption-side counter-metrics around the failure modes the primary goal rewarded, matched the experimental unit to how the surface allocated content across sessions, and named the segment splits before results were read. **Repeat exposure** tracks how often a viewer meets near-duplicate or same-creator content within a session and across consecutive days; getting the deduplication key and the session boundary right decides whether the measure has enough power under repeated observations per viewer. **Viewing efficiency** is watch time relative to the scrolling effort it took to find something worth watching. Because a positive average dominated by heavy users can hide degradation for light viewers or emerging creators, every read was stratified across fixed viewer and creator tiers rather than pooled.',
       },
       {
         type: 'table',
@@ -173,39 +173,105 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'Putting those measures and segment splits into the standard launch read changed how the team argued about shipping. A metric only earns its place on a launch review by naming the action it triggers; a guardrail with no threshold and no consequence is just a chart, and a chart does not stop a launch. Even so, repeat exposure and viewing efficiency remain behavioral proxies rather than direct measures of satisfaction — a viewer efficiently served mediocre content still had a mediocre session — which is why they functioned as binding guardrails alongside the primary goal rather than a replacement for it.',
+        text: 'Those measures became launch-tracking and ranking-guardrail standards across Reels, and the overexposure finding fed a goal realignment among the engineering, product and research leads. I ran launch reviews and half-year roadmap planning for three ranking teams on the same footing: A/B reviews, guardrail tradeoffs and incident investigations. The segment reads also reversed a judgment. A kind of similar-content recommendation that the pooled read treated as overexposure risk turned out, estimated by creator segment, to help creators grow, and it was reframed from a risk into a growth lever. Internal effect sizes stay internal, and the session gains that followed the realignment had several causes, so I do not attribute them to this work alone.',
+      },
+      {
+        type: 'p',
+        text: 'Repeat exposure and viewing efficiency remain behavioral proxies rather than direct measures of satisfaction — a viewer efficiently served mediocre content still had a mediocre session — which is why they worked as binding guardrails beside the primary goal rather than a replacement for it. The lesson I keep is that a metric earns its place on a launch review only by naming the action it triggers. A guardrail with no threshold and no consequence is just a chart, and a chart does not stop a launch.',
+      },
+    ],
+  },
+  {
+    slug: 'offline-evaluation-online-risk',
+    title: 'Offline Evaluation That Tracks Online Risk',
+    org: 'Facebook AI',
+    question: 'A classifier scores better offline. Will the launch catch more of the harm users actually see?',
+    kind: 'industry-case',
+    status: 'published',
+    featured: true,
+    evidenceType: ['reported-experience'],
+    meta: 'Facebook AI · Evaluation Sampling, Metric Definition & Launch Standard · Reported experience (internal figures omitted)',
+    brief: {
+      problem:
+        'Integrity classifiers were judged on labelled sets drawn from review queues. Those sets over-represent what earlier systems already flagged, so an offline gain did not say how much live harm a launch would catch.',
+      contribution:
+        'I designed an evaluation sample of production traffic with known inclusion weights, so ranking quality and prevalence-weighted error could be read for the population a launch would face.',
+      outcomeLabel: 'What changed',
+      outcome:
+        'Four product and platform teams adopted it as their launch standard. Along the way I caught a partner-team data leak that had affected three model launches.',
+    },
+    updatedAt: '2026-11-12',
+    links: { caseStudy: '/work/offline-evaluation-online-risk' },
+    body: [
+      {
+        type: 'p',
+        text: 'Integrity models — fake accounts, child safety, content similarity — are scored offline before they launch, and the usual evaluation set came from labels that already existed: items users reported or earlier models sent to human review. That baseline was convenient and biased in a specific direction. It was rich in the violations previous systems already found and thin in the ordinary traffic where a new model\'s false positives and missed cases actually live. An AUC gain on that set measured ranking within a population no launch would ever face, so a candidate could win offline while barely changing the risk users saw.',
+      },
+      {
+        type: 'p',
+        text: 'The fix started by naming the target quantity: harm reaching users on the live surface, and how a model at its launch threshold would change it. I drew the evaluation sample from production traffic, stratified by model score so the rare high-score region had enough labelled cases, and kept each stratum\'s inclusion probability so every labelled item carries a weight back to the population. That separates two questions a single number had blurred. AUC on the reweighted sample says how well the model ranks live traffic, but AUC does not move with prevalence, so it cannot say how much harm is caught. **Prevalence-weighted precision and recall at the launch threshold** carry that question, each with an interval that reflects the stratified design.',
+      },
+      {
+        type: 'table',
+        head: ['Question', 'Queue-sampled set (baseline)', 'Stratified production sample'],
+        rows: [
+          [
+            'Who is in the evaluation set?',
+            'Items already reported or sent to review',
+            'Live traffic, sampled by model score with known weights',
+          ],
+          [
+            'What does AUC describe?',
+            'Ranking among items earlier systems surfaced',
+            'Ranking across the traffic the launch will score',
+          ],
+          [
+            'How much harm is caught at launch?',
+            'Not answerable; the queue sets the prevalence',
+            'Weighted precision and recall at the threshold, with intervals',
+          ],
+          [
+            'What can it still miss?',
+            'Everything outside the queue',
+            'New abuse patterns not yet in the sampled traffic, and reviewer label error',
+          ],
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Four product and platform teams adopted the design as their launch standard, so a model shipped on what it would do to live prevalence rather than on a queue-set AUC. Along the way I caught a data leak in a partner team\'s pipeline that had affected three model launches, led the fix with that team and rebuilt the trust the miss had cost. The design has its own limits: review labels carry error, a representative sample ages as adversaries adapt, and an offline estimate of prevalence is still not an online measurement of harm prevented. What I carry into every evaluation since is to name the population and the quantity before choosing the metric, because a metric computed on a convenient sample answers a question nobody asked.',
       },
     ],
   },
   {
     slug: 'enterprise-ai-evaluation',
-    title: 'AI Agents Orchestration and Evaluation',
+    title: 'GenAI Evaluation and Launch Gates',
     org: 'Omnicom',
     question: 'An assistant can sound right and still fail the task. What catches that before release?',
     kind: 'industry-case',
     status: 'published',
     featured: true,
     evidenceType: ['reported-experience'],
-    meta: 'Omnicom · Evaluation Design, Test Set & Release Gate · Reported experience (internal data omitted; failure trace reconstructed)',
+    meta: 'Omnicom · GenAI Product Measurement, Evaluation Design & Launch Gate · Reported experience (internal data omitted; failure trace reconstructed)',
     brief: {
       problem:
-        'Answer-quality review kept passing systems that still could not finish the task. Reviewers were grading prose, one answer at a time; the product had to deliver a decision.',
+        'Answer-quality review kept passing systems that still could not finish the task. Reviewers were grading prose, one answer at a time; the product had to deliver a decision, and there were too few client accounts for an A/B test to settle it.',
       contribution:
-        'I defined four layers (retrieval, tool use, unsupported claims, end-to-end success), built the test set and rubric behind them, and set the release gate.',
+        'I defined the success metrics for agent workflows, split evaluation into four layers with their own denominators, built the pipeline and test set behind them, and set the launch gate.',
       outcomeLabel: 'What changed',
       outcome:
-        'Release stopped riding on how the demo went. It rode on a frozen test set and a threshold written down before the run.',
+        'Eval-gated launches became the decision standard. A frozen test set and a threshold written down before the run decided what shipped, not how the demo went.',
     },
-    updatedAt: '2026-10-26',
+    updatedAt: '2026-11-12',
     links: { caseStudy: '/work/enterprise-ai-evaluation' },
     body: [
       {
         type: 'p',
-        text: 'The gap showed up whenever a promising prototype met a real multi-step workflow. In spot checks, individual answers looked fluent, well-toned, and properly cited — yet users still could not make the budget or campaign decision they came for. Grading one response at a time rewarded plausible prose while missing broken task logic. Worse, a single blended quality score gave engineers nowhere to act: an agent that failed to retrieve the right table and an agent that retrieved the table but misread its column header received the same low score, even though one is an indexing bug and the other is a reasoning failure. Without separating the layers, every release argument collapsed into "the model isn\'t smart enough yet."',
+        text: 'The gap showed up whenever a promising prototype met a real multi-step workflow. The baseline release process was a demo and spot checks: individual answers looked fluent, well-toned and properly cited, yet users still could not make the budget or campaign decision they came for. Grading one response at a time rewarded plausible prose and missed broken task logic, and a single blended quality score gave engineers nowhere to act — an agent that failed to retrieve the right table and one that retrieved it but misread a column header got the same low score, though one is an indexing bug and the other a reasoning failure. A/B testing could not settle it either. The product served a small number of high-revenue enterprise client teams, too few to power a randomized comparison and too different from one another to pool, so offline evaluation had to carry the launch decision.',
       },
       {
         type: 'p',
-        text: 'To replace demo-driven shipping with a real release gate, I split evaluation into four layers — retrieval, tool use, unsupported claims, and end-to-end task completion — each with its own denominator. Unsupported claims are counted per factual sentence, tool accuracy per call, and task success per workflow, because a prompt change can cut hallucinations in half while tanking task completion through over-refusal. Blending them into a single accuracy number hides the exact tradeoff a release decision turns on.',
+        text: 'I defined what success meant for an agent workflow — factual accuracy, tool-use success, answer quality and task completion — and split evaluation into four layers, each with its own denominator: retrieval per question, tool accuracy per call, unsupported claims per factual sentence, and task success per workflow. Keeping them apart matters because a prompt change can halve unsupported claims while cutting task completion through over-refusal, and a blended accuracy number hides exactly the tradeoff a release turns on. I built the pipeline that runs these checks on every candidate and set the launch-blocking thresholds with product and engineering.',
       },
       {
         type: 'table',
@@ -231,11 +297,11 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'Locating failures by layer immediately changed how the team debugged. In one representative pattern — deciding which of three campaigns should absorb the next increment of budget — retrieval pulled the right performance summary and the spend tool queried the exact date range, yet the assistant recommended the wrong campaign in fluent, cited prose. Tracing the layers showed this was not a model-capability failure at all: the chunk boundary had split a campaign label from the numbers beneath it, so a correctly retrieved document supported a confident sentence about an adjacent period. Keeping labels bound to their tables and requiring cited spans to contain the named entity fixed a bug that prompt tuning never would have touched.',
+        text: 'The gate had to be trustworthy itself. I stratified the test set by task family so no single client dominated the score, wrote rubrics where unresolved annotator disagreement forced a rewrite of the category rather than an average, and locked a held-out slice so iteration happened only on the development set. A model judge gated nothing until it had been calibrated against blind human labels, because a judge that shares the generator\'s blind spots will certify them. Locating failures by layer then changed how the team debugged. In one representative pattern — deciding which of three campaigns should absorb the next increment of budget — retrieval found the right performance summary and the spend tool queried the right dates, yet the assistant recommended the wrong campaign in fluent, cited prose. The chunk boundary had split a campaign label from the numbers beneath it, so a correctly retrieved document supported a confident sentence about an adjacent period. Keeping labels bound to their tables and requiring each cited span to contain the named entity fixed what prompt tuning never would have.',
       },
       {
         type: 'p',
-        text: 'Keeping the gate itself trustworthy required the same discipline. I stratified the test set by task family so no single client dominated the score, wrote boundary-tested rubrics where unresolved annotator disagreements forced a rewrite of the category rather than an average, and locked a held-out slice so iteration happened only on the development set. Any LLM judge had to be calibrated against blind human labels before gating a run, because a judge sharing the generator\'s blind spots will consistently certify them. Every candidate configuration was quoted alongside its latency and spend, and thresholds were derived from the cost of each error type — recognizing that a frozen test set still ages and must continuously absorb new failure modes from production.',
+        text: 'Eval-gated launches became the decision standard across product and engineering. Claim-level verification and source-grounded regression tests brought unsupported claims down on the priority set, and tracing answer-quality failures back to retrieval drove a redesign of retrieval and long-term memory. On the product side, funnel analysis of the highest-value marketing workflows showed where users stopped before reaching a tool, which shaped the agent-to-tool contracts that downstream teams then adopted. The internal figures stay internal. The limit is the one the design was built around: a passing offline score is evidence about the test set, not a measured effect on client decisions, and a frozen set ages unless it keeps absorbing new failure modes from production.',
       },
     ],
   },
@@ -419,14 +485,14 @@ const items: WorkItem[] = [
     meta: 'Independent Build · Postgres/pgvector Geolocation Search & Lazy Enrichment · Observational',
     brief: {
       problem:
-        'A directory with thousands of rows still fails a first-time visitor if the four fields the visit depends on are missing.',
+        'A directory with a hundred thousand rows still fails a first-time visitor if the fields the visit depends on are missing, and a pipeline that logs no errors can still be stalled.',
       contribution:
-        'I built it end to end: geolocation search over Postgres and pgvector, lazy profile enrichment, and freshness and coverage tracking on the crawl.',
+        'I built it end to end: geolocation search over Postgres and pgvector, profiles extracted from each church’s own website, and coverage and freshness measures that a silent failure cannot pass.',
       outcomeLabel: 'Current result',
       outcome:
-        'A live site, and a reframing: coverage is measured against a required field set for one user situation rather than by row count.',
+        'On 13 November 2026, 6.7% of 134,377 listings linked a website and 74% of those had been read successfully. Website availability, not extraction, limits coverage; field accuracy is not measured yet.',
     },
-    updatedAt: '2026-10-28',
+    updatedAt: '2026-11-12',
     links: {
       caseStudy: '/work/churchmap',
       demo: 'https://churchmap.vercel.app/',
@@ -463,15 +529,28 @@ const items: WorkItem[] = [
     body: [
       {
         type: 'p',
-        text: 'It is easy to build a directory with tens of thousands of rows that still fails a first-time visitor on Sunday morning. ChurchMap started as a map-first search product over Supabase Postgres and `pgvector`, using on-demand profile enrichment when a user views a listing rather than crawling everything up front. While lazy enrichment kept crawling costs sane, it also made data freshness a function of traffic rather than importance — leaving long-tail listings missing the exact details a visitor relies on.',
+        text: 'It is easy to build a directory with a hundred thousand rows that still fails a first-time visitor on Sunday morning. ChurchMap is a map-first search over Supabase Postgres and `pgvector`, and each church\'s profile is extracted by a language model from the church\'s own website. The first measure of progress was the one a directory invites, row count, and the first health check was the one a pipeline invites, zero logged errors. Both looked fine while the product was failing. In July 2026 the crawl was automatically disabled for eight days and nothing said so, because a stage that never starts never writes an error.',
       },
       {
         type: 'p',
-        text: 'That failure forced a reframing that generalizes well beyond this project: *"we need more data"* is not a product goal, and a pipeline that logs zero errors is not a healthy pipeline. Silent staleness and partial field coverage produce clean logs and a broken user experience. A person new to a city looking for a weekend service needs four specific fields — service times, physical location, whether the church is currently active, and directions. A hundred thousand rows with ten metadata columns but missing service times represents zero coverage for the task that matters.',
+        text: 'I rebuilt the measurement around what a visit needs. Freshness now keys on the last time each stage moved at least one row, so silence reads as stale rather than healthy. Every extraction attempt ends in a named outcome, and only a successful one counts as coverage, because failed attempts are stamped as extracted too. Each profile records the prompt version and model that produced it, so a prompt change shows up as a stale share instead of a silent mix, and the public counts include only churches a visitor can actually find.',
+      },
+      {
+        type: 'table',
+        head: ['Measure', 'Count', 'Share', 'Of'],
+        rows: [
+          ['Listings', '134,377', '—', '—'],
+          ['With a website on file', '9,032', '6.7%', 'All listings'],
+          ['Website read successfully', '6,714', '74.3%', 'Listings with a website'],
+          ['Attempts without a successful extraction', '198', '2.9%', 'All 6,912 attempts'],
+          ['Extracted under an older prompt version', '195', '2.8%', 'All 6,912 attempts'],
+        ],
+        caption:
+          'System-reported counts from the public /api/stats endpoint, generated 13 November 2026 at 05:35 UTC, including listings hidden from search; not independently audited. The success share uses successful attempts, not the endpoint’s extracted share, which also counts failures.',
       },
       {
         type: 'p',
-        text: '**Quality here means a first-time visitor can plan a visit using complete, accurate, current information.** The coverage measure is the share of listings in a defined city with all four required fields, rather than an average that lets extra metadata hide a missing service time. I reframed the pipeline around that required field set, manual filling of gaps, and field-level freshness. Accuracy still needs checking against current source information, and usability needs observing whether visitors can complete the task. This case reports the measurement approach; it does not yet report measured coverage, accuracy, or user task-success rates.',
+        text: '**Quality here means a first-time visitor can plan a visit from complete, accurate, current information**, and the counts show where that breaks. Extraction is not the bottleneck: three in four churches with a website have been read successfully, and fewer than 3% of attempts fail. The constraint is upstream. Only 6.7% of listings link a website at all, so a profile drawn from the church\'s own site cannot reach most of the directory without another source. What these counts do not show is accuracy. No hand-labelled sample yet compares extracted service times, addresses and activity status with the source, and the share of listings with all four fields a visit depends on — service times, location, whether the church is active, and directions — is defined but not yet computed. That four-field share for one city, audited against a sample of sources, is the next measurement.',
       },
     ],
   },
@@ -492,7 +571,7 @@ const items: WorkItem[] = [
         'I built the research pipeline and rule-based recommendation board: extract dated analyst views, track narrative changes, select stocks, and review their performance against QQQ.',
       outcomeLabel: 'Current result',
       outcome:
-        'The public board shows new long and short signals, continuation and watch lists, and retrospective performance against QQQ. The research-date simulation stays separate from the recorded issuance ledger; it does not establish live investment performance.',
+        'The public board shows new long and short signals, continuation and watch lists, and retrospective performance against QQQ. The research-date simulation stays separate from the recorded issuance ledger; it does not establish live investment performance. With research through 6 November 2026 the recorded ledger had two closures, both behind QQQ, against a bar of 30 per list.',
     },
     updatedAt: '2026-11-05',
     links: {
@@ -520,7 +599,7 @@ const items: WorkItem[] = [
       },
       {
         type: 'p',
-        text: 'The default board is a **retrospective research-date simulation**, with entry and exit dates, closed positions and returns relative to QQQ. It reviews selected recorded signals, not every historical opportunity or a strategy known at the time. Where publication timestamps are unverified, source-session dates are explicit assumptions. The recorded issuance ledger remains separate, and simulated results do not count toward live validation.',
+        text: 'The default board is a **retrospective research-date simulation**, with entry and exit dates, closed positions and returns relative to QQQ. It reviews selected recorded signals, not every historical opportunity or a strategy known at the time. Where publication timestamps are unverified, source-session dates are explicit assumptions. The recorded issuance ledger remains separate, and simulated results do not count toward live validation. That ledger enters at the first final close after both the report date and the day the rules ran, writes each close once, and is the only record that counts: the rules stay in validation until new signals and continuation each have 30 closed recorded positions. With research through 6 November 2026 it had two, one continuation and one watch position, both behind QQQ, and no closed new signals, which is no evidence either way.',
       },
       {
         type: 'p',
@@ -654,6 +733,53 @@ const items: WorkItem[] = [
       {
         type: 'p',
         text: 'Before building any evaluation infrastructure, the immediate gate is a five-user trial with practicing data scientists to see whether they actually reuse it on live docs. Only if it clears that bar does the formal benchmark run: thirty to fifty publishable cases split by scenario family so variants of the same flaw cannot leak between tuning and test, comparing three arms — a fixed human checklist, a generic LLM prompt, and the skeptic prompt. To prevent self-grading bias, scoring is blind and adjudicated by someone other than the gold-standard author, bootstrapping across cases on recall of the decision-changing flaw, rate of unfounded criticism, and actionability — because *"users found it insightful"* is a separate record from whether the critique was right, and cannot substitute for it.',
+      },
+    ],
+  },
+  {
+    slug: 'knowledge-workbench',
+    title: 'Knowledge Workbench',
+    question:
+      'Can an assistant over my own notes be graded on whether it used the right evidence, rather than on whether it sounded right?',
+    kind: 'independent-build',
+    status: 'proposed',
+    featured: false,
+    evidenceType: [],
+    meta: 'Independent Study Design · Source-Revision Retrieval, Claim-Support Metrics & Judge Calibration Protocol',
+    brief: {
+      problem:
+        'An assistant over personal notes and project records can cite a superseded draft, pass off a personal claim as general fact, or score well because its judge shares its blind spots.',
+      contribution:
+        'I wrote the evaluation before the system: metrics with their own denominators, four comparison arms that separate better data from a better system, and a judge calibrated against blind human labels.',
+      outcomeLabel: 'Current result',
+      outcome:
+        'None yet. Twelve acceptance cases are written and no runner executes them. Every threshold is a proposed gate, not a score.',
+    },
+    updatedAt: '2026-11-12',
+    links: { caseStudy: '/work/knowledge-workbench' },
+    body: [
+      {
+        type: 'p',
+        text: 'I am rebuilding a local workbench that answers questions, drafts and corrections from my own notes and project evidence. The earlier version was a retrieval chat, scored on whether answers looked relevant, and that target rewarded the wrong thing. An answer can cite a superseded draft, treat a catalog title as if it were the source, present a personal claim as general knowledge, or keep asserting something I have since corrected, and still read well. Its keyword tokenizer also dropped Chinese text, so Chinese questions were not really being retrieved, let alone measured.',
+      },
+      {
+        type: 'p',
+        text: 'The new design is graded on whether it used the right source revision, kept evidence kinds apart and finished the task with a result I can check. There is no single knowledge score. Each metric has its own denominator, and an empty set is reported as not applicable rather than as a pass. Four arms separate the sources of any gain — hand-picked context with a general coding agent, the frozen old system, the old pipeline on the corrected corpus, and the new workbench on that same corpus, all on the same model — so better notes are not credited to better orchestration. The planned benchmark has sixty tasks split by task family into development, judge-calibration and holdout sets, and gold answers and rubrics are barred from the production index so the system cannot retrieve its own answer key.',
+      },
+      {
+        type: 'table',
+        head: ['Metric', 'Denominator', 'Proposed gate'],
+        rows: [
+          ['Evidence recall@k', 'Gold source spans needed by answerable questions', '0.85, reported by mode and language'],
+          ['Claim support precision', 'Claim–citation pairs evaluated', '0.95, reported with citation completeness'],
+          ['Personal-claim fabrication', 'Count of unsupported or already-corrected personal facts', 'Zero on the critical set'],
+          ['Task success', 'Attempts whose output passes the task’s own acceptance check', '0.80, with a wrong write counted as a severe failure'],
+        ],
+        caption: 'Proposed gates, set before any baseline run. None of these is a measured result.',
+      },
+      {
+        type: 'p',
+        text: 'A model judge is not trusted until it has been compared with my blind labels, with false passes and false rejections reported by risk category, and the generator, the judge and the gold author never share an unchecked answer. With twenty-four holdout tasks, every rate will be reported as a raw numerator and denominator with its uncertainty, which is engineering evidence for this system rather than a general claim. Today twelve acceptance cases across retrieval, knowledge, correction, personal facts, synthesis, practice, security and resilience are written as specifications, the source registry and metric code exist, and no runner executes the cases, so there is no result to report.',
       },
     ],
   },

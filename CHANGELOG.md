@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased - 2026-11-12
+
+### Positioning
+
+- Hero claim is now "I turn complex AI systems into measurable, reliable products." and the
+  eyebrow "Product Data Scientist"; Path details name the Facebook AI and Omnicom evaluation
+  work. The owner's intro is unchanged.
+
+### Work
+
+- Reels and Omnicom essays now state the baseline, the change, how it was evaluated, what
+  changed, the limit and the lesson, still in four paragraphs and one table. Omnicom adds why
+  offline gates replaced A/B tests and the product-funnel work; internal figures stay omitted.
+- New Facebook AI case, "Offline Evaluation That Tracks Online Risk": stratified production
+  sampling with inclusion weights, AUC kept apart from prevalence-weighted error at the
+  launch threshold. Reported experience.
+- ChurchMap reports measured coverage from its public `/api/stats` endpoint (generated
+  2026-11-13 05:35 UTC) and states that field accuracy and the four-field share are unmeasured.
+- Narrative Edge (`/work/narrative-atlas`) states its validation bar of 30 recorded closures per
+  list and the two recorded closures so far, both behind QQQ. New Knowledge Workbench study
+  design: proposed gates, no results.
+
 ## Unreleased - 2026-10-19
 
 ### Writing
