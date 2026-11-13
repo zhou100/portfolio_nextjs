@@ -736,53 +736,6 @@ const items: WorkItem[] = [
       },
     ],
   },
-  {
-    slug: 'knowledge-workbench',
-    title: 'Knowledge Workbench',
-    question:
-      'Can an assistant over my own notes be graded on whether it used the right evidence, rather than on whether it sounded right?',
-    kind: 'independent-build',
-    status: 'proposed',
-    featured: false,
-    evidenceType: [],
-    meta: 'Independent Study Design · Source-Revision Retrieval, Claim-Support Metrics & Judge Calibration Protocol',
-    brief: {
-      problem:
-        'An assistant over personal notes and project records can cite a superseded draft, pass off a personal claim as general fact, or score well because its judge shares its blind spots.',
-      contribution:
-        'I wrote the evaluation before the system: metrics with their own denominators, four comparison arms that separate better data from a better system, and a judge calibrated against blind human labels.',
-      outcomeLabel: 'Current result',
-      outcome:
-        'None yet. Twelve acceptance cases are written and no runner executes them. Every threshold is a proposed gate, not a score.',
-    },
-    updatedAt: '2026-11-12',
-    links: { caseStudy: '/work/knowledge-workbench' },
-    body: [
-      {
-        type: 'p',
-        text: 'I am rebuilding a local workbench that answers questions, drafts and corrections from my own notes and project evidence. The earlier version was a retrieval chat, scored on whether answers looked relevant, and that target rewarded the wrong thing. An answer can cite a superseded draft, treat a catalog title as if it were the source, present a personal claim as general knowledge, or keep asserting something I have since corrected, and still read well. Its keyword tokenizer also dropped Chinese text, so Chinese questions were not really being retrieved, let alone measured.',
-      },
-      {
-        type: 'p',
-        text: 'The new design is graded on whether it used the right source revision, kept evidence kinds apart and finished the task with a result I can check. There is no single knowledge score. Each metric has its own denominator, and an empty set is reported as not applicable rather than as a pass. Four arms separate the sources of any gain — hand-picked context with a general coding agent, the frozen old system, the old pipeline on the corrected corpus, and the new workbench on that same corpus, all on the same model — so better notes are not credited to better orchestration. The planned benchmark has sixty tasks split by task family into development, judge-calibration and holdout sets, and gold answers and rubrics are barred from the production index so the system cannot retrieve its own answer key.',
-      },
-      {
-        type: 'table',
-        head: ['Metric', 'Denominator', 'Proposed gate'],
-        rows: [
-          ['Evidence recall@k', 'Gold source spans needed by answerable questions', '0.85, reported by mode and language'],
-          ['Claim support precision', 'Claim–citation pairs evaluated', '0.95, reported with citation completeness'],
-          ['Personal-claim fabrication', 'Count of unsupported or already-corrected personal facts', 'Zero on the critical set'],
-          ['Task success', 'Attempts whose output passes the task’s own acceptance check', '0.80, with a wrong write counted as a severe failure'],
-        ],
-        caption: 'Proposed gates, set before any baseline run. None of these is a measured result.',
-      },
-      {
-        type: 'p',
-        text: 'A model judge is not trusted until it has been compared with my blind labels, with false passes and false rejections reported by risk category, and the generator, the judge and the gold author never share an unchecked answer. With twenty-four holdout tasks, every rate will be reported as a raw numerator and denominator with its uncertainty, which is engineering evidence for this system rather than a general claim. Today twelve acceptance cases across retrieval, knowledge, correction, personal facts, synthesis, practice, security and resilience are written as specifications, the source registry and metric code exist, and no runner executes the cases, so there is no result to report.',
-      },
-    ],
-  },
 ];
 
 export function getWork(): WorkItem[] {
